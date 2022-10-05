@@ -1,0 +1,17 @@
+root = true
+
+[*]
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+guidelines = 78, 80, 100, 120
+
+[*.md]
+# double whitespace at end of line
+# denotes a line break in Markdown
+trim_trailing_whitespace = false
+
+[*.{json,jsonc,yml,yaml}]
+indent_size = 2
