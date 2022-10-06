@@ -43,6 +43,7 @@ GitHub starter repo with:
   - Constants (structs)
   - Events (channels)
   - No properties, only methods
+  - Visibility/Access modifiers
 - Mutability
 - Local functions
 - Lambda/Closures
