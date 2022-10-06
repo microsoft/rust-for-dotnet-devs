@@ -129,13 +129,14 @@ mix-ins via macros
 
 - `Drop` trait = `IDisposable`
 
-## ?
+## Threading
 
 - Thread-Safety (`Sync`, `Send`, etc.)
-
-## Channels
-
 - `System.Threading.Channels`
+- Synchronization primitives:
+  - `lock` = `std::sync::Mutex`
+  - read/write lock
+  - etc
 
 ## Testing
 
