@@ -43,6 +43,7 @@ GitHub starter repo with:
   - Constants (structs)
   - Events (channels)
   - No properties, only methods
+- Mutability
 - Local functions
 - Lambda/Closures
 - Overloading
@@ -116,7 +117,6 @@ mix-ins via macros
 
 ## ?
 
-- Mutability
 - Thread-Safety (`Sync`, `Send`, etc.)
 
 ## Channels
