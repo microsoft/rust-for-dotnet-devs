@@ -56,6 +56,13 @@ GitHub starter repo with:
   - `GetType` (pattern-matching and enums)
 - Newtype (primitive obsession)
 
+### Variables
+
+- Mutability
+- Shadowing
+- Type inference
+- Moving and ownership
+
 ### Equality
 
 - reference vs value
