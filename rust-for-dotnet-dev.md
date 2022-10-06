@@ -135,9 +135,9 @@ mix-ins via macros
 
 ## Logging and Tracing
 
-## Features ?
-
 ## Conditional Compilation
+
+- Features
 
 ## Environment and Configuration
 
