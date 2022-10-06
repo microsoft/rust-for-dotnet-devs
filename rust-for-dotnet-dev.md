@@ -40,7 +40,7 @@ GitHub starter repo with:
 - Members:
   - Constructors (associated functions)
   - Methods (static & instance-based)
-  - Constants
+  - Constants (structs)
   - Events (channels)
   - No properties, only methods
 - Local functions
