@@ -149,7 +149,6 @@ mix-ins via macros
   - Aggregate = reduce
   - etc
   - generators
-- IAsyncEnumerable and async streams in Rust
 
 ## Meta Programming
 
@@ -163,6 +162,7 @@ mix-ins via macros
   - `Task.WhenAny` = `select!`
   - `Task.WhenAll` = ?
   - Timeouts
+- `IAsyncEnumerable` and async streams in Rust
 
 ## Project Structure
 
