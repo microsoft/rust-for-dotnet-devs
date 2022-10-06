@@ -63,6 +63,12 @@ GitHub starter repo with:
 - Type inference
 - Moving and ownership
 
+### Namespaces
+
+- Imports
+- Modules
+- Visibility/Accessibility modifiers (x-ref?)
+
 ### Equality
 
 - reference vs value
