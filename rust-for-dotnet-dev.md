@@ -41,7 +41,7 @@ GitHub starter repo with:
   - Constructors (associated functions)
   - Methods (static & instance-based)
   - Constants
-  - Events (none in Rust)
+  - Events (channels)
   - No properties, only methods
 - Local functions
 - Lambda/Closures
