@@ -157,11 +157,15 @@ mix-ins via macros
 - `env!` (cargo config)
 - `env`
 
-- LINQ and iterators (no `yield` yet?)
-  - Select = map
-  - Aggregate = reduce
+## LINQ
+
+- Query syntax
+- Method chaining
+- Iterators (no `yield` yet?)
+- Methods:
+  - `Select` = `map`
+  - `Aggregate` = `reduce`
   - etc
-  - generators
 
 ## Meta Programming
 
