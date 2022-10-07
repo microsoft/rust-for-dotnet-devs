@@ -164,7 +164,7 @@ let some: Option<i32> = Some(1);
 let none: Option<i32> = None;
 ```
 
-`Option<T>` in Rust is practically identical to [`Option<'T>`][opt.fs] from F#.
+`Option<T>` in Rust is practically identical to [`'T option`][opt.fs] from F#.
 
 [opt.fs]: https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-option-1.html
 
