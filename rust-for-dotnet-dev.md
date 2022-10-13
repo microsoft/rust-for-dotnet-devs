@@ -454,7 +454,47 @@ there is no need to use a substitute for it.
 ## Testing
 
 - Mocking framework (macros) and conditional compilation
-- Code coverage
+
+### Code coverage
+
+There is sophisticated tooling for .NET when it comes to analyzing test code
+coverage. In Visual Studio, the tooling is built-in and integrated. In Visual
+Studio Code, plug-ins exist. .NET developers might be familiar with [coverlet]
+as well.
+
+Rust is providing [built-in code coverage implementations][built-in-cov] for
+collecting test code coverage.
+
+There are also plug-ins available for Rust to help with code coverage analysis.
+It's not seamlessly integrated, but with some manual steps, developers can
+analyze their code in a visual way.
+
+The combination of [Coverage Gutters][coverage.gutters] plug-in for Visual
+Studio Code and [Tarpaulin] allows visual analysis of the code coverage in
+Visual Studio Code. Coverage Gutters requires an LCOV file. Other tools besides
+[Tarpaulin] can be used to generate that file.
+
+Once setup, run the following command:
+
+```bash
+cargo tarpaulin --ignore-tests --out Lcov
+````
+
+This generates an LCOV Code Coverage file. Once `Coverage Gutters: Watch` is
+enabled, it will be picked up by the Coverage Gutters plug-in, which will show
+in-line visual indicators about the line coverage in the source code editor.
+
+> Note: The location of the LCOV file is essential. If a workspace (see [Project
+> Structure](#project-structure)) with multiple packages is present and a LCOV
+> file is generated in the root using `--workspace`, that is the file that is
+> being used - even if there is a file present directly in the root of the
+> workspace. It is quicker to isolate to the particular workspace under test
+> rather than generating the LCOV file in the root.
+
+[coverage.gutters]: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
+[tarpaulin]: https://github.com/xd009642/tarpaulin
+[coverlet]: https://github.com/coverlet-coverage/coverlet
+[built-in-cov]: https://doc.rust-lang.org/stable/rustc/instrument-coverage.html#test-coverage
 
 ## Benchmarking
 
