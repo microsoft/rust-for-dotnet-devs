@@ -844,7 +844,7 @@ Once setup, run the following command:
 
 ```bash
 cargo tarpaulin --ignore-tests --out Lcov
-````
+```
 
 This generates an LCOV Code Coverage file. Once `Coverage Gutters: Watch` is
 enabled, it will be picked up by the Coverage Gutters plug-in, which will show
