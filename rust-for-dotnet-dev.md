@@ -1028,8 +1028,8 @@ on whether the closure expression references its context or not.
 
 When a closure captures variables from its environment then ownership rules
 come into play because the ownership ends up with the closure. For more
-information, see the �[Moving Captured Values Out of Closures and the Fn
-Traits][closure-move]� section of The Rust Programming Language.
+information, see the “[Moving Captured Values Out of Closures and the Fn
+Traits][closure-move]” section of The Rust Programming Language.
 
   [closure-move]: https://doc.rust-lang.org/book/ch13-01-closures.html#moving-captured-values-out-of-closures-and-the-fn-traits
 
@@ -2917,11 +2917,11 @@ a two-project solution using Visual Studio 2022 (a class library and an xUnit
 test project), it will create the following structure:
 
     .
-    �   SampleClassLibrary.sln
-    +---SampleClassLibrary
-    �       Class1.cs
-    �       SampleClassLibrary.csproj
-    +---SampleTestProject
+    │   SampleClassLibrary.sln
+    ├───SampleClassLibrary
+    │       Class1.cs
+    │       SampleClassLibrary.csproj
+    └───SampleTestProject
             SampleTestProject.csproj
             UnitTest1.cs
             Usings.cs
@@ -2934,17 +2934,17 @@ layout][cargo-package-layout] to make it easy to dive into a new Cargo
 [package][rust-package]:
 
     .
-    +-- Cargo.lock
-    +-- Cargo.toml
-    +-- src/
-    ��� +-- lib.rs
-    ��� +-- main.rs
-    +-- benches/
-    ��� +-- some-bench.rs
-    +-- examples/
-    ��� +-- some-example.rs
-    +-- tests/
-        +-- some-integration-test.rs
+    ├── Cargo.lock
+    ├── Cargo.toml
+    ├── src/
+    │   ├── lib.rs
+    │   └── main.rs
+    ├── benches/
+    │   └── some-bench.rs
+    ├── examples/
+    │   └── some-example.rs
+    └── tests/
+        └── some-integration-test.rs
 
 - `Cargo.toml` and `Cargo.lock` are stored in the root of the package.
 - `src/lib.rs` is the default library file, and `src/main.rs` is the default
