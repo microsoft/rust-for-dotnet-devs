@@ -267,7 +267,7 @@ Commonly used object and collection types in .NET and their mapping to Rust
 | `Tuple`      | `Tuple`   |
 | `Dictionary` | `HashMap` |
 
-## Array
+#### Array
 
 Fixed arrays are supported the same way in Rust as in .NET
 
@@ -283,7 +283,7 @@ Rust:
 let someArray: [i32; 2] = [1,2];
 ```
 
-## List
+#### List
 
 In Rust the equivalent of a `List<T>` is a `Vec<T>`. Arrays can be converted
 to Vecs and vice versa.
@@ -311,7 +311,7 @@ let mut something = vec![
 something.push("c".to_owned());
 ```
 
-## Tuples
+#### Tuples
 
 C#:
 
@@ -335,7 +335,7 @@ println!("a = {} b = {}", a, b);
 > access a tuple element is by using the index of the element or deconstructing
 > the tuple.
 
-## Dictionary
+#### Dictionary
 
 In Rust the equivalent of a `Dictionary<TKey, TValue>` is a `Hashmap<K, V>`.
 
