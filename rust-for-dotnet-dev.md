@@ -3205,11 +3205,11 @@ a two-project solution using Visual Studio 2022 (a class library and an xUnit
 test project), it will create the following structure:
 
     .
-    │   SampleClassLibrary.sln
-    ├───SampleClassLibrary
-    │       Class1.cs
-    │       SampleClassLibrary.csproj
-    └───SampleTestProject
+    |   SampleClassLibrary.sln
+    +---SampleClassLibrary
+    |       Class1.cs
+    |       SampleClassLibrary.csproj
+    +---SampleTestProject
             SampleTestProject.csproj
             UnitTest1.cs
             Usings.cs
@@ -3222,17 +3222,17 @@ layout][cargo-package-layout] to make it easy to dive into a new Cargo
 [package][rust-package]:
 
     .
-    ├── Cargo.lock
-    ├── Cargo.toml
-    ├── src/
-    │   ├── lib.rs
-    │   └── main.rs
-    ├── benches/
-    │   └── some-bench.rs
-    ├── examples/
-    │   └── some-example.rs
-    └── tests/
-        └── some-integration-test.rs
+    +-- Cargo.lock
+    +-- Cargo.toml
+    +-- src/
+    |   +-- lib.rs
+    |   +-- main.rs
+    +-- benches/
+    |   +-- some-bench.rs
+    +-- examples/
+    |   +-- some-example.rs
+    +-- tests/
+        +-- some-integration-test.rs
 
 - `Cargo.toml` and `Cargo.lock` are stored in the root of the package.
 - `src/lib.rs` is the default library file, and `src/main.rs` is the default
