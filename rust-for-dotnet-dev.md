@@ -1173,16 +1173,134 @@ See also:
 
 ### Generics
 
+Generics in C# provide a way to create definitions for types and methods that
+can be parameterized over other types. This improves code reuse, type-safety
+and performance (e.g. avoid run-time casts). Consider the following example
+of a generic type that adds a timestamp to any value:
+
+```csharp
+using System;
+
+sealed record Timestamped<T>(DateTime Timestamp, T Value)
+{
+    public Timestamped(T value) : this(DateTime.UtcNow, value) { }
+}
+```
+
+Rust also has generics as shown by the equivalent of the above:
+
+```rust
+use std::time::*;
+
+struct Timestamped<T> { value: T, timestamp: SystemTime }
+
+impl<T> Timestamped<T> {
+    fn new(value: T) -> Self {
+        Self { value, timestamp: SystemTime::now() }
+    }
+}
+```
+
+See also:
+
+- [Generic data types]
+
+[Generic data types]: https://doc.rust-lang.org/book/ch10-01-syntax.html
+
+#### Generic type constraints
+
+In C#, [generic types can be constrained][type-constraints.cs] using the `where`
+clause. The following example shows such constraints in C#:
+
+```csharp
+using System;
+
+// Note: records automatically implement `IEquatable`. The following
+// implementation shows this explicitly for a comparison to Rust.
+sealed record Timestamped<T>(DateTime Timestamp, T Value) :
+    IEquatable<Timestamped<T>>
+    where T : IEquatable<T>
+{
+    public Timestamped(T value) : this(DateTime.UtcNow, value) { }
+
+    public bool Equals(Timestamped<T>? other) =>
+        other is { } someOther
+        && Timestamp == someOther.Timestamp
+        && Value.Equals(someOther.Value);
+
+    public override int GetHashCode() => HashCode.Combine(Timestamp, Value);
+}
+```
+
+The same can be achieved in Rust:
+
+```rust
+use std::time::*;
+
+struct Timestamped<T> { value: T, timestamp: SystemTime }
+
+impl<T> Timestamped<T> {
+    fn new(value: T) -> Self {
+        Self { value, timestamp: SystemTime::now() }
+    }
+}
+
+impl<T> PartialEq for Timestamped<T>
+    where T: PartialEq {
+    fn eq(&self, other: &Self) -> bool {
+        self.value == other.value && self.timestamp == other.timestamp
+    }
+}
+```
+
+Generic type constraints are called [bounds][bounds.rs] in Rust.
+
+In C# version, `Timestamped<T>` instances can _only_ be created for `T` which
+implement `IEquatable<T>` themselves, but note that the Rust version is more
+flexible because it `Timestamped<T>` _conditionally implements_ `PartialEq`.
+This means that `Timestamped<T>` instances can still be created for some
+non-equatable `T`, but then `Timestamped<T>` will not implement equality via
+`PartialEq` for such a `T`.
+
+
+See also:
+
+- [Traits as parameters]
+- [Returning types that implement traits]
+
+[type-constraints.cs]: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters
+[bounds.rs]: https://doc.rust-lang.org/rust-by-example/generics/bounds.html
+[Traits as parameters]: https://doc.rust-lang.org/book/ch10-02-traits.html#traits-as-parameters
+[Returning types that implement traits]: https://doc.rust-lang.org/book/ch10-02-traits.html#returning-types-that-implement-traits
+
 ### Polymorphism
 
-- `impl IntoIter`
-- Trait objects
+Rust does not support classes and sub-classing therefore polymorphism can't be
+achieved in an identical manner to C#.
+
+See also:
+
+- Virtual dispatch using _trait objects_, as explained in the
+  [structures-section] paragraph
+- [Generics][generics-section]
+- [Inheritance][inheritance-section]
+- [Operator overloading][operator-overloading-section]
+
+[structures-section]: #structures-struct
+[generics-section]: #generics
+[inheritance-section]: #inheritance
+[operator-overloading-section]: #operator-overloading
 
 ### Inheritance
 
-mix-ins via macros
+As explained in [structures] paragraph, Rust does not provide (class-based)
+inheritance as in C#. A way to provide shared behavior between structs is via
+making use of traits. However, similar to _interface inheritance_ in C#, Rust
+allows to define relationships between traits by using
+[_supertraits_][supertrait.rs].
 
-[std-array]: https://doc.rust-lang.org/std/primitive.array.html
+[structures]: #structures-struct
+[supertrait.rs]: https://doc.rust-lang.org/book/ch19-03-advanced-traits.html#using-supertraits-to-require-one-traits-functionality-within-another-trait
 
 ### Exception Handling
 
@@ -1642,6 +1760,64 @@ See also:
 [into.rs]: https://doc.rust-lang.org/std/convert/trait.Into.html
 [try-from.rs]: https://doc.rust-lang.org/std/convert/trait.TryFrom.html
 [try-into.rs]: https://doc.rust-lang.org/std/convert/trait.TryInto.html
+
+### Operator overloading
+
+A custom type can overload an _overloadable operator_ in C#. Consider the
+following example in C#:
+
+```csharp
+Console.WriteLine(new Fraction(5, 4) + new Fraction(1, 2));  // 14/8
+
+public readonly record struct Fraction(int Numerator, int Denominator)
+{
+    public static Fraction operator +(Fraction a, Fraction b) =>
+        new(a.Numerator * b.Denominator + b.Numerator * a.Denominator, a.Denominator * b.Denominator);
+
+    public override string ToString() => $"{Numerator}/{Denominator}";
+}
+```
+
+In Rust, many operators [can be overloaded via traits][ops.rs]. This is possible
+because operators are syntactic sugar for method calls. For example, the `+`
+operator in `a + b` calls the `add` method (see [operator overloading]):
+
+```rust
+use std::{fmt::{Display, Formatter, Result}, ops::Add};
+
+struct Fraction {
+    numerator: i32,
+    denominator: i32,
+}
+
+impl Display for Fraction {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        f.write_fmt(format_args!("{}/{}", self.numerator, self.denominator))
+    }
+}
+
+impl Add<Fraction> for Fraction {
+    type Output = Fraction;
+
+    fn add(self, rhs: Fraction) -> Fraction {
+        Fraction {
+            numerator: self.numerator * rhs.denominator + rhs.numerator * self.denominator,
+            denominator: self.denominator * rhs.denominator,
+        }
+    }
+}
+
+fn main() {
+    println!(
+        "{}",
+        Fraction { numerator: 5, denominator: 4 } + Fraction { numerator: 1, denominator: 2 }
+    ); // 14/8
+}
+
+```
+
+[ops.rs]: https://doc.rust-lang.org/core/ops/
+[operator overloading]: https://doc.rust-lang.org/rust-by-example/trait/ops.html
 
 ### Documentation comments
 
