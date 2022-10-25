@@ -2650,23 +2650,13 @@ value of an environment variable at runtime.
 ```csharp
 using System;
 
-public class Example
-{
-    const string VARIABLE_NAME = "ExampleVariable";
+const string name = "EXAMPLE_VARIABLE";
 
-    public static void Main()
-    {
-        var exampleVariable = Environment.GetEnvironmentVariable(VARIABLE_NAME);
-        if (string.IsNullOrEmpty(exampleVariable))
-        {
-            Console.WriteLine($"Variable '{VARIABLE_NAME}' not set.");
-        }
-        else
-        {
-            Console.WriteLine($"Variable '{VARIABLE_NAME}' set to '{exampleVariable}'.");
-        }
-    }
-}
+var value = Environment.GetEnvironmentVariable(name);
+if (string.IsNullOrEmpty(value))
+    Console.WriteLine($"Variable '{name}' not set.");
+else
+    Console.WriteLine($"Variable '{name}' set to '{value}'.");
 ```
 
 Rust is providing the same functionality of accessing an environment variable at
