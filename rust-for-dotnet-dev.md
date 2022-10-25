@@ -103,6 +103,8 @@ Non-goals:
 - [Memory Management](#memory-management)
 - [Resource Management](#resource-management)
 - [Threading](#threading)
+  - [Synchronization](#synchronization)
+  - [Producer-Consumer](#producer-consumer)
 - [Testing](#testing)
   - [Test organization](#test-organization)
   - [Running tests](#running-tests)
@@ -2227,12 +2229,297 @@ fn main() {
 
 ## Threading
 
-- Thread-Safety (`Sync`, `Send`, etc.)
-- `System.Threading.Channels`
-- Synchronization primitives:
-  - `lock` = `std::sync::Mutex`
-  - read/write lock
-  - etc
+The Rust standard library supports threading, synchronisation and concurrency.
+Also the language itself and the standard library do have basic support for the
+concepts, a lot of additional functionality is provided by crates and will not
+be covered in this document.
+
+The following lists approximate mapping of threading types and methods in .NET
+to Rust:
+
+| .NET               | Rust                      |
+| ------------------ | ------------------------- |
+| `Thread`           | `std::thread::thread`     |
+| `Thread.Start`     | `std::thread::spawn`      |
+| `Thread.Join`      | `std::thread::JoinHandle` |
+| `Thread.Sleep`     | `std::thread::sleep`      |
+| `ThreadPool`       | -                         |
+| `Mutex`            | `std::sync::Mutex`        |
+| `Semaphore`        | -                         |
+| `Monitor`          | `std::sync::Mutex`        |
+| `ReaderWriterLock` | `std::sync::RwLock`       |
+| `AutoResetEvent`   | `std::sync::Condvar`      |
+| `ManualResetEvent` | `std::sync::Condvar`      |
+| `Barrier`          | `std::sync::Barrier`      |
+| `CountdownEvent`   | `std::sync::Barrier`      |
+| `Interlocked`      | `std::sync::atomic`       |
+| `Volatile`         | `std::sync::atomic`       |
+| `ThreadLocal`      | `std::thread_local`       |
+
+Launching a thread and waiting for it to finish works the same way in C#/.NET
+and Rust. Below is a simple C# program that creates a thread (where the thread
+prints some text to standard output) and then waits for it to end:
+
+```csharp
+using System;
+using System.Threading;
+
+var thread = new Thread(() => Console.WriteLine("Hello from a thread!"));
+thread.Start();
+thread.Join(); // wait for thread to finish
+```
+
+The same code in Rust would be as follows:
+
+```rust
+use std::thread;
+
+fn main() {
+    let thread = thread::spawn(|| println!("Hello from a thread!"));
+    thread.join().unwrap(); // wait for thread to finish
+}
+```
+
+Creating and initializing a thread object and starting a thread are two
+different actions in .NET whereas in Rust both happen at the same time with
+`thread::spawn`.
+
+In .NET, it's possible to send data as an argument to a thread:
+
+```csharp
+#nullable enable
+
+using System;
+using System.Text;
+using System.Threading;
+
+var t = new Thread(obj =>
+{
+    var data = (StringBuilder)obj!;
+    data.Append(" World!");
+});
+
+var data = new StringBuilder("Hello");
+t.Start(data);
+t.Join();
+
+Console.WriteLine($"Phrase: {data}");
+```
+
+However, a more modern or terser version would use closures:
+
+```csharp
+using System;
+using System.Text;
+using System.Threading;
+
+var data = new StringBuilder("Hello");
+
+var t = new Thread(obj => data.Append(" World!"));
+
+t.Start();
+t.Join();
+
+Console.WriteLine($"Phrase: {data}");
+```
+
+In Rust, there is no variation of `thread::spawn` that does the same. Instead,
+the data is passed to the thread via a closure:
+
+```rust
+use std::thread;
+
+fn main() {
+    let data = String::from("Hello");
+    let handle = thread::spawn(move || {
+        let mut data = data;
+        data.push_str(" World!");
+        data
+    });
+    println!("Phrase: {}", handle.join().unwrap());
+}
+```
+
+A few things to note:
+
+- The `move` keyword is _required_ to _move_ or pass the ownership of `data`
+  to the closure for the thread. Once this is done, it's no longer legal to
+  continue to use the `data` variable of `main`, in `main`. If that is needed,
+  `data` must be copied or cloned (depending on what the type of the value
+  supports).
+
+- Rust thread can return values, like tasks in C#, which becomes the return
+  value of the `join` method.
+
+- It is possible to also pass data to the C# thread via a clousre, like the
+  Rust example, but the C# version does not need to worry about ownership
+  since the memory behind the data will be reclaimed by the GC once no one is
+  referencing it anymore.
+
+### Synchronization
+
+When data is shared between threads, one needs to synchronize read-write
+access to the data in order to avoid corruption. The C# offers the `lock`
+keyword as a synchronization primitive (which desugars to exception-safe use
+of `Monitor` from .NET):
+
+```csharp
+using System;
+using System.Threading;
+
+var dataLock = new object();
+var data = 0;
+var threads = new List<Thread>();
+
+for (var i = 0; i < 10; i++)
+{
+    var thread = new Thread(() =>
+    {
+        for (var j = 0; j < 1000; j++)
+        {
+            lock (dataLock)
+                data++;
+        }
+    });
+    threads.Add(thread);
+    thread.Start();
+}
+
+foreach (var thread in threads)
+    thread.Join();
+
+Console.WriteLine(data);
+```
+
+In Rust, one must make explicit use of concurrency structures like `Mutex`:
+
+```rust
+use std::thread;
+use std::sync::{Arc, Mutex};
+
+fn main() {
+    let data = Arc::new(Mutex::new(0)); // (1)
+
+    let mut threads = vec![];
+    for _ in 0..10 {
+        let data = Arc::clone(&data); // (2)
+        let thread = thread::spawn(move || { // (3)
+            for _ in 0..1000 {
+                let mut data = data.lock().unwrap();
+                *data += 1; // (4)
+            }
+        });
+        threads.push(thread);
+    }
+
+    for thread in threads {
+        thread.join().unwrap();
+    }
+
+    println!("{}", data.lock().unwrap());
+}
+```
+
+A few things to note:
+
+- Since the ownership of the `Mutex` instance and in turn the data it guards
+  will be shared by multiple threads, it is wrapped in an `Arc` (1). `Arc`
+  provides atomic reference counting, which increments each time it is cloned
+  (2) and decrements each time it is dropped. When the count reaches zero, the
+  mutex and in turn the data it guards are dropped. This is discussed in more
+  detail in [Memory Management]).
+
+- The closure instance for each thread receives ownership (3) of the _cloned
+  reference_ (2).
+
+- The pointer-like code that is `*data += 1` (4), is not some unsafe pointer
+  access even if it looks like it. It's updating the data _wrapped_ in the
+  [mutex guard].
+
+Unlike the C# version, where one can render it thread-unsafe by commenting out
+the `lock` statement, the Rust version will refuse to compile if it's changed
+in any way (e.g. by commenting out parts) that renders it thread-unsafe. This
+demonstrates that writing thread-safe code is the developer's responsibility
+in C# and .NET by careful use of synchronized structures whereas in Rust, one
+can rely on the compiler.
+
+The compiler is able to help because data structures in Rust are marked by
+special _traits_ (see [Interfaces](#interfaces)): `Sync` and `Send`.
+[`Sync`][sync.rs] indicates that references to a type's instances are safe to
+share between threads. [`Send`][send.rs] indicates it's safe to instances of a
+type across thread boundaries. For more information, see the “[Fearless
+Concurrency]” chapter of the Rust book.
+
+  [Extensible Concurrency]: https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html
+  [Fearless Concurrency]: https://doc.rust-lang.org/book/ch16-00-concurrency.html
+  [mutex guard]: https://doc.rust-lang.org/stable/std/sync/struct.MutexGuard.html
+  [sync.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Sync.html
+  [send.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Send.html
+
+### Producer-Consumer
+
+The producer-consumer pattern is very common to distribute work between
+threads where data is passed from producing threads to consuming threads
+without the need for sharing or locking. .NET has very rich support for this,
+but at the most basic level, `System.Collections.Concurrent` provides the `BlockingCollection` as shown in the next example in C#:
+
+```csharp
+using System;
+using System.Threading;
+using System.Collections.Concurrent;
+
+var messages = new BlockingCollection<string>();
+var producer = new Thread(() =>
+{
+    for (var n = 1; i < 10; i++)
+        messages.Add($"Message #{n}");
+    messages.CompleteAdding();
+});
+
+producer.Start();
+
+// main thread is the consumer here
+foreach (var message in messages.GetConsumingEnumerable())
+    Console.WriteLine(message);
+
+producer.Join();
+```
+
+The same can be done in Rust using _channels_. The standard library primarily
+provides `mpsc::channel`, which is a channel that supports multiple producers
+and a single consumer. A rough translation of the above C# example in Rust
+would look as follows:
+
+```rust
+use std::thread;
+use std::sync::mpsc;
+use std::time::Duration;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    let procuder = thread::spawn(move || {
+        for n in 1..10 {
+            tx.send(format!("Message #{}", n)).unwrap();
+        }
+    });
+
+    // main thread is the consumer here
+    for received in rx {
+        println!("{}", received);
+    }
+
+    procuder.join().unwrap();
+}
+```
+
+Like channels in Rust, .NET also offers channels in the
+`System.Threading.Channels` namespace, but it is primarily designed to be used
+with tasks and asynchronous programming using `async` and `await`. The
+equivalent of the [async-friendly channels in the Rust space is offered by the
+Tokio runtime][tokio-channels].
+
+  [tokio-channels]: https://tokio.rs/tokio/tutorial/channels
 
 ## Testing
 
