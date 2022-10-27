@@ -72,6 +72,7 @@ Non-goals:
     - [Constants](#constants)
     - [Events](#events)
     - [Properties](#properties)
+    - [Extension Methods](#extension-methods)
     - [Visibility/Access modifiers](#visibilityaccess-modifiers)
     - [Mutability](#mutability)
   - [Local Functions](#local-functions)
@@ -1008,6 +1009,69 @@ impl Rectangle {
     }
 }
 ```
+
+#### Extension Methods
+
+Extension methods in C# enable the developer to attach new statically-bound
+methods to existing types, without needing to modify the original definition
+of the type. In the following C# example, a new `Wrap` method is added to the
+`StringBuilder` class _by extension_:
+
+```csharp
+using System;
+using System.Text;
+using Extensions; // (1)
+
+var sb = new StringBuilder("Hello, World!");
+sb.Wrap(">>> ", " <<<"); // (2)
+Console.WriteLine(sb.ToString()); // Prints: >>> Hello, World! <<<
+
+namespace Extensions
+{
+    static class StringBuilderExtensions
+    {
+        public static void Wrap(this StringBuilder sb,
+                                string left, string right) =>
+            sb.Insert(0, left).Append(right);
+    }
+}
+```
+
+Note that for an extension method to become available (2), the namespace with
+the type containing the extension method must be imported (1). Rust offers a
+very similar facility via traits, called _extension traits_. The following
+example in Rust is the equivalent of the C# example above; it extends `String`
+with the method `wrap`:
+
+```rust
+#![allow(dead_code)]
+
+mod exts {
+    pub trait StrWrapExt {
+        fn wrap(&mut self, left: &str, right: &str);
+    }
+
+    impl StrWrapExt for String {
+        fn wrap(&mut self, left: &str, right: &str) {
+            self.insert_str(0, left);
+            self.push_str(right);
+        }
+    }
+}
+
+fn main() {
+    use exts::StrWrapExt as _; // (1)
+
+    let mut s = String::from("Hello, World!");
+    s.wrap(">>> ", " <<<"); // (2)
+    println!("{s}"); // Prints: >>> Hello, World! <<<
+}
+```
+
+Just like in C#, for the method in the extension trait to become available
+(2), the extension trait muse be imported (1). Also note, the extension trait
+identifier `StrWrapExt` can itself be discarded via `_` at the time of import
+without affecting the availability of `wrap` for `String`.
 
 #### Visibility/Access modifiers
 
