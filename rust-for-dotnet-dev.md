@@ -13,7 +13,7 @@ completely new to the Rust programming language. Some concepts and constructs
 translate fairly well between C#/.NET and Rust, but which may be expressed
 differently, whereas others are a radical departure, like memory management.
 This document provides a brief comparison and mapping of those constructs and
-concepts with with brief examples.
+concepts with brief examples.
 
 The authors were themselves C#/.NET developers who were completely new to
 Rust. This document is the compilation of the knowledge acquired by the
