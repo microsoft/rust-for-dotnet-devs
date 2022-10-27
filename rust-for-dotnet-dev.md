@@ -403,7 +403,7 @@ See also:
 ### Structured Types
 
 Commonly used object and collection types in .NET and their mapping to Rust
-  
+
 | C#           | Rust      |
 | ------------ | --------- |
 | `Array`      | `Array`   |
@@ -3107,7 +3107,7 @@ class Example {
         IConfiguration configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
             .Build();
-        
+
         var example = configuration.GetValue<string>("ExampleVar");
 
         Console.WriteLine(example);
@@ -3131,7 +3131,7 @@ fn main() {
 
     match builder.build() {
         Ok(config) => {
-            match config.get_string("examplevar") { 
+            match config.get_string("examplevar") {
                 Ok(v) => println!("{v}"),
                 Err(e) => println!("{e}")
             }
