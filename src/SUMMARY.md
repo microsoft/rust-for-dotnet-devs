@@ -2,8 +2,6 @@
 
 [Introduction](./introduction.md)
 
-# Rust for .NET Developers
-
 - [Getting Started](./getting-started/index.md)
 - [Language](./language/index.md)
   - [Scalar Types](./language/scalar-types.md)

@@ -176,7 +176,7 @@ mod tests {
 ```
 
   [mockall]: https://docs.rs/mockall/latest/mockall/
-  [conditional compilation]: #conditional-compilation
+  [conditional compilation]: ../conditional-compilation/index.md
   [cfg-attribute]: https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute
 
 ## Code coverage
@@ -209,13 +209,14 @@ enabled, it will be picked up by the Coverage Gutters plug-in, which will show
 in-line visual indicators about the line coverage in the source code editor.
 
 > Note: The location of the LCOV file is essential. If a workspace (see [Project
-> Structure](#project-structure)) with multiple packages is present and a LCOV
-> file is generated in the root using `--workspace`, that is the file that is
-> being used - even if there is a file present directly in the root of the
-> package. It is quicker to isolate to the particular package under test
-> rather than generating the LCOV file in the root.
+> Structure]) with multiple packages is present and a LCOV file is generated in
+> the root using `--workspace`, that is the file that is being used - even if
+> there is a file present directly in the root of the package. It is quicker to
+> isolate to the particular package under test rather than generating the LCOV
+> file in the root.
 
 [coverage.gutters]: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
 [tarpaulin]: https://github.com/xd009642/tarpaulin
 [coverlet]: https://github.com/coverlet-coverage/coverlet
 [built-in-cov]: https://doc.rust-lang.org/stable/rustc/instrument-coverage.html#test-coverage
+[project structure]: ../project-structure/index.md

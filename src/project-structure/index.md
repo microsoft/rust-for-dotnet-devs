@@ -47,8 +47,8 @@ dive into a new Cargo [package][rust-package]:
 [package layout]: https://doc.rust-lang.org/cargo/guide/project-layout.html
 [rust-package]: https://doc.rust-lang.org/cargo/appendix/glossary.html#package
 [target auto-discovery]: https://doc.rust-lang.org/cargo/reference/cargo-targets.html#target-auto-discovery
-[section-testing]: #testing
-[section-benchmarking]: #benchmarking
+[section-testing]: ../testing/index.md
+[section-benchmarking]: ../benchmarking/index.md
 
 ## Managing large projects
 

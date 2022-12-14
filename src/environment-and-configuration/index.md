@@ -1,4 +1,4 @@
-# Environment and Configuration 
+# Environment and Configuration
 
 ## Accessing environment variables
 

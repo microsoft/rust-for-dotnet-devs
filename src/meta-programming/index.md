@@ -40,6 +40,8 @@ as an input, operate on that code, and produce some code as an output.
 Another technique used in C# for metaprogramming is reflection. Rust is not
 supporting reflection.
 
+[source-gen]: https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview
+
 ## Function-like macros
 
 Function-like macros are in the following form: `function!(...)`

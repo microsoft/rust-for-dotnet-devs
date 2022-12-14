@@ -79,6 +79,6 @@ See also:
   _moving_ and _ownership_
 
 [mut.rs]: https://doc.rust-lang.org/std/keyword.mut.html
-[memory-management-section]: #memory-management
+[memory-management-section]: ../memory-management/index.md
 [data races and race conditions]: https://doc.rust-lang.org/nomicon/races.html
 [scope and shadowing]: https://doc.rust-lang.org/stable/rust-by-example/variable_bindings/scope.html#scope-and-shadowing

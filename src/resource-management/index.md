@@ -56,4 +56,4 @@ fn main() {
 } // "Dispose" of "db1" and "db2" called here; when their scope ends
 ```
 
-[memory management]: #memory-management
+[memory management]: ../memory-management/index.md

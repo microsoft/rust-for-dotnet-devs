@@ -91,7 +91,7 @@ See also:
 
 - [Conditional compilation][conditional-compilation]
 
-### Features
+## Features
 
 Conditional compilation is also helpful when there is a need for providing
 optional dependencies. With cargo "features", a package defines a set of named
