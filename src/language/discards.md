@@ -1,4 +1,3 @@
-
 # Discards
 
 In C#, [discards][net-discards] express to the compiler and others to ignore the
