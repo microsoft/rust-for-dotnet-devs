@@ -227,7 +227,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
 }
 ```
 
-### Asynchronous iteration
+## Asynchronous iteration
 
 While in .NET there are [`IAsyncEnumerable<T>`][async-enumerable.net] and
 [`IAsyncEnumerator<T>`][async-enumerator.net], Rust does not yet have an API for
