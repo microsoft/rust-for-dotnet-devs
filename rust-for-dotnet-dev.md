@@ -148,6 +148,7 @@ Non-goals:
 ## Getting Started
 
 GitHub starter repo with:
+
 - dev container
 - Dockerfile
 - rust toolchain file
@@ -566,7 +567,7 @@ immutable.
 
 Since Rust doesn't have classes and consequently type hierarchies based on
 sub-classing, shared behaviour is achieved via traits and generics and
-polymorphism via virtual dispatch using [traits objects].
+polymorphism via virtual dispatch using [trait objects].
 
   [trait objects]: https://doc.rust-lang.org/book/ch17-02-trait-objects.html#using-trait-objects-that-allow-for-values-of-different-types
 
@@ -1512,7 +1513,6 @@ This means that `Timestamped<T>` instances can still be created for some
 non-equatable `T`, but then `Timestamped<T>` will not implement equality via
 `PartialEq` for such a `T`.
 
-
 See also:
 
 - [Traits as parameters]
@@ -1687,7 +1687,6 @@ fn write() {
     };
 }
 ```
-
 
 Frequently, recoverable errors need only be propagated instead of being handled.
 For this, the method signature needs to be compatible with the types of the
@@ -2592,7 +2591,6 @@ share between threads. [`Send`][send.rs] indicates it's safe to instances of a
 type across thread boundaries. For more information, see the “[Fearless
 Concurrency]” chapter of the Rust book.
 
-  [Extensible Concurrency]: https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html
   [Fearless Concurrency]: https://doc.rust-lang.org/book/ch16-00-concurrency.html
   [mutex guard]: https://doc.rust-lang.org/stable/std/sync/struct.MutexGuard.html
   [sync.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Sync.html
@@ -3560,7 +3558,6 @@ let result = (0..10)
 println!("{result}"); // 50
 ```
 
-[section-meta-programming]: #meta-programming
 [adapters]: https://doc.rust-lang.org/std/iter/index.html#adapters
 [collect.rs]: https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
 
@@ -3723,10 +3720,9 @@ read the rust reference for [attribute macros]
 
 [attribute macros]: https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros
 
-[source-gen]: https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview
 [T4]: https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/modeling/code-generation-and-t4-text-templates?view=vs-2015&redirectedfrom=MSDN
-[template]: https://github.com/Azure/iotedge-lorawan-starterkit/blob/dev/LoRaEngine/modules/LoRaWanNetworkSrvModule/LoraTools/JsonReader.g.tt
-[concretization]: https://github.com/Azure/iotedge-lorawan-starterkit/blob/dev/LoRaEngine/modules/LoRaWanNetworkSrvModule/LoraTools/JsonReader.g.cs
+[template]: https://github.com/atifaziz/Jacob/blob/master/src/JsonReader.g.tt
+[concretization]: https://github.com/atifaziz/Jacob/blob/master/src/JsonReader.g.cs
 [macros]: https://doc.rust-lang.org/book/ch19-06-macros.html
 [macros by example]: https://doc.rust-lang.org/reference/macros-by-example.html
 [procedural macros]: https://doc.rust-lang.org/reference/procedural-macros.html
@@ -3841,7 +3837,6 @@ automatically when using the macro.
 [async-await.rs]: https://rust-lang.github.io/async-book/03_async_await/01_chapter.html#asyncawait
 [error-E0752]: https://doc.rust-lang.org/error-index.html#E0752
 [async runtimes]: https://rust-lang.github.io/async-book/08_ecosystem/00_chapter.html#async-runtimes
-[executor.rs]: https://rust-lang.github.io/async-book/02_execution/04_executor.html
 
 ### Task cancellation
 
@@ -3862,7 +3857,6 @@ equivalent to the .NET `CancellationToken` to signal and react to cancellation,
 for cases where implementing the `Drop` trait on a `Future` is unfeasible.
 
 [cancellation-token.rs]: https://docs.rs/tokio-util/latest/tokio_util/sync/struct.CancellationToken.html
-[join-handle.rs]: https://docs.rs/tokio/latest/tokio/task/struct.JoinHandle.html#cancel-safety
 
 ### Executing multiple Tasks
 
@@ -3965,7 +3959,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
 #### Asynchronous iteration
 
 While in .NET there are [`IAsyncEnumerable<T>`][async-enumerable.net] and
-[`IAsyncEnumerator<T>`][net-async-enumerator], Rust does not yet have an API for
+[`IAsyncEnumerator<T>`][async-enumerator.net], Rust does not yet have an API for
 asynchronous iteration in the standard library. To support asynchronous
 iteration, the [`Stream`][stream.rs] trait from [`futures`][futures-stream.rs]
 offers a comparable set of functionality.
@@ -4048,9 +4042,8 @@ test project), it will create the following structure:
 - Each project resides in a separate directory, with its own `.csproj` file.
 - At the root of the repository is a `.sln` file.
 
-Cargo uses the following conventions for the [package
-layout][cargo-package-layout] to make it easy to dive into a new Cargo
-[package][rust-package]:
+Cargo uses the following conventions for the [package layout] to make it easy to
+dive into a new Cargo [package][rust-package]:
 
     .
     +-- Cargo.lock
@@ -4078,8 +4071,8 @@ layout][cargo-package-layout] to make it easy to dive into a new Cargo
 [package layout]: https://doc.rust-lang.org/cargo/guide/project-layout.html
 [rust-package]: https://doc.rust-lang.org/cargo/appendix/glossary.html#package
 [target auto-discovery]: https://doc.rust-lang.org/cargo/reference/cargo-targets.html#target-auto-discovery
-[section-testing]: #Testing
-[section-benchmarking]: #Benchmarking
+[section-testing]: #testing
+[section-benchmarking]: #benchmarking
 
 ### Managing large projects
 
