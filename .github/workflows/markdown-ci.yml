@@ -1,0 +1,27 @@
+name: Markdown CI
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.md'
+      - '**.markdown'
+      - '.github/workflows/markdown-ci.yml'
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm install markdownlint-cli
+      - run: node_modules/.bin/markdownlint -c .markdownlint.jsonc -i node_modules/ .
+
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        npm install markdown-link-check
+        find . -type d \( -name node_modules -o -name .github \) -prune -o -type f -name '*.md' -print0 | xargs -0 -n1 node_modules/.bin/markdown-link-check --config .markdownlinkcheck.jsonc --quiet
