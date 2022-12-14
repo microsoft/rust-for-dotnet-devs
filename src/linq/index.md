@@ -346,7 +346,6 @@ let result = (0..10)
 println!("{result}"); // 50
 ```
 
-[section-meta-programming]: #meta-programming
 [adapters]: https://doc.rust-lang.org/std/iter/index.html#adapters
 [collect.rs]: https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
 

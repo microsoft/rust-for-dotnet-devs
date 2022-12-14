@@ -92,7 +92,6 @@ share between threads. [`Send`][send.rs] indicates it's safe to instances of a
 type across thread boundaries. For more information, see the “[Fearless
 Concurrency]” chapter of the Rust book.
 
-  [Extensible Concurrency]: https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html
   [Fearless Concurrency]: https://doc.rust-lang.org/book/ch16-00-concurrency.html
   [mutex guard]: https://doc.rust-lang.org/stable/std/sync/struct.MutexGuard.html
   [sync.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Sync.html

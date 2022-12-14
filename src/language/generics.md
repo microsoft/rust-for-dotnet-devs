@@ -89,7 +89,6 @@ This means that `Timestamped<T>` instances can still be created for some
 non-equatable `T`, but then `Timestamped<T>` will not implement equality via
 `PartialEq` for such a `T`.
 
-
 See also:
 
 - [Traits as parameters]

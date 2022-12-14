@@ -134,7 +134,6 @@ fn write() {
 }
 ```
 
-
 Frequently, recoverable errors need only be propagated instead of being handled.
 For this, the method signature needs to be compatible with the types of the
 propagated error. The [`?` operator][question-mark-operator] propagates errors

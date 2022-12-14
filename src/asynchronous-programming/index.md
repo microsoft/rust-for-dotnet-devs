@@ -108,7 +108,6 @@ automatically when using the macro.
 [async-await.rs]: https://rust-lang.github.io/async-book/03_async_await/01_chapter.html#asyncawait
 [error-E0752]: https://doc.rust-lang.org/error-index.html#E0752
 [async runtimes]: https://rust-lang.github.io/async-book/08_ecosystem/00_chapter.html#async-runtimes
-[executor.rs]: https://rust-lang.github.io/async-book/02_execution/04_executor.html
 
 ## Task cancellation
 
@@ -129,7 +128,6 @@ equivalent to the .NET `CancellationToken` to signal and react to cancellation,
 for cases where implementing the `Drop` trait on a `Future` is unfeasible.
 
 [cancellation-token.rs]: https://docs.rs/tokio-util/latest/tokio_util/sync/struct.CancellationToken.html
-[join-handle.rs]: https://docs.rs/tokio/latest/tokio/task/struct.JoinHandle.html#cancel-safety
 
 ## Executing multiple Tasks
 
@@ -232,7 +230,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
 ### Asynchronous iteration
 
 While in .NET there are [`IAsyncEnumerable<T>`][async-enumerable.net] and
-[`IAsyncEnumerator<T>`][net-async-enumerator], Rust does not yet have an API for
+[`IAsyncEnumerator<T>`][async-enumerator.net], Rust does not yet have an API for
 asynchronous iteration in the standard library. To support asynchronous
 iteration, the [`Stream`][stream.rs] trait from [`futures`][futures-stream.rs]
 offers a comparable set of functionality.

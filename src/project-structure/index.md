@@ -18,9 +18,8 @@ test project), it will create the following structure:
 - Each project resides in a separate directory, with its own `.csproj` file.
 - At the root of the repository is a `.sln` file.
 
-Cargo uses the following conventions for the [package
-layout][cargo-package-layout] to make it easy to dive into a new Cargo
-[package][rust-package]:
+Cargo uses the following conventions for the [package layout] to make it easy to
+dive into a new Cargo [package][rust-package]:
 
     .
     +-- Cargo.lock
@@ -48,8 +47,8 @@ layout][cargo-package-layout] to make it easy to dive into a new Cargo
 [package layout]: https://doc.rust-lang.org/cargo/guide/project-layout.html
 [rust-package]: https://doc.rust-lang.org/cargo/appendix/glossary.html#package
 [target auto-discovery]: https://doc.rust-lang.org/cargo/reference/cargo-targets.html#target-auto-discovery
-[section-testing]: #Testing
-[section-benchmarking]: #Benchmarking
+[section-testing]: #testing
+[section-benchmarking]: #benchmarking
 
 ## Managing large projects
 

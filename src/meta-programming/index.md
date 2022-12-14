@@ -102,10 +102,9 @@ read the rust reference for [attribute macros]
 
 [attribute macros]: https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros
 
-[source-gen]: https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview
 [T4]: https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/modeling/code-generation-and-t4-text-templates?view=vs-2015&redirectedfrom=MSDN
-[template]: https://github.com/Azure/iotedge-lorawan-starterkit/blob/dev/LoRaEngine/modules/LoRaWanNetworkSrvModule/LoraTools/JsonReader.g.tt
-[concretization]: https://github.com/Azure/iotedge-lorawan-starterkit/blob/dev/LoRaEngine/modules/LoRaWanNetworkSrvModule/LoraTools/JsonReader.g.cs
+[template]: https://github.com/atifaziz/Jacob/blob/master/src/JsonReader.g.tt
+[concretization]: https://github.com/atifaziz/Jacob/blob/master/src/JsonReader.g.cs
 [macros]: https://doc.rust-lang.org/book/ch19-06-macros.html
 [macros by example]: https://doc.rust-lang.org/reference/macros-by-example.html
 [procedural macros]: https://doc.rust-lang.org/reference/procedural-macros.html

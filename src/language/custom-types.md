@@ -53,7 +53,7 @@ immutable.
 
 Since Rust doesn't have classes and consequently type hierarchies based on
 sub-classing, shared behaviour is achieved via traits and generics and
-polymorphism via virtual dispatch using [traits objects].
+polymorphism via virtual dispatch using [trait objects].
 
   [trait objects]: https://doc.rust-lang.org/book/ch17-02-trait-objects.html#using-trait-objects-that-allow-for-values-of-different-types
 
