@@ -1,0 +1,20 @@
+{
+    "ignorePatterns": [
+        {
+            "pattern": "^http://localhost"
+        },
+        {
+            "pattern": "^https://crates.io"
+        }
+    ],
+    "aliveStatusCodes": [
+        200,
+        203,
+        206
+    ],
+    "_retryComment": "enable retry on 429, this seems to be happening with GitHub links sometimes.",
+    "retryOn429": true,
+    "retryCount": 2,
+    "_fallbackRetryDelayComment": "The `fallbackRetryDelay` is only used when the `retry-after` header of the response has an invalid value. See https://github.com/tcort/markdown-link-check#config-file-format for more info",
+    "fallbackRetryDelay": "60s"
+}
