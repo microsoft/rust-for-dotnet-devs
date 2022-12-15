@@ -1,13 +1,5 @@
 # Introduction
 
-Authors:
-
-- Atif Aziz
-- Bastian Burger
-- Daniele Antonio Maggio
-- Dariusz Parys
-- Patrick Schuler
-
 This is a (non-comprehensive) guide for C# and .NET developers that are
 completely new to the Rust programming language. Some concepts and constructs
 translate fairly well between C#/.NET and Rust, but which may be expressed
