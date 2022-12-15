@@ -102,5 +102,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode
 
-# mdbook
+# mdBook (https://rust-lang.github.io/mdBook/)
 book/
