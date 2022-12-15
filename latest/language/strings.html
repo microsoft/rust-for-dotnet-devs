@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Strings - Rust for .NET Developers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../license.html">License</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../language/index.html"><strong aria-hidden="true">2.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language/scalar-types.html"><strong aria-hidden="true">2.1.</strong> Scalar Types</a></li><li class="chapter-item expanded "><a href="../language/strings.html" class="active"><strong aria-hidden="true">2.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../language/structured-types.html"><strong aria-hidden="true">2.3.</strong> Structured Types</a></li><li class="chapter-item expanded "><a href="../language/custom-types.html"><strong aria-hidden="true">2.4.</strong> Custom Types</a></li><li class="chapter-item expanded "><a href="../language/local-functions.html"><strong aria-hidden="true">2.5.</strong> Local Functions</a></li><li class="chapter-item expanded "><a href="../language/lambda-and-closures.html"><strong aria-hidden="true">2.6.</strong> Lambda and Closures</a></li><li class="chapter-item expanded "><a href="../language/variables.html"><strong aria-hidden="true">2.7.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../language/namespaces.html"><strong aria-hidden="true">2.8.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../language/equality.html"><strong aria-hidden="true">2.9.</strong> Equality</a></li><li class="chapter-item expanded "><a href="../language/generics.html"><strong aria-hidden="true">2.10.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../language/polymorphism.html"><strong aria-hidden="true">2.11.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../language/inheritance.html"><strong aria-hidden="true">2.12.</strong> Inheritance</a></li><li class="chapter-item expanded "><a href="../language/exception-handling.html"><strong aria-hidden="true">2.13.</strong> Exception Handling</a></li><li class="chapter-item expanded "><a href="../language/nullability-and-optionality.html"><strong aria-hidden="true">2.14.</strong> Nullability and Optionality</a></li><li class="chapter-item expanded "><a href="../language/discards.html"><strong aria-hidden="true">2.15.</strong> Discards</a></li><li class="chapter-item expanded "><a href="../language/conversion-and-casting.html"><strong aria-hidden="true">2.16.</strong> Conversion and Casting</a></li><li class="chapter-item expanded "><a href="../language/operator-overloading.html"><strong aria-hidden="true">2.17.</strong> Operator Overloading</a></li><li class="chapter-item expanded "><a href="../language/documentation-comments.html"><strong aria-hidden="true">2.18.</strong> Documentation Comments</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management/index.html"><strong aria-hidden="true">3.</strong> Memory Management</a></li><li class="chapter-item expanded "><a href="../resource-management/index.html"><strong aria-hidden="true">4.</strong> Resource Management</a></li><li class="chapter-item expanded "><a href="../threading/index.html"><strong aria-hidden="true">5.</strong> Threading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threading/synchronization.html"><strong aria-hidden="true">5.1.</strong> Synchronization</a></li><li class="chapter-item expanded "><a href="../threading/producer-consumer.html"><strong aria-hidden="true">5.2.</strong> Producer-Consumer</a></li></ol></li><li class="chapter-item expanded "><a href="../testing/index.html"><strong aria-hidden="true">6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">7.</strong> Benchmarking</a></li><li class="chapter-item expanded "><a href="../logging-and-tracing/index.html"><strong aria-hidden="true">8.</strong> Logging and Tracing</a></li><li class="chapter-item expanded "><a href="../conditional-compilation/index.html"><strong aria-hidden="true">9.</strong> Conditional Compilation</a></li><li class="chapter-item expanded "><a href="../environment-and-configuration/index.html"><strong aria-hidden="true">10.</strong> Environment and Configuration</a></li><li class="chapter-item expanded "><a href="../linq/index.html"><strong aria-hidden="true">11.</strong> LINQ</a></li><li class="chapter-item expanded "><a href="../meta-programming/index.html"><strong aria-hidden="true">12.</strong> Meta Programming</a></li><li class="chapter-item expanded "><a href="../asynchronous-programming/index.html"><strong aria-hidden="true">13.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../project-structure/index.html"><strong aria-hidden="true">14.</strong> Project Structure</a></li><li class="chapter-item expanded "><a href="../compilation-and-building/index.html"><strong aria-hidden="true">15.</strong> Compilation and Building</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for .NET Developers</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<p>There are two string types in Rust: <code>String</code> and <code>&amp;str</code>. The former is
+allocated on the heap and the latter is a slice of a <code>String</code> or a <code>&amp;str</code>.</p>
+<p>The mapping of those to .NET is shown in the following table:</p>
+<div class="table-wrapper"><table><thead><tr><th>Rust</th><th>.NET</th><th>Note</th></tr></thead><tbody>
+<tr><td><code>&amp;mut str</code></td><td><code>Span&lt;char&gt;</code></td><td></td></tr>
+<tr><td><code>&amp;str</code></td><td><code>ReadOnlySpan&lt;char&gt;</code></td><td></td></tr>
+<tr><td><code>Box&lt;str&gt;</code></td><td><code>String</code></td><td>see Note 1.</td></tr>
+<tr><td><code>String</code></td><td><code>String</code></td><td></td></tr>
+<tr><td><code>String</code> (mutable)</td><td><code>StringBuilder</code></td><td>see Note 1.</td></tr>
+</tbody></table>
+</div>
+<p>There are differences in working with strings in Rust and .NET, but the
+equivalents above should be a good starting point. One of the differences is
+that Rust strings are UTF-8 encoded, but .NET strings are UTF-16 encoded.
+Further .NET strings are immutable, but Rust strings can be mutable when declared
+as such, for example <code>let s = &amp;mut String::from(&quot;hello&quot;);</code>.</p>
+<p>There are also differences in using strings due to the concept of ownership. To
+read more about ownership with the String Type, see the <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-string-type">Rust Book</a>.</p>
+<p>Notes:</p>
+<ol>
+<li>The <code>Box&lt;str&gt;</code> type in Rust is equivalent to the <code>String</code> type in .NET. The
+difference between the <code>Box&lt;str&gt;</code> and <code>String</code> types in Rust is that the
+former stores pointer and size while the latter stores pointer, size, and
+capacity, allowing <code>String</code> to grow in size. This is similar to the
+<code>StringBuilder</code> type in .NET once the Rust <code>String</code> is declared mutable.</li>
+</ol>
+<p>C#:</p>
+<pre><code class="language-csharp">ReadOnlySpan&lt;char&gt; span = &quot;Hello, World!&quot;;
+string str = &quot;Hello, World!&quot;;
+StringBuilder sb = new StringBuilder(&quot;Hello, World!&quot;);
+</code></pre>
+<p>Rust:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let span: &amp;str = &quot;Hello, World!&quot;;
+let str = Box::new(&quot;Hello World!&quot;);
+let mut sb = String::from(&quot;Hello World!&quot;);
+<span class="boring">}</span></code></pre></pre>
+<h2 id="string-literals"><a class="header" href="#string-literals">String Literals</a></h2>
+<p>String literals in .NET are immutable <code>String</code> types and allocated on the heap.
+In Rust, they are <code>&amp;'static str</code>, which is immutable and has a global lifetime
+and does not get allocated on the heap; they're embedded in the compiled binary.</p>
+<p>C#</p>
+<pre><code class="language-csharp">string str = &quot;Hello, World!&quot;;
+</code></pre>
+<p>Rust</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let str: &amp;'static str = &quot;Hello, World!&quot;;
+<span class="boring">}</span></code></pre></pre>
+<p>C# verbatim string literals are equivalent to Rust raw string literals.</p>
+<p>C#</p>
+<pre><code class="language-csharp">string str = @&quot;Hello, \World/!&quot;;
+</code></pre>
+<p>Rust</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let str = r#&quot;Hello, \World/!&quot;#;
+<span class="boring">}</span></code></pre></pre>
+<p>C# UTF-8 string literals are equivalent to Rust byte string literals.</p>
+<p>C#</p>
+<pre><code class="language-csharp">string str = &quot;hello&quot;u8;
+</code></pre>
+<p>Rust</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let str = b&quot;hello&quot;;
+<span class="boring">}</span></code></pre></pre>
+<h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
+<p>C# has a built-in string interpolation feature that allows you to embed
+expressions inside a string literal. The following example shows how to use
+string interpolation in C#:</p>
+<pre><code class="language-csharp">string name = &quot;John&quot;;
+int age = 42;
+string str = $&quot;Person {{ Name: {name}, Age: {age} }}&quot;;
+</code></pre>
+<p>Rust does not have a built-in string interpolation feature. Instead, the
+<code>format!</code> macro is used to format a string. The following example shows how to
+use string interpolation in Rust:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let name = &quot;John&quot;;
+let age = 42;
+let str = format!(&quot;Person {{ name: {}, age: {} }}&quot;, name, age);
+<span class="boring">}</span></code></pre></pre>
+<p>Custom classes and structs can also be interpolated in C# due to the fact that
+the <code>ToString()</code> method is available for each type as it inherits from <code>object</code>.</p>
+<pre><code class="language-csharp">class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public override string ToString() =&gt;
+        $&quot;Person {{ Name: {Name}, Age: {Age} }}&quot;;
+}
+
+var person = new Person { Name = &quot;John&quot;, Age = 42 };
+Console.Writeline(person);
+</code></pre>
+<p>In Rust, there is no default formatting implemented/inherited for each type.
+Instead, the <code>std::fmt::Display</code> trait must be implemented for each type that
+needs to be converted to a string.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt::*;
+
+struct Person {
+    name: String,
+    age: i32,
+}
+
+impl Display for Person {
+    fn fmt(&amp;self, f: &amp;mut Formatter&lt;'_&gt;) -&gt; Result {
+        write!(f, &quot;Person {{ name: {}, age: {} }}&quot;, self.name, self.age)
+    }
+}
+
+let person = Person {
+    name: &quot;John&quot;.to_owned(),
+    age: 42,
+};
+
+println!(&quot;{person}&quot;);
+<span class="boring">}</span></code></pre></pre>
+<p>Another option is to use the <code>std::fmt::Debug</code> trait. The <code>Debug</code> trait is
+implemented for all standard types and can be used to print the internal
+representation of a type. The following example shows how to use the <code>derive</code>
+attribute to print the internal representation of a custom struct using the
+<code>Debug</code> macro. This declaration is used to automatically implement the <code>Debug</code>
+trait for the <code>Person</code> struct:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug)]
+struct Person {
+    name: String,
+    age: i32,
+}
+
+let person = Person {
+    name: &quot;John&quot;.to_owned(),
+    age: 42,
+};
+
+println!(&quot;{person:?}&quot;);
+<span class="boring">}</span></code></pre></pre>
+<blockquote>
+<p>Note: Using the :? format specifier will use the <code>Debug</code> trait to print the
+struct, where leaving it out will use the <code>Display</code> trait.</p>
+</blockquote>
+<p>See also:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/hello/print/print_debug.html?highlight=derive#debug">Rust by Example - Debug</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../language/scalar-types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../language/structured-types.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../language/scalar-types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../language/structured-types.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

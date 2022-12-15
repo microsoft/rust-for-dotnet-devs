@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Testing - Rust for .NET Developers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../license.html">License</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../language/index.html"><strong aria-hidden="true">2.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language/scalar-types.html"><strong aria-hidden="true">2.1.</strong> Scalar Types</a></li><li class="chapter-item expanded "><a href="../language/strings.html"><strong aria-hidden="true">2.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../language/structured-types.html"><strong aria-hidden="true">2.3.</strong> Structured Types</a></li><li class="chapter-item expanded "><a href="../language/custom-types.html"><strong aria-hidden="true">2.4.</strong> Custom Types</a></li><li class="chapter-item expanded "><a href="../language/local-functions.html"><strong aria-hidden="true">2.5.</strong> Local Functions</a></li><li class="chapter-item expanded "><a href="../language/lambda-and-closures.html"><strong aria-hidden="true">2.6.</strong> Lambda and Closures</a></li><li class="chapter-item expanded "><a href="../language/variables.html"><strong aria-hidden="true">2.7.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../language/namespaces.html"><strong aria-hidden="true">2.8.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../language/equality.html"><strong aria-hidden="true">2.9.</strong> Equality</a></li><li class="chapter-item expanded "><a href="../language/generics.html"><strong aria-hidden="true">2.10.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../language/polymorphism.html"><strong aria-hidden="true">2.11.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../language/inheritance.html"><strong aria-hidden="true">2.12.</strong> Inheritance</a></li><li class="chapter-item expanded "><a href="../language/exception-handling.html"><strong aria-hidden="true">2.13.</strong> Exception Handling</a></li><li class="chapter-item expanded "><a href="../language/nullability-and-optionality.html"><strong aria-hidden="true">2.14.</strong> Nullability and Optionality</a></li><li class="chapter-item expanded "><a href="../language/discards.html"><strong aria-hidden="true">2.15.</strong> Discards</a></li><li class="chapter-item expanded "><a href="../language/conversion-and-casting.html"><strong aria-hidden="true">2.16.</strong> Conversion and Casting</a></li><li class="chapter-item expanded "><a href="../language/operator-overloading.html"><strong aria-hidden="true">2.17.</strong> Operator Overloading</a></li><li class="chapter-item expanded "><a href="../language/documentation-comments.html"><strong aria-hidden="true">2.18.</strong> Documentation Comments</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management/index.html"><strong aria-hidden="true">3.</strong> Memory Management</a></li><li class="chapter-item expanded "><a href="../resource-management/index.html"><strong aria-hidden="true">4.</strong> Resource Management</a></li><li class="chapter-item expanded "><a href="../threading/index.html"><strong aria-hidden="true">5.</strong> Threading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threading/synchronization.html"><strong aria-hidden="true">5.1.</strong> Synchronization</a></li><li class="chapter-item expanded "><a href="../threading/producer-consumer.html"><strong aria-hidden="true">5.2.</strong> Producer-Consumer</a></li></ol></li><li class="chapter-item expanded "><a href="../testing/index.html" class="active"><strong aria-hidden="true">6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">7.</strong> Benchmarking</a></li><li class="chapter-item expanded "><a href="../logging-and-tracing/index.html"><strong aria-hidden="true">8.</strong> Logging and Tracing</a></li><li class="chapter-item expanded "><a href="../conditional-compilation/index.html"><strong aria-hidden="true">9.</strong> Conditional Compilation</a></li><li class="chapter-item expanded "><a href="../environment-and-configuration/index.html"><strong aria-hidden="true">10.</strong> Environment and Configuration</a></li><li class="chapter-item expanded "><a href="../linq/index.html"><strong aria-hidden="true">11.</strong> LINQ</a></li><li class="chapter-item expanded "><a href="../meta-programming/index.html"><strong aria-hidden="true">12.</strong> Meta Programming</a></li><li class="chapter-item expanded "><a href="../asynchronous-programming/index.html"><strong aria-hidden="true">13.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../project-structure/index.html"><strong aria-hidden="true">14.</strong> Project Structure</a></li><li class="chapter-item expanded "><a href="../compilation-and-building/index.html"><strong aria-hidden="true">15.</strong> Compilation and Building</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for .NET Developers</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="testing"><a class="header" href="#testing">Testing</a></h1>
+<h2 id="test-organization"><a class="header" href="#test-organization">Test organization</a></h2>
+<p>.NET solutions use separate projects to host test code, irrespective of the
+test framework being used (xUnit, NUnit, MSTest, etc.) and the type of tests
+(unit or integration) being wirtten. The test code therefore lives in a
+separate assembly than the application or library code being tested. In Rust,
+it is a lot more conventional for <em>unit tests</em> to be found in a separate test
+sub-module (conventionally) named <code>tests</code>, but which is placed in same <em>source
+file</em> as the application or library module code that is the subject of the
+tests. This has two benefits:</p>
+<ul>
+<li>
+<p>The code/module and its unit tests live side-by-side.</p>
+</li>
+<li>
+<p>There is no need for a workaround like <code>[InternalsVisibleTo]</code> that exists in
+.NET because the tests have access to internals by virtual of being a
+sub-module.</p>
+</li>
+</ul>
+<p>The test sub-module is annotated with the <code>#[cfg(test)]</code> attribute, which has
+the effect that the entire module is (conditionally) compiled and run only
+when the <code>cargo test</code> command is issued.</p>
+<p>Within the test sub-modules, test functions are annotated with the <code>#[test]</code>
+attribute.</p>
+<p>Integration tests are usually in a directory called <code>tests</code> that sits adjacent
+to the <code>src</code> directory with the unit tests and source. <code>cargo test</code> compiles
+each file in that directory as a separate crate and run all the methods
+annotated with <code>#[test]</code> attribute. Since it is understood that integration
+tests in the <code>tests</code> directory, there is no need to mark the modules in there
+with the <code>#[cfg(test)]</code> attribute.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a href="https://doc.rust-lang.org/book/ch11-03-test-organization.html">Test Organization</a></p>
+</li>
+</ul>
+<h2 id="running-tests"><a class="header" href="#running-tests">Running tests</a></h2>
+<p>As simple as it can be, the equivalent of <code>dotnet test</code> in Rust is <code>cargo test</code>.</p>
+<p>The default behavior of <code>cargo test</code> is to run all the tests in parallel, but this can be configured to run consecutively using only a single thread:</p>
+<pre><code>cargo test -- --test-threads=1
+</code></pre>
+<p>For more information, see &quot;<a href="https://doc.rust-lang.org/book/ch11-02-running-tests.html#running-tests-in-parallel-or-consecutively">Running Tests in Parallel or
+Consecutively</a>&quot;.</p>
+<h2 id="output-in-tests"><a class="header" href="#output-in-tests">Output in Tests</a></h2>
+<p>For very complex integration or end-to-end test, .NET developers sometimes log
+what's happening during a test. The actual way they do this varies with each
+test framework. For example, in NUnit, this is as simple as using
+<code>Console.WriteLine</code>, but in XUnit, one uses <code>ITestOutputHelper</code>. In Rust, it's
+similar to NUnit; that is, one simply writes to the standard output using
+<code>println!</code>. The output captured during the running of the tests is not shown
+by default unless <code>cargo test</code> is run the with <code>--show-output</code> option:</p>
+<pre><code>cargo test --show-output
+</code></pre>
+<p>For more information, see &quot;<a href="https://doc.rust-lang.org/book/ch11-02-running-tests.html#showing-function-output">Showing Function Output</a>&quot;.</p>
+<h2 id="assertions"><a class="header" href="#assertions">Assertions</a></h2>
+<p>.NET users have multiple ways to assert, depending on the framework being
+used. For example, an assertion xUnit.net might look like:</p>
+<pre><code class="language-csharp">[Fact]
+public void Something_Is_The_Right_Length()
+{
+    var value = &quot;something&quot;;
+    Assert.Equal(9, value.Length);
+}
+</code></pre>
+<p>Rust does not require a separate framework or crate. The standard library
+comes with built-in <em>macros</em> that are good enough for most assertions in
+tests:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/std/macro.assert.html"><code>assert!</code></a></li>
+<li><a href="https://doc.rust-lang.org/std/macro.assert_eq.html"><code>assert_eq!</code></a></li>
+<li><a href="https://doc.rust-lang.org/std/macro.assert_ne.html"><code>assert_ne!</code></a></li>
+</ul>
+<p>Below is an example of <code>assert_eq</code> in action:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+fn something_is_the_right_length() {
+    let value = &quot;something&quot;;
+    assert_eq!(9, value.len());
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The standard library does not offer anything in the direction of data-driven
+tests, such as <code>[Theory]</code> in xUnit.net.</p>
+<h2 id="mocking"><a class="header" href="#mocking">Mocking</a></h2>
+<p>When writing tests for a .NET application or library, there exist several
+frameworks, like Moq and NSubstitute, to mock out the dependencies of types.
+There are similar crates for Rust too, like <a href="https://docs.rs/mockall/latest/mockall/"><code>mockall</code></a>, that can
+help with mocking. However, it is also possible to use <a href="../conditional-compilation/index.html">conditional
+compilation</a> by making use of the <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute"><code>cfg</code> attribute</a> as a simple
+means to mocking without needing to rely on external crates or frameworks. The
+<code>cfg</code> attribute conditionally includes the code it annotates based on a
+configuration symbol, such as <code>test</code> for testing. This is not very different
+to using <code>DEBUG</code> to conditionally compile code specifically for debug builds.
+One downside of this approach is that you can only have one implementation for
+all tests of the module.</p>
+<p>When specified, the <code>#[cfg(test)]</code> attribute tells Rust to compile and run the
+code only when executing the <code>cargo test</code> command, which behind-the-scenes
+executes the compiler with <code>rustc --test</code>. The opposite is true for the
+<code>#[cfg(not(test))]</code> attribute; it includes the annotated only when testing
+with <code>cargo test</code>.</p>
+<p>The example below shows mocking of a stand-alone function <code>var_os</code> from the
+standard that reads and returns the value of an environment variable. It
+conditionally imports a mocked version of the <code>var_os</code> function used by
+<code>get_env</code>. When built with <code>cargo build</code> or run with <code>cargo run</code>, the compiled
+binary will make use of <code>std::env::var_os</code>, but <code>cargo test</code> will instead
+import <code>tests::var_os_mock</code> as <code>var_os</code>, thus causing <code>get_env</code> to use the
+mocked version during testing:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+/// Utility function to read an environmentvariable and return its value If
+/// defined. It fails/panics if the valus is not valid Unicode.
+pub fn get_env(key: &amp;str) -&gt; Option&lt;String&gt; {
+    #[cfg(not(test))]                 // for regular builds...
+    use std::env::var_os;             // ...import from the standard library
+    #[cfg(test)]                      // for test builds...
+    use tests::var_os_mock as var_os; // ...import mock from test sub-module
+
+    let val = var_os(key);
+    val.map(|s| s.to_str()     // get string slice
+                 .unwrap()     // panic if not valid Unicode
+                 .to_owned())  // convert to &quot;String&quot;
+}
+
+#[cfg(test)]
+mod tests {
+    use std::ffi::*;
+    use super::*;
+
+    pub(crate) fn var_os_mock(key: &amp;str) -&gt; Option&lt;OsString&gt; {
+        match key {
+            &quot;FOO&quot; =&gt; Some(&quot;BAR&quot;.into()),
+            _ =&gt; None
+        }
+    }
+
+    #[test]
+    fn get_env_when_var_undefined_returns_none() {
+        assert_eq!(None, get_env(&quot;???&quot;));
+    }
+
+    #[test]
+    fn get_env_when_var_defined_returns_some_value() {
+        assert_eq!(Some(&quot;BAR&quot;.to_owned()), get_env(&quot;FOO&quot;));
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="code-coverage"><a class="header" href="#code-coverage">Code coverage</a></h2>
+<p>There is sophisticated tooling for .NET when it comes to analyzing test code
+coverage. In Visual Studio, the tooling is built-in and integrated. In Visual
+Studio Code, plug-ins exist. .NET developers might be familiar with <a href="https://github.com/coverlet-coverage/coverlet">coverlet</a>
+as well.</p>
+<p>Rust is providing <a href="https://doc.rust-lang.org/stable/rustc/instrument-coverage.html#test-coverage">built-in code coverage implementations</a> for
+collecting test code coverage.</p>
+<p>There are also plug-ins available for Rust to help with code coverage analysis.
+It's not seamlessly integrated, but with some manual steps, developers can
+analyze their code in a visual way.</p>
+<p>The combination of <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> plug-in for Visual
+Studio Code and <a href="https://github.com/xd009642/tarpaulin">Tarpaulin</a> allows visual analysis of the code coverage in
+Visual Studio Code. Coverage Gutters requires an LCOV file. Other tools besides
+<a href="https://github.com/xd009642/tarpaulin">Tarpaulin</a> can be used to generate that file.</p>
+<p>Once setup, run the following command:</p>
+<pre><code class="language-bash">cargo tarpaulin --ignore-tests --out Lcov
+</code></pre>
+<p>This generates an LCOV Code Coverage file. Once <code>Coverage Gutters: Watch</code> is
+enabled, it will be picked up by the Coverage Gutters plug-in, which will show
+in-line visual indicators about the line coverage in the source code editor.</p>
+<blockquote>
+<p>Note: The location of the LCOV file is essential. If a workspace (see <a href="../project-structure/index.html">Project
+Structure</a>) with multiple packages is present and a LCOV file is generated in
+the root using <code>--workspace</code>, that is the file that is being used - even if
+there is a file present directly in the root of the package. It is quicker to
+isolate to the particular package under test rather than generating the LCOV
+file in the root.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../threading/producer-consumer.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../benchmarking/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../threading/producer-consumer.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../benchmarking/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

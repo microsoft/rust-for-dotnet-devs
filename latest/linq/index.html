@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>LINQ - Rust for .NET Developers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../license.html">License</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../language/index.html"><strong aria-hidden="true">2.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language/scalar-types.html"><strong aria-hidden="true">2.1.</strong> Scalar Types</a></li><li class="chapter-item expanded "><a href="../language/strings.html"><strong aria-hidden="true">2.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../language/structured-types.html"><strong aria-hidden="true">2.3.</strong> Structured Types</a></li><li class="chapter-item expanded "><a href="../language/custom-types.html"><strong aria-hidden="true">2.4.</strong> Custom Types</a></li><li class="chapter-item expanded "><a href="../language/local-functions.html"><strong aria-hidden="true">2.5.</strong> Local Functions</a></li><li class="chapter-item expanded "><a href="../language/lambda-and-closures.html"><strong aria-hidden="true">2.6.</strong> Lambda and Closures</a></li><li class="chapter-item expanded "><a href="../language/variables.html"><strong aria-hidden="true">2.7.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../language/namespaces.html"><strong aria-hidden="true">2.8.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../language/equality.html"><strong aria-hidden="true">2.9.</strong> Equality</a></li><li class="chapter-item expanded "><a href="../language/generics.html"><strong aria-hidden="true">2.10.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../language/polymorphism.html"><strong aria-hidden="true">2.11.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../language/inheritance.html"><strong aria-hidden="true">2.12.</strong> Inheritance</a></li><li class="chapter-item expanded "><a href="../language/exception-handling.html"><strong aria-hidden="true">2.13.</strong> Exception Handling</a></li><li class="chapter-item expanded "><a href="../language/nullability-and-optionality.html"><strong aria-hidden="true">2.14.</strong> Nullability and Optionality</a></li><li class="chapter-item expanded "><a href="../language/discards.html"><strong aria-hidden="true">2.15.</strong> Discards</a></li><li class="chapter-item expanded "><a href="../language/conversion-and-casting.html"><strong aria-hidden="true">2.16.</strong> Conversion and Casting</a></li><li class="chapter-item expanded "><a href="../language/operator-overloading.html"><strong aria-hidden="true">2.17.</strong> Operator Overloading</a></li><li class="chapter-item expanded "><a href="../language/documentation-comments.html"><strong aria-hidden="true">2.18.</strong> Documentation Comments</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management/index.html"><strong aria-hidden="true">3.</strong> Memory Management</a></li><li class="chapter-item expanded "><a href="../resource-management/index.html"><strong aria-hidden="true">4.</strong> Resource Management</a></li><li class="chapter-item expanded "><a href="../threading/index.html"><strong aria-hidden="true">5.</strong> Threading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threading/synchronization.html"><strong aria-hidden="true">5.1.</strong> Synchronization</a></li><li class="chapter-item expanded "><a href="../threading/producer-consumer.html"><strong aria-hidden="true">5.2.</strong> Producer-Consumer</a></li></ol></li><li class="chapter-item expanded "><a href="../testing/index.html"><strong aria-hidden="true">6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">7.</strong> Benchmarking</a></li><li class="chapter-item expanded "><a href="../logging-and-tracing/index.html"><strong aria-hidden="true">8.</strong> Logging and Tracing</a></li><li class="chapter-item expanded "><a href="../conditional-compilation/index.html"><strong aria-hidden="true">9.</strong> Conditional Compilation</a></li><li class="chapter-item expanded "><a href="../environment-and-configuration/index.html"><strong aria-hidden="true">10.</strong> Environment and Configuration</a></li><li class="chapter-item expanded "><a href="../linq/index.html" class="active"><strong aria-hidden="true">11.</strong> LINQ</a></li><li class="chapter-item expanded "><a href="../meta-programming/index.html"><strong aria-hidden="true">12.</strong> Meta Programming</a></li><li class="chapter-item expanded "><a href="../asynchronous-programming/index.html"><strong aria-hidden="true">13.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../project-structure/index.html"><strong aria-hidden="true">14.</strong> Project Structure</a></li><li class="chapter-item expanded "><a href="../compilation-and-building/index.html"><strong aria-hidden="true">15.</strong> Compilation and Building</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for .NET Developers</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="linq"><a class="header" href="#linq">LINQ</a></h1>
+<p>This section discusses LINQ within the context and for the purpose of querying
+or transforming sequences (<code>IEnumerable</code>/<code>IEnumerable&lt;T&gt;</code>) and typically
+collections like lists, sets and dictionaries.</p>
+<h2 id="ienumerablet"><a class="header" href="#ienumerablet"><code>IEnumerable&lt;T&gt;</code></a></h2>
+<p>The equivalent of <code>IEnumerable&lt;T&gt;</code> in Rust is <a href="https://doc.rust-lang.org/std/iter/trait.IntoIterator.html"><code>IntoIterator</code></a>.
+Just as an implementation of <code>IEnumerable&lt;T&gt;.GetEnumerator()</code> returns a
+<code>IEnumerator&lt;T&gt;</code> in .NET, an implementation of <code>IntoIterator::into_iter</code>
+returns an <a href="https://doc.rust-lang.org/core/iter/trait.Iterator.html"><code>Iterator</code></a>. However, when it's time to iterate over the
+items of a container advertising iteration support through the said types,
+both languages offer syntactic sugar in the form of looping constructs for
+iteratables. In C#, there is <code>foreach</code>:</p>
+<pre><code class="language-csharp">using System;
+using System.Text;
+
+var values = new[] { 1, 2, 3, 4, 5 };
+var output = new StringBuilder();
+
+foreach (var value in values)
+{
+    if (output.Length &gt; 0)
+        output.Append(&quot;, &quot;);
+    output.Append(value);
+}
+
+Console.Write(output); // Prints: 1, 2, 3, 4, 5
+</code></pre>
+<p>In Rust, the equivalent is simply <code>for</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use std::fmt::Write;
+
+fn main() {
+    let values = [1, 2, 3, 4, 5];
+    let mut output = String::new();
+
+    for value in values {
+        if output.len() &gt; 0 {
+            output.push_str(&quot;, &quot;);
+        }
+        // ! discard/ignore any write error
+        _ = write!(output, &quot;{value}&quot;);
+    }
+
+    println!(&quot;{output}&quot;);  // Prints: 1, 2, 3, 4, 5
+}</code></pre></pre>
+<p>The <code>for</code> loop over an iterable essentially gets desuraged to the following:</p>
+<pre><pre class="playground"><code class="language-rust">use std::fmt::Write;
+
+fn main() {
+    let values = [1, 2, 3, 4, 5];
+    let mut output = String::new();
+
+    let iter = &amp;mut values.into_iter();         // get iterator
+    loop {                                      // loop indefinitely
+        match iter.next() {                     //   get next item
+            Some(value) =&gt; {                    //   when there's an item, do...
+                if output.len() &gt; 0 {
+                    output.push_str(&quot;, &quot;);
+                }
+                _ = write!(output, &quot;{value}&quot;);
+            },
+            None =&gt; {                           //   when no more items, ...
+                break;                          //     break out of loop
+            }
+        }
+    }
+
+println!(&quot;{output}&quot;);
+}</code></pre></pre>
+<p>Rust's ownership and data race condition rules apply to all instances and
+data, and iteration is no exception. So while looping over an array might look
+straightforward and very similar to C#, one has to be mindful about ownership
+when needing to iterate the same collection/iterable more than once. The
+following example iteraters the list of integers twice, once to print their sum
+and another time to determine and print the maximum integer:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let values = vec![1, 2, 3, 4, 5];
+
+    // sum all values
+
+    let mut sum = 0;
+    for value in values {
+        sum += value;
+    }
+    println!(&quot;sum = {sum}&quot;);
+
+    // determine maximum value
+
+    let mut max = None;
+    for value in values {
+        if let Some(some_max) = max { // if max is defined
+            if value &gt; some_max {     // and value is greater
+                max = Some(value)     // then note that new max
+            }
+        } else {                      // max is undefined when iteration starts
+            max = Some(value)         // so set it to the first value
+        }
+    }
+    println!(&quot;max = {max:?}&quot;);
+}</code></pre></pre>
+<p>However, the code above is rejected by the compiler due to a subtle
+difference: <code>values</code> has been changed from an array to a <a href="https://doc.rust-lang.org/stable/std/vec/struct.Vec.html"><code>Vec&lt;int&gt;</code></a>,
+a <em>vector</em>, which is Rust's type for growable arrays (like <code>List&lt;T&gt;</code> in .NET).
+The first iteration of <code>values</code> ends up <em>consuming</em> each value as the integers
+are summed up. In other words, the ownership of <em>each item</em> in the vector
+passes to the iteration variable of the loop: <code>value</code>. Since <code>value</code> goes out
+of scope at the end of each iteration of the loop, the instance it owns is
+dropped. Had <code>values</code> been a vector of heap-allocated data, the heap memory
+backing each item would get freed as the loop moved to the next item. To fix
+the problem, one has to request iteration over <em>shared</em> references via
+<code>&amp;values</code> in the <code>for</code> loop. As a result, <code>value</code> ends up being a shared
+reference to an item as opposed to taking its ownership.</p>
+<p>Below is the updated version of the previous example that compiles. The fix is
+to simply replace <code>values</code> with <code>&amp;values</code> in each of the <code>for</code> loops.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let values = vec![1, 2, 3, 4, 5];
+
+    // sum all values
+
+    let mut sum = 0;
+    for value in &amp;values {
+        sum += value;
+    }
+    println!(&quot;sum = {sum}&quot;);
+
+    // determine maximum value
+
+    let mut max = None;
+    for value in &amp;values {
+        if let Some(some_max) = max { // if max is defined
+            if value &gt; some_max {     // and value is greater
+                max = Some(value)     // then note that new max
+            }
+        } else {                      // max is undefined when iteration starts
+            max = Some(value)         // so set it to the first value
+        }
+    }
+    println!(&quot;max = {max:?}&quot;);
+}</code></pre></pre>
+<p>The ownership and dropping can be seen in action even with <code>values</code> being an
+array instead of a vector. Consider just the summing loop from the above
+example over an array of a structure that wraps an integer:</p>
+<pre><pre class="playground"><code class="language-rust">struct Int(i32);
+
+impl Drop for Int {
+    fn drop(&amp;mut self) {
+        println!(&quot;{} dropped&quot;, self.0)
+    }
+}
+
+fn main() {
+    let values = [Int(1), Int(2), Int(3), Int(4), Int(5)];
+    let mut sum = 0;
+
+    for value in values {
+        sum += value.0;
+    }
+
+    println!(&quot;sum = {sum}&quot;);
+}</code></pre></pre>
+<p><code>Int</code> implements <code>Drop</code> so that a message is printed when an instance get
+dropped. Running the above code will print:</p>
+<pre><code>value = Int(1)
+Int(1) dropped
+value = Int(2)
+Int(2) dropped
+value = Int(3)
+Int(3) dropped
+value = Int(4)
+Int(4) dropped
+value = Int(5)
+Int(5) dropped
+sum = 15
+</code></pre>
+<p>It's clear that each value is acquired and dropped while the loop is running.
+Once the loop is complete, the sum is printed. If <code>values</code> in the <code>for</code> loop
+is changed to <code>&amp;values</code> instead, like this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for value in &amp;values {
+    // ...
+}
+<span class="boring">}</span></code></pre></pre>
+<p>then the output of the program will change radically:</p>
+<pre><code>value = Int(1)
+value = Int(2)
+value = Int(3)
+value = Int(4)
+value = Int(5)
+sum = 15
+Int(1) dropped
+Int(2) dropped
+Int(3) dropped
+Int(4) dropped
+Int(5) dropped
+</code></pre>
+<p>This time, values are acquired but not dropped while looping because each item
+doesn't get owned by the interation loop's variable. The sum is printed ocne
+the loop is done. Finally, when the <code>values</code> array that still owns all the the
+<code>Int</code> instances goes out of scope at the end of <code>main</code>, its dropping in turn
+drops all the <code>Int</code> instances.</p>
+<p>These examples demonstrate that while iterating collection types may seem to
+have a lot of parallels between Rust and C#, from the looping constructs to
+the iteration abstractions, there are still subtle differences with respect to
+ownership that not kept in mind at all times otherwise the compiler will end
+up rejecting the code.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/std/iter/index.html">Iterator</a></li>
+<li><a href="https://doc.rust-lang.org/std/iter/index.html#iterating-by-reference">Iterating by reference</a></li>
+</ul>
+<h2 id="operators"><a class="header" href="#operators">Operators</a></h2>
+<p><em>Operators</em> in LINQ are implemented in the form of C# extension methods that
+can be chained together to form a set of operations, with the most common
+forming a query over some sort of data source. C# also offers a SQL-inspired
+<em>query syntax</em> with clauses like <code>from</code>, <code>where</code>, <code>select</code>, <code>join</code> and others
+that can serve as an alternative or a companion to method chaining. Many
+imperative loops can be re-written as much more expressive and composable
+queries in LINQ.</p>
+<p>Rust does not offer anything like C#'s query syntax. It has methods, called
+<em><a href="https://doc.rust-lang.org/std/iter/index.html#adapters">adapters</a></em> in Rust terms, over iteratable types and therefore directly
+comparable to chaining of methods in C#. However, whlie rewriting an
+imperative loop as LINQ code in C# is often beneficial in expressivity,
+robustness and composability, there is a trade-off with performance.
+Compute-bound imperative loops <em>usually</em> run faster because they can be
+optimised by the JIT compiler and there are fewer virtual dispatches or
+indirect function invocations incurred. The surprising part in Rust is that
+there is no performance trade-off between choosing to use method chains on an
+abstraction like an iterator over writing an imperative loop by hand. It's
+therefore far more common to see the former in code.</p>
+<p>The following table lists the most common LINQ methods and their approximate
+counterparts in Rust.</p>
+<div class="table-wrapper"><table><thead><tr><th>.NET</th><th>Rust</th><th>Note</th></tr></thead><tbody>
+<tr><td><code>Aggregate</code></td><td><code>reduce</code></td><td>See note 1.</td></tr>
+<tr><td><code>Aggregate</code></td><td><code>fold</code></td><td>See note 1.</td></tr>
+<tr><td><code>All</code></td><td><code>all</code></td><td></td></tr>
+<tr><td><code>Any</code></td><td><code>any</code></td><td></td></tr>
+<tr><td><code>Concat</code></td><td><code>chain</code></td><td></td></tr>
+<tr><td><code>Count</code></td><td><code>count</code></td><td></td></tr>
+<tr><td><code>ElementAt</code></td><td><code>nth</code></td><td></td></tr>
+<tr><td><code>GroupBy</code></td><td>-</td><td></td></tr>
+<tr><td><code>Last</code></td><td><code>last</code></td><td></td></tr>
+<tr><td><code>Max</code></td><td><code>max</code></td><td></td></tr>
+<tr><td><code>Max</code></td><td><code>max_by</code></td><td></td></tr>
+<tr><td><code>MaxBy</code></td><td><code>max_by_key</code></td><td></td></tr>
+<tr><td><code>Min</code></td><td><code>min</code></td><td></td></tr>
+<tr><td><code>Min</code></td><td><code>min_by</code></td><td></td></tr>
+<tr><td><code>MinBy</code></td><td><code>min_by_key</code></td><td></td></tr>
+<tr><td><code>Reverse</code></td><td><code>rev</code></td><td></td></tr>
+<tr><td><code>Select</code></td><td><code>map</code></td><td></td></tr>
+<tr><td><code>Select</code></td><td><code>enumerate</code></td><td></td></tr>
+<tr><td><code>SelectMany</code></td><td><code>flat_map</code></td><td></td></tr>
+<tr><td><code>SelectMany</code></td><td><code>flatten</code></td><td></td></tr>
+<tr><td><code>SequenceEqual</code></td><td><code>eq</code></td><td></td></tr>
+<tr><td><code>Single</code></td><td><code>find</code></td><td></td></tr>
+<tr><td><code>SingleOrDefault</code></td><td><code>try_find</code></td><td></td></tr>
+<tr><td><code>Skip</code></td><td><code>skip</code></td><td></td></tr>
+<tr><td><code>SkipWhile</code></td><td><code>skip_while</code></td><td></td></tr>
+<tr><td><code>Sum</code></td><td><code>sum</code></td><td></td></tr>
+<tr><td><code>Take</code></td><td><code>take</code></td><td></td></tr>
+<tr><td><code>TakeWhile</code></td><td><code>take_while</code></td><td></td></tr>
+<tr><td><code>ToArray</code></td><td><code>collect</code></td><td>See note 2.</td></tr>
+<tr><td><code>ToDictionary</code></td><td><code>collect</code></td><td>See note 2.</td></tr>
+<tr><td><code>ToList</code></td><td><code>collect</code></td><td>See note 2.</td></tr>
+<tr><td><code>Where</code></td><td><code>filter</code></td><td></td></tr>
+<tr><td><code>Zip</code></td><td><code>zip</code></td><td></td></tr>
+</tbody></table>
+</div>
+<ol>
+<li>
+<p>The <code>Aggregate</code> overload not accepting a seed value is equivalent to
+<code>reduce</code>, while the <code>Aggregate</code> overload accepting a seed value corresponds
+to <code>fold</code>.</p>
+</li>
+<li>
+<p><a href="https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect"><code>collect</code></a> in Rust generally works for any collectible type,
+which is defined as <a href="https://doc.rust-lang.org/stable/std/iter/trait.FromIterator.html">a type that can initialize itself from an iterator
+(see <code>FromIterator</code>)</a>. <code>collect</code> needs a target type, which
+the compiler sometimes has trouble inferring so the <em>turbofish</em> (<code>::&lt;&gt;</code>) is
+often used in conjunction with it, as in <code>collect::&lt;Vec&lt;_&gt;&gt;()</code>. This is why
+<code>collect</code> appears next to a number of LINQ extension methods that convert
+an enumerable/iterable source to some collection type instance.</p>
+</li>
+</ol>
+<p>The following example shows how similar transforming sequences in C# is to
+doing the same in Rust. First in C#:</p>
+<pre><code class="language-csharp">var result =
+    Enumerable.Range(0, 10)
+              .Where(x =&gt; x % 2 == 0)
+              .SelectMany(x =&gt; Enumerable.Range(0, x))
+              .Aggregate(0, (acc, x) =&gt; acc + x);
+
+Console.WriteLine(result); // 50
+</code></pre>
+<p>And in Rust:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let result = (0..10)
+    .filter(|x| x % 2 == 0)
+    .flat_map(|x| (0..x))
+    .fold(0, |acc, x| acc + x);
+
+println!(&quot;{result}&quot;); // 50
+<span class="boring">}</span></code></pre></pre>
+<h2 id="deferred-execution-laziness"><a class="header" href="#deferred-execution-laziness">Deferred execution (laziness)</a></h2>
+<p>Many operators in LINQ are designed to be lazy such that they only do work
+when absolutely required. This enables composition or chaining of several
+operations/methods without causing any side-effects. For example, a LINQ
+operator can return an <code>IEnumerable&lt;T&gt;</code> that is initialized, but does not
+produce, compute or materialize any items of <code>T</code> until iterated. The operator
+is said to have <em>deferred execution</em> semantics. If each <code>T</code> is computed as
+iteration reaches it (as opposed to when iteration begins) then the operator
+is said to <em>stream</em> the results.</p>
+<p>Rust iterators have the same concept of <a href="https://doc.rust-lang.org/std/iter/index.html#laziness"><em>laziness</em></a> and
+streaming.</p>
+<p>In both cases, this allows <em>infinite sequences</em> to be represented, where the
+underlying sequence is infinite, but the developer decides how the sequence
+should be terminated . The following example shows this in C#:</p>
+<pre><code class="language-csharp">foreach (var x in InfiniteRange().Take(5))
+    Console.Write($&quot;{x} &quot;); // Prints &quot;0 1 2 3 4&quot;
+
+IEnumerable&lt;int&gt; InfiniteRange()
+{
+    for (var i = 0; ; ++i)
+        yield return i;
+}
+</code></pre>
+<p>Rust supports the same concept through infinite ranges:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Generators and yield in Rust are unstable at the moment, so
+// instead, this sample uses Range:
+// https://doc.rust-lang.org/std/ops/struct.Range.html
+
+for value in (0..).take(5) {
+    print!(&quot;{value} &quot;); // Prints &quot;0 1 2 3 4&quot;
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="iterator-methods-yield"><a class="header" href="#iterator-methods-yield">Iterator Methods (<code>yield</code>)</a></h2>
+<p>C# has the <code>yield</code> keword that enables the developer to quickly write an
+<em>iterator method</em>. The return type of an iterator method can be an
+<code>IEnumerable&lt;T&gt;</code> or an <code>IEnumerator&lt;T&gt;</code>. The compiler then converts the body
+of the method into a concrete implementation of the return type, instead of
+the developer having to write a full-blown class each time.
+<em><a href="https://doc.rust-lang.org/beta/unstable-book/language-features/generators.html">Generators</a></em>, as they're called in Rust, are still considered
+an unstable feature at the time of this writing.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../environment-and-configuration/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../meta-programming/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../environment-and-configuration/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../meta-programming/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
