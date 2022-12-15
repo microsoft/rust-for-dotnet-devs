@@ -1,3 +1,6 @@
+# mdBook (https://rust-lang.github.io/mdBook/)
+book/
+
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,visualstudiocode
 
@@ -101,6 +104,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode
-
-# mdBook (https://rust-lang.github.io/mdBook/)
-book/
