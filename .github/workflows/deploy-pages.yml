@@ -1,0 +1,35 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Install mdBook
+      run: |
+        mkdir mdbook
+        curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.23/mdbook-v0.4.23-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook
+        echo `pwd`/mdbook >> $GITHUB_PATH
+    - name: Build
+      run: mdbook build
+    - name: Deploy to GitHub Pages
+      run: |
+        git worktree add gh-pages gh-pages
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        cd gh-pages
+        rm -rf latest
+        mkdir latest
+        mv ../book/* ./latest
+        git add .
+        if ! git diff --cached --exit-code > /dev/null; then
+          git commit -m "Render mdBook for $GITHUB_SHA"
+          git push
+        fi
