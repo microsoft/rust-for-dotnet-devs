@@ -29,6 +29,6 @@ jobs:
         mv ../book/* ./latest
         git add .
         if ! git diff --cached --exit-code > /dev/null; then
-          git commit --allow-empty -m "Deploy $GITHUB_SHA to gh-pages"
+          git commit -m "Rendering mdBook for $GITHUB_SHA"
           git push
         fi
