@@ -1,4 +1,4 @@
-# Rust for .NET Developers
+# Rust for C#/.NET Developers
 
 The document sources can be found in the `src` directory. It is structured for
 rendering with [mdBook]. After [installing mdBook], run:
