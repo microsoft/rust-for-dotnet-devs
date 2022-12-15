@@ -1,9 +1,11 @@
 # Rust for .NET Developers
 
-The document sources can be found in the `src` directory. We use
-[`mdBook`](https://github.com/rust-lang/mdBook) to render the contents of the
-`src` directory. After installing `mdBook`, run
+The document sources can be found in the `src` directory. It is structured for
+rendering with [mdBook]. After [installing mdBook], run:
 
     mdbook serve
 
-to render Rust for .NET Developers.
+to render for reading in a Web browser.
+
+  [mdBook]: https://rust-lang.github.io/mdBook/
+  [installing mdBook]: https://rust-lang.github.io/mdBook/guide/installation.html
