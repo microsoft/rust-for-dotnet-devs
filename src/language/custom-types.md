@@ -664,13 +664,3 @@ impl Point {
     pub fn set_y(self, val: i32) -> Self { Self::new(self.x, val) }
 }
 ```
-
-- Overloading
-- Extension methods (extension traits)
-- Builder pattern
-- `System.Object` members:
-  - `Equals`
-  - `ToString` (`Display`, `Debug`)
-  - `GetHashCode`
-  - `GetType` (pattern-matching and enums)
-- Newtype (primitive obsession)
