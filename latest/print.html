@@ -1409,19 +1409,13 @@ on <a href="https://learn.microsoft.com/en-us/dotnet/standard/exceptions/how-to-
 the following example:</p>
 <pre><code class="language-csharp">public class EmployeeListNotFoundException : Exception
 {
-    public EmployeeListNotFoundException()
-    {
-    }
+    public EmployeeListNotFoundException() { }
 
     public EmployeeListNotFoundException(string message)
-        : base(message)
-    {
-    }
+        : base(message) { }
 
     public EmployeeListNotFoundException(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
+        : base(message, inner) { }
 }
 </code></pre>
 <p>In Rust, one can implement the basic expectations for error values by
