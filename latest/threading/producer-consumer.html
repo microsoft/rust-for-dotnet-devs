@@ -176,7 +176,7 @@ producer.Join();
 provides <code>mpsc::channel</code>, which is a channel that supports multiple producers
 and a single consumer. A rough translation of the above C# example in Rust
 would look as follows:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 use std::sync::mpsc;
 use std::time::Duration;
 
@@ -195,7 +195,7 @@ fn main() {
     }
 
     procuder.join().unwrap();
-}</code></pre></pre>
+}</code></pre>
 <p>Like channels in Rust, .NET also offers channels in the
 <code>System.Threading.Channels</code> namespace, but it is primarily designed to be used
 with tasks and asynchronous programming using <code>async</code> and <code>await</code>. The

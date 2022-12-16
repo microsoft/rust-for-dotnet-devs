@@ -161,9 +161,7 @@
 }
 </code></pre>
 <p>Rust has practically <em>identical</em> syntax for doing the same:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>enum DayOfWeek
+<pre><code class="language-rust">enum DayOfWeek
 {
     Sunday = 0,
     Monday = 1,
@@ -172,14 +170,13 @@
     Thursday = 4,
     Friday = 5,
     Saturday = 6,
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Unlike in .NET, an instance of an <code>enum</code> type in Rust does not have any
 pre-defined behaviour that's inherited. It cannot even participate in equality
 checks as simple as <code>dow == DayOfWeek::Friday</code>. To bring it somewhat on par in
 function with an <code>enum</code> in C#, use <a href="https://doc.rust-lang.org/stable/reference/attributes/derive.html">the <code>#derive</code> attribute</a> to
 automatically have macros implement the commonly needed functionality:</p>
-<pre><pre class="playground"><code class="language-rust compile_fail">#[derive(Debug,     // enables formatting in &quot;{:?}&quot;
+<pre><code class="language-rust compile_fail">#[derive(Debug,     // enables formatting in &quot;{:?}&quot;
          Clone,     // required by Copy
          Copy,      // enables copy-by-value semantics
          Hash,      // enables hash-ability for use in map types
@@ -210,14 +207,12 @@ fn main() {
 
     let dow = dow as DayOfWeek;
     println!(&quot;Day of week = {dow:?}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>As the example above shows, an <code>enum</code> can be coerced to its assigned integral
 value, but the opposite is not possible as in C# (although that sometimes has
 the downside in C#/.NET that an <code>enum</code> instance can hold an unrepresented
 value). Instead, it's up to the developer to provide such a helper function:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>impl DayOfWeek {
+<pre><code class="language-rust">impl DayOfWeek {
     fn from_i32(n: i32) -&gt; Result&lt;DayOfWeek, i32&gt; {
         use DayOfWeek::*;
         match n {
@@ -231,34 +226,27 @@ value). Instead, it's up to the developer to provide such a helper function:</p>
             _ =&gt; Err(n)
         }
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>The <code>from_i32</code> function returns a <code>DayOfWeek</code> in a <code>Result</code> indicating success
 (<code>Ok</code>) if <code>n</code> is valid. Otherwise it returns <code>n</code> as-is in a <code>Result</code>
 indicating failure (<code>Err</code>):</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let dow = DayOfWeek::from_i32(5);
+<pre><code class="language-rust">let dow = DayOfWeek::from_i32(5);
 println!(&quot;{dow:?}&quot;); // prints: Ok(Friday)
 
 let dow = DayOfWeek::from_i32(50);
-println!(&quot;{dow:?}&quot;); // prints: Err(50)
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{dow:?}&quot;); // prints: Err(50)</code></pre>
 <p>There exist crates in Rust that can help with implementing such mapping from
 integral types instead of having to code them manually.</p>
 <p>An <code>enum</code> type in Rust can also serve as a way to design (discriminated) union
 types, which allow different <em>variants</em> to hold data specific to each variant.
 For example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>enum IpAddr {
+<pre><code class="language-rust">enum IpAddr {
     V4(u8, u8, u8, u8),
     V6(String),
 }
 
 let home = IpAddr::V4(127, 0, 0, 1);
-let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
-<span class="boring">}</span></code></pre></pre>
+let loopback = IpAddr::V6(String::from(&quot;::1&quot;));</code></pre>
 <p>This form of <code>enum</code> declaration does not exist in C#, but it can be emulated
 with (class) records:</p>
 <pre><code class="language-c#">var home = new IpAddr.V4(127, 0, 0, 1);

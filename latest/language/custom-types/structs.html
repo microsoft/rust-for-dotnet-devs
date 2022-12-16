@@ -177,14 +177,11 @@ other being an <code>enum</code>).</p>
 <p>A <code>struct</code> (or <code>record struct</code>) in C# has copy-by-value and value equality
 semantics by default, but in Rust, this requires just one more step using <a href="https://doc.rust-lang.org/stable/reference/attributes/derive.html">the
 <code>#derive</code> attribute</a> and listing the traits to be implemented:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+<pre><code class="language-rust">#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 struct Point {
     x: i32,
     y: i32,
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Value types in C#/.NET are usually designed by a developer to be immutable.
 It's considered best practice speaking semantically, but the language does not
 prevent designing a <code>struct</code> that makes destructive or in-place modifications.
@@ -217,11 +214,9 @@ polymorphism via virtual dispatch using <a href="https://doc.rust-lang.org/book/
 }
 </code></pre>
 <p>The equivalent in Rust would be:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span>#![allow(dead_code)]
+<pre><code class="language-rust">#![allow(dead_code)]
 
-<span class="boring">fn main() {
-</span>struct Rectangle {
+struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -267,18 +262,17 @@ impl Display for Rectangle {
     fn fmt(&amp;self, f: &amp;mut Formatter&lt;'_&gt;) -&gt; Result {
         write!(f, &quot;({}, {}), ({}, {})&quot;, self.x1, self.y2, self.x2, self.y2)
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Note that a <code>struct</code> in C# inherits the <code>ToString</code> method from <code>object</code> and
 therefore it <em>overrides</em> the base implementation to provide a custom string
 representation. Since there is no inheritance in Rust, the way a type
 advertises support for some <em>formatted</em> representation is by implementing the
 <code>Display</code> trait. This then enables for an instance of the structure to
 participate in formatting, such as shown in the call to <code>println!</code> below:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let rect = Rectangle::new(12, 34, 56, 78);
     println!(&quot;Rectangle = {rect}&quot;);
-}</code></pre></pre>
+}</code></pre>
 
                     </main>
 

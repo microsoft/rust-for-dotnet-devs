@@ -152,10 +152,7 @@
 <pre><code class="language-csharp">int x = 5;
 </code></pre>
 <p>And the same in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: i32 = 5;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let x: i32 = 5;</code></pre>
 <p>So far, the only visible difference between the two languages is that the
 position of the type declaration is different. Also, both C# and Rust are
 type-safe: the compiler guarantees that the value stored in a variable is always
@@ -164,10 +161,7 @@ ability to automatically infer the types of the variable. In C#:</p>
 <pre><code class="language-csharp">var x = 5;
 </code></pre>
 <p>In Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let x = 5;</code></pre>
 <p>When expanding the first example to update the value of the variable
 (reassignment), the behavior of C# and Rust differ:</p>
 <pre><code class="language-csharp">var x = 5;
@@ -175,29 +169,20 @@ x = 6;
 Console.WriteLine(x); // 6
 </code></pre>
 <p>In Rust, the identical statement will not compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
+<pre><code class="language-rust">let x = 5;
 x = 6; // Error: cannot assign twice to immutable variable 'x'.
-println!(&quot;{}&quot;, x);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{}&quot;, x);</code></pre>
 <p>In Rust, variables are <em>immutable</em> by default. Once a value is bound to a name,
 the variable's value cannot be changed. Variables can be made <em>mutable</em> by
 adding <a href="https://doc.rust-lang.org/std/keyword.mut.html"><code>mut</code></a> in front of the variable name:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut x = 5;
+<pre><code class="language-rust">let mut x = 5;
 x = 6;
-println!(&quot;{}&quot;, x); // 6
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{}&quot;, x); // 6</code></pre>
 <p>Rust offers an alternative to fix the example above that does not require
 mutability through variable <em>shadowing</em>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
+<pre><code class="language-rust">let x = 5;
 let x = 6;
-println!(&quot;{}&quot;, x); // 6
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{}&quot;, x); // 6</code></pre>
 <p>C# also supports shadowing, e.g. locals can shadow fields and type members can
 shadow members from the base type. In Rust, the above example demonstrates
 that shadowing also allows to change the type of a variable without changing

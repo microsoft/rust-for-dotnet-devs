@@ -305,12 +305,9 @@ string str = &quot;Hello, World!&quot;;
 StringBuilder sb = new StringBuilder(&quot;Hello, World!&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let span: &amp;str = &quot;Hello, World!&quot;;
+<pre><code class="language-rust">let span: &amp;str = &quot;Hello, World!&quot;;
 let str = Box::new(&quot;Hello World!&quot;);
-let mut sb = String::from(&quot;Hello World!&quot;);
-<span class="boring">}</span></code></pre></pre>
+let mut sb = String::from(&quot;Hello World!&quot;);</code></pre>
 <h2 id="string-literals"><a class="header" href="#string-literals">String Literals</a></h2>
 <p>String literals in .NET are immutable <code>String</code> types and allocated on the heap.
 In Rust, they are <code>&amp;'static str</code>, which is immutable and has a global lifetime
@@ -319,28 +316,19 @@ and does not get allocated on the heap; they're embedded in the compiled binary.
 <pre><code class="language-csharp">string str = &quot;Hello, World!&quot;;
 </code></pre>
 <p>Rust</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let str: &amp;'static str = &quot;Hello, World!&quot;;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let str: &amp;'static str = &quot;Hello, World!&quot;;</code></pre>
 <p>C# verbatim string literals are equivalent to Rust raw string literals.</p>
 <p>C#</p>
 <pre><code class="language-csharp">string str = @&quot;Hello, \World/!&quot;;
 </code></pre>
 <p>Rust</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let str = r#&quot;Hello, \World/!&quot;#;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let str = r#&quot;Hello, \World/!&quot;#;</code></pre>
 <p>C# UTF-8 string literals are equivalent to Rust byte string literals.</p>
 <p>C#</p>
 <pre><code class="language-csharp">string str = &quot;hello&quot;u8;
 </code></pre>
 <p>Rust</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let str = b&quot;hello&quot;;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let str = b&quot;hello&quot;;</code></pre>
 <h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
 <p>C# has a built-in string interpolation feature that allows you to embed
 expressions inside a string literal. The following example shows how to use
@@ -352,12 +340,9 @@ string str = $&quot;Person {{ Name: {name}, Age: {age} }}&quot;;
 <p>Rust does not have a built-in string interpolation feature. Instead, the
 <code>format!</code> macro is used to format a string. The following example shows how to
 use string interpolation in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let name = &quot;John&quot;;
+<pre><code class="language-rust">let name = &quot;John&quot;;
 let age = 42;
-let str = format!(&quot;Person {{ name: {}, age: {} }}&quot;, name, age);
-<span class="boring">}</span></code></pre></pre>
+let str = format!(&quot;Person {{ name: {}, age: {} }}&quot;, name, age);</code></pre>
 <p>Custom classes and structs can also be interpolated in C# due to the fact that
 the <code>ToString()</code> method is available for each type as it inherits from <code>object</code>.</p>
 <pre><code class="language-csharp">class Person
@@ -375,9 +360,7 @@ Console.Writeline(person);
 <p>In Rust, there is no default formatting implemented/inherited for each type.
 Instead, the <code>std::fmt::Display</code> trait must be implemented for each type that
 needs to be converted to a string.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::fmt::*;
+<pre><code class="language-rust">use std::fmt::*;
 
 struct Person {
     name: String,
@@ -395,17 +378,14 @@ let person = Person {
     age: 42,
 };
 
-println!(&quot;{person}&quot;);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{person}&quot;);</code></pre>
 <p>Another option is to use the <code>std::fmt::Debug</code> trait. The <code>Debug</code> trait is
 implemented for all standard types and can be used to print the internal
 representation of a type. The following example shows how to use the <code>derive</code>
 attribute to print the internal representation of a custom struct using the
 <code>Debug</code> macro. This declaration is used to automatically implement the <code>Debug</code>
 trait for the <code>Person</code> struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Debug)]
+<pre><code class="language-rust">#[derive(Debug)]
 struct Person {
     name: String,
     age: i32,
@@ -416,8 +396,7 @@ let person = Person {
     age: 42,
 };
 
-println!(&quot;{person:?}&quot;);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{person:?}&quot;);</code></pre>
 <blockquote>
 <p>Note: Using the :? format specifier will use the <code>Debug</code> trait to print the
 struct, where leaving it out will use the <code>Display</code> trait.</p>
@@ -441,10 +420,7 @@ struct, where leaving it out will use the <code>Display</code> trait.</p>
 <pre><code class="language-csharp">int[] someArray = new int[2] { 1, 2 };
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let someArray: [i32; 2] = [1,2];
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let someArray: [i32; 2] = [1,2];</code></pre>
 <h2 id="list"><a class="header" href="#list">List</a></h2>
 <p>In Rust the equivalent of a <code>List&lt;T&gt;</code> is a <code>Vec&lt;T&gt;</code>. Arrays can be converted
 to Vecs and vice versa.</p>
@@ -458,30 +434,24 @@ to Vecs and vice versa.</p>
 something.Add(&quot;c&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut something = vec![
+<pre><code class="language-rust">let mut something = vec![
     &quot;a&quot;.to_owned(),
     &quot;b&quot;.to_owned()
 ];
 
-something.push(&quot;c&quot;.to_owned());
-<span class="boring">}</span></code></pre></pre>
+something.push(&quot;c&quot;.to_owned());</code></pre>
 <h2 id="tuples"><a class="header" href="#tuples">Tuples</a></h2>
 <p>C#:</p>
 <pre><code class="language-csharp">var something = (1, 2)
 Console.WriteLine($&quot;a = {something.Item1} b = {something.Item2}&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let something = (1, 2);
+<pre><code class="language-rust">let something = (1, 2);
 println!(&quot;a = {} b = {}&quot;, something.0, something.1);
 
 // deconstruction supported
 let (a, b) = something;
-println!(&quot;a = {} b = {}&quot;, a, b);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;a = {} b = {}&quot;, a, b);</code></pre>
 <blockquote>
 <p><strong>NOTE</strong>: Rust tuple elements cannot be named like in C#. The only way to
 access a tuple element is by using the index of the element or deconstructing
@@ -499,15 +469,12 @@ the tuple.</p>
 something.Add(&quot;hi&quot;, &quot;there&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut something = HashMap::from([
+<pre><code class="language-rust">let mut something = HashMap::from([
     (&quot;Foo&quot;.to_owned(), &quot;Bar&quot;.to_owned()),
     (&quot;Baz&quot;.to_owned(), &quot;Qux&quot;.to_owned())
 ]);
 
-something.insert(&quot;hi&quot;.to_owned(), &quot;there&quot;.to_owned());
-<span class="boring">}</span></code></pre></pre>
+something.insert(&quot;hi&quot;.to_owned(), &quot;there&quot;.to_owned());</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/collections/index.html">Rust's standard library - Collections</a></li>
@@ -557,14 +524,11 @@ other being an <code>enum</code>).</p>
 <p>A <code>struct</code> (or <code>record struct</code>) in C# has copy-by-value and value equality
 semantics by default, but in Rust, this requires just one more step using <a href="https://doc.rust-lang.org/stable/reference/attributes/derive.html">the
 <code>#derive</code> attribute</a> and listing the traits to be implemented:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+<pre><code class="language-rust">#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 struct Point {
     x: i32,
     y: i32,
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Value types in C#/.NET are usually designed by a developer to be immutable.
 It's considered best practice speaking semantically, but the language does not
 prevent designing a <code>struct</code> that makes destructive or in-place modifications.
@@ -597,11 +561,9 @@ polymorphism via virtual dispatch using <a href="https://doc.rust-lang.org/book/
 }
 </code></pre>
 <p>The equivalent in Rust would be:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span>#![allow(dead_code)]
+<pre><code class="language-rust">#![allow(dead_code)]
 
-<span class="boring">fn main() {
-</span>struct Rectangle {
+struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -647,18 +609,17 @@ impl Display for Rectangle {
     fn fmt(&amp;self, f: &amp;mut Formatter&lt;'_&gt;) -&gt; Result {
         write!(f, &quot;({}, {}), ({}, {})&quot;, self.x1, self.y2, self.x2, self.y2)
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Note that a <code>struct</code> in C# inherits the <code>ToString</code> method from <code>object</code> and
 therefore it <em>overrides</em> the base implementation to provide a custom string
 representation. Since there is no inheritance in Rust, the way a type
 advertises support for some <em>formatted</em> representation is by implementing the
 <code>Display</code> trait. This then enables for an instance of the structure to
 participate in formatting, such as shown in the call to <code>println!</code> below:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let rect = Rectangle::new(12, 34, 56, 78);
     println!(&quot;Rectangle = {rect}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="interfaces"><a class="header" href="#interfaces">Interfaces</a></h1>
 <p>Rust doesn't have interfaces like those found in C#/.NET. It has <em>traits</em>,
 instead. Similar to an interface, a trait represents an abstraction and its
@@ -701,9 +662,7 @@ additional effort and support).</p>
 }
 </code></pre>
 <p>Rust has practically <em>identical</em> syntax for doing the same:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>enum DayOfWeek
+<pre><code class="language-rust">enum DayOfWeek
 {
     Sunday = 0,
     Monday = 1,
@@ -712,14 +671,13 @@ additional effort and support).</p>
     Thursday = 4,
     Friday = 5,
     Saturday = 6,
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Unlike in .NET, an instance of an <code>enum</code> type in Rust does not have any
 pre-defined behaviour that's inherited. It cannot even participate in equality
 checks as simple as <code>dow == DayOfWeek::Friday</code>. To bring it somewhat on par in
 function with an <code>enum</code> in C#, use <a href="https://doc.rust-lang.org/stable/reference/attributes/derive.html">the <code>#derive</code> attribute</a> to
 automatically have macros implement the commonly needed functionality:</p>
-<pre><pre class="playground"><code class="language-rust compile_fail">#[derive(Debug,     // enables formatting in &quot;{:?}&quot;
+<pre><code class="language-rust compile_fail">#[derive(Debug,     // enables formatting in &quot;{:?}&quot;
          Clone,     // required by Copy
          Copy,      // enables copy-by-value semantics
          Hash,      // enables hash-ability for use in map types
@@ -750,14 +708,12 @@ fn main() {
 
     let dow = dow as DayOfWeek;
     println!(&quot;Day of week = {dow:?}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>As the example above shows, an <code>enum</code> can be coerced to its assigned integral
 value, but the opposite is not possible as in C# (although that sometimes has
 the downside in C#/.NET that an <code>enum</code> instance can hold an unrepresented
 value). Instead, it's up to the developer to provide such a helper function:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>impl DayOfWeek {
+<pre><code class="language-rust">impl DayOfWeek {
     fn from_i32(n: i32) -&gt; Result&lt;DayOfWeek, i32&gt; {
         use DayOfWeek::*;
         match n {
@@ -771,34 +727,27 @@ value). Instead, it's up to the developer to provide such a helper function:</p>
             _ =&gt; Err(n)
         }
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>The <code>from_i32</code> function returns a <code>DayOfWeek</code> in a <code>Result</code> indicating success
 (<code>Ok</code>) if <code>n</code> is valid. Otherwise it returns <code>n</code> as-is in a <code>Result</code>
 indicating failure (<code>Err</code>):</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let dow = DayOfWeek::from_i32(5);
+<pre><code class="language-rust">let dow = DayOfWeek::from_i32(5);
 println!(&quot;{dow:?}&quot;); // prints: Ok(Friday)
 
 let dow = DayOfWeek::from_i32(50);
-println!(&quot;{dow:?}&quot;); // prints: Err(50)
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{dow:?}&quot;); // prints: Err(50)</code></pre>
 <p>There exist crates in Rust that can help with implementing such mapping from
 integral types instead of having to code them manually.</p>
 <p>An <code>enum</code> type in Rust can also serve as a way to design (discriminated) union
 types, which allow different <em>variants</em> to hold data specific to each variant.
 For example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>enum IpAddr {
+<pre><code class="language-rust">enum IpAddr {
     V4(u8, u8, u8, u8),
     V6(String),
 }
 
 let home = IpAddr::V4(127, 0, 0, 1);
-let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
-<span class="boring">}</span></code></pre></pre>
+let loopback = IpAddr::V6(String::from(&quot;::1&quot;));</code></pre>
 <p>This form of <code>enum</code> declaration does not exist in C#, but it can be emulated
 with (class) records:</p>
 <pre><code class="language-c#">var home = new IpAddr.V4(127, 0, 0, 1);
@@ -826,9 +775,7 @@ functions that return an instance of the type. The factory functions can be
 stand-alone or <em>associated functions</em> of the type. In C# terms, associated
 functions are like have static methods on a type. Conventionally, if there is
 just one factory function for a <code>struct</code>, it's named <code>new</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Rectangle {
+<pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -837,8 +784,7 @@ impl Rectangle {
     pub fn new(x1: i32, y1: i32, x2: i32, y2: i32) -&gt; Self {
         Self { x1, y1, x2, y2 }
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Since Rust functions (associated or otherwise) do not support overloading, the
 factory functions have to be named uniquely. For example, below are some
 examples of so-called constructors or factory functions available on <code>String</code>:</p>
@@ -864,9 +810,7 @@ parameter has no type annotation since it's always the type to which the
 method belongs. A static method is called an <em>associated function</em>. In the
 example below, <code>new</code> is an associated function and the rest (<code>length</code>, <code>width</code>
 and <code>area</code>) are methods of the type:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Rectangle {
+<pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -887,23 +831,19 @@ impl Rectangle {
     pub fn area(&amp;self)  -&gt; i32 {
         self.length() * self.width()
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="constants"><a class="header" href="#constants">Constants</a></h2>
 <p>Like in C#, a type in Rust can have constants. However, the most interesting
 aspect to note is that Rust allows a type instance to be defined as a constant
 too:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point {
+<pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
 }
 
 impl Point {
     const EMPTY: ZERO = Point { x: 0, y: 0 };
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>In C#, the same would require a static read-only field:</p>
 <pre><code class="language-c#">readonly record struct Point(int X, int Y)
 {
@@ -923,9 +863,7 @@ field (in Rust method names can share the same identifier as a field) and the
 setter uses a <code>set_</code> prefix</a>.</p>
 <p>Below is an example showing how property-like accessor methods typically look
 for a type in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Rectangle {
+<pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -962,8 +900,7 @@ impl Rectangle {
     pub fn area(&amp;self)  -&gt; i32 {
         self.length() * self.width()
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="extension-methods"><a class="header" href="#extension-methods">Extension Methods</a></h2>
 <p>Extension methods in C# enable the developer to attach new statically-bound
 methods to existing types, without needing to modify the original definition
@@ -992,7 +929,7 @@ the type containing the extension method must be imported (1). Rust offers a
 very similar facility via traits, called <em>extension traits</em>. The following
 example in Rust is the equivalent of the C# example above; it extends <code>String</code>
 with the method <code>wrap</code>:</p>
-<pre><pre class="playground"><code class="language-rust">#![allow(dead_code)]
+<pre><code class="language-rust">#![allow(dead_code)]
 
 mod exts {
     pub trait StrWrapExt {
@@ -1013,7 +950,7 @@ fn main() {
     let mut s = String::from(&quot;Hello, World!&quot;);
     s.wrap(&quot;&gt;&gt;&gt; &quot;, &quot; &lt;&lt;&lt;&quot;); // (2)
     println!(&quot;{s}&quot;); // Prints: &gt;&gt;&gt; Hello, World! &lt;&lt;&lt;
-}</code></pre></pre>
+}</code></pre>
 <p>Just like in C#, for the method in the extension trait to become available
 (2), the extension trait muse be imported (1). Also note, the extension trait
 identifier <code>StrWrapExt</code> can itself be discarded via <code>_</code> at the time of import
@@ -1067,9 +1004,7 @@ decide whether the a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a <em>positional record declaration</em> (<code>record class</code> or <code>readonly record struct</code>). In Rust, mutability is expressed on methods through the type
 of the <code>self</code> parameter as shown in the example below:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point { x: i32, y: i32 }
+<pre><code class="language-rust">struct Point { x: i32, y: i32 }
 
 impl Point {
     pub fn new(x: i32, y: i32) -&gt; Self {
@@ -1085,8 +1020,7 @@ impl Point {
 
     pub fn set_x(&amp;mut self, val: i32) { self.x = val }
     pub fn set_y(&amp;mut self, val: i32) { self.y = val }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>In C#, you can do non-destructive mutations using <code>with</code>:</p>
 <pre><code class="language-c#">var pt = new Point(123, 456);
 pt = pt with { X = 789 };
@@ -1096,9 +1030,7 @@ readonly record struct Point(int X, int Y);
 </code></pre>
 <p>There is no <code>with</code> in Rust, but to emulate something similar in Rust, it has
 to be baked into the type's design:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point { x: i32, y: i32 }
+<pre><code class="language-rust">struct Point { x: i32, y: i32 }
 
 impl Point {
     pub fn new(x: i32, y: i32) -&gt; Self {
@@ -1112,8 +1044,7 @@ impl Point {
 
     pub fn set_x(self, val: i32) -&gt; Self { Self::new(val, self.y) }
     pub fn set_y(self, val: i32) -&gt; Self { Self::new(self.x, val) }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="local-functions"><a class="header" href="#local-functions">Local Functions</a></h1>
 <p>C# and Rust offer local functions, but local functions in Rust are limited to
 the equivalent of static local functions in C#. In other words, local
@@ -1128,14 +1059,14 @@ pointers</em> are represented by delegates with the most common ones being <code
 and <code>Action</code>. The C# language allows ad-hoc instances of these delegates to be
 created through <em>lambda expressions</em>.</p>
 <p>Rust has function pointers too with the <code>fn</code> type being the simplest:</p>
-<pre><pre class="playground"><code class="language-rust">fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
+<pre><code class="language-rust">fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
     f(arg) + f(arg)
 }
 
 fn main() {
     let answer = do_twice(|x| x + 1, 5);
     println!(&quot;The answer is: {}&quot;, answer); // Prints: The answer is: 12
-}</code></pre></pre>
+}</code></pre>
 <p>However, Rust makes a distinction between <em>function pointers</em> (where <code>fn</code>
 defines a type) and <em>closures</em>: a closure can reference variables from its
 surrounding lexical scope, but not a function pointer. While C# also has
@@ -1157,10 +1088,7 @@ Traits</a>” section of The Rust Programming Language.</p>
 <pre><code class="language-csharp">int x = 5;
 </code></pre>
 <p>And the same in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: i32 = 5;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let x: i32 = 5;</code></pre>
 <p>So far, the only visible difference between the two languages is that the
 position of the type declaration is different. Also, both C# and Rust are
 type-safe: the compiler guarantees that the value stored in a variable is always
@@ -1169,10 +1097,7 @@ ability to automatically infer the types of the variable. In C#:</p>
 <pre><code class="language-csharp">var x = 5;
 </code></pre>
 <p>In Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let x = 5;</code></pre>
 <p>When expanding the first example to update the value of the variable
 (reassignment), the behavior of C# and Rust differ:</p>
 <pre><code class="language-csharp">var x = 5;
@@ -1180,29 +1105,20 @@ x = 6;
 Console.WriteLine(x); // 6
 </code></pre>
 <p>In Rust, the identical statement will not compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
+<pre><code class="language-rust">let x = 5;
 x = 6; // Error: cannot assign twice to immutable variable 'x'.
-println!(&quot;{}&quot;, x);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{}&quot;, x);</code></pre>
 <p>In Rust, variables are <em>immutable</em> by default. Once a value is bound to a name,
 the variable's value cannot be changed. Variables can be made <em>mutable</em> by
 adding <a href="https://doc.rust-lang.org/std/keyword.mut.html"><code>mut</code></a> in front of the variable name:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut x = 5;
+<pre><code class="language-rust">let mut x = 5;
 x = 6;
-println!(&quot;{}&quot;, x); // 6
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{}&quot;, x); // 6</code></pre>
 <p>Rust offers an alternative to fix the example above that does not require
 mutability through variable <em>shadowing</em>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
+<pre><code class="language-rust">let x = 5;
 let x = 6;
-println!(&quot;{}&quot;, x); // 6
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{}&quot;, x); // 6</code></pre>
 <p>C# also supports shadowing, e.g. locals can shadow fields and type members can
 shadow members from the base type. In Rust, the above example demonstrates
 that shadowing also allows to change the type of a variable without changing
@@ -1258,7 +1174,7 @@ same underlying object in memory.</p>
 </li>
 </ol>
 <p>Equivalently in Rust:</p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Copy, Clone)]
+<pre><code class="language-rust">#[derive(Copy, Clone)]
 struct Point(i32, i32);
 
 fn main() {
@@ -1268,7 +1184,7 @@ fn main() {
     println!(&quot;{}&quot;, a == b); // Error: &quot;an implementation of `PartialEq&lt;_&gt;` might be missing for `Point`&quot;
     println!(&quot;{}&quot;, a.eq(&amp;b));
     println!(&quot;{}&quot;, a.eq(&amp;Point(2, 2)));
-}</code></pre></pre>
+}</code></pre>
 <p>The compiler error above illustrates that in Rust equality comparisons are
 <em>always</em> related to a trait implementation. To support a comparison using <code>==</code>,
 a type must implement <a href="https://doc.rust-lang.org/std/cmp/trait.PartialEq.html"><code>PartialEq</code></a>.</p>
@@ -1276,7 +1192,7 @@ a type must implement <a href="https://doc.rust-lang.org/std/cmp/trait.PartialEq
 deriving <code>PartialEq</code> will compare all fields for equality, which therefore have
 to implement <code>PartialEq</code> themselves. This is comparable to the equality for
 records in C#.</p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Copy, Clone, PartialEq)]
+<pre><code class="language-rust">#[derive(Copy, Clone, PartialEq)]
 struct Point(i32, i32);
 
 fn main() {
@@ -1287,7 +1203,7 @@ fn main() {
     println!(&quot;{}&quot;, a.eq(&amp;b)); // true
     println!(&quot;{}&quot;, a.eq(&amp;Point(2, 2))); // false
     println!(&quot;{}&quot;, a.eq(&amp;c)); // true
-}</code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html"><code>Eq</code></a> for a stricter version of <code>PartialEq</code>.</li>
@@ -1305,9 +1221,7 @@ sealed record Timestamped&lt;T&gt;(DateTime Timestamp, T Value)
 }
 </code></pre>
 <p>Rust also has generics as shown by the equivalent of the above:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::time::*;
+<pre><code class="language-rust">use std::time::*;
 
 struct Timestamped&lt;T&gt; { value: T, timestamp: SystemTime }
 
@@ -1315,8 +1229,7 @@ impl&lt;T&gt; Timestamped&lt;T&gt; {
     fn new(value: T) -&gt; Self {
         Self { value, timestamp: SystemTime::now() }
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/book/ch10-01-syntax.html">Generic data types</a></li>
@@ -1343,9 +1256,7 @@ sealed record Timestamped&lt;T&gt;(DateTime Timestamp, T Value) :
 }
 </code></pre>
 <p>The same can be achieved in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::time::*;
+<pre><code class="language-rust">use std::time::*;
 
 struct Timestamped&lt;T&gt; { value: T, timestamp: SystemTime }
 
@@ -1360,8 +1271,7 @@ impl&lt;T&gt; PartialEq for Timestamped&lt;T&gt;
     fn eq(&amp;self, other: &amp;Self) -&gt; bool {
         self.value == other.value &amp;&amp; self.timestamp == other.timestamp
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Generic type constraints are called <a href="https://doc.rust-lang.org/rust-by-example/generics/bounds.html">bounds</a> in Rust.</p>
 <p>In C# version, <code>Timestamped&lt;T&gt;</code> instances can <em>only</em> be created for <code>T</code> which
 implement <code>IEquatable&lt;T&gt;</code> themselves, but note that the Rust version is more
@@ -1421,9 +1331,7 @@ the following example:</p>
 <p>In Rust, one can implement the basic expectations for error values by
 implementing the <a href="https://doc.rust-lang.org/std/error/trait.Error.html"><code>Error</code></a> trait. The minimal user-defined error
 implementation in Rust is:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Debug)]
+<pre><code class="language-rust">#[derive(Debug)]
 pub struct EmployeeListNotFound;
 
 impl std::fmt::Display for EmployeeListNotFound {
@@ -1432,8 +1340,7 @@ impl std::fmt::Display for EmployeeListNotFound {
     }
 }
 
-impl std::error::Error for EmployeeListNotFound {}
-<span class="boring">}</span></code></pre></pre>
+impl std::error::Error for EmployeeListNotFound {}</code></pre>
 <p>The equivalent to the .NET <code>Exception.InnerException</code> property is the
 <code>Error::source()</code> method in Rust. However, it is not required to provide an
 implementation for <code>Error::source()</code>, the blanket (default) implementation
@@ -1449,25 +1356,19 @@ returns a <code>None</code>.</p>
 }
 </code></pre>
 <p>For recoverable errors in Rust, return an <code>Ok</code> or <code>Err</code> variant from a method:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn error_if_negative(value: i32) -&gt; Result&lt;(), &amp;'static str&gt; {
+<pre><code class="language-rust">fn error_if_negative(value: i32) -&gt; Result&lt;(), &amp;'static str&gt; {
     if value &lt; 0 {
         Err(&quot;Specified argument was out of the range of valid values. (Parameter 'value')&quot;)
     } else {
         Ok(())
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>The <a href="https://doc.rust-lang.org/std/macro.panic.html"><code>panic!</code></a> macro creates unrecoverable errors:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn panic_if_negative(value: i32) {
+<pre><code class="language-rust">fn panic_if_negative(value: i32) {
     if value &lt; 0 {
         panic!(&quot;Specified argument was out of the range of valid values. (Parameter 'value')&quot;)
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="error-propagation"><a class="header" href="#error-propagation">Error propagation</a></h2>
 <p>In .NET, exceptions are passed up the stack until they are handled or the
 program terminates. In Rust, unrecoverable errors behave similarly, but handling
@@ -1489,29 +1390,23 @@ error in C#:</p>
 }
 </code></pre>
 <p>In Rust, this is roughly equivalent to:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn write() {
+<pre><code class="language-rust">fn write() {
     match std::fs::File::create(&quot;temp.txt&quot;)
         .and_then(|mut file| std::io::Write::write_all(&amp;mut file, b&quot;content&quot;))
     {
         Ok(_) =&gt; {}
         Err(_) =&gt; println!(&quot;Writing to file failed.&quot;),
     };
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Frequently, recoverable errors need only be propagated instead of being handled.
 For this, the method signature needs to be compatible with the types of the
 propagated error. The <a href="https://doc.rust-lang.org/std/result/index.html#the-question-mark-operator-"><code>?</code> operator</a> propagates errors
 ergonomically:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn write() -&gt; Result&lt;(), std::io::Error&gt; {
+<pre><code class="language-rust">fn write() -&gt; Result&lt;(), std::io::Error&gt; {
     let mut file = std::fs::File::create(&quot;file.txt&quot;)?;
     std::io::Write::write_all(&amp;mut file, b&quot;content&quot;)?;
     Ok(())
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p><strong>Note</strong>: to propagate an error with the question mark operator the error
 implementations need to be <em>compatible</em>, as described in <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator"><em>a shortcut for
 propagating errors</em></a>. The most general
@@ -1532,11 +1427,8 @@ int? none = null;
 <p>Rust has no <code>null</code> and consequently no nullable context to enable. Optional or
 missing values are instead represented by <a href="https://doc.rust-lang.org/std/option/enum.Option.html"><code>Option&lt;T&gt;</code></a>. The
 equivalent of the C# code above in Rust would be:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let some: Option&lt;i32&gt; = Some(1);
-let none: Option&lt;i32&gt; = None;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let some: Option&lt;i32&gt; = Some(1);
+let none: Option&lt;i32&gt; = None;</code></pre>
 <p><code>Option&lt;T&gt;</code> in Rust is practically identical to <a href="https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-option-1.html"><code>'T option</code></a> from F#.</p>
 <h2 id="control-flow-with-optionality"><a class="header" href="#control-flow-with-optionality">Control flow with optionality</a></h2>
 <p>In C#, you may have been using <code>if</code>/<code>else</code> statements for controlling the flow
@@ -1549,13 +1441,10 @@ if (max is { } someMax)
 </code></pre>
 <p>You can use pattern matching to achieve the same behavior in Rust:</p>
 <p>It would even be more concise to use <code>if let</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let max = Some(10u32);
+<pre><code class="language-rust">let max = Some(10u32);
 if let Some(max) = max {
     println!(&quot;The maximum is {}.&quot;, max); // The maximum is 10.
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="null-conditional-operators"><a class="header" href="#null-conditional-operators">Null-conditional operators</a></h2>
 <p>The null-conditional operators (<code>?.</code> and <code>?[]</code>) make dealing with <code>null</code> in C#
 more ergonomic. In Rust, they are best replaced by using the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a>
@@ -1565,13 +1454,10 @@ string? none = null;
 Console.WriteLine(some?.Length); // 13
 Console.WriteLine(none?.Length); // (blank)
 </code></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let some: Option&lt;String&gt; = Some(String::from(&quot;Hello, World!&quot;));
+<pre><code class="language-rust">let some: Option&lt;String&gt; = Some(String::from(&quot;Hello, World!&quot;));
 let none: Option&lt;String&gt; = None;
 println!(&quot;{:?}&quot;, some.map(|s| s.len())); // Some(13)
-println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None</code></pre>
 <h2 id="null-coalescing-operator"><a class="header" href="#null-coalescing-operator">Null-coalescing operator</a></h2>
 <p>The null-coalescing operator (<code>??</code>) is typically used to default to another
 value when a nullable is <code>null</code>:</p>
@@ -1581,13 +1467,10 @@ Console.WriteLine(some ?? 0); // 1
 Console.WriteLine(none ?? 0); // 0
 </code></pre>
 <p>In Rust, you can use <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or"><code>unwrap_or</code></a> to get the same behavior:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let some: Option&lt;i32&gt; = Some(1);
+<pre><code class="language-rust">let some: Option&lt;i32&gt; = Some(1);
 let none: Option&lt;i32&gt; = None;
 println!(&quot;{:?}&quot;, some.unwrap_or(0)); // 1
-println!(&quot;{:?}&quot;, none.unwrap_or(0)); // 0
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{:?}&quot;, none.unwrap_or(0)); // 0</code></pre>
 <p><strong>Note</strong>: If the default value is expensive to compute, you can use
 <code>unwrap_or_else</code> instead. It takes a closure as an argument, which allows you to
 lazily initialize the default value.</p>
@@ -1604,24 +1487,16 @@ to ignore the result of an expression. In C# this looks like:</p>
 </code></pre>
 <p>In Rust, <a href="https://doc.rust-lang.org/stable/book/ch18-03-pattern-syntax.html#ignoring-values-in-a-pattern">ignoring the result of an expression</a> looks
 identical:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>_ = city.get_city_information(city_name);
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">_ = city.get_city_information(city_name);</code></pre>
 <p>Discards are also applied for deconstructing tuples in C#:</p>
 <pre><code class="language-csharp">var (_, second) = (&quot;first&quot;, &quot;second&quot;);
 </code></pre>
 <p>and, identically, in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let (_, second) = (&quot;first&quot;, &quot;second&quot;);
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let (_, second) = (&quot;first&quot;, &quot;second&quot;);</code></pre>
 <p>In addition to destructuring tuples, Rust offers
 <a href="https://doc.rust-lang.org/reference/patterns.html#destructuring">destructuring</a> of structs and enums using <code>..</code>, where <code>..</code>
 stands for the remaining part of a type:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point {
+<pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
     z: i32,
@@ -1631,8 +1506,7 @@ let origin = Point { x: 0, y: 0, z: 0 };
 
 match origin {
     Point { x, .. } =&gt; println!(&quot;x is {}&quot;, x), // x is 0
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>When pattern matching, it is often useful to discard or ignore part of a
 matching expression, e.g. in C#:</p>
 <pre><code class="language-csharp">_ = (&quot;first&quot;, &quot;second&quot;) switch
@@ -1642,14 +1516,11 @@ matching expression, e.g. in C#:</p>
 };
 </code></pre>
 <p>and again, this looks almost identical in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>_ = match (&quot;first&quot;, &quot;second&quot;)
+<pre><code class="language-rust">_ = match (&quot;first&quot;, &quot;second&quot;)
 {
     (&quot;first&quot;, _) =&gt; &quot;first element matched&quot;,
     (_, _) =&gt; &quot;first element did not match&quot;
-};
-<span class="boring">}</span></code></pre></pre>
+};</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="conversion-and-casting"><a class="header" href="#conversion-and-casting">Conversion and Casting</a></h1>
 <p>Both C# and Rust are statically-typed at compile time. Hence, after a variable
 is declared, assigning a value of a value of a different type (unless it's
@@ -1662,19 +1533,13 @@ Consider the following example:</p>
 long longNumber = intNumber;
 </code></pre>
 <p>Rust is much more restrictive with respect to which type coercions are allowed:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let int_number: i32 = 1;
-let long_number: i64 = int_number; // error: expected `i64`, found `i32`
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let int_number: i32 = 1;
+let long_number: i64 = int_number; // error: expected `i64`, found `i32`</code></pre>
 <p>An example for a valid implicit conversion using <a href="https://github.com/rust-lang/rfcs/blob/master/text/0401-coercions.md#subtyping">subtyping</a> is:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn bar&lt;'a&gt;() {
+<pre><code class="language-rust">fn bar&lt;'a&gt;() {
     let s: &amp;'static str = &quot;hi&quot;;
     let t: &amp;'a str = s;
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/ops/trait.Deref.html#more-on-deref-coercion">Deref coercion</a></li>
@@ -1691,11 +1556,8 @@ int b = (int)a;
 <p>Rust does not provide coercion between primitive types, but instead uses
 <a href="https://doc.rust-lang.org/rust-by-example/types/cast.html">explicit conversion</a> using the <a href="https://doc.rust-lang.org/reference/expressions/operator-expr.html#type-cast-expressions"><code>as</code></a> keyword (casting).
 Casting in Rust will not cause a panic.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let int_number: i32 = 1;
-let long_number: i64 = int_number as _;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let int_number: i32 = 1;
+let long_number: i64 = int_number as _;</code></pre>
 <h2 id="custom-conversion"><a class="header" href="#custom-conversion">Custom conversion</a></h2>
 <p>Commonly, .NET types provide user-defined conversion operators to convert one
 type to another type. Also, <code>System.IConvertible</code> serves the purpose of
@@ -1706,7 +1568,7 @@ reciprocal, <a href="https://doc.rust-lang.org/std/convert/trait.Into.html"><cod
 implementation for <code>Into</code> is automatically provided (called <em>blanket
 implementation</em> in Rust). The following example illustrates two of such type
 conversions:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let my_id = MyId(&quot;id&quot;.into()); // `into()` is implemented automatically due to the `From&lt;&amp;str&gt;` trait implementation for `String`.
     println!(&quot;{}&quot;, String::from(my_id)); // This uses the `From&lt;MyId&gt;` implementation for `String`.
 }
@@ -1717,7 +1579,7 @@ impl From&lt;MyId&gt; for String {
     fn from(MyId(value): MyId) -&gt; Self {
         value
     }
-}</code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/convert/trait.TryFrom.html"><code>TryFrom</code></a> and <a href="https://doc.rust-lang.org/std/convert/trait.TryInto.html"><code>TryInto</code></a> for versions of <code>From</code>
@@ -1739,7 +1601,7 @@ public readonly record struct Fraction(int Numerator, int Denominator)
 <p>In Rust, many operators <a href="https://doc.rust-lang.org/core/ops/">can be overloaded via traits</a>. This is possible
 because operators are syntactic sugar for method calls. For example, the <code>+</code>
 operator in <code>a + b</code> calls the <code>add</code> method (see <a href="https://doc.rust-lang.org/rust-by-example/trait/ops.html">operator overloading</a>):</p>
-<pre><pre class="playground"><code class="language-rust">use std::{fmt::{Display, Formatter, Result}, ops::Add};
+<pre><code class="language-rust">use std::{fmt::{Display, Formatter, Result}, ops::Add};
 
 struct Fraction {
     numerator: i32,
@@ -1769,7 +1631,7 @@ fn main() {
         Fraction { numerator: 5, denominator: 4 } + Fraction { numerator: 1, denominator: 2 }
     ); // 14/8
 }
-</code></pre></pre>
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="documentation-comments"><a class="header" href="#documentation-comments">Documentation Comments</a></h1>
 <p>C# provides a mechanism to document the API for types using a comment syntax
 that contains XML text. The C# compiler produces an XML file that contains
@@ -1784,11 +1646,8 @@ public class MyClass {}
 <p>In Rust <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">doc comments</a> provide the equivalent to C# documentation comments.
 Documentation comments in Rust use Markdown syntax. <a href="https://doc.rust-lang.org/rustdoc/index.html"><code>rustdoc</code></a> is the
 documentation compiler for Rust code and is usually invoked through <a href="https://doc.rust-lang.org/cargo/commands/cargo-doc.html"><code>cargo doc</code></a>, which compiles the comments into documentation. For example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>/// This is a doc comment for `MyStruct`.
-struct MyStruct;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">/// This is a doc comment for `MyStruct`.
+struct MyStruct;</code></pre>
 <p>In the .NET SDK there is no equivalent to <code>cargo doc</code>, such as <code>dotnet doc</code>.</p>
 <p>See also:</p>
 <ul>
@@ -1832,7 +1691,7 @@ backing a structure at any given time in Rust. The compiler assigns
 <a href="https://doc.rust-lang.org/rust-by-example/scope/lifetime.html">lifetimes</a> and tracks ownership. It is possible to pass or
 yield ownership, which is called <em>moving</em> in Rust. These ideas are briefly
 illustrated in the example Rust code below:</p>
-<pre><pre class="playground"><code class="language-rust">#![allow(dead_code, unused_variables)]
+<pre><code class="language-rust">#![allow(dead_code, unused_variables)]
 
 struct Point {
     x: i32,
@@ -1843,17 +1702,17 @@ fn main() {
     let a = Point { x: 12, y: 34 }; // point owned by a
     let b = a;                      // b owns the point now
     println!(&quot;{}, {}&quot;, a.x, a.y);   // compiler error!
-}</code></pre></pre>
+}</code></pre>
 <p>The first statement in <code>main</code> will allocate <code>Point</code> and that memory will be
 owned by <code>a</code>. In the second statement, the ownership is moved from <code>a</code> to <code>b</code>
 and <code>a</code> can no longer be used because it no longer owns anything or represents
 valid memory. The last statement that tries to print the fields of the point
 via <code>a</code> will fail compilation. Suppose <code>main</code> is fixed to read as follows:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let a = Point { x: 12, y: 34 }; // point owned by a
     let b = a;                      // b owns the point now
     println!(&quot;{}, {}&quot;, b.x, b.y);   // ok, uses b
-}   // point behind b is dropped</code></pre></pre>
+}   // point behind b is dropped</code></pre>
 <p>Note that when <code>main</code> exits, <code>a</code> and <code>b</code> will go out of scope. The memory
 behind <code>b</code> will be released by virtue of the stack returning to its state
 prior to <code>main</code> being called. In Rust, one says that the point behind <code>b</code> was
@@ -1882,7 +1741,7 @@ pointer is cloned</a>, the reference count is incremented. When the
 clone drops, the reference count is decremented. The actual instance behind
 the smart pointer is dropped when the reference count reaches zero. These
 points are illustrated by the following examples that build on the previous:</p>
-<pre><pre class="playground"><code class="language-rust">#![allow(dead_code, unused_variables)]
+<pre><code class="language-rust">#![allow(dead_code, unused_variables)]
 
 use std::rc::Rc;
 
@@ -1907,7 +1766,7 @@ fn main() {
 // prints:
 // a = 12, 34
 // b = 12, 34
-// Point dropped!</code></pre></pre>
+// Point dropped!</code></pre>
 <p>Note that:</p>
 <ul>
 <li>
@@ -1944,11 +1803,8 @@ Rust</em>), does not determine where the backing memory will eventually live. By
 default, it is always on the stack, but just the way .NET and C# have a notion
 of boxing value types, which copies them to the heap, the way to allocate a
 type on the heap is to box it using <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html"><code>Box</code></a>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let stack_point = Point { x: 12, y: 34 };
-let heap_point = Box::new(Point { x: 12, y: 34 });
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let stack_point = Point { x: 12, y: 34 };
+let heap_point = Box::new(Point { x: 12, y: 34 });</code></pre>
 <p>Like <code>Rc</code> and <code>Arc</code>, <code>Box</code> is a smart pointer, but unlike <code>Rc</code> and <code>Arc</code>, it
 exclusively owns the instance behind it. All of these smart pointers allocate
 an instance of their type argument <code>T</code> on the heap.</p>
@@ -1988,7 +1844,7 @@ public class DatabaseConnection : IDisposable
     }
 }
 </code></pre>
-<pre><pre class="playground"><code class="language-rust">struct DatabaseConnection(&amp;'static str);
+<pre><code class="language-rust">struct DatabaseConnection(&amp;'static str);
 
 impl DatabaseConnection {
     // ...functions for using the database connection...
@@ -2007,7 +1863,7 @@ fn main() {
     let _db1 = DatabaseConnection(&quot;Server=A;Database=DB1&quot;);
     let _db2 = DatabaseConnection(&quot;Server=A;Database=DB2&quot;);
     // ...code for making use of the database connection...
-} // &quot;Dispose&quot; of &quot;db1&quot; and &quot;db2&quot; called here; when their scope ends</code></pre></pre>
+} // &quot;Dispose&quot; of &quot;db1&quot; and &quot;db2&quot; called here; when their scope ends</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="threading"><a class="header" href="#threading">Threading</a></h1>
 <p>The Rust standard library supports threading, synchronisation and concurrency.
 Also the language itself and the standard library do have basic support for the
@@ -2045,12 +1901,12 @@ thread.Start();
 thread.Join(); // wait for thread to finish
 </code></pre>
 <p>The same code in Rust would be as follows:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 
 fn main() {
     let thread = thread::spawn(|| println!(&quot;Hello from a thread!&quot;));
     thread.join().unwrap(); // wait for thread to finish
-}</code></pre></pre>
+}</code></pre>
 <p>Creating and initializing a thread object and starting a thread are two
 different actions in .NET whereas in Rust both happen at the same time with
 <code>thread::spawn</code>.</p>
@@ -2089,7 +1945,7 @@ Console.WriteLine($&quot;Phrase: {data}&quot;);
 </code></pre>
 <p>In Rust, there is no variation of <code>thread::spawn</code> that does the same. Instead,
 the data is passed to the thread via a closure:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 
 fn main() {
     let data = String::from(&quot;Hello&quot;);
@@ -2099,7 +1955,7 @@ fn main() {
         data
     });
     println!(&quot;Phrase: {}&quot;, handle.join().unwrap());
-}</code></pre></pre>
+}</code></pre>
 <p>A few things to note:</p>
 <ul>
 <li>
@@ -2152,7 +2008,7 @@ foreach (var thread in threads)
 Console.WriteLine(data);
 </code></pre>
 <p>In Rust, one must make explicit use of concurrency structures like <code>Mutex</code>:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 use std::sync::{Arc, Mutex};
 
 fn main() {
@@ -2175,7 +2031,7 @@ fn main() {
     }
 
     println!(&quot;{}&quot;, data.lock().unwrap());
-}</code></pre></pre>
+}</code></pre>
 <p>A few things to note:</p>
 <ul>
 <li>
@@ -2237,7 +2093,7 @@ producer.Join();
 provides <code>mpsc::channel</code>, which is a channel that supports multiple producers
 and a single consumer. A rough translation of the above C# example in Rust
 would look as follows:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 use std::sync::mpsc;
 use std::time::Duration;
 
@@ -2256,7 +2112,7 @@ fn main() {
     }
 
     procuder.join().unwrap();
-}</code></pre></pre>
+}</code></pre>
 <p>Like channels in Rust, .NET also offers channels in the
 <code>System.Threading.Channels</code> namespace, but it is primarily designed to be used
 with tasks and asynchronous programming using <code>async</code> and <code>await</code>. The
@@ -2336,14 +2192,11 @@ tests:</p>
 <li><a href="https://doc.rust-lang.org/std/macro.assert_ne.html"><code>assert_ne!</code></a></li>
 </ul>
 <p>Below is an example of <code>assert_eq</code> in action:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[test]
+<pre><code class="language-rust">#[test]
 fn something_is_the_right_length() {
     let value = &quot;something&quot;;
     assert_eq!(9, value.len());
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>The standard library does not offer anything in the direction of data-driven
 tests, such as <code>[Theory]</code> in xUnit.net.</p>
 <h2 id="mocking"><a class="header" href="#mocking">Mocking</a></h2>
@@ -2370,9 +2223,7 @@ conditionally imports a mocked version of the <code>var_os</code> function used 
 binary will make use of <code>std::env::var_os</code>, but <code>cargo test</code> will instead
 import <code>tests::var_os_mock</code> as <code>var_os</code>, thus causing <code>get_env</code> to use the
 mocked version during testing:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Copyright (c) Microsoft Corporation. All rights reserved.
+<pre><code class="language-rust">// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
 /// Utility function to read an environmentvariable and return its value If
@@ -2410,8 +2261,7 @@ mod tests {
     fn get_env_when_var_defined_returns_some_value() {
         assert_eq!(Some(&quot;BAR&quot;.to_owned()), get_env(&quot;FOO&quot;));
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="code-coverage"><a class="header" href="#code-coverage">Code coverage</a></h2>
 <p>There is sophisticated tooling for .NET when it comes to analyzing test code
 coverage. In Visual Studio, the tooling is built-in and integrated. In Visual
@@ -2478,11 +2328,11 @@ applications to collect structured, event-based diagnostic information.
 <a href="https://docs.rs/tracing-subscriber/latest/tracing_subscriber/"><code>tracing_subscriber</code></a> can be used to implement and
 compose <code>tracing</code> subscribers. The same structured logging example from above
 with <code>tracing</code> and <code>tracing_subscriber</code> looks like:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     // install global default (&quot;console&quot;) collector.
     tracing_subscriber::fmt().init();
     tracing::info!(&quot;Hello {Day}.&quot;, Day = &quot;Thursday&quot;); // Hello Thursday.
-}</code></pre></pre>
+}</code></pre>
 <p><a href="https://crates.io/crates/opentelemetry">OpenTelemetry</a> offers a collection of tools, APIs, and SDKs
 used to instrument, generate, collect, and export telemetry data based on the
 OpenTelemetry specification. At the time of writing, the <a href="https://opentelemetry.io/docs/reference/specification/status/#logging">OpenTelemetry Logging
@@ -2510,7 +2360,7 @@ the <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#th
 <a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment">compiler flag <code>--cfg</code></a> to arbitrarily set configuration options</p>
 <p>The <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute"><code>cfg attribute</code></a> is requiring and evaluating a
 <code>ConfigurationPredicate</code></p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt::{Display, Formatter};
+<pre><code class="language-rust">use std::fmt::{Display, Formatter};
 
 struct MyStruct;
 
@@ -2543,27 +2393,21 @@ impl Display for MyStruct {
 
 fn main() {
     println!(&quot;{}&quot;, MyStruct);
-}</code></pre></pre>
+}</code></pre>
 <p>The <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg_attr-attribute"><code>cfg_attr attribute</code></a> conditionally includes attributes based on
 a configuration predicate.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[cfg_attr(feature = &quot;serialization_support&quot;, derive(Serialize, Deserialize))]
+<pre><code class="language-rust">#[cfg_attr(feature = &quot;serialization_support&quot;, derive(Serialize, Deserialize))]
 pub struct MaybeSerializableStruct;
 
 // When the `serialization_support` feature flag is enabled, the above will expand to:
 // #[derive(Serialize, Deserialize)]
-// pub struct MaybeSerializableStruct;
-<span class="boring">}</span></code></pre></pre>
+// pub struct MaybeSerializableStruct;</code></pre>
 <p>The built-in <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-macro"><code>cfg macro</code></a> takes in a single configuration predicate
 and evaluates to the true literal when the predicate is true and the false
 literal when it is false.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>if cfg!(unix) {
+<pre><code class="language-rust">if cfg!(unix) {
   println!(&quot;I'm running on a unix machine!&quot;);
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/reference/conditional-compilation.html#conditional-compilation">Conditional compilation</a></li>
@@ -2602,7 +2446,7 @@ valid Unicode</p>
 <p><code>var_os</code> has a different signature giving back an <code>Option&lt;OsString&gt;</code>, either
 returning some value if the variable is set, or returning None if the variable
 is not set or it is containing not valid UTF-8</p>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+<pre><code class="language-rust">use std::env;
 
 
 fn main() {
@@ -2611,8 +2455,8 @@ fn main() {
         Ok(val) =&gt; println!(&quot;{key}: {val:?}&quot;),
         Err(e) =&gt; println!(&quot;couldn't interpret {key}: {e}&quot;),
     }
-}</code></pre></pre>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+}</code></pre>
+<pre><code class="language-rust">use std::env;
 
 fn main() {
     let key = &quot;ExampleVariable&quot;;
@@ -2620,17 +2464,17 @@ fn main() {
         Some(val) =&gt; println!(&quot;{key}: {val:?}&quot;),
         None =&gt; println!(&quot;{key} not defined in the enviroment&quot;),
     }
-}</code></pre></pre>
+}</code></pre>
 <p>Rust is also providing the functionality of accessing an environment variable at
 compile time. The <code>env!</code> macro from <code>std::env</code> expands the value of the variable
 at compile time, returning a <code>&amp;'static str</code>. If the variable is not set, an
 error is emitted.</p>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+<pre><code class="language-rust">use std::env;
 
 fn main() {
     let example = env!(&quot;ExampleVariable&quot;);
     println!(&quot;{example}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>In .NET a compile time access to environment variables can be achieved, in a
 less straightforward way, via <a href="https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview">source generators</a>.</p>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
@@ -2660,7 +2504,7 @@ class Example {
 <p>A similar configuration experience in Rust is available via use of third-party
 crates such as <a href="https://crates.io/crates/figment">figment</a> or <a href="https://crates.io/crates/config">config</a>.</p>
 <p>See the following example making use of <a href="https://crates.io/crates/config">config</a> crate:</p>
-<pre><pre class="playground"><code class="language-rust">use config::{Config, Environment};
+<pre><code class="language-rust">use config::{Config, Environment};
 
 fn main() {
     let builder = Config::builder().add_source(Environment::default());
@@ -2677,7 +2521,7 @@ fn main() {
         }
     }
 }
-</code></pre></pre>
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="linq"><a class="header" href="#linq">LINQ</a></h1>
 <p>This section discusses LINQ within the context and for the purpose of querying
 or transforming sequences (<code>IEnumerable</code>/<code>IEnumerable&lt;T&gt;</code>) and typically
@@ -2706,7 +2550,7 @@ foreach (var value in values)
 Console.Write(output); // Prints: 1, 2, 3, 4, 5
 </code></pre>
 <p>In Rust, the equivalent is simply <code>for</code>:</p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt::Write;
+<pre><code class="language-rust">use std::fmt::Write;
 
 fn main() {
     let values = [1, 2, 3, 4, 5];
@@ -2721,9 +2565,9 @@ fn main() {
     }
 
     println!(&quot;{output}&quot;);  // Prints: 1, 2, 3, 4, 5
-}</code></pre></pre>
+}</code></pre>
 <p>The <code>for</code> loop over an iterable essentially gets desuraged to the following:</p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt::Write;
+<pre><code class="language-rust">use std::fmt::Write;
 
 fn main() {
     let values = [1, 2, 3, 4, 5];
@@ -2745,14 +2589,14 @@ fn main() {
     }
 
 println!(&quot;{output}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>Rust's ownership and data race condition rules apply to all instances and
 data, and iteration is no exception. So while looping over an array might look
 straightforward and very similar to C#, one has to be mindful about ownership
 when needing to iterate the same collection/iterable more than once. The
 following example iteraters the list of integers twice, once to print their sum
 and another time to determine and print the maximum integer:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let values = vec![1, 2, 3, 4, 5];
 
     // sum all values
@@ -2776,7 +2620,7 @@ and another time to determine and print the maximum integer:</p>
         }
     }
     println!(&quot;max = {max:?}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>However, the code above is rejected by the compiler due to a subtle
 difference: <code>values</code> has been changed from an array to a <a href="https://doc.rust-lang.org/stable/std/vec/struct.Vec.html"><code>Vec&lt;int&gt;</code></a>,
 a <em>vector</em>, which is Rust's type for growable arrays (like <code>List&lt;T&gt;</code> in .NET).
@@ -2791,7 +2635,7 @@ the problem, one has to request iteration over <em>shared</em> references via
 reference to an item as opposed to taking its ownership.</p>
 <p>Below is the updated version of the previous example that compiles. The fix is
 to simply replace <code>values</code> with <code>&amp;values</code> in each of the <code>for</code> loops.</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let values = vec![1, 2, 3, 4, 5];
 
     // sum all values
@@ -2815,11 +2659,11 @@ to simply replace <code>values</code> with <code>&amp;values</code> in each of t
         }
     }
     println!(&quot;max = {max:?}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>The ownership and dropping can be seen in action even with <code>values</code> being an
 array instead of a vector. Consider just the summing loop from the above
 example over an array of a structure that wraps an integer:</p>
-<pre><pre class="playground"><code class="language-rust">struct Int(i32);
+<pre><code class="language-rust">struct Int(i32);
 
 impl Drop for Int {
     fn drop(&amp;mut self) {
@@ -2836,7 +2680,7 @@ fn main() {
     }
 
     println!(&quot;sum = {sum}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p><code>Int</code> implements <code>Drop</code> so that a message is printed when an instance get
 dropped. Running the above code will print:</p>
 <pre><code>value = Int(1)
@@ -2854,12 +2698,9 @@ sum = 15
 <p>It's clear that each value is acquired and dropped while the loop is running.
 Once the loop is complete, the sum is printed. If <code>values</code> in the <code>for</code> loop
 is changed to <code>&amp;values</code> instead, like this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>for value in &amp;values {
+<pre><code class="language-rust">for value in &amp;values {
     // ...
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>then the output of the program will change radically:</p>
 <pre><code>value = Int(1)
 value = Int(2)
@@ -2972,15 +2813,12 @@ doing the same in Rust. First in C#:</p>
 Console.WriteLine(result); // 50
 </code></pre>
 <p>And in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let result = (0..10)
+<pre><code class="language-rust">let result = (0..10)
     .filter(|x| x % 2 == 0)
     .flat_map(|x| (0..x))
     .fold(0, |acc, x| acc + x);
 
-println!(&quot;{result}&quot;); // 50
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{result}&quot;); // 50</code></pre>
 <h2 id="deferred-execution-laziness"><a class="header" href="#deferred-execution-laziness">Deferred execution (laziness)</a></h2>
 <p>Many operators in LINQ are designed to be lazy such that they only do work
 when absolutely required. This enables composition or chaining of several
@@ -3005,16 +2843,13 @@ IEnumerable&lt;int&gt; InfiniteRange()
 }
 </code></pre>
 <p>Rust supports the same concept through infinite ranges:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Generators and yield in Rust are unstable at the moment, so
+<pre><code class="language-rust">// Generators and yield in Rust are unstable at the moment, so
 // instead, this sample uses Range:
 // https://doc.rust-lang.org/std/ops/struct.Range.html
 
 for value in (0..).take(5) {
     print!(&quot;{value} &quot;); // Prints &quot;0 1 2 3 4&quot;
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="iterator-methods-yield"><a class="header" href="#iterator-methods-yield">Iterator Methods (<code>yield</code>)</a></h2>
 <p>C# has the <code>yield</code> keword that enables the developer to quickly write an
 <em>iterator method</em>. The return type of an iterator method can be an
@@ -3039,17 +2874,14 @@ expression, compare the resulting value of the expression to patterns, and then
 run the code associated with the matching pattern.</p>
 <p>The following example is the definition of the <code>println!</code> macro that it is
 possible to call for printing some text <code>println!(&quot;Some text&quot;)</code></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>macro_rules! println {
+<pre><code class="language-rust">macro_rules! println {
     () =&gt; {
         $crate::print!(&quot;\n&quot;)
     };
     ($($arg:tt)*) =&gt; {{
         $crate::io::_print($crate::format_args_nl!($($arg)*));
     }};
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>To understand more about how to write declarative macros, it is possible to read
 the rust reference chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a>.</p>
 <p><a href="https://doc.rust-lang.org/reference/procedural-macros.html">Procedural macros</a> are different than declarative macros. Those accept some code
@@ -3062,23 +2894,20 @@ supporting reflection.</p>
 <code>print_something</code>, which is generating a <code>print_it</code> method for printing the
 &quot;Something&quot; string.</p>
 <p>In the lib.rs:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>extern crate proc_macro;
+<pre><code class="language-rust">extern crate proc_macro;
 use proc_macro::TokenStream;
 
 #[proc_macro]
 pub fn print_something(_item: TokenStream) -&gt; TokenStream {
     &quot;fn print_it() { println!(\&quot;Something\&quot;) }&quot;.parse().unwrap()
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>In the main.rs:</p>
-<pre><pre class="playground"><code class="language-rust">use replace_crate_name_here::print_something;
+<pre><code class="language-rust">use replace_crate_name_here::print_something;
 print_something!();
 
 fn main() {
     print_it();
-}</code></pre></pre>
+}</code></pre>
 <h2 id="derive-macros"><a class="header" href="#derive-macros">Derive macros</a></h2>
 <p>Derive macros can create new items given the token stream of a struct, enum, or
 union. An example of a derive macro is the <code>#[derive(Clone)]</code> one, which is
@@ -3091,10 +2920,10 @@ read the rust reference for <a href="https://doc.rust-lang.org/reference/procedu
 While working with asynchronous code, if making use of Tokio, the first step
 will be to decorate the new asynchronous main with an attribute macro like the
 following example:</p>
-<pre><pre class="playground"><code class="language-rust">#[tokio::main]
+<pre><code class="language-rust">#[tokio::main]
 async fn main() {
     println!(&quot;Hello world&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>In order to understand how to define a custom derive macro, it is possible to
 read the rust reference for <a href="https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros">attribute macros</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="asynchronous-programming"><a class="header" href="#asynchronous-programming">Asynchronous Programming</a></h1>
@@ -3109,16 +2938,13 @@ very high level, how async code looks like in C#:</p>
 </code></pre>
 <p>Rust code is structured similarly. The following sample relies on <a href="https://docs.rs/async-std/latest/async_std/">async-std</a>
 for the implementation of <code>sleep</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::time::Duration;
+<pre><code class="language-rust">use std::time::Duration;
 use async_std::task::sleep;
 
 async fn format_delayed(message: &amp;str) -&gt; String {
     sleep(Duration::from_secs(1)).await;
     format!(&quot;Message: {}&quot;, message)
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <ol>
 <li>
 <p>The Rust <a href="https://doc.rust-lang.org/std/keyword.async.html"><code>async</code></a> keyword transforms a block of code into a state
@@ -3160,7 +2986,7 @@ async Task PrintDelayed(string message, CancellationToken cancellationToken)
 }
 </code></pre>
 <p>In Rust, the same function invocation does not print anything.</p>
-<pre><pre class="playground"><code class="language-rust">use async_std::task::sleep;
+<pre><code class="language-rust">use async_std::task::sleep;
 use std::time::Duration;
 
 #[tokio::main] // used to support an asynchronous main method
@@ -3172,7 +2998,7 @@ async fn main() {
 async fn print_delayed(message: &amp;str) {
     sleep(Duration::from_secs(1)).await;
     println!(&quot;{}&quot;, message);
-}</code></pre></pre>
+}</code></pre>
 <p>This is because futures are lazy: they do nothing until they are run. The most
 common way to run a <code>Future</code> is to <code>.await</code> it. When <code>.await</code> is called on a
 <code>Future</code>, it will attempt to run it to completion. If the <code>Future</code> is blocked,
@@ -3222,7 +3048,7 @@ async Task&lt;string&gt; Delay(TimeSpan delay, CancellationToken cancellationTok
 }
 </code></pre>
 <p>The same example for Rust:</p>
-<pre><pre class="playground"><code class="language-rust">use std::time::Duration;
+<pre><code class="language-rust">use std::time::Duration;
 use tokio::{select, time::sleep};
 
 #[tokio::main]
@@ -3238,7 +3064,7 @@ async fn main() {
 async fn delay(delay: Duration) -&gt; String {
     sleep(delay).await;
     format!(&quot;Waited {} second(s).&quot;, delay.as_secs())
-}</code></pre></pre>
+}</code></pre>
 <p>Again, there are crucial differences in semantics between the two examples. Most
 importantly, <code>tokio::select!</code> will cancel all remaining branches, while
 <code>Task.WhenAny</code> leaves it up to the user to cancel any in-flight tasks.</p>
@@ -3249,7 +3075,7 @@ the task and get notified when the task is completed or failed. In Rust, the
 <code>Future</code> can not be cloned or copied, and <code>await</code>ing will move the ownership.
 The <code>futures::FutureExt::shared</code> extension creates a cloneable handle to a
 <code>Future</code>, which then can be distributed across multiple consumers.</p>
-<pre><pre class="playground"><code class="language-rust">use futures::FutureExt;
+<pre><code class="language-rust">use futures::FutureExt;
 use std::time::Duration;
 use tokio::{select, time::sleep, signal};
 use tokio_util::sync::CancellationToken;
@@ -3279,7 +3105,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
         _ = sleep(Duration::from_secs(2)) =&gt; println!(&quot;Background operation completed.&quot;),
         _ = cancellation_token.cancelled() =&gt; println!(&quot;Background operation cancelled.&quot;),
     }
-}</code></pre></pre>
+}</code></pre>
 <h2 id="asynchronous-iteration"><a class="header" href="#asynchronous-iteration">Asynchronous iteration</a></h2>
 <p>While in .NET there are <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1"><code>IAsyncEnumerable&lt;T&gt;</code></a> and
 <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerator-1"><code>IAsyncEnumerator&lt;T&gt;</code></a>, Rust does not yet have an API for
@@ -3304,7 +3130,7 @@ async IAsyncEnumerable&lt;int&gt; RangeAsync(int start, int count)
 can be used for creating streams, e.g. <code>futures::channel::mpsc</code>. For a syntax
 closer to C#, <a href="https://github.com/tokio-rs/async-stream"><code>async-stream</code></a> offers a set of macros that
 can be used to generate streams succinctly.</p>
-<pre><pre class="playground"><code class="language-rust">use async_stream::stream;
+<pre><code class="language-rust">use async_stream::stream;
 use futures_core::stream::Stream;
 use futures_util::{pin_mut, stream::StreamExt};
 use std::{
@@ -3330,7 +3156,7 @@ fn range(start: i32, count: i32) -&gt; impl Stream&lt;Item = i32&gt; {
             yield start + i;
         }
     }
-}</code></pre></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="project-structure"><a class="header" href="#project-structure">Project Structure</a></h1>
 <p>While there are conventions around structuring a project  in .NET, they are
 less strict compared to the Rust project structure conventions. When creating

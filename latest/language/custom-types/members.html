@@ -154,9 +154,7 @@ functions that return an instance of the type. The factory functions can be
 stand-alone or <em>associated functions</em> of the type. In C# terms, associated
 functions are like have static methods on a type. Conventionally, if there is
 just one factory function for a <code>struct</code>, it's named <code>new</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Rectangle {
+<pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -165,8 +163,7 @@ impl Rectangle {
     pub fn new(x1: i32, y1: i32, x2: i32, y2: i32) -&gt; Self {
         Self { x1, y1, x2, y2 }
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Since Rust functions (associated or otherwise) do not support overloading, the
 factory functions have to be named uniquely. For example, below are some
 examples of so-called constructors or factory functions available on <code>String</code>:</p>
@@ -192,9 +189,7 @@ parameter has no type annotation since it's always the type to which the
 method belongs. A static method is called an <em>associated function</em>. In the
 example below, <code>new</code> is an associated function and the rest (<code>length</code>, <code>width</code>
 and <code>area</code>) are methods of the type:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Rectangle {
+<pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -215,23 +210,19 @@ impl Rectangle {
     pub fn area(&amp;self)  -&gt; i32 {
         self.length() * self.width()
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="constants"><a class="header" href="#constants">Constants</a></h2>
 <p>Like in C#, a type in Rust can have constants. However, the most interesting
 aspect to note is that Rust allows a type instance to be defined as a constant
 too:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point {
+<pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
 }
 
 impl Point {
     const EMPTY: ZERO = Point { x: 0, y: 0 };
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>In C#, the same would require a static read-only field:</p>
 <pre><code class="language-c#">readonly record struct Point(int X, int Y)
 {
@@ -251,9 +242,7 @@ field (in Rust method names can share the same identifier as a field) and the
 setter uses a <code>set_</code> prefix</a>.</p>
 <p>Below is an example showing how property-like accessor methods typically look
 for a type in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Rectangle {
+<pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
 }
@@ -290,8 +279,7 @@ impl Rectangle {
     pub fn area(&amp;self)  -&gt; i32 {
         self.length() * self.width()
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="extension-methods"><a class="header" href="#extension-methods">Extension Methods</a></h2>
 <p>Extension methods in C# enable the developer to attach new statically-bound
 methods to existing types, without needing to modify the original definition
@@ -320,7 +308,7 @@ the type containing the extension method must be imported (1). Rust offers a
 very similar facility via traits, called <em>extension traits</em>. The following
 example in Rust is the equivalent of the C# example above; it extends <code>String</code>
 with the method <code>wrap</code>:</p>
-<pre><pre class="playground"><code class="language-rust">#![allow(dead_code)]
+<pre><code class="language-rust">#![allow(dead_code)]
 
 mod exts {
     pub trait StrWrapExt {
@@ -341,7 +329,7 @@ fn main() {
     let mut s = String::from(&quot;Hello, World!&quot;);
     s.wrap(&quot;&gt;&gt;&gt; &quot;, &quot; &lt;&lt;&lt;&quot;); // (2)
     println!(&quot;{s}&quot;); // Prints: &gt;&gt;&gt; Hello, World! &lt;&lt;&lt;
-}</code></pre></pre>
+}</code></pre>
 <p>Just like in C#, for the method in the extension trait to become available
 (2), the extension trait muse be imported (1). Also note, the extension trait
 identifier <code>StrWrapExt</code> can itself be discarded via <code>_</code> at the time of import
@@ -395,9 +383,7 @@ decide whether the a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a <em>positional record declaration</em> (<code>record class</code> or <code>readonly record struct</code>). In Rust, mutability is expressed on methods through the type
 of the <code>self</code> parameter as shown in the example below:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point { x: i32, y: i32 }
+<pre><code class="language-rust">struct Point { x: i32, y: i32 }
 
 impl Point {
     pub fn new(x: i32, y: i32) -&gt; Self {
@@ -413,8 +399,7 @@ impl Point {
 
     pub fn set_x(&amp;mut self, val: i32) { self.x = val }
     pub fn set_y(&amp;mut self, val: i32) { self.y = val }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>In C#, you can do non-destructive mutations using <code>with</code>:</p>
 <pre><code class="language-c#">var pt = new Point(123, 456);
 pt = pt with { X = 789 };
@@ -424,9 +409,7 @@ readonly record struct Point(int X, int Y);
 </code></pre>
 <p>There is no <code>with</code> in Rust, but to emulate something similar in Rust, it has
 to be baked into the type's design:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point { x: i32, y: i32 }
+<pre><code class="language-rust">struct Point { x: i32, y: i32 }
 
 impl Point {
     pub fn new(x: i32, y: i32) -&gt; Self {
@@ -440,8 +423,7 @@ impl Point {
 
     pub fn set_x(self, val: i32) -&gt; Self { Self::new(val, self.y) }
     pub fn set_y(self, val: i32) -&gt; Self { Self::new(self.x, val) }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 
                     </main>
 

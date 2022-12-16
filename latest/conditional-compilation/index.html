@@ -168,7 +168,7 @@ the <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#th
 <a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment">compiler flag <code>--cfg</code></a> to arbitrarily set configuration options</p>
 <p>The <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute"><code>cfg attribute</code></a> is requiring and evaluating a
 <code>ConfigurationPredicate</code></p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt::{Display, Formatter};
+<pre><code class="language-rust">use std::fmt::{Display, Formatter};
 
 struct MyStruct;
 
@@ -201,27 +201,21 @@ impl Display for MyStruct {
 
 fn main() {
     println!(&quot;{}&quot;, MyStruct);
-}</code></pre></pre>
+}</code></pre>
 <p>The <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg_attr-attribute"><code>cfg_attr attribute</code></a> conditionally includes attributes based on
 a configuration predicate.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[cfg_attr(feature = &quot;serialization_support&quot;, derive(Serialize, Deserialize))]
+<pre><code class="language-rust">#[cfg_attr(feature = &quot;serialization_support&quot;, derive(Serialize, Deserialize))]
 pub struct MaybeSerializableStruct;
 
 // When the `serialization_support` feature flag is enabled, the above will expand to:
 // #[derive(Serialize, Deserialize)]
-// pub struct MaybeSerializableStruct;
-<span class="boring">}</span></code></pre></pre>
+// pub struct MaybeSerializableStruct;</code></pre>
 <p>The built-in <a href="https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-macro"><code>cfg macro</code></a> takes in a single configuration predicate
 and evaluates to the true literal when the predicate is true and the false
 literal when it is false.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>if cfg!(unix) {
+<pre><code class="language-rust">if cfg!(unix) {
   println!(&quot;I'm running on a unix machine!&quot;);
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/reference/conditional-compilation.html#conditional-compilation">Conditional compilation</a></li>

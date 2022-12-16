@@ -160,9 +160,7 @@ sealed record Timestamped&lt;T&gt;(DateTime Timestamp, T Value)
 }
 </code></pre>
 <p>Rust also has generics as shown by the equivalent of the above:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::time::*;
+<pre><code class="language-rust">use std::time::*;
 
 struct Timestamped&lt;T&gt; { value: T, timestamp: SystemTime }
 
@@ -170,8 +168,7 @@ impl&lt;T&gt; Timestamped&lt;T&gt; {
     fn new(value: T) -&gt; Self {
         Self { value, timestamp: SystemTime::now() }
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/book/ch10-01-syntax.html">Generic data types</a></li>
@@ -198,9 +195,7 @@ sealed record Timestamped&lt;T&gt;(DateTime Timestamp, T Value) :
 }
 </code></pre>
 <p>The same can be achieved in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::time::*;
+<pre><code class="language-rust">use std::time::*;
 
 struct Timestamped&lt;T&gt; { value: T, timestamp: SystemTime }
 
@@ -215,8 +210,7 @@ impl&lt;T&gt; PartialEq for Timestamped&lt;T&gt;
     fn eq(&amp;self, other: &amp;Self) -&gt; bool {
         self.value == other.value &amp;&amp; self.timestamp == other.timestamp
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Generic type constraints are called <a href="https://doc.rust-lang.org/rust-by-example/generics/bounds.html">bounds</a> in Rust.</p>
 <p>In C# version, <code>Timestamped&lt;T&gt;</code> instances can <em>only</em> be created for <code>T</code> which
 implement <code>IEquatable&lt;T&gt;</code> themselves, but note that the Rust version is more

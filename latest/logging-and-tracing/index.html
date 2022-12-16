@@ -167,11 +167,11 @@ applications to collect structured, event-based diagnostic information.
 <a href="https://docs.rs/tracing-subscriber/latest/tracing_subscriber/"><code>tracing_subscriber</code></a> can be used to implement and
 compose <code>tracing</code> subscribers. The same structured logging example from above
 with <code>tracing</code> and <code>tracing_subscriber</code> looks like:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     // install global default (&quot;console&quot;) collector.
     tracing_subscriber::fmt().init();
     tracing::info!(&quot;Hello {Day}.&quot;, Day = &quot;Thursday&quot;); // Hello Thursday.
-}</code></pre></pre>
+}</code></pre>
 <p><a href="https://crates.io/crates/opentelemetry">OpenTelemetry</a> offers a collection of tools, APIs, and SDKs
 used to instrument, generate, collect, and export telemetry data based on the
 OpenTelemetry specification. At the time of writing, the <a href="https://opentelemetry.io/docs/reference/specification/status/#logging">OpenTelemetry Logging

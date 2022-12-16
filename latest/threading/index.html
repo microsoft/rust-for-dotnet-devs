@@ -184,12 +184,12 @@ thread.Start();
 thread.Join(); // wait for thread to finish
 </code></pre>
 <p>The same code in Rust would be as follows:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 
 fn main() {
     let thread = thread::spawn(|| println!(&quot;Hello from a thread!&quot;));
     thread.join().unwrap(); // wait for thread to finish
-}</code></pre></pre>
+}</code></pre>
 <p>Creating and initializing a thread object and starting a thread are two
 different actions in .NET whereas in Rust both happen at the same time with
 <code>thread::spawn</code>.</p>
@@ -228,7 +228,7 @@ Console.WriteLine($&quot;Phrase: {data}&quot;);
 </code></pre>
 <p>In Rust, there is no variation of <code>thread::spawn</code> that does the same. Instead,
 the data is passed to the thread via a closure:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 
 fn main() {
     let data = String::from(&quot;Hello&quot;);
@@ -238,7 +238,7 @@ fn main() {
         data
     });
     println!(&quot;Phrase: {}&quot;, handle.join().unwrap());
-}</code></pre></pre>
+}</code></pre>
 <p>A few things to note:</p>
 <ul>
 <li>

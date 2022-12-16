@@ -221,14 +221,11 @@ tests:</p>
 <li><a href="https://doc.rust-lang.org/std/macro.assert_ne.html"><code>assert_ne!</code></a></li>
 </ul>
 <p>Below is an example of <code>assert_eq</code> in action:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[test]
+<pre><code class="language-rust">#[test]
 fn something_is_the_right_length() {
     let value = &quot;something&quot;;
     assert_eq!(9, value.len());
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>The standard library does not offer anything in the direction of data-driven
 tests, such as <code>[Theory]</code> in xUnit.net.</p>
 <h2 id="mocking"><a class="header" href="#mocking">Mocking</a></h2>
@@ -255,9 +252,7 @@ conditionally imports a mocked version of the <code>var_os</code> function used 
 binary will make use of <code>std::env::var_os</code>, but <code>cargo test</code> will instead
 import <code>tests::var_os_mock</code> as <code>var_os</code>, thus causing <code>get_env</code> to use the
 mocked version during testing:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Copyright (c) Microsoft Corporation. All rights reserved.
+<pre><code class="language-rust">// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
 /// Utility function to read an environmentvariable and return its value If
@@ -295,8 +290,7 @@ mod tests {
     fn get_env_when_var_defined_returns_some_value() {
         assert_eq!(Some(&quot;BAR&quot;.to_owned()), get_env(&quot;FOO&quot;));
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="code-coverage"><a class="header" href="#code-coverage">Code coverage</a></h2>
 <p>There is sophisticated tooling for .NET when it comes to analyzing test code
 coverage. In Visual Studio, the tooling is built-in and integrated. In Visual

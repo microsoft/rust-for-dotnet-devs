@@ -180,12 +180,9 @@ string str = &quot;Hello, World!&quot;;
 StringBuilder sb = new StringBuilder(&quot;Hello, World!&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let span: &amp;str = &quot;Hello, World!&quot;;
+<pre><code class="language-rust">let span: &amp;str = &quot;Hello, World!&quot;;
 let str = Box::new(&quot;Hello World!&quot;);
-let mut sb = String::from(&quot;Hello World!&quot;);
-<span class="boring">}</span></code></pre></pre>
+let mut sb = String::from(&quot;Hello World!&quot;);</code></pre>
 <h2 id="string-literals"><a class="header" href="#string-literals">String Literals</a></h2>
 <p>String literals in .NET are immutable <code>String</code> types and allocated on the heap.
 In Rust, they are <code>&amp;'static str</code>, which is immutable and has a global lifetime
@@ -194,28 +191,19 @@ and does not get allocated on the heap; they're embedded in the compiled binary.
 <pre><code class="language-csharp">string str = &quot;Hello, World!&quot;;
 </code></pre>
 <p>Rust</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let str: &amp;'static str = &quot;Hello, World!&quot;;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let str: &amp;'static str = &quot;Hello, World!&quot;;</code></pre>
 <p>C# verbatim string literals are equivalent to Rust raw string literals.</p>
 <p>C#</p>
 <pre><code class="language-csharp">string str = @&quot;Hello, \World/!&quot;;
 </code></pre>
 <p>Rust</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let str = r#&quot;Hello, \World/!&quot;#;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let str = r#&quot;Hello, \World/!&quot;#;</code></pre>
 <p>C# UTF-8 string literals are equivalent to Rust byte string literals.</p>
 <p>C#</p>
 <pre><code class="language-csharp">string str = &quot;hello&quot;u8;
 </code></pre>
 <p>Rust</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let str = b&quot;hello&quot;;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let str = b&quot;hello&quot;;</code></pre>
 <h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
 <p>C# has a built-in string interpolation feature that allows you to embed
 expressions inside a string literal. The following example shows how to use
@@ -227,12 +215,9 @@ string str = $&quot;Person {{ Name: {name}, Age: {age} }}&quot;;
 <p>Rust does not have a built-in string interpolation feature. Instead, the
 <code>format!</code> macro is used to format a string. The following example shows how to
 use string interpolation in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let name = &quot;John&quot;;
+<pre><code class="language-rust">let name = &quot;John&quot;;
 let age = 42;
-let str = format!(&quot;Person {{ name: {}, age: {} }}&quot;, name, age);
-<span class="boring">}</span></code></pre></pre>
+let str = format!(&quot;Person {{ name: {}, age: {} }}&quot;, name, age);</code></pre>
 <p>Custom classes and structs can also be interpolated in C# due to the fact that
 the <code>ToString()</code> method is available for each type as it inherits from <code>object</code>.</p>
 <pre><code class="language-csharp">class Person
@@ -250,9 +235,7 @@ Console.Writeline(person);
 <p>In Rust, there is no default formatting implemented/inherited for each type.
 Instead, the <code>std::fmt::Display</code> trait must be implemented for each type that
 needs to be converted to a string.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::fmt::*;
+<pre><code class="language-rust">use std::fmt::*;
 
 struct Person {
     name: String,
@@ -270,17 +253,14 @@ let person = Person {
     age: 42,
 };
 
-println!(&quot;{person}&quot;);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{person}&quot;);</code></pre>
 <p>Another option is to use the <code>std::fmt::Debug</code> trait. The <code>Debug</code> trait is
 implemented for all standard types and can be used to print the internal
 representation of a type. The following example shows how to use the <code>derive</code>
 attribute to print the internal representation of a custom struct using the
 <code>Debug</code> macro. This declaration is used to automatically implement the <code>Debug</code>
 trait for the <code>Person</code> struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Debug)]
+<pre><code class="language-rust">#[derive(Debug)]
 struct Person {
     name: String,
     age: i32,
@@ -291,8 +271,7 @@ let person = Person {
     age: 42,
 };
 
-println!(&quot;{person:?}&quot;);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{person:?}&quot;);</code></pre>
 <blockquote>
 <p>Note: Using the :? format specifier will use the <code>Debug</code> trait to print the
 struct, where leaving it out will use the <code>Display</code> trait.</p>

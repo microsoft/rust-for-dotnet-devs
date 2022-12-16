@@ -179,7 +179,7 @@ foreach (var thread in threads)
 Console.WriteLine(data);
 </code></pre>
 <p>In Rust, one must make explicit use of concurrency structures like <code>Mutex</code>:</p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><code class="language-rust">use std::thread;
 use std::sync::{Arc, Mutex};
 
 fn main() {
@@ -202,7 +202,7 @@ fn main() {
     }
 
     println!(&quot;{}&quot;, data.lock().unwrap());
-}</code></pre></pre>
+}</code></pre>
 <p>A few things to note:</p>
 <ul>
 <li>

@@ -184,7 +184,7 @@ backing a structure at any given time in Rust. The compiler assigns
 <a href="https://doc.rust-lang.org/rust-by-example/scope/lifetime.html">lifetimes</a> and tracks ownership. It is possible to pass or
 yield ownership, which is called <em>moving</em> in Rust. These ideas are briefly
 illustrated in the example Rust code below:</p>
-<pre><pre class="playground"><code class="language-rust">#![allow(dead_code, unused_variables)]
+<pre><code class="language-rust">#![allow(dead_code, unused_variables)]
 
 struct Point {
     x: i32,
@@ -195,17 +195,17 @@ fn main() {
     let a = Point { x: 12, y: 34 }; // point owned by a
     let b = a;                      // b owns the point now
     println!(&quot;{}, {}&quot;, a.x, a.y);   // compiler error!
-}</code></pre></pre>
+}</code></pre>
 <p>The first statement in <code>main</code> will allocate <code>Point</code> and that memory will be
 owned by <code>a</code>. In the second statement, the ownership is moved from <code>a</code> to <code>b</code>
 and <code>a</code> can no longer be used because it no longer owns anything or represents
 valid memory. The last statement that tries to print the fields of the point
 via <code>a</code> will fail compilation. Suppose <code>main</code> is fixed to read as follows:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let a = Point { x: 12, y: 34 }; // point owned by a
     let b = a;                      // b owns the point now
     println!(&quot;{}, {}&quot;, b.x, b.y);   // ok, uses b
-}   // point behind b is dropped</code></pre></pre>
+}   // point behind b is dropped</code></pre>
 <p>Note that when <code>main</code> exits, <code>a</code> and <code>b</code> will go out of scope. The memory
 behind <code>b</code> will be released by virtue of the stack returning to its state
 prior to <code>main</code> being called. In Rust, one says that the point behind <code>b</code> was
@@ -234,7 +234,7 @@ pointer is cloned</a>, the reference count is incremented. When the
 clone drops, the reference count is decremented. The actual instance behind
 the smart pointer is dropped when the reference count reaches zero. These
 points are illustrated by the following examples that build on the previous:</p>
-<pre><pre class="playground"><code class="language-rust">#![allow(dead_code, unused_variables)]
+<pre><code class="language-rust">#![allow(dead_code, unused_variables)]
 
 use std::rc::Rc;
 
@@ -259,7 +259,7 @@ fn main() {
 // prints:
 // a = 12, 34
 // b = 12, 34
-// Point dropped!</code></pre></pre>
+// Point dropped!</code></pre>
 <p>Note that:</p>
 <ul>
 <li>
@@ -296,11 +296,8 @@ Rust</em>), does not determine where the backing memory will eventually live. By
 default, it is always on the stack, but just the way .NET and C# have a notion
 of boxing value types, which copies them to the heap, the way to allocate a
 type on the heap is to box it using <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html"><code>Box</code></a>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let stack_point = Point { x: 12, y: 34 };
-let heap_point = Box::new(Point { x: 12, y: 34 });
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let stack_point = Point { x: 12, y: 34 };
+let heap_point = Box::new(Point { x: 12, y: 34 });</code></pre>
 <p>Like <code>Rc</code> and <code>Arc</code>, <code>Box</code> is a smart pointer, but unlike <code>Rc</code> and <code>Arc</code>, it
 exclusively owns the instance behind it. All of these smart pointers allocate
 an instance of their type argument <code>T</code> on the heap.</p>

@@ -159,16 +159,13 @@ very high level, how async code looks like in C#:</p>
 </code></pre>
 <p>Rust code is structured similarly. The following sample relies on <a href="https://docs.rs/async-std/latest/async_std/">async-std</a>
 for the implementation of <code>sleep</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::time::Duration;
+<pre><code class="language-rust">use std::time::Duration;
 use async_std::task::sleep;
 
 async fn format_delayed(message: &amp;str) -&gt; String {
     sleep(Duration::from_secs(1)).await;
     format!(&quot;Message: {}&quot;, message)
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <ol>
 <li>
 <p>The Rust <a href="https://doc.rust-lang.org/std/keyword.async.html"><code>async</code></a> keyword transforms a block of code into a state
@@ -210,7 +207,7 @@ async Task PrintDelayed(string message, CancellationToken cancellationToken)
 }
 </code></pre>
 <p>In Rust, the same function invocation does not print anything.</p>
-<pre><pre class="playground"><code class="language-rust">use async_std::task::sleep;
+<pre><code class="language-rust">use async_std::task::sleep;
 use std::time::Duration;
 
 #[tokio::main] // used to support an asynchronous main method
@@ -222,7 +219,7 @@ async fn main() {
 async fn print_delayed(message: &amp;str) {
     sleep(Duration::from_secs(1)).await;
     println!(&quot;{}&quot;, message);
-}</code></pre></pre>
+}</code></pre>
 <p>This is because futures are lazy: they do nothing until they are run. The most
 common way to run a <code>Future</code> is to <code>.await</code> it. When <code>.await</code> is called on a
 <code>Future</code>, it will attempt to run it to completion. If the <code>Future</code> is blocked,
@@ -272,7 +269,7 @@ async Task&lt;string&gt; Delay(TimeSpan delay, CancellationToken cancellationTok
 }
 </code></pre>
 <p>The same example for Rust:</p>
-<pre><pre class="playground"><code class="language-rust">use std::time::Duration;
+<pre><code class="language-rust">use std::time::Duration;
 use tokio::{select, time::sleep};
 
 #[tokio::main]
@@ -288,7 +285,7 @@ async fn main() {
 async fn delay(delay: Duration) -&gt; String {
     sleep(delay).await;
     format!(&quot;Waited {} second(s).&quot;, delay.as_secs())
-}</code></pre></pre>
+}</code></pre>
 <p>Again, there are crucial differences in semantics between the two examples. Most
 importantly, <code>tokio::select!</code> will cancel all remaining branches, while
 <code>Task.WhenAny</code> leaves it up to the user to cancel any in-flight tasks.</p>
@@ -299,7 +296,7 @@ the task and get notified when the task is completed or failed. In Rust, the
 <code>Future</code> can not be cloned or copied, and <code>await</code>ing will move the ownership.
 The <code>futures::FutureExt::shared</code> extension creates a cloneable handle to a
 <code>Future</code>, which then can be distributed across multiple consumers.</p>
-<pre><pre class="playground"><code class="language-rust">use futures::FutureExt;
+<pre><code class="language-rust">use futures::FutureExt;
 use std::time::Duration;
 use tokio::{select, time::sleep, signal};
 use tokio_util::sync::CancellationToken;
@@ -329,7 +326,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
         _ = sleep(Duration::from_secs(2)) =&gt; println!(&quot;Background operation completed.&quot;),
         _ = cancellation_token.cancelled() =&gt; println!(&quot;Background operation cancelled.&quot;),
     }
-}</code></pre></pre>
+}</code></pre>
 <h2 id="asynchronous-iteration"><a class="header" href="#asynchronous-iteration">Asynchronous iteration</a></h2>
 <p>While in .NET there are <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1"><code>IAsyncEnumerable&lt;T&gt;</code></a> and
 <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerator-1"><code>IAsyncEnumerator&lt;T&gt;</code></a>, Rust does not yet have an API for
@@ -354,7 +351,7 @@ async IAsyncEnumerable&lt;int&gt; RangeAsync(int start, int count)
 can be used for creating streams, e.g. <code>futures::channel::mpsc</code>. For a syntax
 closer to C#, <a href="https://github.com/tokio-rs/async-stream"><code>async-stream</code></a> offers a set of macros that
 can be used to generate streams succinctly.</p>
-<pre><pre class="playground"><code class="language-rust">use async_stream::stream;
+<pre><code class="language-rust">use async_stream::stream;
 use futures_core::stream::Stream;
 use futures_util::{pin_mut, stream::StreamExt};
 use std::{
@@ -380,7 +377,7 @@ fn range(start: i32, count: i32) -&gt; impl Stream&lt;Item = i32&gt; {
             yield start + i;
         }
     }
-}</code></pre></pre>
+}</code></pre>
 
                     </main>
 

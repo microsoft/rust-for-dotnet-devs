@@ -156,11 +156,8 @@ int? none = null;
 <p>Rust has no <code>null</code> and consequently no nullable context to enable. Optional or
 missing values are instead represented by <a href="https://doc.rust-lang.org/std/option/enum.Option.html"><code>Option&lt;T&gt;</code></a>. The
 equivalent of the C# code above in Rust would be:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let some: Option&lt;i32&gt; = Some(1);
-let none: Option&lt;i32&gt; = None;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let some: Option&lt;i32&gt; = Some(1);
+let none: Option&lt;i32&gt; = None;</code></pre>
 <p><code>Option&lt;T&gt;</code> in Rust is practically identical to <a href="https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-option-1.html"><code>'T option</code></a> from F#.</p>
 <h2 id="control-flow-with-optionality"><a class="header" href="#control-flow-with-optionality">Control flow with optionality</a></h2>
 <p>In C#, you may have been using <code>if</code>/<code>else</code> statements for controlling the flow
@@ -173,13 +170,10 @@ if (max is { } someMax)
 </code></pre>
 <p>You can use pattern matching to achieve the same behavior in Rust:</p>
 <p>It would even be more concise to use <code>if let</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let max = Some(10u32);
+<pre><code class="language-rust">let max = Some(10u32);
 if let Some(max) = max {
     println!(&quot;The maximum is {}.&quot;, max); // The maximum is 10.
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="null-conditional-operators"><a class="header" href="#null-conditional-operators">Null-conditional operators</a></h2>
 <p>The null-conditional operators (<code>?.</code> and <code>?[]</code>) make dealing with <code>null</code> in C#
 more ergonomic. In Rust, they are best replaced by using the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a>
@@ -189,13 +183,10 @@ string? none = null;
 Console.WriteLine(some?.Length); // 13
 Console.WriteLine(none?.Length); // (blank)
 </code></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let some: Option&lt;String&gt; = Some(String::from(&quot;Hello, World!&quot;));
+<pre><code class="language-rust">let some: Option&lt;String&gt; = Some(String::from(&quot;Hello, World!&quot;));
 let none: Option&lt;String&gt; = None;
 println!(&quot;{:?}&quot;, some.map(|s| s.len())); // Some(13)
-println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None</code></pre>
 <h2 id="null-coalescing-operator"><a class="header" href="#null-coalescing-operator">Null-coalescing operator</a></h2>
 <p>The null-coalescing operator (<code>??</code>) is typically used to default to another
 value when a nullable is <code>null</code>:</p>
@@ -205,13 +196,10 @@ Console.WriteLine(some ?? 0); // 1
 Console.WriteLine(none ?? 0); // 0
 </code></pre>
 <p>In Rust, you can use <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or"><code>unwrap_or</code></a> to get the same behavior:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let some: Option&lt;i32&gt; = Some(1);
+<pre><code class="language-rust">let some: Option&lt;i32&gt; = Some(1);
 let none: Option&lt;i32&gt; = None;
 println!(&quot;{:?}&quot;, some.unwrap_or(0)); // 1
-println!(&quot;{:?}&quot;, none.unwrap_or(0)); // 0
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{:?}&quot;, none.unwrap_or(0)); // 0</code></pre>
 <p><strong>Note</strong>: If the default value is expensive to compute, you can use
 <code>unwrap_or_else</code> instead. It takes a closure as an argument, which allows you to
 lazily initialize the default value.</p>

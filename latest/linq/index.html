@@ -175,7 +175,7 @@ foreach (var value in values)
 Console.Write(output); // Prints: 1, 2, 3, 4, 5
 </code></pre>
 <p>In Rust, the equivalent is simply <code>for</code>:</p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt::Write;
+<pre><code class="language-rust">use std::fmt::Write;
 
 fn main() {
     let values = [1, 2, 3, 4, 5];
@@ -190,9 +190,9 @@ fn main() {
     }
 
     println!(&quot;{output}&quot;);  // Prints: 1, 2, 3, 4, 5
-}</code></pre></pre>
+}</code></pre>
 <p>The <code>for</code> loop over an iterable essentially gets desuraged to the following:</p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt::Write;
+<pre><code class="language-rust">use std::fmt::Write;
 
 fn main() {
     let values = [1, 2, 3, 4, 5];
@@ -214,14 +214,14 @@ fn main() {
     }
 
 println!(&quot;{output}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>Rust's ownership and data race condition rules apply to all instances and
 data, and iteration is no exception. So while looping over an array might look
 straightforward and very similar to C#, one has to be mindful about ownership
 when needing to iterate the same collection/iterable more than once. The
 following example iteraters the list of integers twice, once to print their sum
 and another time to determine and print the maximum integer:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let values = vec![1, 2, 3, 4, 5];
 
     // sum all values
@@ -245,7 +245,7 @@ and another time to determine and print the maximum integer:</p>
         }
     }
     println!(&quot;max = {max:?}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>However, the code above is rejected by the compiler due to a subtle
 difference: <code>values</code> has been changed from an array to a <a href="https://doc.rust-lang.org/stable/std/vec/struct.Vec.html"><code>Vec&lt;int&gt;</code></a>,
 a <em>vector</em>, which is Rust's type for growable arrays (like <code>List&lt;T&gt;</code> in .NET).
@@ -260,7 +260,7 @@ the problem, one has to request iteration over <em>shared</em> references via
 reference to an item as opposed to taking its ownership.</p>
 <p>Below is the updated version of the previous example that compiles. The fix is
 to simply replace <code>values</code> with <code>&amp;values</code> in each of the <code>for</code> loops.</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let values = vec![1, 2, 3, 4, 5];
 
     // sum all values
@@ -284,11 +284,11 @@ to simply replace <code>values</code> with <code>&amp;values</code> in each of t
         }
     }
     println!(&quot;max = {max:?}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>The ownership and dropping can be seen in action even with <code>values</code> being an
 array instead of a vector. Consider just the summing loop from the above
 example over an array of a structure that wraps an integer:</p>
-<pre><pre class="playground"><code class="language-rust">struct Int(i32);
+<pre><code class="language-rust">struct Int(i32);
 
 impl Drop for Int {
     fn drop(&amp;mut self) {
@@ -305,7 +305,7 @@ fn main() {
     }
 
     println!(&quot;sum = {sum}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p><code>Int</code> implements <code>Drop</code> so that a message is printed when an instance get
 dropped. Running the above code will print:</p>
 <pre><code>value = Int(1)
@@ -323,12 +323,9 @@ sum = 15
 <p>It's clear that each value is acquired and dropped while the loop is running.
 Once the loop is complete, the sum is printed. If <code>values</code> in the <code>for</code> loop
 is changed to <code>&amp;values</code> instead, like this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>for value in &amp;values {
+<pre><code class="language-rust">for value in &amp;values {
     // ...
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>then the output of the program will change radically:</p>
 <pre><code>value = Int(1)
 value = Int(2)
@@ -441,15 +438,12 @@ doing the same in Rust. First in C#:</p>
 Console.WriteLine(result); // 50
 </code></pre>
 <p>And in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let result = (0..10)
+<pre><code class="language-rust">let result = (0..10)
     .filter(|x| x % 2 == 0)
     .flat_map(|x| (0..x))
     .fold(0, |acc, x| acc + x);
 
-println!(&quot;{result}&quot;); // 50
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;{result}&quot;); // 50</code></pre>
 <h2 id="deferred-execution-laziness"><a class="header" href="#deferred-execution-laziness">Deferred execution (laziness)</a></h2>
 <p>Many operators in LINQ are designed to be lazy such that they only do work
 when absolutely required. This enables composition or chaining of several
@@ -474,16 +468,13 @@ IEnumerable&lt;int&gt; InfiniteRange()
 }
 </code></pre>
 <p>Rust supports the same concept through infinite ranges:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Generators and yield in Rust are unstable at the moment, so
+<pre><code class="language-rust">// Generators and yield in Rust are unstable at the moment, so
 // instead, this sample uses Range:
 // https://doc.rust-lang.org/std/ops/struct.Range.html
 
 for value in (0..).take(5) {
     print!(&quot;{value} &quot;); // Prints &quot;0 1 2 3 4&quot;
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="iterator-methods-yield"><a class="header" href="#iterator-methods-yield">Iterator Methods (<code>yield</code>)</a></h2>
 <p>C# has the <code>yield</code> keword that enables the developer to quickly write an
 <em>iterator method</em>. The return type of an iterator method can be an

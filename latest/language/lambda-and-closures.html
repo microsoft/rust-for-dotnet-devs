@@ -156,14 +156,14 @@ pointers</em> are represented by delegates with the most common ones being <code
 and <code>Action</code>. The C# language allows ad-hoc instances of these delegates to be
 created through <em>lambda expressions</em>.</p>
 <p>Rust has function pointers too with the <code>fn</code> type being the simplest:</p>
-<pre><pre class="playground"><code class="language-rust">fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
+<pre><code class="language-rust">fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
     f(arg) + f(arg)
 }
 
 fn main() {
     let answer = do_twice(|x| x + 1, 5);
     println!(&quot;The answer is: {}&quot;, answer); // Prints: The answer is: 12
-}</code></pre></pre>
+}</code></pre>
 <p>However, Rust makes a distinction between <em>function pointers</em> (where <code>fn</code>
 defines a type) and <em>closures</em>: a closure can reference variables from its
 surrounding lexical scope, but not a function pointer. While C# also has

@@ -161,11 +161,8 @@ public class MyClass {}
 <p>In Rust <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">doc comments</a> provide the equivalent to C# documentation comments.
 Documentation comments in Rust use Markdown syntax. <a href="https://doc.rust-lang.org/rustdoc/index.html"><code>rustdoc</code></a> is the
 documentation compiler for Rust code and is usually invoked through <a href="https://doc.rust-lang.org/cargo/commands/cargo-doc.html"><code>cargo doc</code></a>, which compiles the comments into documentation. For example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>/// This is a doc comment for `MyStruct`.
-struct MyStruct;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">/// This is a doc comment for `MyStruct`.
+struct MyStruct;</code></pre>
 <p>In the .NET SDK there is no equivalent to <code>cargo doc</code>, such as <code>dotnet doc</code>.</p>
 <p>See also:</p>
 <ul>

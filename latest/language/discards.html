@@ -156,24 +156,16 @@ to ignore the result of an expression. In C# this looks like:</p>
 </code></pre>
 <p>In Rust, <a href="https://doc.rust-lang.org/stable/book/ch18-03-pattern-syntax.html#ignoring-values-in-a-pattern">ignoring the result of an expression</a> looks
 identical:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>_ = city.get_city_information(city_name);
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">_ = city.get_city_information(city_name);</code></pre>
 <p>Discards are also applied for deconstructing tuples in C#:</p>
 <pre><code class="language-csharp">var (_, second) = (&quot;first&quot;, &quot;second&quot;);
 </code></pre>
 <p>and, identically, in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let (_, second) = (&quot;first&quot;, &quot;second&quot;);
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let (_, second) = (&quot;first&quot;, &quot;second&quot;);</code></pre>
 <p>In addition to destructuring tuples, Rust offers
 <a href="https://doc.rust-lang.org/reference/patterns.html#destructuring">destructuring</a> of structs and enums using <code>..</code>, where <code>..</code>
 stands for the remaining part of a type:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Point {
+<pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
     z: i32,
@@ -183,8 +175,7 @@ let origin = Point { x: 0, y: 0, z: 0 };
 
 match origin {
     Point { x, .. } =&gt; println!(&quot;x is {}&quot;, x), // x is 0
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>When pattern matching, it is often useful to discard or ignore part of a
 matching expression, e.g. in C#:</p>
 <pre><code class="language-csharp">_ = (&quot;first&quot;, &quot;second&quot;) switch
@@ -194,14 +185,11 @@ matching expression, e.g. in C#:</p>
 };
 </code></pre>
 <p>and again, this looks almost identical in Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>_ = match (&quot;first&quot;, &quot;second&quot;)
+<pre><code class="language-rust">_ = match (&quot;first&quot;, &quot;second&quot;)
 {
     (&quot;first&quot;, _) =&gt; &quot;first element matched&quot;,
     (_, _) =&gt; &quot;first element did not match&quot;
-};
-<span class="boring">}</span></code></pre></pre>
+};</code></pre>
 
                     </main>
 

@@ -163,17 +163,14 @@ expression, compare the resulting value of the expression to patterns, and then
 run the code associated with the matching pattern.</p>
 <p>The following example is the definition of the <code>println!</code> macro that it is
 possible to call for printing some text <code>println!(&quot;Some text&quot;)</code></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>macro_rules! println {
+<pre><code class="language-rust">macro_rules! println {
     () =&gt; {
         $crate::print!(&quot;\n&quot;)
     };
     ($($arg:tt)*) =&gt; {{
         $crate::io::_print($crate::format_args_nl!($($arg)*));
     }};
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>To understand more about how to write declarative macros, it is possible to read
 the rust reference chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a>.</p>
 <p><a href="https://doc.rust-lang.org/reference/procedural-macros.html">Procedural macros</a> are different than declarative macros. Those accept some code
@@ -186,23 +183,20 @@ supporting reflection.</p>
 <code>print_something</code>, which is generating a <code>print_it</code> method for printing the
 &quot;Something&quot; string.</p>
 <p>In the lib.rs:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>extern crate proc_macro;
+<pre><code class="language-rust">extern crate proc_macro;
 use proc_macro::TokenStream;
 
 #[proc_macro]
 pub fn print_something(_item: TokenStream) -&gt; TokenStream {
     &quot;fn print_it() { println!(\&quot;Something\&quot;) }&quot;.parse().unwrap()
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>In the main.rs:</p>
-<pre><pre class="playground"><code class="language-rust">use replace_crate_name_here::print_something;
+<pre><code class="language-rust">use replace_crate_name_here::print_something;
 print_something!();
 
 fn main() {
     print_it();
-}</code></pre></pre>
+}</code></pre>
 <h2 id="derive-macros"><a class="header" href="#derive-macros">Derive macros</a></h2>
 <p>Derive macros can create new items given the token stream of a struct, enum, or
 union. An example of a derive macro is the <code>#[derive(Clone)]</code> one, which is
@@ -215,10 +209,10 @@ read the rust reference for <a href="https://doc.rust-lang.org/reference/procedu
 While working with asynchronous code, if making use of Tokio, the first step
 will be to decorate the new asynchronous main with an attribute macro like the
 following example:</p>
-<pre><pre class="playground"><code class="language-rust">#[tokio::main]
+<pre><code class="language-rust">#[tokio::main]
 async fn main() {
     println!(&quot;Hello world&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>In order to understand how to define a custom derive macro, it is possible to
 read the rust reference for <a href="https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros">attribute macros</a></p>
 

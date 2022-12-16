@@ -179,7 +179,7 @@ same underlying object in memory.</p>
 </li>
 </ol>
 <p>Equivalently in Rust:</p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Copy, Clone)]
+<pre><code class="language-rust">#[derive(Copy, Clone)]
 struct Point(i32, i32);
 
 fn main() {
@@ -189,7 +189,7 @@ fn main() {
     println!(&quot;{}&quot;, a == b); // Error: &quot;an implementation of `PartialEq&lt;_&gt;` might be missing for `Point`&quot;
     println!(&quot;{}&quot;, a.eq(&amp;b));
     println!(&quot;{}&quot;, a.eq(&amp;Point(2, 2)));
-}</code></pre></pre>
+}</code></pre>
 <p>The compiler error above illustrates that in Rust equality comparisons are
 <em>always</em> related to a trait implementation. To support a comparison using <code>==</code>,
 a type must implement <a href="https://doc.rust-lang.org/std/cmp/trait.PartialEq.html"><code>PartialEq</code></a>.</p>
@@ -197,7 +197,7 @@ a type must implement <a href="https://doc.rust-lang.org/std/cmp/trait.PartialEq
 deriving <code>PartialEq</code> will compare all fields for equality, which therefore have
 to implement <code>PartialEq</code> themselves. This is comparable to the equality for
 records in C#.</p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Copy, Clone, PartialEq)]
+<pre><code class="language-rust">#[derive(Copy, Clone, PartialEq)]
 struct Point(i32, i32);
 
 fn main() {
@@ -208,7 +208,7 @@ fn main() {
     println!(&quot;{}&quot;, a.eq(&amp;b)); // true
     println!(&quot;{}&quot;, a.eq(&amp;Point(2, 2))); // false
     println!(&quot;{}&quot;, a.eq(&amp;c)); // true
-}</code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html"><code>Eq</code></a> for a stricter version of <code>PartialEq</code>.</li>

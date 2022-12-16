@@ -177,9 +177,7 @@ the following example:</p>
 <p>In Rust, one can implement the basic expectations for error values by
 implementing the <a href="https://doc.rust-lang.org/std/error/trait.Error.html"><code>Error</code></a> trait. The minimal user-defined error
 implementation in Rust is:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Debug)]
+<pre><code class="language-rust">#[derive(Debug)]
 pub struct EmployeeListNotFound;
 
 impl std::fmt::Display for EmployeeListNotFound {
@@ -188,8 +186,7 @@ impl std::fmt::Display for EmployeeListNotFound {
     }
 }
 
-impl std::error::Error for EmployeeListNotFound {}
-<span class="boring">}</span></code></pre></pre>
+impl std::error::Error for EmployeeListNotFound {}</code></pre>
 <p>The equivalent to the .NET <code>Exception.InnerException</code> property is the
 <code>Error::source()</code> method in Rust. However, it is not required to provide an
 implementation for <code>Error::source()</code>, the blanket (default) implementation
@@ -205,25 +202,19 @@ returns a <code>None</code>.</p>
 }
 </code></pre>
 <p>For recoverable errors in Rust, return an <code>Ok</code> or <code>Err</code> variant from a method:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn error_if_negative(value: i32) -&gt; Result&lt;(), &amp;'static str&gt; {
+<pre><code class="language-rust">fn error_if_negative(value: i32) -&gt; Result&lt;(), &amp;'static str&gt; {
     if value &lt; 0 {
         Err(&quot;Specified argument was out of the range of valid values. (Parameter 'value')&quot;)
     } else {
         Ok(())
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>The <a href="https://doc.rust-lang.org/std/macro.panic.html"><code>panic!</code></a> macro creates unrecoverable errors:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn panic_if_negative(value: i32) {
+<pre><code class="language-rust">fn panic_if_negative(value: i32) {
     if value &lt; 0 {
         panic!(&quot;Specified argument was out of the range of valid values. (Parameter 'value')&quot;)
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <h2 id="error-propagation"><a class="header" href="#error-propagation">Error propagation</a></h2>
 <p>In .NET, exceptions are passed up the stack until they are handled or the
 program terminates. In Rust, unrecoverable errors behave similarly, but handling
@@ -245,29 +236,23 @@ error in C#:</p>
 }
 </code></pre>
 <p>In Rust, this is roughly equivalent to:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn write() {
+<pre><code class="language-rust">fn write() {
     match std::fs::File::create(&quot;temp.txt&quot;)
         .and_then(|mut file| std::io::Write::write_all(&amp;mut file, b&quot;content&quot;))
     {
         Ok(_) =&gt; {}
         Err(_) =&gt; println!(&quot;Writing to file failed.&quot;),
     };
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>Frequently, recoverable errors need only be propagated instead of being handled.
 For this, the method signature needs to be compatible with the types of the
 propagated error. The <a href="https://doc.rust-lang.org/std/result/index.html#the-question-mark-operator-"><code>?</code> operator</a> propagates errors
 ergonomically:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn write() -&gt; Result&lt;(), std::io::Error&gt; {
+<pre><code class="language-rust">fn write() -&gt; Result&lt;(), std::io::Error&gt; {
     let mut file = std::fs::File::create(&quot;file.txt&quot;)?;
     std::io::Write::write_all(&amp;mut file, b&quot;content&quot;)?;
     Ok(())
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p><strong>Note</strong>: to propagate an error with the question mark operator the error
 implementations need to be <em>compatible</em>, as described in <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator"><em>a shortcut for
 propagating errors</em></a>. The most general

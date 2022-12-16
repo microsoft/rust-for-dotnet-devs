@@ -162,10 +162,7 @@
 <pre><code class="language-csharp">int[] someArray = new int[2] { 1, 2 };
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let someArray: [i32; 2] = [1,2];
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let someArray: [i32; 2] = [1,2];</code></pre>
 <h2 id="list"><a class="header" href="#list">List</a></h2>
 <p>In Rust the equivalent of a <code>List&lt;T&gt;</code> is a <code>Vec&lt;T&gt;</code>. Arrays can be converted
 to Vecs and vice versa.</p>
@@ -179,30 +176,24 @@ to Vecs and vice versa.</p>
 something.Add(&quot;c&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut something = vec![
+<pre><code class="language-rust">let mut something = vec![
     &quot;a&quot;.to_owned(),
     &quot;b&quot;.to_owned()
 ];
 
-something.push(&quot;c&quot;.to_owned());
-<span class="boring">}</span></code></pre></pre>
+something.push(&quot;c&quot;.to_owned());</code></pre>
 <h2 id="tuples"><a class="header" href="#tuples">Tuples</a></h2>
 <p>C#:</p>
 <pre><code class="language-csharp">var something = (1, 2)
 Console.WriteLine($&quot;a = {something.Item1} b = {something.Item2}&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let something = (1, 2);
+<pre><code class="language-rust">let something = (1, 2);
 println!(&quot;a = {} b = {}&quot;, something.0, something.1);
 
 // deconstruction supported
 let (a, b) = something;
-println!(&quot;a = {} b = {}&quot;, a, b);
-<span class="boring">}</span></code></pre></pre>
+println!(&quot;a = {} b = {}&quot;, a, b);</code></pre>
 <blockquote>
 <p><strong>NOTE</strong>: Rust tuple elements cannot be named like in C#. The only way to
 access a tuple element is by using the index of the element or deconstructing
@@ -220,15 +211,12 @@ the tuple.</p>
 something.Add(&quot;hi&quot;, &quot;there&quot;);
 </code></pre>
 <p>Rust:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut something = HashMap::from([
+<pre><code class="language-rust">let mut something = HashMap::from([
     (&quot;Foo&quot;.to_owned(), &quot;Bar&quot;.to_owned()),
     (&quot;Baz&quot;.to_owned(), &quot;Qux&quot;.to_owned())
 ]);
 
-something.insert(&quot;hi&quot;.to_owned(), &quot;there&quot;.to_owned());
-<span class="boring">}</span></code></pre></pre>
+something.insert(&quot;hi&quot;.to_owned(), &quot;there&quot;.to_owned());</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/collections/index.html">Rust's standard library - Collections</a></li>

@@ -170,7 +170,7 @@ valid Unicode</p>
 <p><code>var_os</code> has a different signature giving back an <code>Option&lt;OsString&gt;</code>, either
 returning some value if the variable is set, or returning None if the variable
 is not set or it is containing not valid UTF-8</p>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+<pre><code class="language-rust">use std::env;
 
 
 fn main() {
@@ -179,8 +179,8 @@ fn main() {
         Ok(val) =&gt; println!(&quot;{key}: {val:?}&quot;),
         Err(e) =&gt; println!(&quot;couldn't interpret {key}: {e}&quot;),
     }
-}</code></pre></pre>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+}</code></pre>
+<pre><code class="language-rust">use std::env;
 
 fn main() {
     let key = &quot;ExampleVariable&quot;;
@@ -188,17 +188,17 @@ fn main() {
         Some(val) =&gt; println!(&quot;{key}: {val:?}&quot;),
         None =&gt; println!(&quot;{key} not defined in the enviroment&quot;),
     }
-}</code></pre></pre>
+}</code></pre>
 <p>Rust is also providing the functionality of accessing an environment variable at
 compile time. The <code>env!</code> macro from <code>std::env</code> expands the value of the variable
 at compile time, returning a <code>&amp;'static str</code>. If the variable is not set, an
 error is emitted.</p>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+<pre><code class="language-rust">use std::env;
 
 fn main() {
     let example = env!(&quot;ExampleVariable&quot;);
     println!(&quot;{example}&quot;);
-}</code></pre></pre>
+}</code></pre>
 <p>In .NET a compile time access to environment variables can be achieved, in a
 less straightforward way, via <a href="https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview">source generators</a>.</p>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
@@ -228,7 +228,7 @@ class Example {
 <p>A similar configuration experience in Rust is available via use of third-party
 crates such as <a href="https://crates.io/crates/figment">figment</a> or <a href="https://crates.io/crates/config">config</a>.</p>
 <p>See the following example making use of <a href="https://crates.io/crates/config">config</a> crate:</p>
-<pre><pre class="playground"><code class="language-rust">use config::{Config, Environment};
+<pre><code class="language-rust">use config::{Config, Environment};
 
 fn main() {
     let builder = Config::builder().add_source(Environment::default());
@@ -245,7 +245,7 @@ fn main() {
         }
     }
 }
-</code></pre></pre>
+</code></pre>
 
                     </main>
 

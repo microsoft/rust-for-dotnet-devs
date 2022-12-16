@@ -177,7 +177,7 @@ public class DatabaseConnection : IDisposable
     }
 }
 </code></pre>
-<pre><pre class="playground"><code class="language-rust">struct DatabaseConnection(&amp;'static str);
+<pre><code class="language-rust">struct DatabaseConnection(&amp;'static str);
 
 impl DatabaseConnection {
     // ...functions for using the database connection...
@@ -196,7 +196,7 @@ fn main() {
     let _db1 = DatabaseConnection(&quot;Server=A;Database=DB1&quot;);
     let _db2 = DatabaseConnection(&quot;Server=A;Database=DB2&quot;);
     // ...code for making use of the database connection...
-} // &quot;Dispose&quot; of &quot;db1&quot; and &quot;db2&quot; called here; when their scope ends</code></pre></pre>
+} // &quot;Dispose&quot; of &quot;db1&quot; and &quot;db2&quot; called here; when their scope ends</code></pre>
 
                     </main>
 

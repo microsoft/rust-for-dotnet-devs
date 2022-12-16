@@ -159,19 +159,13 @@ Consider the following example:</p>
 long longNumber = intNumber;
 </code></pre>
 <p>Rust is much more restrictive with respect to which type coercions are allowed:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let int_number: i32 = 1;
-let long_number: i64 = int_number; // error: expected `i64`, found `i32`
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let int_number: i32 = 1;
+let long_number: i64 = int_number; // error: expected `i64`, found `i32`</code></pre>
 <p>An example for a valid implicit conversion using <a href="https://github.com/rust-lang/rfcs/blob/master/text/0401-coercions.md#subtyping">subtyping</a> is:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn bar&lt;'a&gt;() {
+<pre><code class="language-rust">fn bar&lt;'a&gt;() {
     let s: &amp;'static str = &quot;hi&quot;;
     let t: &amp;'a str = s;
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/ops/trait.Deref.html#more-on-deref-coercion">Deref coercion</a></li>
@@ -188,11 +182,8 @@ int b = (int)a;
 <p>Rust does not provide coercion between primitive types, but instead uses
 <a href="https://doc.rust-lang.org/rust-by-example/types/cast.html">explicit conversion</a> using the <a href="https://doc.rust-lang.org/reference/expressions/operator-expr.html#type-cast-expressions"><code>as</code></a> keyword (casting).
 Casting in Rust will not cause a panic.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let int_number: i32 = 1;
-let long_number: i64 = int_number as _;
-<span class="boring">}</span></code></pre></pre>
+<pre><code class="language-rust">let int_number: i32 = 1;
+let long_number: i64 = int_number as _;</code></pre>
 <h2 id="custom-conversion"><a class="header" href="#custom-conversion">Custom conversion</a></h2>
 <p>Commonly, .NET types provide user-defined conversion operators to convert one
 type to another type. Also, <code>System.IConvertible</code> serves the purpose of
@@ -203,7 +194,7 @@ reciprocal, <a href="https://doc.rust-lang.org/std/convert/trait.Into.html"><cod
 implementation for <code>Into</code> is automatically provided (called <em>blanket
 implementation</em> in Rust). The following example illustrates two of such type
 conversions:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><code class="language-rust">fn main() {
     let my_id = MyId(&quot;id&quot;.into()); // `into()` is implemented automatically due to the `From&lt;&amp;str&gt;` trait implementation for `String`.
     println!(&quot;{}&quot;, String::from(my_id)); // This uses the `From&lt;MyId&gt;` implementation for `String`.
 }
@@ -214,7 +205,7 @@ impl From&lt;MyId&gt; for String {
     fn from(MyId(value): MyId) -&gt; Self {
         value
     }
-}</code></pre></pre>
+}</code></pre>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/convert/trait.TryFrom.html"><code>TryFrom</code></a> and <a href="https://doc.rust-lang.org/std/convert/trait.TryInto.html"><code>TryInto</code></a> for versions of <code>From</code>
