@@ -22,19 +22,13 @@ the following example:
 ```csharp
 public class EmployeeListNotFoundException : Exception
 {
-    public EmployeeListNotFoundException()
-    {
-    }
+    public EmployeeListNotFoundException() { }
 
     public EmployeeListNotFoundException(string message)
-        : base(message)
-    {
-    }
+        : base(message) { }
 
     public EmployeeListNotFoundException(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
+        : base(message, inner) { }
 }
 ```
 
