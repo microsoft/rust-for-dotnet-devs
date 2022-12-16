@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Members - Rust for C#/.NET Developers</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../../license.html">License</a></li><li class="chapter-item expanded "><a href="../../getting-started/index.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../../language/index.html"><strong aria-hidden="true">2.</strong> Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../language/scalar-types.html"><strong aria-hidden="true">2.1.</strong> Scalar Types</a></li><li class="chapter-item expanded "><a href="../../language/strings.html"><strong aria-hidden="true">2.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../../language/structured-types.html"><strong aria-hidden="true">2.3.</strong> Structured Types</a></li><li class="chapter-item expanded "><a href="../../language/custom-types/index.html"><strong aria-hidden="true">2.4.</strong> Custom Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../language/custom-types/classes.html"><strong aria-hidden="true">2.4.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../../language/custom-types/records.html"><strong aria-hidden="true">2.4.2.</strong> Records</a></li><li class="chapter-item expanded "><a href="../../language/custom-types/structs.html"><strong aria-hidden="true">2.4.3.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../../language/custom-types/interfaces.html"><strong aria-hidden="true">2.4.4.</strong> Interfaces</a></li><li class="chapter-item expanded "><a href="../../language/custom-types/enums.html"><strong aria-hidden="true">2.4.5.</strong> Enumeration Types</a></li><li class="chapter-item expanded "><a href="../../language/custom-types/members.html" class="active"><strong aria-hidden="true">2.4.6.</strong> Members</a></li></ol></li><li class="chapter-item expanded "><a href="../../language/local-functions.html"><strong aria-hidden="true">2.5.</strong> Local Functions</a></li><li class="chapter-item expanded "><a href="../../language/lambda-and-closures.html"><strong aria-hidden="true">2.6.</strong> Lambda and Closures</a></li><li class="chapter-item expanded "><a href="../../language/variables.html"><strong aria-hidden="true">2.7.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../../language/namespaces.html"><strong aria-hidden="true">2.8.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../../language/equality.html"><strong aria-hidden="true">2.9.</strong> Equality</a></li><li class="chapter-item expanded "><a href="../../language/generics.html"><strong aria-hidden="true">2.10.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../../language/polymorphism.html"><strong aria-hidden="true">2.11.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../../language/inheritance.html"><strong aria-hidden="true">2.12.</strong> Inheritance</a></li><li class="chapter-item expanded "><a href="../../language/exception-handling.html"><strong aria-hidden="true">2.13.</strong> Exception Handling</a></li><li class="chapter-item expanded "><a href="../../language/nullability-and-optionality.html"><strong aria-hidden="true">2.14.</strong> Nullability and Optionality</a></li><li class="chapter-item expanded "><a href="../../language/discards.html"><strong aria-hidden="true">2.15.</strong> Discards</a></li><li class="chapter-item expanded "><a href="../../language/conversion-and-casting.html"><strong aria-hidden="true">2.16.</strong> Conversion and Casting</a></li><li class="chapter-item expanded "><a href="../../language/operator-overloading.html"><strong aria-hidden="true">2.17.</strong> Operator Overloading</a></li><li class="chapter-item expanded "><a href="../../language/documentation-comments.html"><strong aria-hidden="true">2.18.</strong> Documentation Comments</a></li></ol></li><li class="chapter-item expanded "><a href="../../memory-management/index.html"><strong aria-hidden="true">3.</strong> Memory Management</a></li><li class="chapter-item expanded "><a href="../../resource-management/index.html"><strong aria-hidden="true">4.</strong> Resource Management</a></li><li class="chapter-item expanded "><a href="../../threading/index.html"><strong aria-hidden="true">5.</strong> Threading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../threading/synchronization.html"><strong aria-hidden="true">5.1.</strong> Synchronization</a></li><li class="chapter-item expanded "><a href="../../threading/producer-consumer.html"><strong aria-hidden="true">5.2.</strong> Producer-Consumer</a></li></ol></li><li class="chapter-item expanded "><a href="../../testing/index.html"><strong aria-hidden="true">6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../../benchmarking/index.html"><strong aria-hidden="true">7.</strong> Benchmarking</a></li><li class="chapter-item expanded "><a href="../../logging-and-tracing/index.html"><strong aria-hidden="true">8.</strong> Logging and Tracing</a></li><li class="chapter-item expanded "><a href="../../conditional-compilation/index.html"><strong aria-hidden="true">9.</strong> Conditional Compilation</a></li><li class="chapter-item expanded "><a href="../../environment-and-configuration/index.html"><strong aria-hidden="true">10.</strong> Environment and Configuration</a></li><li class="chapter-item expanded "><a href="../../linq/index.html"><strong aria-hidden="true">11.</strong> LINQ</a></li><li class="chapter-item expanded "><a href="../../meta-programming/index.html"><strong aria-hidden="true">12.</strong> Meta Programming</a></li><li class="chapter-item expanded "><a href="../../asynchronous-programming/index.html"><strong aria-hidden="true">13.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../../project-structure/index.html"><strong aria-hidden="true">14.</strong> Project Structure</a></li><li class="chapter-item expanded "><a href="../../compilation-and-building/index.html"><strong aria-hidden="true">15.</strong> Compilation and Building</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for C#/.NET Developers</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/microsoft/rust-for-dotnet-devs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/microsoft/rust-for-dotnet-devs/edit/main/src/language/custom-types/members.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="members"><a class="header" href="#members">Members</a></h1>
+<h2 id="constructors"><a class="header" href="#constructors">Constructors</a></h2>
+<p>Rust does not have any notion of constructors. Instead, you just write factory
+functions that return an instance of the type. The factory functions can be
+stand-alone or <em>associated functions</em> of the type. In C# terms, associated
+functions are like have static methods on a type. Conventionally, if there is
+just one factory function for a <code>struct</code>, it's named <code>new</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Rectangle {
+    x1: i32, y1: i32,
+    x2: i32, y2: i32,
+}
+
+impl Rectangle {
+    pub fn new(x1: i32, y1: i32, x2: i32, y2: i32) -&gt; Self {
+        Self { x1, y1, x2, y2 }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Since Rust functions (associated or otherwise) do not support overloading, the
+factory functions have to be named uniquely. For example, below are some
+examples of so-called constructors or factory functions available on <code>String</code>:</p>
+<ul>
+<li><code>String::new</code>: creates an empty string.</li>
+<li><code>String::with_capacity</code>: creates a string with an initial buffer capacity.</li>
+<li><code>String::from_utf8</code>: creates a string from bytes of UTF-8 encoded text.</li>
+<li><code>String::from_utf16</code>: creates a string from bytes of UTF-16 encoded text.</li>
+</ul>
+<p>In the case of an <code>enum</code> type in Rust, the variants act as the constructors.
+See <a href="enums.html">the section on enumeration types</a> for more.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a href="https://rust-lang.github.io/api-guidelines/predictability.html?highlight=new#constructors-are-static-inherent-methods-c-ctor">Constructors are static, inherent methods (C-CTOR)</a></p>
+</li>
+</ul>
+<h2 id="methods-static--instance-based"><a class="header" href="#methods-static--instance-based">Methods (static &amp; instance-based)</a></h2>
+<p>Like C#, Rust types (both <code>enum</code> and <code>struct</code>), can have static and
+instance-based methods. In Rust-speak, a <em>method</em> is always instance-based and
+is identified by the fact that its first parameter is named <code>self</code>. The <code>self</code>
+parameter has no type annotation since it's always the type to which the
+method belongs. A static method is called an <em>associated function</em>. In the
+example below, <code>new</code> is an associated function and the rest (<code>length</code>, <code>width</code>
+and <code>area</code>) are methods of the type:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Rectangle {
+    x1: i32, y1: i32,
+    x2: i32, y2: i32,
+}
+
+impl Rectangle {
+    pub fn new(x1: i32, y1: i32, x2: i32, y2: i32) -&gt; Self {
+        Self { x1, y1, x2, y2 }
+    }
+
+    pub fn length(&amp;self) -&gt; i32 {
+        self.y2 - self.y1
+    }
+
+    pub fn width(&amp;self)  -&gt; i32 {
+        self.x2 - self.x1
+    }
+
+    pub fn area(&amp;self)  -&gt; i32 {
+        self.length() * self.width()
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="constants"><a class="header" href="#constants">Constants</a></h2>
+<p>Like in C#, a type in Rust can have constants. However, the most interesting
+aspect to note is that Rust allows a type instance to be defined as a constant
+too:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Point {
+    const EMPTY: ZERO = Point { x: 0, y: 0 };
+}
+<span class="boring">}</span></code></pre></pre>
+<p>In C#, the same would require a static read-only field:</p>
+<pre><code class="language-c#">readonly record struct Point(int X, int Y)
+{
+    public static readonly Point Zero = new(0, 0);
+}
+</code></pre>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
+<p>Rust has no built-in support for type members to adverstise and fire events,
+like C# has with the <code>event</code> keyword.</p>
+<h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<p>In C#, fields of a type are generally private. They are then
+protected/encapsulated by property members with accessor methods (<code>get</code>, and
+<code>set</code>) to read or write to those field. The accessor methods can contain extra
+logic, for example, to either validate the value when being set or compute a
+value when being read. Rust only has methods <a href="https://github.com/rust-lang/rfcs/blob/master/text/0344-conventions-galore.md#gettersetter-apis">where a getter is named after the
+field (in Rust method names can share the same identifier as a field) and the
+setter uses a <code>set_</code> prefix</a>.</p>
+<p>Below is an example showing how property-like accessor methods typically look
+for a type in Rust:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Rectangle {
+    x1: i32, y1: i32,
+    x2: i32, y2: i32,
+}
+
+impl Rectangle {
+    pub fn new(x1: i32, y1: i32, x2: i32, y2: i32) -&gt; Self {
+        Self { x1, y1, x2, y2 }
+    }
+
+    // like property getters (each shares the same name as the field)
+
+    pub fn x1(&amp;self) -&gt; i32 { self.x1 }
+    pub fn y1(&amp;self) -&gt; i32 { self.y1 }
+    pub fn x2(&amp;self) -&gt; i32 { self.x2 }
+    pub fn y2(&amp;self) -&gt; i32 { self.y2 }
+
+    // like property setters
+
+    pub fn set_x1(&amp;mut self, val: i32) { self.x1 = val }
+    pub fn set_y1(&amp;mut self, val: i32) { self.y1 = val }
+    pub fn set_x2(&amp;mut self, val: i32) { self.x2 = val }
+    pub fn set_y2(&amp;mut self, val: i32) { self.y2 = val }
+
+    // like computed properties
+
+    pub fn length(&amp;self) -&gt; i32 {
+        self.y2 - self.y1
+    }
+
+    pub fn width(&amp;self)  -&gt; i32 {
+        self.x2 - self.x1
+    }
+
+    pub fn area(&amp;self)  -&gt; i32 {
+        self.length() * self.width()
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="extension-methods"><a class="header" href="#extension-methods">Extension Methods</a></h2>
+<p>Extension methods in C# enable the developer to attach new statically-bound
+methods to existing types, without needing to modify the original definition
+of the type. In the following C# example, a new <code>Wrap</code> method is added to the
+<code>StringBuilder</code> class <em>by extension</em>:</p>
+<pre><code class="language-csharp">using System;
+using System.Text;
+using Extensions; // (1)
+
+var sb = new StringBuilder(&quot;Hello, World!&quot;);
+sb.Wrap(&quot;&gt;&gt;&gt; &quot;, &quot; &lt;&lt;&lt;&quot;); // (2)
+Console.WriteLine(sb.ToString()); // Prints: &gt;&gt;&gt; Hello, World! &lt;&lt;&lt;
+
+namespace Extensions
+{
+    static class StringBuilderExtensions
+    {
+        public static void Wrap(this StringBuilder sb,
+                                string left, string right) =&gt;
+            sb.Insert(0, left).Append(right);
+    }
+}
+</code></pre>
+<p>Note that for an extension method to become available (2), the namespace with
+the type containing the extension method must be imported (1). Rust offers a
+very similar facility via traits, called <em>extension traits</em>. The following
+example in Rust is the equivalent of the C# example above; it extends <code>String</code>
+with the method <code>wrap</code>:</p>
+<pre><pre class="playground"><code class="language-rust">#![allow(dead_code)]
+
+mod exts {
+    pub trait StrWrapExt {
+        fn wrap(&amp;mut self, left: &amp;str, right: &amp;str);
+    }
+
+    impl StrWrapExt for String {
+        fn wrap(&amp;mut self, left: &amp;str, right: &amp;str) {
+            self.insert_str(0, left);
+            self.push_str(right);
+        }
+    }
+}
+
+fn main() {
+    use exts::StrWrapExt as _; // (1)
+
+    let mut s = String::from(&quot;Hello, World!&quot;);
+    s.wrap(&quot;&gt;&gt;&gt; &quot;, &quot; &lt;&lt;&lt;&quot;); // (2)
+    println!(&quot;{s}&quot;); // Prints: &gt;&gt;&gt; Hello, World! &lt;&lt;&lt;
+}</code></pre></pre>
+<p>Just like in C#, for the method in the extension trait to become available
+(2), the extension trait muse be imported (1). Also note, the extension trait
+identifier <code>StrWrapExt</code> can itself be discarded via <code>_</code> at the time of import
+without affecting the availability of <code>wrap</code> for <code>String</code>.</p>
+<h2 id="visibilityaccess-modifiers"><a class="header" href="#visibilityaccess-modifiers">Visibility/Access modifiers</a></h2>
+<p>C# has a number of accessibility or visibility modifiers:</p>
+<ul>
+<li><code>private</code></li>
+<li><code>protected</code></li>
+<li><code>internal</code></li>
+<li><code>protected internal</code> (family)</li>
+<li><code>public</code></li>
+</ul>
+<p>In Rust, a compilation is built-up of a tree of modules where modules contain
+and define <a href="https://doc.rust-lang.org/reference/items.html"><em>items</em></a> like types, traits, enums, constants and
+functions. Almost everything is private by default. One exception is, for
+example, <em>associated items</em> in a public trait, which are public by default.
+This is similar to how members of a C# interface declared without any public
+modifiers in the source code are public by default. Rust only has the <code>pub</code>
+modifier to change the visibility with respect to the module tree. There
+are variations of <code>pub</code> that change the scope of the public visibility:</p>
+<ul>
+<li><code>pub(self)</code></li>
+<li><code>pub(super)</code></li>
+<li><code>pub(crate)</code></li>
+<li><code>pub(in PATH)</code></li>
+</ul>
+<p>For more details, see the <a href="https://doc.rust-lang.org/reference/visibility-and-privacy.html">Visibility and Privacy</a> section of The Rust
+Reference.</p>
+<p>The table below is an approximation of the mapping of C# and Rust modifiers:</p>
+<div class="table-wrapper"><table><thead><tr><th>C#</th><th>Rust</th><th>Note</th></tr></thead><tbody>
+<tr><td><code>private</code></td><td>(default)</td><td>See note 1.</td></tr>
+<tr><td><code>protected</code></td><td>N/A</td><td>See note 2.</td></tr>
+<tr><td><code>internal</code></td><td><code>pub(crate)</code></td><td></td></tr>
+<tr><td><code>protected internal</code> (family)</td><td>N/A</td><td>See note 2.</td></tr>
+<tr><td><code>public</code></td><td><code>pub</code></td><td></td></tr>
+</tbody></table>
+</div>
+<ol>
+<li>
+<p>There is no keyword to denote private visibility; it's the default in Rust.</p>
+</li>
+<li>
+<p>Since there are class-based type hierarchies in Rust, there is no
+equivalent of <code>protected</code>.</p>
+</li>
+</ol>
+<h2 id="mutability"><a class="header" href="#mutability">Mutability</a></h2>
+<p>When designing a type in C#, it is the responsiblity of the developer to
+decide whether the a type is mutable or immutable; whether it supports
+destructive or non-destructive mutations. C# does support an immutable design
+for types with a <em>positional record declaration</em> (<code>record class</code> or <code>readonly record struct</code>). In Rust, mutability is expressed on methods through the type
+of the <code>self</code> parameter as shown in the example below:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point { x: i32, y: i32 }
+
+impl Point {
+    pub fn new(x: i32, y: i32) -&gt; Self {
+        Self { x, y }
+    }
+
+    // self is not mutable
+
+    pub fn x(&amp;self) -&gt; i32 { self.x }
+    pub fn y(&amp;self) -&gt; i32 { self.y }
+
+    // self is mutable
+
+    pub fn set_x(&amp;mut self, val: i32) { self.x = val }
+    pub fn set_y(&amp;mut self, val: i32) { self.y = val }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>In C#, you can do non-destructive mutations using <code>with</code>:</p>
+<pre><code class="language-c#">var pt = new Point(123, 456);
+pt = pt with { X = 789 };
+Console.WriteLine(pt.ToString()); // prints: Point { X = 789, Y = 456 }
+
+readonly record struct Point(int X, int Y);
+</code></pre>
+<p>There is no <code>with</code> in Rust, but to emulate something similar in Rust, it has
+to be baked into the type's design:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point { x: i32, y: i32 }
+
+impl Point {
+    pub fn new(x: i32, y: i32) -&gt; Self {
+        Self { x, y }
+    }
+
+    pub fn x(&amp;self) -&gt; i32 { self.x }
+    pub fn y(&amp;self) -&gt; i32 { self.y }
+
+    // following methods consume self and return a new instance
+
+    pub fn set_x(self, val: i32) -&gt; Self { Self::new(val, self.y) }
+    pub fn set_y(self, val: i32) -&gt; Self { Self::new(self.x, val) }
+}
+<span class="boring">}</span></code></pre></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../language/custom-types/enums.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../language/local-functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../language/custom-types/enums.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../language/local-functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
