@@ -146,3 +146,5 @@ fail code unless all variants are covered. In contrast, the emulation with C#
 actually creates a class hierarchy (albeit very succinctly expressed) and
 since `IpAddr` is an _abstract base class_, the set of all types it can
 represent is unknown to the compiler.
+
+  [derive]: https://doc.rust-lang.org/stable/reference/attributes/derive.html

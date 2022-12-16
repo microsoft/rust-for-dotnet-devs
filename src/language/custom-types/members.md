@@ -1,6 +1,6 @@
 # Members
 
-### Constructors
+## Constructors
 
 Rust does not have any notion of constructors. Instead, you just write factory
 functions that return an instance of the type. The factory functions can be
@@ -37,10 +37,10 @@ See also:
 
 - [Constructors are static, inherent methods (C-CTOR)][rs-api-C-CTOR]
 
-  [enums]: #enumeration-types-enum
+  [enums]: enums.md
   [rs-api-C-CTOR]: https://rust-lang.github.io/api-guidelines/predictability.html?highlight=new#constructors-are-static-inherent-methods-c-ctor
 
-### Methods (static & instance-based)
+## Methods (static & instance-based)
 
 Like C#, Rust types (both `enum` and `struct`), can have static and
 instance-based methods. In Rust-speak, a _method_ is always instance-based and
@@ -75,7 +75,7 @@ impl Rectangle {
 }
 ```
 
-### Constants
+## Constants
 
 Like in C#, a type in Rust can have constants. However, the most interesting
 aspect to note is that Rust allows a type instance to be defined as a constant
@@ -101,12 +101,12 @@ readonly record struct Point(int X, int Y)
 }
 ```
 
-### Events
+## Events
 
 Rust has no built-in support for type members to adverstise and fire events,
 like C# has with the `event` keyword.
 
-### Properties
+## Properties
 
 In C#, fields of a type are generally private. They are then
 protected/encapsulated by property members with accessor methods (`get`, and
@@ -162,7 +162,7 @@ impl Rectangle {
 }
 ```
 
-### Extension Methods
+## Extension Methods
 
 Extension methods in C# enable the developer to attach new statically-bound
 methods to existing types, without needing to modify the original definition
@@ -225,7 +225,7 @@ Just like in C#, for the method in the extension trait to become available
 identifier `StrWrapExt` can itself be discarded via `_` at the time of import
 without affecting the availability of `wrap` for `String`.
 
-### Visibility/Access modifiers
+## Visibility/Access modifiers
 
 C# has a number of accessibility or visibility modifiers:
 
@@ -270,7 +270,7 @@ The table below is an approximation of the mapping of C# and Rust modifiers:
 2. Since there are class-based type hierarchies in Rust, there is no
    equivalent of `protected`.
 
-### Mutability
+## Mutability
 
 When designing a type in C#, it is the responsiblity of the developer to
 decide whether the a type is mutable or immutable; whether it supports
