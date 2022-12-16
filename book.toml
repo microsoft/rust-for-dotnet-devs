@@ -8,3 +8,6 @@ title = "Rust for C#/.NET Developers"
 git-repository-url = "https://github.com/microsoft/rust-for-dotnet-devs"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/microsoft/rust-for-dotnet-devs/edit/main/{path}"
+
+[output.html.playground]
+runnable = false
