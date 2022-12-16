@@ -36,7 +36,7 @@ checks as simple as `dow == DayOfWeek::Friday`. To bring it somewhat on par in
 function with an `enum` in C#, use [the `#derive` attribute][derive] to
 automatically have macros implement the commonly needed functionality:
 
-```rust
+```rust,compile_fail
 #[derive(Debug,     // enables formatting in "{:?}"
          Clone,     // required by Copy
          Copy,      // enables copy-by-value semantics
