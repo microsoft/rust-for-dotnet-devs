@@ -23,4 +23,4 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         npm install -g markdown-link-check
-        find . -type f -name '*.md' -print0 | xargs -0 -n1 markdown-link-check --config .markdownlinkcheck.jsonc
+        git ls-files -z '*.md' | xargs -0 -n1 markdown-link-check --config .markdownlinkcheck.jsonc
