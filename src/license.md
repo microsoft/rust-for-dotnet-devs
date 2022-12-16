@@ -1,6 +1,7 @@
 # License
 
-Copyright &copy; Microsoft Corporation.
+Copyright &copy; Microsoft Corporation.<br>
+Portions Copyright &copy; 2010 The Rust Project Developers
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
