@@ -1,0 +1,22 @@
+{
+    "image": "ubuntu:latest",
+    "features": {
+        "rust": {
+            "version": "latest"
+        },
+        "common": {
+            "username": "vscode",
+            "uid": "1000",
+            "gid": "1000",
+            "installZsh": true,
+            "installOhMyZsh": true
+        }
+    },
+    "postCreateCommand": "cargo install mdbook",
+    "remoteUser": "vscode",
+    "extensions": [
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}
