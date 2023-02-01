@@ -10,7 +10,7 @@ C# and .NET:
 | `i8`    | `sbyte`   | `SByte`                |                  |
 | `i16`   | `short`   | `Int16`                |                  |
 | `i32`   | `int`     | `Int32`                |                  |
-| `i64`   | `long`    | `Int32`                |                  |
+| `i64`   | `long`    | `Int64`                |                  |
 | `i128`  |           | `Int128`               |                  |
 | `isize` | `nint`    | `IntPtr`               |                  |
 | `u8`    | `byte`    | `Byte`                 |                  |
