@@ -41,8 +41,8 @@ Notes:
    in C#, but it's very uncommon. Unlike C#, [F# does have a unit
    type][unit.fs] like Rust.
 
-3. While `void` and `object` are not scalar types (although scalars like `int`
-   are sub-classes of `object` in the .NET type hierarchy), they've been
+3. While `void` and `object` are not scalar types (even though scalars like `int`
+   are sub-classes of `object` in the .NET type hierarchy), they have been
    included in the above table for convenience.
 
 See also:
