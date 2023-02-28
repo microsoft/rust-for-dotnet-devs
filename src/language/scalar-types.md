@@ -28,9 +28,10 @@ C# and .NET:
 Notes:
 
 1. [`char`][char.rs] in Rust and [`Char`][char.net] in .NET have different
-   definitions. In Rust, `char` is 4 bytes wide that is a [Unicode scalar
-   value], but in .NET, a `Char` is 2 bytes wides uses the UTF-16 encoding.
-   For more information, see the [Rust `char` documentation][char.rs].
+   definitions. In Rust, a `char` is 4 bytes wide that is a [Unicode scalar
+   value], but in .NET, a `Char` is 2 bytes wide and stores the character
+   using the UTF-16 encoding. For more information, see the [Rust `char`
+   documentation][char.rs].
 
 2. While a unit `()` (an empty tuple) in Rust is a _expressible value_, the
    closest cousin in C# would be `void` to represent nothing. However, `void`
