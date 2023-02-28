@@ -35,11 +35,11 @@ Notes:
 
 2. While a unit `()` (an empty tuple) in Rust is a _expressible value_, the
    closest cousin in C# would be `void` to represent nothing. However, `void`
-   isn't an _expressible value_ except when using pointers and unsafe code. .NET
-   has [`ValueTuple`][ValueTuple] that is an empty tuple, but C# does not have
-   a literal syntax like `()` to represent. `ValueTuple` can be used in C#,
-   but it's very uncommon. Unlike C#, [F# does have a unit type][unit.fs] like
-   Rust.
+   isn't an _expressible value_ except when using pointers and unsafe code.
+   .NET has [`ValueTuple`][ValueTuple] that is an empty tuple, but C# does not
+   have a literal syntax like `()` to represent it. `ValueTuple` can be used
+   in C#, but it's very uncommon. Unlike C#, [F# does have a unit
+   type][unit.fs] like Rust.
 
 3. While `void` and `object` are not scalar types (although scalars like `int`
    are sub-classes of `object` in the .NET type hierarchy), they've been
