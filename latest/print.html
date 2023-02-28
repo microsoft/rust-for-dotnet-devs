@@ -251,22 +251,23 @@ C# and .NET:</p>
 <ol>
 <li>
 <p><a href="https://doc.rust-lang.org/std/primitive.char.html"><code>char</code></a> in Rust and <a href="https://learn.microsoft.com/en-us/dotnet/api/system.char"><code>Char</code></a> in .NET have different
-definitions. In Rust, <code>char</code> is 4 bytes wide that is a <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode scalar
-value</a>, but in .NET, a <code>Char</code> is 2 bytes wides uses the UTF-16 encoding.
-For more information, see the <a href="https://doc.rust-lang.org/std/primitive.char.html">Rust <code>char</code> documentation</a>.</p>
+definitions. In Rust, a <code>char</code> is 4 bytes wide that is a <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode scalar
+value</a>, but in .NET, a <code>Char</code> is 2 bytes wide and stores the character
+using the UTF-16 encoding. For more information, see the <a href="https://doc.rust-lang.org/std/primitive.char.html">Rust <code>char</code>
+documentation</a>.</p>
 </li>
 <li>
 <p>While a unit <code>()</code> (an empty tuple) in Rust is a <em>expressible value</em>, the
 closest cousin in C# would be <code>void</code> to represent nothing. However, <code>void</code>
-isn't an <em>expressible value</em> except when using pointers and unsafe code. .NET
-has <a href="https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple?view=net-7.0"><code>ValueTuple</code></a> that is an empty tuple, but C# does not have
-a literal syntax like <code>()</code> to represent. <code>ValueTuple</code> can be used in C#,
-but it's very uncommon. Unlike C#, <a href="https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/unit-type">F# does have a unit type</a> like
-Rust.</p>
+isn't an <em>expressible value</em> except when using pointers and unsafe code.
+.NET has <a href="https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple?view=net-7.0"><code>ValueTuple</code></a> that is an empty tuple, but C# does not
+have a literal syntax like <code>()</code> to represent it. <code>ValueTuple</code> can be used
+in C#, but it's very uncommon. Unlike C#, <a href="https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/unit-type">F# does have a unit
+type</a> like Rust.</p>
 </li>
 <li>
-<p>While <code>void</code> and <code>object</code> are not scalar types (although scalars like <code>int</code>
-are sub-classes of <code>object</code> in the .NET type hierarchy), they've been
+<p>While <code>void</code> and <code>object</code> are not scalar types (even though scalars like <code>int</code>
+are sub-classes of <code>object</code> in the .NET type hierarchy), they have been
 included in the above table for convenience.</p>
 </li>
 </ol>
