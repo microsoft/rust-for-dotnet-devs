@@ -1,10 +1,7 @@
 # Contributing
 
-You are invited to contribute 💖 to this guide by [opening issues] and
-[submitting pull requests]!
-
-  [opening issues]: https://github.com/microsoft/rust-for-dotnet-devs/issues/new
-  [submitting pull requests]: https://github.com/microsoft/rust-for-dotnet-devs/pulls
+You are invited to contribute 💖 to this guide by opening issues and
+submitting pull requests!
 
 Here are some ideas 💡 for how and where you can help most with
 contributions:
