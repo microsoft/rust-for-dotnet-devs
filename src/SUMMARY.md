@@ -2,6 +2,7 @@
 
 [Introduction](./introduction.md)
 [License](./license.md)
+[Contributing](./contributing.md)
 
 - [Getting Started](./getting-started/index.md)
 - [Language](./language/index.md)
