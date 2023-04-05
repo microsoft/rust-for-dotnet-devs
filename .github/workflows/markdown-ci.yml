@@ -22,5 +22,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        npm install -g markdown-link-check
+        npm install -g markdown-link-check@3.10.3
         git ls-files -z '*.md' | xargs -0 -n1 markdown-link-check --config .markdownlinkcheck.jsonc
