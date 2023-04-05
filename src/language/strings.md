@@ -113,7 +113,7 @@ use string interpolation in Rust:
 ```rust
 let name = "John";
 let age = 42;
-let str = format!("Person {{ name: {}, age: {} }}", name, age);
+let str = format!("Person {{ name: {name}, age: {age} }}");
 ```
 
 Custom classes and structs can also be interpolated in C# due to the fact that
