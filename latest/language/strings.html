@@ -218,7 +218,7 @@ string str = $&quot;Person {{ Name: {name}, Age: {age} }}&quot;;
 use string interpolation in Rust:</p>
 <pre><code class="language-rust">let name = &quot;John&quot;;
 let age = 42;
-let str = format!(&quot;Person {{ name: {}, age: {} }}&quot;, name, age);</code></pre>
+let str = format!(&quot;Person {{ name: {name}, age: {age} }}&quot;);</code></pre>
 <p>Custom classes and structs can also be interpolated in C# due to the fact that
 the <code>ToString()</code> method is available for each type as it inherits from <code>object</code>.</p>
 <pre><code class="language-csharp">class Person
