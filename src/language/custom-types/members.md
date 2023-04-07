@@ -221,7 +221,7 @@ fn main() {
 ```
 
 Just like in C#, for the method in the extension trait to become available
-(2), the extension trait muse be imported (1). Also note, the extension trait
+(2), the extension trait must be imported (1). Also note, the extension trait
 identifier `StrWrapExt` can itself be discarded via `_` at the time of import
 without affecting the availability of `wrap` for `String`.
 
@@ -267,7 +267,7 @@ The table below is an approximation of the mapping of C# and Rust modifiers:
 
 1. There is no keyword to denote private visibility; it's the default in Rust.
 
-2. Since there are class-based type hierarchies in Rust, there is no
+2. Since there are no class-based type hierarchies in Rust, there is no
    equivalent of `protected`.
 
 ## Mutability
