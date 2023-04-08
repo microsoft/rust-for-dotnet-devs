@@ -1037,7 +1037,7 @@ fn main() {
     println!(&quot;{s}&quot;); // Prints: &gt;&gt;&gt; Hello, World! &lt;&lt;&lt;
 }</code></pre>
 <p>Just like in C#, for the method in the extension trait to become available
-(2), the extension trait muse be imported (1). Also note, the extension trait
+(2), the extension trait must be imported (1). Also note, the extension trait
 identifier <code>StrWrapExt</code> can itself be discarded via <code>_</code> at the time of import
 without affecting the availability of <code>wrap</code> for <code>String</code>.</p>
 <h2 id="visibilityaccess-modifiers"><a class="header" href="#visibilityaccess-modifiers">Visibility/Access modifiers</a></h2>
@@ -1079,7 +1079,7 @@ Reference.</p>
 <p>There is no keyword to denote private visibility; it's the default in Rust.</p>
 </li>
 <li>
-<p>Since there are class-based type hierarchies in Rust, there is no
+<p>Since there are no class-based type hierarchies in Rust, there is no
 equivalent of <code>protected</code>.</p>
 </li>
 </ol>
