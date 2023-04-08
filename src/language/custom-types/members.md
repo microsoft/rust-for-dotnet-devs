@@ -343,7 +343,8 @@ fn main() {
     let pt = Point { x: 123, y: 456 };
     let pt = Point { x: 789, ..pt };
     println!("{pt:?}"); // prints: Point { x: 789, y: 456 }
-}```
+}
+```
 
 As seen in the example above, the struct update syntax requires access to the type fields.
 Therefore, it is generally more common to use it within the module that has access to private details of its types.
