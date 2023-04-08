@@ -88,7 +88,7 @@ struct Point {
 }
 
 impl Point {
-    const EMPTY: ZERO = Point { x: 0, y: 0 };
+    const ZERO: Point = Point { x: 0, y: 0 };
 }
 ```
 
