@@ -309,11 +309,10 @@ Console.WriteLine(pt.ToString()); // prints: Point { X = 789, Y = 456 }
 readonly record struct Point(int X, int Y);
 ```
 
-There is no `with` in Rust, but the struct update syntax can be used
-similar. This moves the original value, however:
+There is no `with` in Rust, but to emulate something similar in Rust, it has
+to be baked into the type's design:
 
 ```rust
-#[derive(Debug)]
 struct Point { x: i32, y: i32 }
 
 impl Point {
@@ -323,11 +322,28 @@ impl Point {
 
     pub fn x(&self) -> i32 { self.x }
     pub fn y(&self) -> i32 { self.y }
+
+    // following methods consume self and return a new instance
+
+    pub fn set_x(self, val: i32) -> Self { Self::new(val, self.y) }
+    pub fn set_y(self, val: i32) -> Self { Self::new(self.x, val) }
+}
+```
+
+It is also possible to use the struct update syntax to achieve something similar. This moves the original value:
+
+```rust
+mod points {
+    #[derive(Debug)]
+    pub struct Point { pub x: i32, pub y: i32 }
 }
 
 fn main() {
-    let pt = Point::new(123, 456);
+    use points::Point;
+    let pt = Point { x: 123, y: 456 };
     let pt = Point { x: 789, ..pt };
     println!("{pt:?}"); // prints: Point { x: 789, y: 456 }
-}
-```
+}```
+
+As seen in the example above, the struct update syntax requires access to the type fields.
+Therefore, it is generally more common to use it within the module that has access to private details of its types.
