@@ -927,7 +927,7 @@ too:</p>
 }
 
 impl Point {
-    const EMPTY: ZERO = Point { x: 0, y: 0 };
+    const ZERO: Point = Point { x: 0, y: 0 };
 }</code></pre>
 <p>In C#, the same would require a static read-only field:</p>
 <pre><code class="language-c#">readonly record struct Point(int X, int Y)
