@@ -37,7 +37,7 @@ struct Point {
 Value types in C#/.NET are usually designed by a developer to be immutable.
 It's considered best practice speaking semantically, but the language does not
 prevent designing a `struct` that makes destructive or in-place modifications.
-In the Rust, it's the same. A type has to be consciously developed to be
+In Rust, it's the same. A type has to be consciously developed to be
 immutable.
 
 Since Rust doesn't have classes and consequently type hierarchies based on
