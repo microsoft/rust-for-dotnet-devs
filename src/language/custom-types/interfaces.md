@@ -25,7 +25,7 @@ trait name). Trait objects always live behind a pointer, either a reference
 (e.g. `&dyn Shape`) or the heap-allocated `Box` (e.g. `Box<dyn Shape>`). This
 is somewhat like in .NET, where an interface is a reference type such that a
 value type cast to an interface is automatically boxed onto the managed heap.
-The passing limitation of trait objects mentioned earler, is that the original
+The passing limitation of trait objects mentioned earlier, is that the original
 implementing type cannot be recovered. In other words, whereas it's quite
 common to downcast or test an interface to be an instance of some other
 interface or sub- or concrete type, the same is not possible in Rust (without
