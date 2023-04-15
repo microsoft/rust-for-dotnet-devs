@@ -37,8 +37,8 @@ the rust reference chapter [macros by example].
 [Procedural macros] are different than declarative macros. Those accept some code
 as an input, operate on that code, and produce some code as an output.
 
-Another technique used in C# for metaprogramming is reflection. Rust is not
-supporting reflection.
+Another technique used in C# for metaprogramming is reflection. Rust does not
+support reflection.
 
 [source-gen]: https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview
 

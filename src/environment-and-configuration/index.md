@@ -23,7 +23,7 @@ runtime via the `var` and `var_os` functions from the `std::env` module.
 
 `var` function is returning a `Result<String, VarError>`, either returning the
 variable if set or returning an error if the variable is not set or it is not
-valid Unicode
+valid Unicode.
 
 `var_os` has a different signature giving back an `Option<OsString>`, either
 returning some value if the variable is set, or returning None if the variable

@@ -258,7 +258,7 @@ imperative loops can be re-written as much more expressive and composable
 queries in LINQ.
 
 Rust does not offer anything like C#'s query syntax. It has methods, called
-_[adapters]_ in Rust terms, over iteratable types and therefore directly
+_[adapters]_ in Rust terms, over iterable types and therefore directly
 comparable to chaining of methods in C#. However, whlie rewriting an
 imperative loop as LINQ code in C# is often beneficial in expressivity,
 robustness and composability, there is a trade-off with performance.
