@@ -61,22 +61,15 @@ fn main() {
     let values = [1, 2, 3, 4, 5];
     let mut output = String::new();
 
-    let iter = &mut values.into_iter();         // get iterator
-    loop {                                      // loop indefinitely
-        match iter.next() {                     //   get next item
-            Some(value) => {                    //   when there's an item, do...
-                if output.len() > 0 {
-                    output.push_str(", ");
-                }
-                _ = write!(output, "{value}");
-            },
-            None => {                           //   when no more items, ...
-                break;                          //     break out of loop
-            }
+    let mut iter = values.into_iter();      // get iterator
+    while let Some(value) = iter.next() {   // loop as long as there are more items
+        if output.len() > 0 {
+            output.push_str(", ");
         }
+        _ = write!(output, "{value}");
     }
 
-println!("{output}");
+    println!("{output}");
 }
 ```
 
