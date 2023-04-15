@@ -31,8 +31,8 @@ macro_rules! println {
 }
 ```
 
-To understand more about how to write declarative macros, it is possible to read
-the rust reference chapter [macros by example].
+To learn more about writing declarative macros, refer to the Rust reference
+chapter [macros by example] or [The Little Book of Rust Macros].
 
 [Procedural macros] are different than declarative macros. Those accept some code
 as an input, operate on that code, and produce some code as an output.
@@ -110,3 +110,4 @@ read the rust reference for [attribute macros]
 [macros]: https://doc.rust-lang.org/book/ch19-06-macros.html
 [macros by example]: https://doc.rust-lang.org/reference/macros-by-example.html
 [procedural macros]: https://doc.rust-lang.org/reference/procedural-macros.html
+[The Little Book of Rust Macros]: https://veykril.github.io/tlborm/
