@@ -227,8 +227,7 @@ drops all the `Int` instances.
 These examples demonstrate that while iterating collection types may seem to
 have a lot of parallels between Rust and C#, from the looping constructs to
 the iteration abstractions, there are still subtle differences with respect to
-ownership that not kept in mind at all times otherwise the compiler will end
-up rejecting the code.
+ownership that can lead to the compiler rejecting the code in some instances.
 
 See also:
 
