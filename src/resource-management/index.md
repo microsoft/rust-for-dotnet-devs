@@ -56,4 +56,8 @@ fn main() {
 } // "Dispose" of "db1" and "db2" called here; when their scope ends
 ```
 
+In .NET, attempting to use an object after calling Dispose on it will typically
+cause ObjectDisposedException to be thrown at runtime. In Rust, the compiler
+ensures at compile-time that this cannot happen.
+
 [memory management]: ../memory-management/index.md
