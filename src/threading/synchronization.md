@@ -93,6 +93,7 @@ thread boundaries. For more information, see the “[Fearless Concurrency]”
 chapter of the Rust book.
 
   [Fearless Concurrency]: https://doc.rust-lang.org/book/ch16-00-concurrency.html
+  [Memory Management]: ../memory-management/index.md
   [mutex guard]: https://doc.rust-lang.org/stable/std/sync/struct.MutexGuard.html
   [sync.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Sync.html
   [send.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Send.html
