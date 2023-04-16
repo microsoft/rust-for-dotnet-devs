@@ -1949,6 +1949,9 @@ fn main() {
     let _db2 = DatabaseConnection(&quot;Server=A;Database=DB2&quot;);
     // ...code for making use of the database connection...
 } // &quot;Dispose&quot; of &quot;db1&quot; and &quot;db2&quot; called here; when their scope ends</code></pre>
+<p>In .NET, attempting to use an object after calling <code>Dispose</code> on it will typically
+cause <code>ObjectDisposedException</code> to be thrown at runtime. In Rust, the compiler
+ensures at compile-time that this cannot happen.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="threading"><a class="header" href="#threading">Threading</a></h1>
 <p>The Rust standard library supports threading, synchronisation and concurrency.
 Also the language itself and the standard library do have basic support for the
@@ -2055,7 +2058,7 @@ supports).</p>
 value of the <code>join</code> method.</p>
 </li>
 <li>
-<p>It is possible to also pass data to the C# thread via a clousre, like the
+<p>It is possible to also pass data to the C# thread via a closure, like the
 Rust example, but the C# version does not need to worry about ownership
 since the memory behind the data will be reclaimed by the GC once no one is
 referencing it anymore.</p>
@@ -2125,7 +2128,7 @@ will be shared by multiple threads, it is wrapped in an <code>Arc</code> (1). <c
 provides atomic reference counting, which increments each time it is cloned
 (2) and decrements each time it is dropped. When the count reaches zero, the
 mutex and in turn the data it guards are dropped. This is discussed in more
-detail in [Memory Management]).</p>
+detail in <a href="threading/../memory-management/index.html">Memory Management</a>).</p>
 </li>
 <li>
 <p>The closure instance for each thread receives ownership (3) of the <em>cloned
@@ -2527,10 +2530,10 @@ else
 runtime via the <code>var</code> and <code>var_os</code> functions from the <code>std::env</code> module.</p>
 <p><code>var</code> function is returning a <code>Result&lt;String, VarError&gt;</code>, either returning the
 variable if set or returning an error if the variable is not set or it is not
-valid Unicode</p>
+valid Unicode.</p>
 <p><code>var_os</code> has a different signature giving back an <code>Option&lt;OsString&gt;</code>, either
 returning some value if the variable is set, or returning None if the variable
-is not set or it is containing not valid UTF-8</p>
+is not set. An <code>OsString</code> is not required to be valid Unicode.</p>
 <pre><code class="language-rust">use std::env;
 
 
@@ -2658,22 +2661,15 @@ fn main() {
     let values = [1, 2, 3, 4, 5];
     let mut output = String::new();
 
-    let iter = &amp;mut values.into_iter();         // get iterator
-    loop {                                      // loop indefinitely
-        match iter.next() {                     //   get next item
-            Some(value) =&gt; {                    //   when there's an item, do...
-                if output.len() &gt; 0 {
-                    output.push_str(&quot;, &quot;);
-                }
-                _ = write!(output, &quot;{value}&quot;);
-            },
-            None =&gt; {                           //   when no more items, ...
-                break;                          //     break out of loop
-            }
+    let mut iter = values.into_iter();      // get iterator
+    while let Some(value) = iter.next() {   // loop as long as there are more items
+        if output.len() &gt; 0 {
+            output.push_str(&quot;, &quot;);
         }
+        _ = write!(output, &quot;{value}&quot;);
     }
 
-println!(&quot;{output}&quot;);
+    println!(&quot;{output}&quot;);
 }</code></pre>
 <p>Rust's ownership and data race condition rules apply to all instances and
 data, and iteration is no exception. So while looping over an array might look
@@ -2807,8 +2803,7 @@ drops all the <code>Int</code> instances.</p>
 <p>These examples demonstrate that while iterating collection types may seem to
 have a lot of parallels between Rust and C#, from the looping constructs to
 the iteration abstractions, there are still subtle differences with respect to
-ownership that not kept in mind at all times otherwise the compiler will end
-up rejecting the code.</p>
+ownership that can lead to the compiler rejecting the code in some instances.</p>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/iter/index.html">Iterator</a></li>
@@ -2823,7 +2818,7 @@ that can serve as an alternative or a companion to method chaining. Many
 imperative loops can be re-written as much more expressive and composable
 queries in LINQ.</p>
 <p>Rust does not offer anything like C#'s query syntax. It has methods, called
-<em><a href="https://doc.rust-lang.org/std/iter/index.html#adapters">adapters</a></em> in Rust terms, over iteratable types and therefore directly
+<em><a href="https://doc.rust-lang.org/std/iter/index.html#adapters">adapters</a></em> in Rust terms, over iterable types and therefore directly
 comparable to chaining of methods in C#. However, whlie rewriting an
 imperative loop as LINQ code in C# is often beneficial in expressivity,
 robustness and composability, there is a trade-off with performance.
@@ -2967,12 +2962,12 @@ possible to call for printing some text <code>println!(&quot;Some text&quot;)</c
         $crate::io::_print($crate::format_args_nl!($($arg)*));
     }};
 }</code></pre>
-<p>To understand more about how to write declarative macros, it is possible to read
-the rust reference chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a>.</p>
+<p>To learn more about writing declarative macros, refer to the Rust reference
+chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a> or <a href="https://veykril.github.io/tlborm/">The Little Book of Rust Macros</a>.</p>
 <p><a href="https://doc.rust-lang.org/reference/procedural-macros.html">Procedural macros</a> are different than declarative macros. Those accept some code
 as an input, operate on that code, and produce some code as an output.</p>
-<p>Another technique used in C# for metaprogramming is reflection. Rust is not
-supporting reflection.</p>
+<p>Another technique used in C# for metaprogramming is reflection. Rust does not
+support reflection.</p>
 <h2 id="function-like-macros"><a class="header" href="#function-like-macros">Function-like macros</a></h2>
 <p>Function-like macros are in the following form: <code>function!(...)</code></p>
 <p>The following code snippet defines a function-like macro named

@@ -198,6 +198,9 @@ fn main() {
     let _db2 = DatabaseConnection(&quot;Server=A;Database=DB2&quot;);
     // ...code for making use of the database connection...
 } // &quot;Dispose&quot; of &quot;db1&quot; and &quot;db2&quot; called here; when their scope ends</code></pre>
+<p>In .NET, attempting to use an object after calling <code>Dispose</code> on it will typically
+cause <code>ObjectDisposedException</code> to be thrown at runtime. In Rust, the compiler
+ensures at compile-time that this cannot happen.</p>
 
                     </main>
 

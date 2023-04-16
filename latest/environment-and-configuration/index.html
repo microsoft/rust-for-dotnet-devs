@@ -167,10 +167,10 @@ else
 runtime via the <code>var</code> and <code>var_os</code> functions from the <code>std::env</code> module.</p>
 <p><code>var</code> function is returning a <code>Result&lt;String, VarError&gt;</code>, either returning the
 variable if set or returning an error if the variable is not set or it is not
-valid Unicode</p>
+valid Unicode.</p>
 <p><code>var_os</code> has a different signature giving back an <code>Option&lt;OsString&gt;</code>, either
 returning some value if the variable is set, or returning None if the variable
-is not set or it is containing not valid UTF-8</p>
+is not set. An <code>OsString</code> is not required to be valid Unicode.</p>
 <pre><code class="language-rust">use std::env;
 
 

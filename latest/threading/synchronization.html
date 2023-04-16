@@ -212,7 +212,7 @@ will be shared by multiple threads, it is wrapped in an <code>Arc</code> (1). <c
 provides atomic reference counting, which increments each time it is cloned
 (2) and decrements each time it is dropped. When the count reaches zero, the
 mutex and in turn the data it guards are dropped. This is discussed in more
-detail in [Memory Management]).</p>
+detail in <a href="../memory-management/index.html">Memory Management</a>).</p>
 </li>
 <li>
 <p>The closure instance for each thread receives ownership (3) of the <em>cloned

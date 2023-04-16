@@ -172,12 +172,12 @@ possible to call for printing some text <code>println!(&quot;Some text&quot;)</c
         $crate::io::_print($crate::format_args_nl!($($arg)*));
     }};
 }</code></pre>
-<p>To understand more about how to write declarative macros, it is possible to read
-the rust reference chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a>.</p>
+<p>To learn more about writing declarative macros, refer to the Rust reference
+chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a> or <a href="https://veykril.github.io/tlborm/">The Little Book of Rust Macros</a>.</p>
 <p><a href="https://doc.rust-lang.org/reference/procedural-macros.html">Procedural macros</a> are different than declarative macros. Those accept some code
 as an input, operate on that code, and produce some code as an output.</p>
-<p>Another technique used in C# for metaprogramming is reflection. Rust is not
-supporting reflection.</p>
+<p>Another technique used in C# for metaprogramming is reflection. Rust does not
+support reflection.</p>
 <h2 id="function-like-macros"><a class="header" href="#function-like-macros">Function-like macros</a></h2>
 <p>Function-like macros are in the following form: <code>function!(...)</code></p>
 <p>The following code snippet defines a function-like macro named
