@@ -1,10 +1,11 @@
 # Rust for C#/.NET Developers
 
-The document sources can be found in the `src` directory.
-It is structured for rendering with [mdBook].
+The document sources can be found in the `src` directory. It is structured for
+rendering with [mdBook].
 
-[Install mdBook] or start up [devcontainer.json].
-If you've never used Dev Containers, check out [developing inside a Container using Visual Studio Code Remote Development].
+[Install mdBook] or start up [devcontainer.json]. If you've never used Dev
+Containers, check out [developing inside a Container using Visual Studio Code
+Remote Development].
 
 Then to render for reading in a Web browser, run:
 
