@@ -3,9 +3,9 @@
 The document sources can be found in the `src` directory. It is structured for
 rendering with [mdBook].
 
-[Install mdBook] or start-up [`devcontainer.json`]. If you've never used Dev
-Containers, check out [Developing inside a Container using Visual Studio Code
-Remote Development][vscode-dc].
+[Install mdBook] locally or start-up [`devcontainer.json`]. If you've never
+used Dev Containers, check out [Developing inside a Container using Visual
+Studio Code Remote Development][vscode-dc].
 
 Then to render for reading in a Web browser, run:
 
