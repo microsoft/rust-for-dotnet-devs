@@ -9,9 +9,7 @@ Remote Development][vscode-dc].
 
 Then to render for reading in a Web browser, run:
 
-```sh
-mdbook serve
-```
+    mdbook serve
 
   [mdBook]: https://rust-lang.github.io/mdBook/
   [Install mdBook]: https://rust-lang.github.io/mdBook/guide/installation.html
