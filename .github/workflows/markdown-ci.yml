@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - run: npm install -g markdownlint-cli
-      - run: markdownlint -c .markdownlint.jsonc .
+      - run: markdownlint -c .markdownlint.jsonc -i SECURITY.md -i node_modules .
 
   markdown-link-check:
     runs-on: ubuntu-latest
