@@ -1,12 +1,12 @@
 {
-    // disable line length limitations for existing documentation
-    "MD013": false,
-    // allow same headings
-    "MD024": false,
-    // allow inline html
-    "MD033": false,
-    //ignore first line headers
-    "MD041": false,
-    // code block style
-    "MD046": false
+  // disable line length limitations for existing documentation
+  "MD013": false,
+  // allow same headings
+  "MD024": false,
+  // allow inline html
+  "MD033": false,
+  //ignore first line headers
+  "MD041": false,
+  // code block style
+  "MD046": false
 }
