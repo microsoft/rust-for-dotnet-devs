@@ -211,12 +211,6 @@ dist
 .history
 .ionide
 
-# Support for Project snippet scope
-.vscode/*.code-snippets
-
-# Ignore code-workspaces
-*.code-workspace
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
