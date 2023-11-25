@@ -10,8 +10,8 @@ See also:
 - [Generics][generics-section]
 - [Inheritance][inheritance-section]
 - [Operator overloading][operator-overloading-section]
-
-[structures-section]: ./custom-types.md#structures-struct
+  
+[structures-section]: ./custom-types/structs.md
 [generics-section]: ./generics.md
 [inheritance-section]: ./inheritance.md
 [operator-overloading-section]: ./operator-overloading.md
