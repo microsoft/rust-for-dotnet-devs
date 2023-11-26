@@ -394,4 +394,4 @@ the developer having to write a full-blown class each time.
 _[Generators][generators.rs]_, as they're called in Rust, are still considered
 an unstable feature at the time of this writing.
 
-  [generators.rs]: https://doc.rust-lang.org/beta/unstable-book/language-features/generators.html
+  [generators.rs]: https://doc.rust-lang.org/stable/unstable-book/language-features/generators.html
