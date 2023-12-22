@@ -85,7 +85,7 @@ C# UTF-8 string literals are equivalent to Rust byte string literals.
 C#
 
 ```csharp
-string str = "hello"u8;
+ReadOnlySpan<byte> str = "hello"u8;
 ```
 
 Rust
