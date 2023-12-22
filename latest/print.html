@@ -410,7 +410,7 @@ and does not get allocated on the heap; they're embedded in the compiled binary.
 <pre><code class="language-rust">let str = r#&quot;Hello, \World/!&quot;#;</code></pre>
 <p>C# UTF-8 string literals are equivalent to Rust byte string literals.</p>
 <p>C#</p>
-<pre><code class="language-csharp">string str = &quot;hello&quot;u8;
+<pre><code class="language-csharp">ReadOnlySpan&lt;byte&gt; str = &quot;hello&quot;u8;
 </code></pre>
 <p>Rust</p>
 <pre><code class="language-rust">let str = b&quot;hello&quot;;</code></pre>
