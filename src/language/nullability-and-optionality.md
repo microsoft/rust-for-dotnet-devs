@@ -48,21 +48,41 @@ if let Some(max) = max {
 ## Null-conditional operators
 
 The null-conditional operators (`?.` and `?[]`) make dealing with `null` in C#
-more ergonomic. In Rust, they are best replaced by using the [`map`][optmap]
-method. The following snippets show the correspondence:
+more ergonomic. In Rust, they are best replaced by using either the [`map`][optmap]
+method or the [`and_then`][opt_and_then] method, depending on the nesting of the `Option`.
+The following snippets show the correspondence:
 
 ```csharp
 string? some = "Hello, World!";
 string? none = null;
-Console.WriteLine(some?.Length); // 13
+Console.WriteLine(some?.Length); // Hello, World!
 Console.WriteLine(none?.Length); // (blank)
+
+record Name(string FirstName, string LastName);
+record Person(Name? Name);
+
+Person? person1 = new Person(new Name("John", "Doe"));
+Console.WriteLine(person1?.Name?.FirstName); // John
+Person? person2 = new Person(null);
+Console.WriteLine(person2?.Name?.FirstName); // (blank)
+Person? person3 = null;
+Console.WriteLine(person3?.Name?.FirstName); // (blank)
 ```
 
 ```rust
 let some: Option<String> = Some(String::from("Hello, World!"));
 let none: Option<String> = None;
-println!("{:?}", some.map(|s| s.len())); // Some(13)
+println!("{:?}", some.map(|s| s.len())); // Some("Hello, World!")
 println!("{:?}", none.map(|s| s.len())); // None
+
+struct Name { first_name: String, last_name: String }
+struct Person { name: Option<Name> }
+let person1: Option<Person> = Some(Person { name: Some(Name { first_name: "John".into(), last_name: "Doe".into() }) });
+println!("{:?}", person1.and_then(|p| p.name.map(|name| name.first_name))); // Some("John")
+let person1: Option<Person> = Some(Person { name: None });
+println!("{:?}", person1.and_then(|p| p.name.map(|name| name.first_name))); // None
+let person1: Option<Person> = None;
+println!("{:?}", person1.and_then(|p| p.name.map(|name| name.first_name))); // None
 ```
 
 ## Null-coalescing operator
@@ -98,4 +118,5 @@ there is no need to use a substitute for it.
 
 [option]: https://doc.rust-lang.org/std/option/enum.Option.html
 [optmap]: https://doc.rust-lang.org/std/option/enum.Option.html#method.map
+[opt_and_then]: https://doc.rust-lang.org/std/option/enum.Option.html#method.and_then
 [unwrap-or]: https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or
