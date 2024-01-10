@@ -54,6 +54,9 @@ The equivalent to the .NET `Exception.InnerException` property is the
 implementation for `Error::source()`, the blanket (default) implementation
 returns a `None`.
 
+> Note: Unlike in C#, in Rust it is not strictly required for an error to implement `std::error::Error`
+> (it can be used in `Result` even without that). But it is strongly encouraged, especially for public errors.
+
 ## Raising exceptions
 
 To raise an exception in C#, throw an instance of the exception:
