@@ -85,6 +85,16 @@ let person1: Option<Person> = None;
 println!("{:?}", person1.and_then(|p| p.name.map(|name| name.first_name))); // None
 ```
 
+The `?` operator (mentioned in the previous chapter), can also be used to handle `Option`s.
+It returns from the function with `None` if a `None` is encountered, or else continues with the
+`Some` value:
+```rust
+fn foo(optional: Option<i32>) -> Option<String> {
+    let value = optional?;
+    Some(value.to_string())
+}
+```
+
 ## Null-coalescing operator
 
 The null-coalescing operator (`??`) is typically used to default to another
