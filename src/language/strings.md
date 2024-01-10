@@ -116,6 +116,9 @@ let age = 42;
 let str = format!("Person {{ name: {name}, age: {age} }}");
 ```
 
+Note that `format!` only supports embedding variable names in the string; more complex
+expressions are spelled like `format!("1 + 1 = {}", 1 + 1)`.
+
 Custom classes and structs can also be interpolated in C# due to the fact that
 the `ToString()` method is available for each type as it inherits from `object`.
 
