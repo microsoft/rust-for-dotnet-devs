@@ -124,9 +124,14 @@ lazily initialize the default value.
 
 The null-forgiving operator (`!`) does not correspond to an equivalent construct
 in Rust, as it only affects the compiler's static flow analysis in C#. In Rust,
-there is no need to use a substitute for it.
+there is no need to use a substitute for it. [`unwrap`][opt_unwrap] is close,
+though: it panics if the value is `None`. [`expect`][opt_expect] is similar but allows
+you to provide a custom error message. Note that as previously said, panics should
+be reserved to unrecoverable situations.
 
 [option]: https://doc.rust-lang.org/std/option/enum.Option.html
 [optmap]: https://doc.rust-lang.org/std/option/enum.Option.html#method.map
 [opt_and_then]: https://doc.rust-lang.org/std/option/enum.Option.html#method.and_then
 [unwrap-or]: https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or
+[opt_unwrap]: https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap
+[opt_expect]: https://doc.rust-lang.org/std/option/enum.Option.html#method.expect
