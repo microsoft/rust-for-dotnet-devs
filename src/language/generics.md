@@ -73,12 +73,25 @@ impl<T> Timestamped<T> {
 }
 
 impl<T> PartialEq for Timestamped<T>
-    where T: PartialEq {
+where
+    T: PartialEq,
+{
     fn eq(&self, other: &Self) -> bool {
         self.value == other.value && self.timestamp == other.timestamp
     }
 }
 ```
+
+A shortcut for `where` clauses that exists in Rust is constraining the parameters
+directly at their declaration:
+```rust
+impl<T: PartialEq> PartialEq for Timestamped<T> {
+    fn eq(&self, other: &Self) -> bool {
+        self.value == other.value && self.timestamp == other.timestamp
+    }
+}
+```
+Although `where` clauses are somewhat more powerful, since they can constrain arbitrary types (e.g. `i32: PartialEq<T>`).
 
 Generic type constraints are called [bounds][bounds.rs] in Rust.
 
