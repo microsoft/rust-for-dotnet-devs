@@ -162,6 +162,17 @@ let person = Person {
 println!("{person}");
 ```
 
+For converting values to string using `Display` but without formatting, you can
+use the `std::string::ToString` trait. Its `to_string()` method is equal to the
+`ToString()` method in .NET, and implemented automatically whenever you
+implement `Display`. That is:
+
+```rust
+// Because Display is implemented, to_string() is available automatically
+let s = person.to_string();
+// s == "Person { name: John, age: 42 }"
+```
+
 Another option is to use the `std::fmt::Debug` trait. The `Debug` trait is
 implemented for all standard types and can be used to print the internal
 representation of a type. The following example shows how to use the `derive`
