@@ -44,7 +44,7 @@ Rust:
 
 ```rust
 let span: &str = "Hello, World!";
-let str = Box::new("Hello World!");
+let str: Box<str> = Box::from("Hello World!");
 let mut sb = String::from("Hello World!");
 ```
 
