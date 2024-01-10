@@ -162,6 +162,11 @@ impl Rectangle {
 }
 ```
 
+> Note: While in C# it is idiomatic to expose a property for every field and keep
+> the fields private, in Rust it is more common to expose the fields directly when possible,
+> since there is no syntax sugar for accessor methods and they also have complexities
+> with the borrow checker.
+
 ## Extension Methods
 
 Extension methods in C# enable the developer to attach new statically-bound
