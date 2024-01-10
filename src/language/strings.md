@@ -17,7 +17,7 @@ There are differences in working with strings in Rust and .NET, but the
 equivalents above should be a good starting point. One of the differences is
 that Rust strings are UTF-8 encoded, but .NET strings are UTF-16 encoded.
 Further .NET strings are immutable, but Rust strings can be mutable when declared
-as such, for example `let s = &mut String::from("hello");`.
+as such, for example `let mut s = String::from("hello");`.
 
 There are also differences in using strings due to the concept of ownership. To
 read more about ownership with the String Type, see the [Rust Book][ownership-string-type-example].
