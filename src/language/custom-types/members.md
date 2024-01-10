@@ -277,7 +277,7 @@ The table below is an approximation of the mapping of C# and Rust modifiers:
 
 ## Mutability
 
-When designing a type in C#, it is the responsiblity of the developer to
+When designing a type in C#, it is the responsibility of the developer to
 decide whether the a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a _positional record declaration_ (`record class` or `readonly
