@@ -186,6 +186,8 @@ println!("{person:?}");
 
 > Note: Using the :? format specifier will use the `Debug` trait to print the
 > struct, where leaving it out will use the `Display` trait.
+>
+> You can also use the `:#?` specifier to pretty-print the debug format.
 
 See also:
 
