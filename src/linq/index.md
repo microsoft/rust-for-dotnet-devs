@@ -391,7 +391,7 @@ _iterator method_. The return type of an iterator method can be an
 `IEnumerable<T>` or an `IEnumerator<T>`. The compiler then converts the body
 of the method into a concrete implementation of the return type, instead of
 the developer having to write a full-blown class each time.
-_[Generators][generators.rs]_, as they're called in Rust, are still considered
+_[Coroutines][coroutines.rs]_, as they're called in Rust, are still considered
 an unstable feature at the time of this writing.
 
-  [generators.rs]: https://doc.rust-lang.org/stable/unstable-book/language-features/generators.html
+  [coroutines.rs]: https://doc.rust-lang.org/unstable-book/language-features/coroutines.html
