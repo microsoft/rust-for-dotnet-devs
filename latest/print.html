@@ -2188,7 +2188,7 @@ use std::time::Duration;
 fn main() {
     let (tx, rx) = mpsc::channel();
 
-    let procuder = thread::spawn(move || {
+    let producer = thread::spawn(move || {
         for n in 1..10 {
             tx.send(format!(&quot;Message #{}&quot;, n)).unwrap();
         }
@@ -2199,7 +2199,7 @@ fn main() {
         println!(&quot;{}&quot;, received);
     }
 
-    procuder.join().unwrap();
+    producer.join().unwrap();
 }</code></pre>
 <p>Like channels in Rust, .NET also offers channels in the
 <code>System.Threading.Channels</code> namespace, but it is primarily designed to be used
@@ -2936,7 +2936,7 @@ for value in (0..).take(5) {
 <code>IEnumerable&lt;T&gt;</code> or an <code>IEnumerator&lt;T&gt;</code>. The compiler then converts the body
 of the method into a concrete implementation of the return type, instead of
 the developer having to write a full-blown class each time.
-<em><a href="https://doc.rust-lang.org/stable/unstable-book/language-features/generators.html">Generators</a></em>, as they're called in Rust, are still considered
+<em><a href="https://doc.rust-lang.org/unstable-book/language-features/coroutines.html">Coroutines</a></em>, as they're called in Rust, are still considered
 an unstable feature at the time of this writing.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="meta-programming"><a class="header" href="#meta-programming">Meta Programming</a></h1>
 <p>Metaprogramming can be seen as a way of writing code that writes/generates other
