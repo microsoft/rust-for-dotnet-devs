@@ -8,6 +8,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+      pages: write
     steps:
     - uses: actions/checkout@v2
       with:
