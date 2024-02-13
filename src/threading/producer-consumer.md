@@ -40,7 +40,7 @@ use std::time::Duration;
 fn main() {
     let (tx, rx) = mpsc::channel();
 
-    let procuder = thread::spawn(move || {
+    let producer = thread::spawn(move || {
         for n in 1..10 {
             tx.send(format!("Message #{}", n)).unwrap();
         }
@@ -51,7 +51,7 @@ fn main() {
         println!("{}", received);
     }
 
-    procuder.join().unwrap();
+    producer.join().unwrap();
 }
 ```
 

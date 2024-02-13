@@ -122,7 +122,7 @@ A few things to note:
 - Rust thread can return values, like tasks in C#, which becomes the return
   value of the `join` method.
 
-- It is possible to also pass data to the C# thread via a clousre, like the
+- It is possible to also pass data to the C# thread via a closure, like the
   Rust example, but the C# version does not need to worry about ownership
   since the memory behind the data will be reclaimed by the GC once no one is
   referencing it anymore.

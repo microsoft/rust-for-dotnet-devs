@@ -61,22 +61,15 @@ fn main() {
     let values = [1, 2, 3, 4, 5];
     let mut output = String::new();
 
-    let iter = &mut values.into_iter();         // get iterator
-    loop {                                      // loop indefinitely
-        match iter.next() {                     //   get next item
-            Some(value) => {                    //   when there's an item, do...
-                if output.len() > 0 {
-                    output.push_str(", ");
-                }
-                _ = write!(output, "{value}");
-            },
-            None => {                           //   when no more items, ...
-                break;                          //     break out of loop
-            }
+    let mut iter = values.into_iter();      // get iterator
+    while let Some(value) = iter.next() {   // loop as long as there are more items
+        if output.len() > 0 {
+            output.push_str(", ");
         }
+        _ = write!(output, "{value}");
     }
 
-println!("{output}");
+    println!("{output}");
 }
 ```
 
@@ -234,8 +227,7 @@ drops all the `Int` instances.
 These examples demonstrate that while iterating collection types may seem to
 have a lot of parallels between Rust and C#, from the looping constructs to
 the iteration abstractions, there are still subtle differences with respect to
-ownership that not kept in mind at all times otherwise the compiler will end
-up rejecting the code.
+ownership that can lead to the compiler rejecting the code in some instances.
 
 See also:
 
@@ -258,7 +250,7 @@ imperative loops can be re-written as much more expressive and composable
 queries in LINQ.
 
 Rust does not offer anything like C#'s query syntax. It has methods, called
-_[adapters]_ in Rust terms, over iteratable types and therefore directly
+_[adapters]_ in Rust terms, over iterable types and therefore directly
 comparable to chaining of methods in C#. However, whlie rewriting an
 imperative loop as LINQ code in C# is often beneficial in expressivity,
 robustness and composability, there is a trade-off with performance.
@@ -399,7 +391,7 @@ _iterator method_. The return type of an iterator method can be an
 `IEnumerable<T>` or an `IEnumerator<T>`. The compiler then converts the body
 of the method into a concrete implementation of the return type, instead of
 the developer having to write a full-blown class each time.
-_[Generators][generators.rs]_, as they're called in Rust, are still considered
+_[Coroutines][coroutines.rs]_, as they're called in Rust, are still considered
 an unstable feature at the time of this writing.
 
-  [generators.rs]: https://doc.rust-lang.org/beta/unstable-book/language-features/generators.html
+  [coroutines.rs]: https://doc.rust-lang.org/unstable-book/language-features/coroutines.html

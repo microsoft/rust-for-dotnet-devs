@@ -5,8 +5,8 @@
 Rust does not have any notion of constructors. Instead, you just write factory
 functions that return an instance of the type. The factory functions can be
 stand-alone or _associated functions_ of the type. In C# terms, associated
-functions are like have static methods on a type. Conventionally, if there is
-just one factory function for a `struct`, it's named `new`:
+functions are like having static methods on a type. Conventionally, if there
+is just one factory function for a `struct`, it's named `new`:
 
 ```rust
 struct Rectangle {
@@ -21,7 +21,7 @@ impl Rectangle {
 }
 ```
 
-Since Rust functions (associated or otherwise) do not support overloading, the
+Since Rust functions (associated or otherwise) do not support overloading; the
 factory functions have to be named uniquely. For example, below are some
 examples of so-called constructors or factory functions available on `String`:
 
@@ -109,7 +109,7 @@ like C# has with the `event` keyword.
 ## Properties
 
 In C#, fields of a type are generally private. They are then
-protected/encapsulated by property members with accessor methods (`get`, and
+protected/encapsulated by property members with accessor methods (`get` and
 `set`) to read or write to those field. The accessor methods can contain extra
 logic, for example, to either validate the value when being set or compute a
 value when being read. Rust only has methods [where a getter is named after the

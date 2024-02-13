@@ -33,7 +33,7 @@ Notes:
    using the UTF-16 encoding. For more information, see the [Rust `char`
    documentation][char.rs].
 
-2. While a unit `()` (an empty tuple) in Rust is a _expressible value_, the
+2. While a unit `()` (an empty tuple) in Rust is an _expressible value_, the
    closest cousin in C# would be `void` to represent nothing. However, `void`
    isn't an _expressible value_ except when using pointers and unsafe code.
    .NET has [`ValueTuple`][ValueTuple] that is an empty tuple, but C# does not

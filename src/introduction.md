@@ -19,7 +19,7 @@ support inheritance, threading, asynchronous programming, etc.?_
 
 Assumptions:
 
-- Reader is a seasoned C#./NET developer.
+- Reader is a seasoned C#/.NET developer.
 - Reader is completely new to Rust.
 
 Goals:

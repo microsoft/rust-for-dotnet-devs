@@ -5,13 +5,13 @@ achieved in an identical manner to C#.
 
 See also:
 
-- Virtual dispatch using _trait objects_, as explained in the
-  [structures-section] section
-- [Generics][generics-section]
-- [Inheritance][inheritance-section]
-- [Operator overloading][operator-overloading-section]
+- Virtual dispatch using _trait objects_, as explained in the [Structures]
+  section
+- [Generics]
+- [Inheritance]
+- [Operator overloading]
 
-[structures-section]: ./custom-types.md#structures-struct
-[generics-section]: ./generics.md
-[inheritance-section]: ./inheritance.md
-[operator-overloading-section]: ./operator-overloading.md
+[structures]: ./custom-types/structs.md
+[generics]: ./generics.md
+[inheritance]: ./inheritance.md
+[operator overloading]: ./operator-overloading.md
