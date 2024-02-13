@@ -302,46 +302,15 @@ impl Point {
 In C#, you can do non-destructive mutations using `with`:
 
 ```c#
-struct Point
-{
-    public int X;
-    public int Y;
-
-    public override string ToString() => $"({X}, {Y})";
-}
-
-var pt = new Point { X = 123, Y = 456 };
-Console.WriteLine(pt.ToString()); // prints: (123, 456)
+var pt = new Point(123, 456);
 pt = pt with { X = 789 };
-Console.WriteLine(pt.ToString()); // prints: (789, 456)
+Console.WriteLine(pt.ToString()); // prints: Point { X = 789, Y = 456 }
+
+readonly record struct Point(int X, int Y);
 ```
 
-Rust has a _[struct update syntax]_ that may seem similar to `with`:
-
-```rust
-mod points {
-    #[derive(Debug)]
-    pub struct Point { pub x: i32, pub y: i32 }
-}
-
-fn main() {
-    use points::Point;
-    let pt = Point { x: 123, y: 456 };
-    println!("{pt:?}"); // prints: Point { x: 123, y: 456 }
-    let pt = Point { x: 789, ..pt };
-    println!("{pt:?}"); // prints: Point { x: 789, y: 456 }
-}
-```
-
-While `with` in C# does a non-destructive mutation (copy then update),
-the [struct update syntax] does (partial) _moves_ and works fields only.
-As seen in the example above, the syntax therefore requires access to
-the type's fields.
-Hence, it is generally more common to use it within the module that
-has access to private details of its types.
-
-To emulate something similar to `with` in Rust, it has to be baked into
-the type's design:
+There is no `with` in Rust, but to emulate something similar in Rust, it has
+to be baked into the type's design:
 
 ```rust
 struct Point { x: i32, y: i32 }
@@ -361,4 +330,45 @@ impl Point {
 }
 ```
 
-[struct update syntax]: https://doc.rust-lang.org/stable/book/ch05-01-defining-structs.html#creating-instances-from-other-instances-with-struct-update-syntax
+In C#, `with` can also be used with a regular (as opposed to record) `struct`
+that publicly exposes its read-write fields:
+
+```c#
+struct Point
+{
+    public int X;
+    public int Y;
+
+    public override string ToString() => $"({X}, {Y})";
+}
+
+var pt = new Point { X = 123, Y = 456 };
+Console.WriteLine(pt.ToString()); // prints: (123, 456)
+pt = pt with { X = 789 };
+Console.WriteLine(pt.ToString()); // prints: (789, 456)
+```
+
+Rust has a _[struct update syntax]_ that may seem similar:
+
+```rust
+mod points {
+    #[derive(Debug)]
+    pub struct Point { pub x: i32, pub y: i32 }
+}
+
+fn main() {
+    use points::Point;
+    let pt = Point { x: 123, y: 456 };
+    println!("{pt:?}"); // prints: Point { x: 123, y: 456 }
+    let pt = Point { x: 789, ..pt };
+    println!("{pt:?}"); // prints: Point { x: 789, y: 456 }
+}
+```
+
+However, while `with` in C# does a non-destructive mutation (copy then
+update), the [struct update syntax] does (partial) _moves_ and works with
+fields only. Since the syntax requires access to the type's fields, it is
+generally more common to use it within the Rust module that has access to
+private details of its types.
+
+  [struct update syntax]: https://doc.rust-lang.org/stable/book/ch05-01-defining-structs.html#creating-instances-from-other-instances-with-struct-update-syntax
