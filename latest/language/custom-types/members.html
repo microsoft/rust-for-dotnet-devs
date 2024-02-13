@@ -153,8 +153,8 @@
 <p>Rust does not have any notion of constructors. Instead, you just write factory
 functions that return an instance of the type. The factory functions can be
 stand-alone or <em>associated functions</em> of the type. In C# terms, associated
-functions are like have static methods on a type. Conventionally, if there is
-just one factory function for a <code>struct</code>, it's named <code>new</code>:</p>
+functions are like having static methods on a type. Conventionally, if there
+is just one factory function for a <code>struct</code>, it's named <code>new</code>:</p>
 <pre><code class="language-rust">struct Rectangle {
     x1: i32, y1: i32,
     x2: i32, y2: i32,
@@ -165,7 +165,7 @@ impl Rectangle {
         Self { x1, y1, x2, y2 }
     }
 }</code></pre>
-<p>Since Rust functions (associated or otherwise) do not support overloading, the
+<p>Since Rust functions (associated or otherwise) do not support overloading; the
 factory functions have to be named uniquely. For example, below are some
 examples of so-called constructors or factory functions available on <code>String</code>:</p>
 <ul>
@@ -235,7 +235,7 @@ impl Point {
 like C# has with the <code>event</code> keyword.</p>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
 <p>In C#, fields of a type are generally private. They are then
-protected/encapsulated by property members with accessor methods (<code>get</code>, and
+protected/encapsulated by property members with accessor methods (<code>get</code> and
 <code>set</code>) to read or write to those field. The accessor methods can contain extra
 logic, for example, to either validate the value when being set or compute a
 value when being read. Rust only has methods <a href="https://github.com/rust-lang/rfcs/blob/master/text/0344-conventions-galore.md#gettersetter-apis">where a getter is named after the
