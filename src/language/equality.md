@@ -16,7 +16,7 @@ var b = new Point(1, 2);
 var c = a;
 Console.WriteLine(a == b); // (1) True
 Console.WriteLine(a.Equals(b)); // (1) True
-Console.WriteLine(a.Equals(new Point(2, 2))); // (1) True
+Console.WriteLine(a.Equals(new Point(2, 2))); // (1) False
 Console.WriteLine(ReferenceEquals(a, b)); // (2) False
 Console.WriteLine(ReferenceEquals(a, c)); // (2) True
 
