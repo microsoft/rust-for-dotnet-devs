@@ -119,8 +119,7 @@ In Rust, this is roughly equivalent to:
 
 ```rust
 fn write() {
-    match std::fs::File::create("temp.txt")
-        .and_then(|mut file| std::io::Write::write_all(&mut file, b"content"))
+    match std::fs::write("file.txt", b"content")?;
     {
         Ok(_) => {}
         Err(_) => println!("Writing to file failed."),
@@ -135,8 +134,7 @@ ergonomically:
 
 ```rust
 fn write() -> Result<(), std::io::Error> {
-    let mut file = std::fs::File::create("file.txt")?;
-    std::io::Write::write_all(&mut file, b"content")?;
+    std::fs::write("file.txt", b"content")?;
     Ok(())
 }
 ```
