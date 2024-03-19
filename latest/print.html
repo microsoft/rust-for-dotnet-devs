@@ -1130,6 +1130,39 @@ impl Point {
     pub fn set_x(self, val: i32) -&gt; Self { Self::new(val, self.y) }
     pub fn set_y(self, val: i32) -&gt; Self { Self::new(self.x, val) }
 }</code></pre>
+<p>In C#, <code>with</code> can also be used with a regular (as opposed to record) <code>struct</code>
+that publicly exposes its read-write fields:</p>
+<pre><code class="language-c#">struct Point
+{
+    public int X;
+    public int Y;
+
+    public override string ToString() =&gt; $&quot;({X}, {Y})&quot;;
+}
+
+var pt = new Point { X = 123, Y = 456 };
+Console.WriteLine(pt.ToString()); // prints: (123, 456)
+pt = pt with { X = 789 };
+Console.WriteLine(pt.ToString()); // prints: (789, 456)
+</code></pre>
+<p>Rust has a <em><a href="https://doc.rust-lang.org/stable/book/ch05-01-defining-structs.html#creating-instances-from-other-instances-with-struct-update-syntax">struct update syntax</a></em> that may seem similar:</p>
+<pre><code class="language-rust">mod points {
+    #[derive(Debug)]
+    pub struct Point { pub x: i32, pub y: i32 }
+}
+
+fn main() {
+    use points::Point;
+    let pt = Point { x: 123, y: 456 };
+    println!(&quot;{pt:?}&quot;); // prints: Point { x: 123, y: 456 }
+    let pt = Point { x: 789, ..pt };
+    println!(&quot;{pt:?}&quot;); // prints: Point { x: 789, y: 456 }
+}</code></pre>
+<p>However, while <code>with</code> in C# does a non-destructive mutation (copy then
+update), the <a href="https://doc.rust-lang.org/stable/book/ch05-01-defining-structs.html#creating-instances-from-other-instances-with-struct-update-syntax">struct update syntax</a> does (partial) <em>moves</em> and works with
+fields only. Since the syntax requires access to the type's fields, it is
+generally more common to use it within the Rust module that has access to
+private details of its types.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="local-functions"><a class="header" href="#local-functions">Local Functions</a></h1>
 <p>C# and Rust offer local functions, but local functions in Rust are limited to
 the equivalent of static local functions in C#. In other words, local
