@@ -97,4 +97,4 @@ chapter of the Rust book.
   [mutex guard]: https://doc.rust-lang.org/stable/std/sync/struct.MutexGuard.html
   [sync.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Sync.html
   [send.rs]: https://doc.rust-lang.org/stable/std/marker/trait.Send.html
-  [interfaces]: ../language/custom-types.md#interfaces
+  [interfaces]: ../language/custom-types/interfaces.md
