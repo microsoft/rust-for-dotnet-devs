@@ -10,24 +10,24 @@ contributions:
 
 - Fix technical inaccuracies.
 
-- Fix logical or compilation errors in code examples.
+- Fix logic or compilation errors in code examples.
 
 - Improve the English, especially if it's your native tongue or you have
   excellent proficiency in the language.
 
 - Expand an explanation to provide more context or improve the clarity of some
-  topic or concept.
+  topics or concepts.
 
 - Keep it fresh with changes in C#, .NET and Rust. For example, if there is a
-  change in C# or Rust that brings the two languages closer together then some
-  parts, including sample code, may need revision.
+  change in C# or Rust that brings the two languages closer together, then some
+  parts (including sample code) may need revision.
 
 If you're making a small to modest correction, such fixing a spelling error or
 a syntax error in a code example, then feel free to submit a pull request
 directly. For changes that may require a large effort on your part (and
-reviewers as a result), it is strongly recommended that you submit an issue
+reviewers as a result), it's strongly recommended that you submit an issue
 and seek approval of the maintainers/editors before investing your time. It
-will avoid heartbreak 💔 if the pull request is rejected for various reasons.
+will avoid heartbreak 💔 if the pull request is rejected for whatever reason.
 
 Making quick contributions has been made super simple. If you see an error on
 a page and happen to be online, you can click edit icon 📝 in the corner of
@@ -35,23 +35,23 @@ the page to edit the Markdown source of the content and submit a change.
 
 ## Contribution Guidelines
 
-- Stick to the goals of this guide laid out in the [introduction]; put another
-  way, avoid the non-goals!
+- Stick to the goals of this guide laid out in the [introduction]; in other
+  words, avoid the non-goals!
 
-- Prefer to keep text short and use short, concise and realistic code examples
-  to illustrate a point.
+- Try to keep text short and use concise and realistic code examples to
+  illustrate a point.
 
-- As much as it is possible, always provide and compare examples in Rust and
+- As much as possible, always provide and compare examples in both Rust and
   C#.
 
 - Feel free to use latest C#/Rust language features if it makes an example
-  simpler, concise and alike across the two languages.
+  simpler, more concise or highlights similarities between the two languages.
 
 - Avoid using community packages in C# examples. Stick to the .NET [Base Class
   Library] as much as possible. Since the [Rust Standard Library] has a much
   smaller API surface, it is more acceptable to call out crates for some
-  functionality, should it be necessary for illustration (like [`rand`][rand]
-  for random number generation), but make sure they are mature, popular and
+  functionality should it be necessary for illustration (like [`rand`][rand]
+  for random number generation). Just make sure they are mature, popular and
   trusted.
 
 - Make example code as self-contained as possible and runnable (unless the
