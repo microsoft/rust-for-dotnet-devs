@@ -231,7 +231,7 @@ demonstrates that writing thread-safe code is the developer's responsibility
 in C# and .NET by careful use of synchronized structures whereas in Rust, one
 can rely on the compiler.</p>
 <p>The compiler is able to help because data structures in Rust are marked by
-special <em>traits</em> (see <a href="../language/custom-types.html#interfaces">Interfaces</a>): <code>Sync</code> and <code>Send</code>. <a href="https://doc.rust-lang.org/stable/std/marker/trait.Sync.html"><code>Sync</code></a>
+special <em>traits</em> (see <a href="../language/custom-types/interfaces.html">Interfaces</a>): <code>Sync</code> and <code>Send</code>. <a href="https://doc.rust-lang.org/stable/std/marker/trait.Sync.html"><code>Sync</code></a>
 indicates that references to a type's instances are safe to share between
 threads. <a href="https://doc.rust-lang.org/stable/std/marker/trait.Send.html"><code>Send</code></a> indicates it's safe to instances of a type across
 thread boundaries. For more information, see the “<a href="https://doc.rust-lang.org/book/ch16-00-concurrency.html">Fearless Concurrency</a>”
