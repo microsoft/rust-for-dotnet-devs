@@ -799,7 +799,7 @@ value, but the opposite is not possible as in C# (although that sometimes has
 the downside in C#/.NET that an <code>enum</code> instance can hold an unrepresented
 value). Instead, it's up to the developer to provide such a helper function:</p>
 <pre><code class="language-rust">impl DayOfWeek {
-    fn from_i32(n: i32) -&gt; Result&lt;DayOfWeek, i32&gt; {
+    fn try_from_i32(n: i32) -&gt; Result&lt;DayOfWeek, i32&gt; {
         use DayOfWeek::*;
         match n {
             0 =&gt; Ok(Sunday),
@@ -813,13 +813,13 @@ value). Instead, it's up to the developer to provide such a helper function:</p>
         }
     }
 }</code></pre>
-<p>The <code>from_i32</code> function returns a <code>DayOfWeek</code> in a <code>Result</code> indicating success
+<p>The <code>try_from_i32</code> function returns a <code>DayOfWeek</code> in a <code>Result</code> indicating success
 (<code>Ok</code>) if <code>n</code> is valid. Otherwise it returns <code>n</code> as-is in a <code>Result</code>
 indicating failure (<code>Err</code>):</p>
-<pre><code class="language-rust">let dow = DayOfWeek::from_i32(5);
+<pre><code class="language-rust">let dow = DayOfWeek::try_from_i32(5);
 println!(&quot;{dow:?}&quot;); // prints: Ok(Friday)
 
-let dow = DayOfWeek::from_i32(50);
+let dow = DayOfWeek::try_from_i32(50);
 println!(&quot;{dow:?}&quot;); // prints: Err(50)</code></pre>
 <p>There exist crates in Rust that can help with implementing such mapping from
 integral types instead of having to code them manually.</p>
