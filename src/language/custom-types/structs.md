@@ -121,7 +121,7 @@ use std::fmt::*;
 
 impl Display for Rectangle {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {
-        write!(f, "({}, {}), ({}, {})", self.x1, self.y2, self.x2, self.y2)
+        write!(f, "({}, {}), ({}, {})", self.x1, self.y1, self.x2, self.y2)
     }
 }
 ```
