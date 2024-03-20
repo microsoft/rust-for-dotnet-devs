@@ -78,7 +78,7 @@ value). Instead, it's up to the developer to provide such a helper function:
 
 ```rust
 impl DayOfWeek {
-    fn from_i32(n: i32) -> Result<DayOfWeek, i32> {
+    fn try_from_i32(n: i32) -> Result<DayOfWeek, i32> {
         use DayOfWeek::*;
         match n {
             0 => Ok(Sunday),
@@ -94,15 +94,15 @@ impl DayOfWeek {
 }
 ```
 
-The `from_i32` function returns a `DayOfWeek` in a `Result` indicating success
+The `try_from_i32` function returns a `DayOfWeek` in a `Result` indicating success
 (`Ok`) if `n` is valid. Otherwise it returns `n` as-is in a `Result`
 indicating failure (`Err`):
 
 ```rust
-let dow = DayOfWeek::from_i32(5);
+let dow = DayOfWeek::try_from_i32(5);
 println!("{dow:?}"); // prints: Ok(Friday)
 
-let dow = DayOfWeek::from_i32(50);
+let dow = DayOfWeek::try_from_i32(50);
 println!("{dow:?}"); // prints: Err(50)
 ```
 
