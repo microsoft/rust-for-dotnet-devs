@@ -17,7 +17,7 @@ There are differences in working with strings in Rust and .NET, but the
 equivalents above should be a good starting point. One of the differences is
 that Rust strings are UTF-8 encoded, but .NET strings are UTF-16 encoded.
 Further .NET strings are immutable, but Rust strings can be mutable when declared
-as such, for example `let s = &mut String::from("hello");`.
+as such, for example `let mut s = String::from("hello");`.
 
 There are also differences in using strings due to the concept of ownership. To
 read more about ownership with the String Type, see the [Rust Book][ownership-string-type-example].
@@ -44,7 +44,7 @@ Rust:
 
 ```rust
 let span: &str = "Hello, World!";
-let str = Box::new("Hello World!");
+let str: Box<str> = Box::from("Hello World!");
 let mut sb = String::from("Hello World!");
 ```
 
@@ -116,6 +116,9 @@ let age = 42;
 let str = format!("Person {{ name: {name}, age: {age} }}");
 ```
 
+Note that `format!` only supports embedding variable names in the string; more complex
+expressions are spelled like `format!("1 + 1 = {}", 1 + 1)`.
+
 Custom classes and structs can also be interpolated in C# due to the fact that
 the `ToString()` method is available for each type as it inherits from `object`.
 
@@ -159,6 +162,10 @@ let person = Person {
 println!("{person}");
 ```
 
+For converting values to string using `Display` without formatting, you can use
+the `std::string::ToString` trait. Its `to_string()` method is equal to the `ToString()`
+method in .NET, and implemented automatically whenever you implement `Display`.
+
 Another option is to use the `std::fmt::Debug` trait. The `Debug` trait is
 implemented for all standard types and can be used to print the internal
 representation of a type. The following example shows how to use the `derive`
@@ -183,6 +190,8 @@ println!("{person:?}");
 
 > Note: Using the :? format specifier will use the `Debug` trait to print the
 > struct, where leaving it out will use the `Display` trait.
+>
+> You can also use the `:#?` specifier to pretty-print the debug format.
 
 See also:
 

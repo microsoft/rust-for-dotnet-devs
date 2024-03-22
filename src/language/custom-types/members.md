@@ -162,6 +162,11 @@ impl Rectangle {
 }
 ```
 
+> Note: While in C# it is idiomatic to expose a property for every field and keep
+> the fields private, in Rust it is more common to expose the fields directly when possible,
+> since there is no syntax sugar for accessor methods and they also have complexities
+> with the borrow checker.
+
 ## Extension Methods
 
 Extension methods in C# enable the developer to attach new statically-bound
@@ -272,7 +277,7 @@ The table below is an approximation of the mapping of C# and Rust modifiers:
 
 ## Mutability
 
-When designing a type in C#, it is the responsiblity of the developer to
+When designing a type in C#, it is the responsibility of the developer to
 decide whether the a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a _positional record declaration_ (`record class` or `readonly

@@ -70,6 +70,21 @@ fn main() {
 }
 ```
 
+There is no direct equivalence to reference equality in Rust, since not everything is a reference.
+However, when you have two references, you can check for their reference equality with `std::ptr::eq()`
+
+```rust
+fn main() {
+    let a = 1;
+    let b = 1;
+    println!("{}", a == b); // true
+    println!("{}", std::ptr::eq(&a, &b)); // false
+    println!("{}", std::ptr::eq(&a, &a)); // true
+}
+```
+
+Another way to compare for reference equality is to convert the references to raw pointers and compare them using `==`.
+
 See also:
 
 - [`Eq`][eq.rs] for a stricter version of `PartialEq`.

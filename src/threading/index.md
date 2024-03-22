@@ -119,6 +119,11 @@ A few things to note:
   `data` must be copied or cloned (depending on what the type of the value
   supports).
 
+  Since Rust 1.63.0, it is possible to use [scoped threads] to use non-static data
+  (including references to not-`move`d values) in threads. The trade-off is that
+  since the data must remain alive until the thread's end, it is forcibly joined
+  by the end of the scope.
+
 - Rust thread can return values, like tasks in C#, which becomes the return
   value of the `join` method.
 
@@ -126,3 +131,5 @@ A few things to note:
   Rust example, but the C# version does not need to worry about ownership
   since the memory behind the data will be reclaimed by the GC once no one is
   referencing it anymore.
+
+[scoped threads]: https://doc.rust-lang.org/stable/std/thread/fn.scope.html
