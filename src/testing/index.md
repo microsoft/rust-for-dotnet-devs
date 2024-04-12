@@ -7,14 +7,14 @@ test framework being used (xUnit, NUnit, MSTest, etc.) and the type of tests
 (unit or integration) being wirtten. The test code therefore lives in a
 separate assembly than the application or library code being tested. In Rust,
 it is a lot more conventional for _unit tests_ to be found in a separate test
-sub-module (conventionally) named `tests`, but which is placed in same _source
-file_ as the application or library module code that is the subject of the
-tests. This has two benefits:
+sub-module (conventionally) named `tests`, but which is placed in the same
+_source file_ as the application or library module code that is the subject of
+the tests. This has two benefits:
 
 - The code/module and its unit tests live side-by-side.
 
 - There is no need for a workaround like `[InternalsVisibleTo]` that exists in
-  .NET because the tests have access to internals by virtual of being a
+  .NET because the tests have access to internals by virtue of being a
   sub-module.
 
 The test sub-module is annotated with the `#[cfg(test)]` attribute, which has
@@ -26,10 +26,10 @@ attribute.
 
 Integration tests are usually in a directory called `tests` that sits adjacent
 to the `src` directory with the unit tests and source. `cargo test` compiles
-each file in that directory as a separate crate and run all the methods
+each file in that directory as a separate crate and runs all the methods
 annotated with `#[test]` attribute. Since it is understood that integration
-tests in the `tests` directory, there is no need to mark the modules in there
-with the `#[cfg(test)]` attribute.
+tests reside in the `tests` directory, there is no need to mark the modules in
+there with the `#[cfg(test)]` attribute.
 
 See also:
 
@@ -69,7 +69,7 @@ For more information, see "[Showing Function Output][test-output]".
 ## Assertions
 
 .NET users have multiple ways to assert, depending on the framework being
-used. For example, an assertion xUnit.net might look like:
+used. For example, an assertion using xUnit.net might look like:
 
 ```csharp
 [Fact]
