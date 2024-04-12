@@ -99,7 +99,7 @@ async fn main() {
 }
 ```
 
-In order to understand how to define a custom derive macro, it is possible to
+In order to understand how to define a custom attribute macro, it is possible to
 read the rust reference for [attribute macros]
 
 [attribute macros]: https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros
