@@ -219,7 +219,7 @@ then the output of the program will change radically:
     Int(5) dropped
 
 This time, values are acquired but not dropped while looping because each item
-doesn't get owned by the interation loop's variable. The sum is printed ocne
+doesn't get owned by the interation loop's variable. The sum is printed once
 the loop is done. Finally, when the `values` array that still owns all the the
 `Int` instances goes out of scope at the end of `main`, its dropping in turn
 drops all the `Int` instances.
