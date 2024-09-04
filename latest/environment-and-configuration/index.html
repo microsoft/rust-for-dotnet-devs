@@ -163,10 +163,10 @@ if (string.IsNullOrEmpty(value))
 else
     Console.WriteLine($&quot;Variable '{name}' set to '{value}'.&quot;);
 </code></pre>
-<p>Rust is providing the same functionality of accessing an environment variable at
+<p>Rust provides the same environment variable access functionality at
 runtime via the <code>var</code> and <code>var_os</code> functions from the <code>std::env</code> module.</p>
-<p><code>var</code> function is returning a <code>Result&lt;String, VarError&gt;</code>, either returning the
-variable if set or returning an error if the variable is not set or it is not
+<p>The <code>var</code> function will return a <code>Result&lt;String, VarError&gt;</code>, and either returns the
+variable if it is set or returns an error if the variable is either not set or is not
 valid Unicode.</p>
 <p><code>var_os</code> has a different signature giving back an <code>Option&lt;OsString&gt;</code>, either
 returning some value if the variable is set, or returning None if the variable
@@ -190,7 +190,7 @@ fn main() {
         None =&gt; println!(&quot;{key} not defined in the enviroment&quot;),
     }
 }</code></pre>
-<p>Rust is also providing the functionality of accessing an environment variable at
+<p>Rust also provides environment variable access functionality at
 compile time. The <code>env!</code> macro from <code>std::env</code> expands the value of the variable
 at compile time, returning a <code>&amp;'static str</code>. If the variable is not set, an
 error is emitted.</p>
@@ -200,11 +200,11 @@ fn main() {
     let example = env!(&quot;ExampleVariable&quot;);
     println!(&quot;{example}&quot;);
 }</code></pre>
-<p>In .NET a compile time access to environment variables can be achieved, in a
+<p>In .NET compile time access to environment variables can be achieved, albeit in a
 less straightforward way, via <a href="https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview">source generators</a>.</p>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
-<p>Configuration in .NET is possible with configuration providers. The framework is
-providing several provider implementations via
+<p>Configuration in .NET is possible with configuration providers. The framework
+provides several provider implementations via
 <code>Microsoft.Extensions.Configuration</code> namespace and NuGet packages.</p>
 <p>Configuration providers read configuration data from key-value pairs using
 different sources and provide a unified view of the configuration via the
@@ -224,7 +224,7 @@ class Example {
     }
 }
 </code></pre>
-<p>Other providers examples can be found in the official documentation
+<p>Other provider examples can be found in the official documentation
 <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration-providers">Configurations provider in .NET</a>.</p>
 <p>A similar configuration experience in Rust is available via use of third-party
 crates such as <a href="https://crates.io/crates/figment">figment</a> or <a href="https://crates.io/crates/config">config</a>.</p>
