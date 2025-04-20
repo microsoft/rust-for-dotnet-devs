@@ -359,7 +359,7 @@ streaming.
 
 In both cases, this allows _infinite sequences_ to be represented, where the
 underlying sequence is infinite, but the developer decides how the sequence
-should be terminated . The following example shows this in C#:
+should be terminated. The following example shows this in C#:
 
 ```csharp
 foreach (var x in InfiniteRange().Take(5))
@@ -386,7 +386,7 @@ for value in (0..).take(5) {
 
 ## Iterator Methods (`yield`)
 
-C# has the `yield` keword that enables the developer to quickly write an
+C# has the `yield` keyword that enables the developer to quickly write an
 _iterator method_. The return type of an iterator method can be an
 `IEnumerable<T>` or an `IEnumerator<T>`. The compiler then converts the body
 of the method into a concrete implementation of the return type, instead of
