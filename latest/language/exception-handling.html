@@ -192,6 +192,11 @@ impl std::error::Error for EmployeeListNotFound {}</code></pre>
 <code>Error::source()</code> method in Rust. However, it is not required to provide an
 implementation for <code>Error::source()</code>, the blanket (default) implementation
 returns a <code>None</code>.</p>
+<blockquote>
+<p>Note: Unlike in C#, in Rust it is not strictly required for an error to
+implement <code>std::error::Error</code> (it can be used in <code>Result</code> even without that).
+But it is strongly encouraged, especially for public errors.</p>
+</blockquote>
 <h2 id="raising-exceptions"><a class="header" href="#raising-exceptions">Raising exceptions</a></h2>
 <p>To raise an exception in C#, throw an instance of the exception:</p>
 <pre><code class="language-csharp">void ThrowIfNegative(int value)

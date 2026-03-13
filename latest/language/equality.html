@@ -210,6 +210,18 @@ fn main() {
     println!(&quot;{}&quot;, a.eq(&amp;Point(2, 2))); // false
     println!(&quot;{}&quot;, a.eq(&amp;c)); // true
 }</code></pre>
+<p>There is no direct equivalence to reference equality in Rust, since not
+everything is a reference. However, when you have two references, you can check
+for their reference equality with <code>std::ptr::eq()</code></p>
+<pre><code class="language-rust">fn main() {
+    let a = 1;
+    let b = 1;
+    println!(&quot;{}&quot;, a == b); // true
+    println!(&quot;{}&quot;, std::ptr::eq(&amp;a, &amp;b)); // false
+    println!(&quot;{}&quot;, std::ptr::eq(&amp;a, &amp;a)); // true
+}</code></pre>
+<p>Another way to compare for reference equality is to convert the references to
+raw pointers and compare them using <code>==</code>.</p>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html"><code>Eq</code></a> for a stricter version of <code>PartialEq</code>.</li>

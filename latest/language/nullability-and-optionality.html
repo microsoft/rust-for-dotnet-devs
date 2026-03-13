@@ -182,17 +182,60 @@ if let Some(max) = max {
 }</code></pre>
 <h2 id="null-conditional-operators"><a class="header" href="#null-conditional-operators">Null-conditional operators</a></h2>
 <p>The null-conditional operators (<code>?.</code> and <code>?[]</code>) make dealing with <code>null</code> in C#
-more ergonomic. In Rust, they are best replaced by using the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a>
-method. The following snippets show the correspondence:</p>
+more ergonomic. In Rust, they are best replaced by using either the
+<a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a> method or the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.and_then"><code>and_then</code></a> method, depending on
+the nesting of the <code>Option</code>. The following snippets show the correspondence:</p>
 <pre><code class="language-csharp">string? some = &quot;Hello, World!&quot;;
 string? none = null;
 Console.WriteLine(some?.Length); // 13
 Console.WriteLine(none?.Length); // (blank)
+
+record Name(string FirstName, string LastName);
+record Person(Name? Name);
+
+{
+    Person? person = new Person(new Name(&quot;John&quot;, &quot;Doe&quot;));
+    Console.WriteLine(person1?.Name?.FirstName); // John
+}
+
+{
+    Person? person = new Person(null);
+    Console.WriteLine(person1?.Name?.FirstName); // (blank)
+}
+
+{
+    Person? person = null;
+    Console.WriteLine(person1?.Name?.FirstName); // (blank)
+}
 </code></pre>
 <pre><code class="language-rust">let some: Option&lt;String&gt; = Some(String::from(&quot;Hello, World!&quot;));
 let none: Option&lt;String&gt; = None;
 println!(&quot;{:?}&quot;, some.map(|s| s.len())); // Some(13)
-println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None</code></pre>
+println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None
+
+struct Name { first_name: String, last_name: String }
+struct Person { name: Option&lt;Name&gt; }
+
+let person: Option&lt;Person&gt; = Some(Person {
+    name: Some(Name {
+        first_name: &quot;John&quot;.into(),
+        last_name: &quot;Doe&quot;.into(),
+    }),
+});
+println!(&quot;{:?}&quot;, person.and_then(|p| p.name.map(|name| name.first_name))); // Some(&quot;John&quot;)
+
+let person: Option&lt;Person&gt; = Some(Person { name: None });
+println!(&quot;{:?}&quot;, person.and_then(|p| p.name.map(|name| name.first_name))); // None
+
+let person: Option&lt;Person&gt; = None;
+println!(&quot;{:?}&quot;, person.and_then(|p| p.name.map(|name| name.first_name))); // None</code></pre>
+<p>The <code>?</code> operator (<a href="exception-handling.html#error-propagation">mentioned in the previous chapter</a>), can also be used to
+handle an <code>Option</code>. It returns from the function with <code>None</code> if a <code>None</code> is
+encountered, else continues with the <code>Some</code> value:</p>
+<pre><code class="language-rust">fn foo(optional: Option&lt;i32&gt;) -&gt; Option&lt;String&gt; {
+    let value = optional?;
+    Some(value.to_string())
+}</code></pre>
 <h2 id="null-coalescing-operator"><a class="header" href="#null-coalescing-operator">Null-coalescing operator</a></h2>
 <p>The null-coalescing operator (<code>??</code>) is typically used to default to another
 value when a nullable is <code>null</code>:</p>
@@ -212,7 +255,10 @@ lazily initialize the default value.</p>
 <h2 id="null-forgiving-operator"><a class="header" href="#null-forgiving-operator">Null-forgiving operator</a></h2>
 <p>The null-forgiving operator (<code>!</code>) does not correspond to an equivalent construct
 in Rust, as it only affects the compiler's static flow analysis in C#. In Rust,
-there is no need to use a substitute for it.</p>
+there is no need to use a substitute for it. <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap"><code>unwrap</code></a> is close,
+though: it panics if the value is <code>None</code>. <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.expect"><code>expect</code></a> is similar but
+allows you to provide a custom error message. Note that as previously said,
+panics should be reserved to unrecoverable situations.</p>
 
                     </main>
 

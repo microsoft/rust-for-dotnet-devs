@@ -164,7 +164,7 @@ allocated on the heap and the latter is a slice of a <code>String</code> or a <c
 equivalents above should be a good starting point. One of the differences is
 that Rust strings are UTF-8 encoded, but .NET strings are UTF-16 encoded.
 Further .NET strings are immutable, but Rust strings can be mutable when declared
-as such, for example <code>let s = &amp;mut String::from(&quot;hello&quot;);</code>.</p>
+as such, for example <code>let mut s = String::from(&quot;hello&quot;);</code>.</p>
 <p>There are also differences in using strings due to the concept of ownership. To
 read more about ownership with the String Type, see the <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-string-type">Rust Book</a>.</p>
 <p>Notes:</p>
@@ -182,7 +182,7 @@ StringBuilder sb = new StringBuilder(&quot;Hello, World!&quot;);
 </code></pre>
 <p>Rust:</p>
 <pre><code class="language-rust">let span: &amp;str = &quot;Hello, World!&quot;;
-let str = Box::new(&quot;Hello World!&quot;);
+let str: Box&lt;str&gt; = Box::from(&quot;Hello World!&quot;);
 let mut sb = String::from(&quot;Hello World!&quot;);</code></pre>
 <h2 id="string-literals"><a class="header" href="#string-literals">String Literals</a></h2>
 <p>String literals in .NET are immutable <code>String</code> types and allocated on the heap.
@@ -219,6 +219,8 @@ use string interpolation in Rust:</p>
 <pre><code class="language-rust">let name = &quot;John&quot;;
 let age = 42;
 let str = format!(&quot;Person {{ name: {name}, age: {age} }}&quot;);</code></pre>
+<p>Note that <code>format!</code> only supports embedding variable names in the string; more
+complex expressions are spelled like <code>format!(&quot;1 + 1 = {}&quot;, 1 + 1)</code>.</p>
 <p>Custom classes and structs can also be interpolated in C# due to the fact that
 the <code>ToString()</code> method is available for each type as it inherits from <code>object</code>.</p>
 <pre><code class="language-csharp">class Person
@@ -255,6 +257,13 @@ let person = Person {
 };
 
 println!(&quot;{person}&quot;);</code></pre>
+<p>For converting values to string using <code>Display</code> but without formatting, you can
+use the <code>std::string::ToString</code> trait. Its <code>to_string()</code> method is equal to the
+<code>ToString()</code> method in .NET, and implemented automatically whenever you
+implement <code>Display</code>. That is:</p>
+<pre><code class="language-rust">// Because Display is implemented, to_string() is available automatically
+let s = person.to_string();
+// s == &quot;Person { name: John, age: 42 }&quot;</code></pre>
 <p>Another option is to use the <code>std::fmt::Debug</code> trait. The <code>Debug</code> trait is
 implemented for all standard types and can be used to print the internal
 representation of a type. The following example shows how to use the <code>derive</code>
@@ -276,6 +285,7 @@ println!(&quot;{person:?}&quot;);</code></pre>
 <blockquote>
 <p>Note: Using the :? format specifier will use the <code>Debug</code> trait to print the
 struct, where leaving it out will use the <code>Display</code> trait.</p>
+<p>You can also use the <code>:#?</code> specifier to pretty-print the debug format.</p>
 </blockquote>
 <p>See also:</p>
 <ul>

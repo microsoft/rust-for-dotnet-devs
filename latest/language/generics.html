@@ -207,11 +207,22 @@ impl&lt;T&gt; Timestamped&lt;T&gt; {
 }
 
 impl&lt;T&gt; PartialEq for Timestamped&lt;T&gt;
-    where T: PartialEq {
+where
+    T: PartialEq,
+{
     fn eq(&amp;self, other: &amp;Self) -&gt; bool {
         self.value == other.value &amp;&amp; self.timestamp == other.timestamp
     }
 }</code></pre>
+<p>A shortcut for <code>where</code> clauses that exists in Rust is constraining the
+parameters directly at their declaration:</p>
+<pre><code class="language-rust">impl&lt;T: PartialEq&gt; PartialEq for Timestamped&lt;T&gt; {
+    fn eq(&amp;self, other: &amp;Self) -&gt; bool {
+        self.value == other.value &amp;&amp; self.timestamp == other.timestamp
+    }
+}</code></pre>
+<p>Although <code>where</code> clauses are somewhat more powerful, since they can constrain
+arbitrary types (e.g. <code>i32: PartialEq&lt;T&gt;</code>).</p>
 <p>Generic type constraints are called <a href="https://doc.rust-lang.org/rust-by-example/generics/bounds.html">bounds</a> in Rust.</p>
 <p>In C# version, <code>Timestamped&lt;T&gt;</code> instances can <em>only</em> be created for <code>T</code> which
 implement <code>IEquatable&lt;T&gt;</code> themselves, but note that the Rust version is more

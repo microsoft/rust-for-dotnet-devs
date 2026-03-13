@@ -373,7 +373,7 @@ allocated on the heap and the latter is a slice of a <code>String</code> or a <c
 equivalents above should be a good starting point. One of the differences is
 that Rust strings are UTF-8 encoded, but .NET strings are UTF-16 encoded.
 Further .NET strings are immutable, but Rust strings can be mutable when declared
-as such, for example <code>let s = &amp;mut String::from(&quot;hello&quot;);</code>.</p>
+as such, for example <code>let mut s = String::from(&quot;hello&quot;);</code>.</p>
 <p>There are also differences in using strings due to the concept of ownership. To
 read more about ownership with the String Type, see the <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#the-string-type">Rust Book</a>.</p>
 <p>Notes:</p>
@@ -391,7 +391,7 @@ StringBuilder sb = new StringBuilder(&quot;Hello, World!&quot;);
 </code></pre>
 <p>Rust:</p>
 <pre><code class="language-rust">let span: &amp;str = &quot;Hello, World!&quot;;
-let str = Box::new(&quot;Hello World!&quot;);
+let str: Box&lt;str&gt; = Box::from(&quot;Hello World!&quot;);
 let mut sb = String::from(&quot;Hello World!&quot;);</code></pre>
 <h2 id="string-literals"><a class="header" href="#string-literals">String Literals</a></h2>
 <p>String literals in .NET are immutable <code>String</code> types and allocated on the heap.
@@ -428,6 +428,8 @@ use string interpolation in Rust:</p>
 <pre><code class="language-rust">let name = &quot;John&quot;;
 let age = 42;
 let str = format!(&quot;Person {{ name: {name}, age: {age} }}&quot;);</code></pre>
+<p>Note that <code>format!</code> only supports embedding variable names in the string; more
+complex expressions are spelled like <code>format!(&quot;1 + 1 = {}&quot;, 1 + 1)</code>.</p>
 <p>Custom classes and structs can also be interpolated in C# due to the fact that
 the <code>ToString()</code> method is available for each type as it inherits from <code>object</code>.</p>
 <pre><code class="language-csharp">class Person
@@ -464,6 +466,13 @@ let person = Person {
 };
 
 println!(&quot;{person}&quot;);</code></pre>
+<p>For converting values to string using <code>Display</code> but without formatting, you can
+use the <code>std::string::ToString</code> trait. Its <code>to_string()</code> method is equal to the
+<code>ToString()</code> method in .NET, and implemented automatically whenever you
+implement <code>Display</code>. That is:</p>
+<pre><code class="language-rust">// Because Display is implemented, to_string() is available automatically
+let s = person.to_string();
+// s == &quot;Person { name: John, age: 42 }&quot;</code></pre>
 <p>Another option is to use the <code>std::fmt::Debug</code> trait. The <code>Debug</code> trait is
 implemented for all standard types and can be used to print the internal
 representation of a type. The following example shows how to use the <code>derive</code>
@@ -485,6 +494,7 @@ println!(&quot;{person:?}&quot;);</code></pre>
 <blockquote>
 <p>Note: Using the :? format specifier will use the <code>Debug</code> trait to print the
 struct, where leaving it out will use the <code>Display</code> trait.</p>
+<p>You can also use the <code>:#?</code> specifier to pretty-print the debug format.</p>
 </blockquote>
 <p>See also:</p>
 <ul>
@@ -986,6 +996,12 @@ impl Rectangle {
         self.length() * self.width()
     }
 }</code></pre>
+<blockquote>
+<p>Note: While in C# it is idiomatic to expose a property for every field and keep
+the fields private, in Rust it is more common to expose the fields directly when possible,
+since there is no syntax sugar for accessor methods and they also have complexities
+with the borrow checker.</p>
+</blockquote>
 <h2 id="extension-methods"><a class="header" href="#extension-methods">Extension Methods</a></h2>
 <p>Extension methods in C# enable the developer to attach new statically-bound
 methods to existing types, without needing to modify the original definition
@@ -1084,7 +1100,7 @@ equivalent of <code>protected</code>.</p>
 </li>
 </ol>
 <h2 id="mutability"><a class="header" href="#mutability">Mutability</a></h2>
-<p>When designing a type in C#, it is the responsiblity of the developer to
+<p>When designing a type in C#, it is the responsibility of the developer to
 decide whether the a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a <em>positional record declaration</em> (<code>record class</code> or <code>readonly record struct</code>). In Rust, mutability is expressed on methods through the type
@@ -1322,6 +1338,18 @@ fn main() {
     println!(&quot;{}&quot;, a.eq(&amp;Point(2, 2))); // false
     println!(&quot;{}&quot;, a.eq(&amp;c)); // true
 }</code></pre>
+<p>There is no direct equivalence to reference equality in Rust, since not
+everything is a reference. However, when you have two references, you can check
+for their reference equality with <code>std::ptr::eq()</code></p>
+<pre><code class="language-rust">fn main() {
+    let a = 1;
+    let b = 1;
+    println!(&quot;{}&quot;, a == b); // true
+    println!(&quot;{}&quot;, std::ptr::eq(&amp;a, &amp;b)); // false
+    println!(&quot;{}&quot;, std::ptr::eq(&amp;a, &amp;a)); // true
+}</code></pre>
+<p>Another way to compare for reference equality is to convert the references to
+raw pointers and compare them using <code>==</code>.</p>
 <p>See also:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html"><code>Eq</code></a> for a stricter version of <code>PartialEq</code>.</li>
@@ -1385,11 +1413,22 @@ impl&lt;T&gt; Timestamped&lt;T&gt; {
 }
 
 impl&lt;T&gt; PartialEq for Timestamped&lt;T&gt;
-    where T: PartialEq {
+where
+    T: PartialEq,
+{
     fn eq(&amp;self, other: &amp;Self) -&gt; bool {
         self.value == other.value &amp;&amp; self.timestamp == other.timestamp
     }
 }</code></pre>
+<p>A shortcut for <code>where</code> clauses that exists in Rust is constraining the
+parameters directly at their declaration:</p>
+<pre><code class="language-rust">impl&lt;T: PartialEq&gt; PartialEq for Timestamped&lt;T&gt; {
+    fn eq(&amp;self, other: &amp;Self) -&gt; bool {
+        self.value == other.value &amp;&amp; self.timestamp == other.timestamp
+    }
+}</code></pre>
+<p>Although <code>where</code> clauses are somewhat more powerful, since they can constrain
+arbitrary types (e.g. <code>i32: PartialEq&lt;T&gt;</code>).</p>
 <p>Generic type constraints are called <a href="https://doc.rust-lang.org/rust-by-example/generics/bounds.html">bounds</a> in Rust.</p>
 <p>In C# version, <code>Timestamped&lt;T&gt;</code> instances can <em>only</em> be created for <code>T</code> which
 implement <code>IEquatable&lt;T&gt;</code> themselves, but note that the Rust version is more
@@ -1463,6 +1502,11 @@ impl std::error::Error for EmployeeListNotFound {}</code></pre>
 <code>Error::source()</code> method in Rust. However, it is not required to provide an
 implementation for <code>Error::source()</code>, the blanket (default) implementation
 returns a <code>None</code>.</p>
+<blockquote>
+<p>Note: Unlike in C#, in Rust it is not strictly required for an error to
+implement <code>std::error::Error</code> (it can be used in <code>Result</code> even without that).
+But it is strongly encouraged, especially for public errors.</p>
+</blockquote>
 <h2 id="raising-exceptions"><a class="header" href="#raising-exceptions">Raising exceptions</a></h2>
 <p>To raise an exception in C#, throw an instance of the exception:</p>
 <pre><code class="language-csharp">void ThrowIfNegative(int value)
@@ -1568,17 +1612,60 @@ if let Some(max) = max {
 }</code></pre>
 <h2 id="null-conditional-operators"><a class="header" href="#null-conditional-operators">Null-conditional operators</a></h2>
 <p>The null-conditional operators (<code>?.</code> and <code>?[]</code>) make dealing with <code>null</code> in C#
-more ergonomic. In Rust, they are best replaced by using the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a>
-method. The following snippets show the correspondence:</p>
+more ergonomic. In Rust, they are best replaced by using either the
+<a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a> method or the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.and_then"><code>and_then</code></a> method, depending on
+the nesting of the <code>Option</code>. The following snippets show the correspondence:</p>
 <pre><code class="language-csharp">string? some = &quot;Hello, World!&quot;;
 string? none = null;
 Console.WriteLine(some?.Length); // 13
 Console.WriteLine(none?.Length); // (blank)
+
+record Name(string FirstName, string LastName);
+record Person(Name? Name);
+
+{
+    Person? person = new Person(new Name(&quot;John&quot;, &quot;Doe&quot;));
+    Console.WriteLine(person1?.Name?.FirstName); // John
+}
+
+{
+    Person? person = new Person(null);
+    Console.WriteLine(person1?.Name?.FirstName); // (blank)
+}
+
+{
+    Person? person = null;
+    Console.WriteLine(person1?.Name?.FirstName); // (blank)
+}
 </code></pre>
 <pre><code class="language-rust">let some: Option&lt;String&gt; = Some(String::from(&quot;Hello, World!&quot;));
 let none: Option&lt;String&gt; = None;
 println!(&quot;{:?}&quot;, some.map(|s| s.len())); // Some(13)
-println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None</code></pre>
+println!(&quot;{:?}&quot;, none.map(|s| s.len())); // None
+
+struct Name { first_name: String, last_name: String }
+struct Person { name: Option&lt;Name&gt; }
+
+let person: Option&lt;Person&gt; = Some(Person {
+    name: Some(Name {
+        first_name: &quot;John&quot;.into(),
+        last_name: &quot;Doe&quot;.into(),
+    }),
+});
+println!(&quot;{:?}&quot;, person.and_then(|p| p.name.map(|name| name.first_name))); // Some(&quot;John&quot;)
+
+let person: Option&lt;Person&gt; = Some(Person { name: None });
+println!(&quot;{:?}&quot;, person.and_then(|p| p.name.map(|name| name.first_name))); // None
+
+let person: Option&lt;Person&gt; = None;
+println!(&quot;{:?}&quot;, person.and_then(|p| p.name.map(|name| name.first_name))); // None</code></pre>
+<p>The <code>?</code> operator (<a href="language/exception-handling.html#error-propagation">mentioned in the previous chapter</a>), can also be used to
+handle an <code>Option</code>. It returns from the function with <code>None</code> if a <code>None</code> is
+encountered, else continues with the <code>Some</code> value:</p>
+<pre><code class="language-rust">fn foo(optional: Option&lt;i32&gt;) -&gt; Option&lt;String&gt; {
+    let value = optional?;
+    Some(value.to_string())
+}</code></pre>
 <h2 id="null-coalescing-operator"><a class="header" href="#null-coalescing-operator">Null-coalescing operator</a></h2>
 <p>The null-coalescing operator (<code>??</code>) is typically used to default to another
 value when a nullable is <code>null</code>:</p>
@@ -1598,7 +1685,10 @@ lazily initialize the default value.</p>
 <h2 id="null-forgiving-operator"><a class="header" href="#null-forgiving-operator">Null-forgiving operator</a></h2>
 <p>The null-forgiving operator (<code>!</code>) does not correspond to an equivalent construct
 in Rust, as it only affects the compiler's static flow analysis in C#. In Rust,
-there is no need to use a substitute for it.</p>
+there is no need to use a substitute for it. <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap"><code>unwrap</code></a> is close,
+though: it panics if the value is <code>None</code>. <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.expect"><code>expect</code></a> is similar but
+allows you to provide a custom error message. Note that as previously said,
+panics should be reserved to unrecoverable situations.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="discards"><a class="header" href="#discards">Discards</a></h1>
 <p>In C#, <a href="https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/discards">discards</a> express to the compiler and others to ignore the
 results (or parts) of an expression.</p>
@@ -2088,6 +2178,10 @@ to the closure for the thread. Once this is done, it's no longer legal to
 continue to use the <code>data</code> variable of <code>main</code>, in <code>main</code>. If that is needed,
 <code>data</code> must be copied or cloned (depending on what the type of the value
 supports).</p>
+<p>Since Rust 1.63.0, it is possible to use <a href="https://doc.rust-lang.org/stable/std/thread/fn.scope.html">scoped threads</a> to use non-static
+data (including references to not-<code>move</code>d values) in threads. The trade-off is
+that since the data must remain alive until the thread's end, it is forcibly
+joined by the end of the scope.</p>
 </li>
 <li>
 <p>Rust thread can return values, like tasks in C#, which becomes the return

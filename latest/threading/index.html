@@ -248,6 +248,10 @@ to the closure for the thread. Once this is done, it's no longer legal to
 continue to use the <code>data</code> variable of <code>main</code>, in <code>main</code>. If that is needed,
 <code>data</code> must be copied or cloned (depending on what the type of the value
 supports).</p>
+<p>Since Rust 1.63.0, it is possible to use <a href="https://doc.rust-lang.org/stable/std/thread/fn.scope.html">scoped threads</a> to use non-static
+data (including references to not-<code>move</code>d values) in threads. The trade-off is
+that since the data must remain alive until the thread's end, it is forcibly
+joined by the end of the scope.</p>
 </li>
 <li>
 <p>Rust thread can return values, like tasks in C#, which becomes the return
