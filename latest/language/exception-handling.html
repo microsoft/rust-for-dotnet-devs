@@ -238,8 +238,7 @@ error in C#:</p>
 </code></pre>
 <p>In Rust, this is roughly equivalent to:</p>
 <pre><code class="language-rust">fn write() {
-    match std::fs::File::create(&quot;temp.txt&quot;)
-        .and_then(|mut file| std::io::Write::write_all(&amp;mut file, b&quot;content&quot;))
+    match std::fs::write(&quot;file.txt&quot;, b&quot;content&quot;)
     {
         Ok(_) =&gt; {}
         Err(_) =&gt; println!(&quot;Writing to file failed.&quot;),
@@ -250,8 +249,7 @@ For this, the method signature needs to be compatible with the types of the
 propagated error. The <a href="https://doc.rust-lang.org/std/result/index.html#the-question-mark-operator-"><code>?</code> operator</a> propagates errors
 ergonomically:</p>
 <pre><code class="language-rust">fn write() -&gt; Result&lt;(), std::io::Error&gt; {
-    let mut file = std::fs::File::create(&quot;file.txt&quot;)?;
-    std::io::Write::write_all(&amp;mut file, b&quot;content&quot;)?;
+    std::fs::write(&quot;file.txt&quot;, b&quot;content&quot;)?;
     Ok(())
 }</code></pre>
 <p><strong>Note</strong>: to propagate an error with the question mark operator the error
