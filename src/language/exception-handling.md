@@ -119,7 +119,7 @@ In Rust, this is roughly equivalent to:
 
 ```rust
 fn write() {
-    match std::fs::write("file.txt", b"content")?;
+    match std::fs::write("file.txt", b"content")
     {
         Ok(_) => {}
         Err(_) => println!("Writing to file failed."),
