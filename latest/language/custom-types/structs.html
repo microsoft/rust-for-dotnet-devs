@@ -261,7 +261,7 @@ use std::fmt::*;
 
 impl Display for Rectangle {
     fn fmt(&amp;self, f: &amp;mut Formatter&lt;'_&gt;) -&gt; Result {
-        write!(f, &quot;({}, {}), ({}, {})&quot;, self.x1, self.y2, self.x2, self.y2)
+        write!(f, &quot;({}, {}), ({}, {})&quot;, self.x1, self.y1, self.x2, self.y2)
     }
 }</code></pre>
 <p>Note that a <code>struct</code> in C# inherits the <code>ToString</code> method from <code>object</code> and
