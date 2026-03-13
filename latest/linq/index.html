@@ -450,7 +450,7 @@ is said to <em>stream</em> the results.</p>
 streaming.</p>
 <p>In both cases, this allows <em>infinite sequences</em> to be represented, where the
 underlying sequence is infinite, but the developer decides how the sequence
-should be terminated . The following example shows this in C#:</p>
+should be terminated. The following example shows this in C#:</p>
 <pre><code class="language-csharp">foreach (var x in InfiniteRange().Take(5))
     Console.Write($&quot;{x} &quot;); // Prints &quot;0 1 2 3 4&quot;
 
@@ -469,7 +469,7 @@ for value in (0..).take(5) {
     print!(&quot;{value} &quot;); // Prints &quot;0 1 2 3 4&quot;
 }</code></pre>
 <h2 id="iterator-methods-yield"><a class="header" href="#iterator-methods-yield">Iterator Methods (<code>yield</code>)</a></h2>
-<p>C# has the <code>yield</code> keword that enables the developer to quickly write an
+<p>C# has the <code>yield</code> keyword that enables the developer to quickly write an
 <em>iterator method</em>. The return type of an iterator method can be an
 <code>IEnumerable&lt;T&gt;</code> or an <code>IEnumerator&lt;T&gt;</code>. The compiler then converts the body
 of the method into a concrete implementation of the return type, instead of
