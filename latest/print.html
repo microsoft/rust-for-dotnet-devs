@@ -2780,11 +2780,12 @@ to simply replace <code>values</code> with <code>&amp;values</code> in each of t
 <p>The ownership and dropping can be seen in action even with <code>values</code> being an
 array instead of a vector. Consider just the summing loop from the above
 example over an array of a structure that wraps an integer:</p>
-<pre><code class="language-rust">struct Int(i32);
+<pre><code class="language-rust">#[derive(Debug)]
+struct Int(i32);
 
 impl Drop for Int {
     fn drop(&amp;mut self) {
-        println!(&quot;{} dropped&quot;, self.0)
+        println!(&quot;{:?} dropped&quot;, self)
     }
 }
 
@@ -2793,6 +2794,7 @@ fn main() {
     let mut sum = 0;
 
     for value in values {
+        println!(&quot;value = {:?}&quot;, value);
         sum += value.0;
     }
 
