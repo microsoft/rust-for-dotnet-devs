@@ -155,16 +155,16 @@ test framework being used (xUnit, NUnit, MSTest, etc.) and the type of tests
 (unit or integration) being wirtten. The test code therefore lives in a
 separate assembly than the application or library code being tested. In Rust,
 it is a lot more conventional for <em>unit tests</em> to be found in a separate test
-sub-module (conventionally) named <code>tests</code>, but which is placed in same <em>source
-file</em> as the application or library module code that is the subject of the
-tests. This has two benefits:</p>
+sub-module (conventionally) named <code>tests</code>, but which is placed in the same
+<em>source file</em> as the application or library module code that is the subject of
+the tests. This has two benefits:</p>
 <ul>
 <li>
 <p>The code/module and its unit tests live side-by-side.</p>
 </li>
 <li>
 <p>There is no need for a workaround like <code>[InternalsVisibleTo]</code> that exists in
-.NET because the tests have access to internals by virtual of being a
+.NET because the tests have access to internals by virtue of being a
 sub-module.</p>
 </li>
 </ul>
@@ -175,10 +175,10 @@ when the <code>cargo test</code> command is issued.</p>
 attribute.</p>
 <p>Integration tests are usually in a directory called <code>tests</code> that sits adjacent
 to the <code>src</code> directory with the unit tests and source. <code>cargo test</code> compiles
-each file in that directory as a separate crate and run all the methods
+each file in that directory as a separate crate and runs all the methods
 annotated with <code>#[test]</code> attribute. Since it is understood that integration
-tests in the <code>tests</code> directory, there is no need to mark the modules in there
-with the <code>#[cfg(test)]</code> attribute.</p>
+tests reside in the <code>tests</code> directory, there is no need to mark the modules in
+there with the <code>#[cfg(test)]</code> attribute.</p>
 <p>See also:</p>
 <ul>
 <li>
@@ -205,7 +205,7 @@ by default unless <code>cargo test</code> is run the with <code>--show-output</c
 <p>For more information, see &quot;<a href="https://doc.rust-lang.org/book/ch11-02-running-tests.html#showing-function-output">Showing Function Output</a>&quot;.</p>
 <h2 id="assertions"><a class="header" href="#assertions">Assertions</a></h2>
 <p>.NET users have multiple ways to assert, depending on the framework being
-used. For example, an assertion xUnit.net might look like:</p>
+used. For example, an assertion using xUnit.net might look like:</p>
 <pre><code class="language-csharp">[Fact]
 public void Something_Is_The_Right_Length()
 {
