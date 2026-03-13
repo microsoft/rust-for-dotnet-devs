@@ -164,7 +164,7 @@ struct Int(i32);
 
 impl Drop for Int {
     fn drop(&mut self) {
-        println!("{} dropped", self.0)
+        println!("{:?} dropped", self)
     }
 }
 
