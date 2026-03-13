@@ -159,11 +159,12 @@ array instead of a vector. Consider just the summing loop from the above
 example over an array of a structure that wraps an integer:
 
 ```rust
+#[derive(Debug)]
 struct Int(i32);
 
 impl Drop for Int {
     fn drop(&mut self) {
-        println!("{} dropped", self.0)
+        println!("{:?} dropped", self)
     }
 }
 
@@ -172,6 +173,7 @@ fn main() {
     let mut sum = 0;
 
     for value in values {
+        println!("value = {:?}", value);
         sum += value.0;
     }
 
