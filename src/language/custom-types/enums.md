@@ -33,7 +33,7 @@ enum DayOfWeek
 Unlike in .NET, an instance of an `enum` type in Rust does not have any
 pre-defined behaviour that's inherited. It cannot even participate in equality
 checks as simple as `dow == DayOfWeek::Friday`. To bring it somewhat on par in
-function with an `enum` in C#, use [the `#derive` attribute][derive] to
+function with an `enum` in C#, use [the `#[derive]` attribute][derive] to
 automatically have macros implement the commonly needed functionality:
 
 ```rust,does_not_compile
