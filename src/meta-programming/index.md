@@ -87,7 +87,7 @@ read the rust reference for [derive macros]
 
 ## Attribute Macros
 
-Attribute macros define new attributes which can be attached to rust items.
+Attribute macros define new attributes which can be attached to Rust items.
 While working with asynchronous code, if making use of Tokio, the first step
 will be to decorate the new asynchronous main with an attribute macro like the
 following example:
