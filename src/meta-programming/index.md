@@ -34,8 +34,8 @@ macro_rules! println {
 To learn more about writing declarative macros, refer to the Rust reference
 chapter [macros by example] or [The Little Book of Rust Macros].
 
-[Procedural macros] are different than declarative macros. Those accept some code
-as an input, operate on that code, and produce some code as an output.
+[Procedural macros] are different from declarative macros. Those accept some
+code as an input, operate on that code, and produce some code as an output.
 
 Another technique used in C# for metaprogramming is reflection. Rust does not
 support reflection.
