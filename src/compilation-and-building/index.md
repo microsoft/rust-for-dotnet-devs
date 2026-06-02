@@ -13,15 +13,14 @@ directly, using `cargo build` is generally far simpler.
 
 ## Building
 
-Building an executable in .NET using [`dotnet build`][net-build-output]
-restores pacakges, compiles the project sources into an [assembly]. The
-assembly contain the code in Intermediate Language (IL) and can _typically_ be
-run on any platform supported by .NET and provided the .NET runtime is
-installed on the host. The assemblies coming from dependent packages are
-generally co-located with the project's output assembly. [`cargo
-build`][cargo-build] in Rust does the same, except the Rust compiler
-statically links (although there exist other [linking options][linkage]) all
-code into a single, platform-dependent, binary.
+Building an executable in .NET using [`dotnet build`][net-build-output] restores
+packages, compiles the project sources into an [assembly]. The assembly contains
+the code in Intermediate Language (IL) and can _typically_ be run on any
+platform supported by .NET and provided the .NET runtime is installed on the
+host. The assemblies coming from dependent packages are generally co-located
+with the project's output assembly. [`cargo build`][cargo-build] in Rust does
+the same, except the Rust compiler statically links (although there exist other
+[linking options][linkage]) all code into a single, platform-dependent, binary.
 
 Developers use `dotnet publish` to prepare a .NET executable for distribution,
 either as a _framework-dependent deployment_ (FDD) or _self-contained
