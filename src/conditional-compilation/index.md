@@ -3,7 +3,7 @@
 Both .NET and Rust are providing the possibility for compiling specific code
 based on external conditions.
 
-In .NET it is possible to use the some [preprocessor directives][preproc-dir] in
+In .NET it is possible to use some [preprocessor directives][preproc-dir] in
 order to control conditional compilation
 
 ```csharp
