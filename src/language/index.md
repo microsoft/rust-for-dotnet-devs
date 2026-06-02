@@ -1,3 +1,3 @@
 # Language
 
-This sections compares C# and Rust language features.
+This section compares C# and Rust language features.
