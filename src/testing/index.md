@@ -122,8 +122,8 @@ all tests of the module.
 When specified, the `#[cfg(test)]` attribute tells Rust to compile and run the
 code only when executing the `cargo test` command, which behind-the-scenes
 executes the compiler with `rustc --test`. The opposite is true for the
-`#[cfg(not(test))]` attribute; it includes the annotated only when testing
-with `cargo test`.
+`#[cfg(not(test))]` attribute; it includes the annotated code only when not
+testing with `cargo test`.
 
 The example below shows mocking of a stand-alone function `var_os` from the
 standard that reads and returns the value of an environment variable. It
