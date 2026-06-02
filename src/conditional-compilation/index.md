@@ -1,7 +1,7 @@
 # Conditional Compilation
 
-Both .NET and Rust are providing the possibility for compiling specific code
-based on external conditions.
+Both .NET and Rust provide the possibility for compiling specific code based on
+external conditions.
 
 In .NET it is possible to use some [preprocessor directives][preproc-dir] in
 order to control conditional compilation
