@@ -54,13 +54,13 @@ String literals in .NET are immutable `String` types and allocated on the heap.
 In Rust, they are `&'static str`, which is immutable and has a global lifetime
 and does not get allocated on the heap; they're embedded in the compiled binary.
 
-C#
+C#:
 
 ```csharp
 string str = "Hello, World!";
 ```
 
-Rust
+Rust:
 
 ```rust
 let str: &'static str = "Hello, World!";
@@ -68,13 +68,13 @@ let str: &'static str = "Hello, World!";
 
 C# verbatim string literals are equivalent to Rust raw string literals.
 
-C#
+C#:
 
 ```csharp
 string str = @"Hello, \World/!";
 ```
 
-Rust
+Rust:
 
 ```rust
 let str = r#"Hello, \World/!"#;
@@ -82,13 +82,13 @@ let str = r#"Hello, \World/!"#;
 
 C# UTF-8 string literals are equivalent to Rust byte string literals.
 
-C#
+C#:
 
 ```csharp
 ReadOnlySpan<byte> str = "hello"u8;
 ```
 
-Rust
+Rust:
 
 ```rust
 let str = b"hello";
