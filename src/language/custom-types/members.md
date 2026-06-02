@@ -21,7 +21,7 @@ impl Rectangle {
 }
 ```
 
-Since Rust functions (associated or otherwise) do not support overloading; the
+Since Rust functions (associated or otherwise) do not support overloading, the
 factory functions have to be named uniquely. For example, below are some
 examples of so-called constructors or factory functions available on `String`:
 
@@ -103,7 +103,7 @@ readonly record struct Point(int X, int Y)
 
 ## Events
 
-Rust has no built-in support for type members to adverstise and fire events,
+Rust has no built-in support for type members to advertise and fire events,
 like C# has with the `event` keyword.
 
 ## Properties
@@ -278,7 +278,7 @@ The table below is an approximation of the mapping of C# and Rust modifiers:
 ## Mutability
 
 When designing a type in C#, it is the responsibility of the developer to
-decide whether the a type is mutable or immutable; whether it supports
+decide whether a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a _positional record declaration_ (`record class` or `readonly
 record struct`). In Rust, mutability is expressed on methods through the type
