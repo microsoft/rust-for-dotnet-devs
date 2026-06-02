@@ -6,7 +6,7 @@ to read it.
 
 This section is limited to providing an example of a fictional
 _database connection_ involving a SQL connection to be properly
-closed/disposed/dropped
+closed/disposed/dropped.
 
 ```csharp
 {
