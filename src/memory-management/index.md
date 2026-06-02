@@ -3,7 +3,7 @@
 Like C# and .NET, Rust has _memory-safety_ to avoid a whole class of bugs
 related to memory access, and which end up being the source of many security
 vulnerabilities in software. However, Rust can guarantee memory-safety at
-compile-time; there is no run-time (like the CLR) making checks. The one
+compile-time; there is no runtime (like the CLR) making checks. The one
 exception here is array bound checks that are done by the compiled code at
 run-time, be that the Rust compiler or the JIT compiler in .NET. Like C#, it
 is also [possible to write unsafe code in Rust][unsafe-rust], and in fact,
