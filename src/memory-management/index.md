@@ -24,7 +24,7 @@ with a compilation error.
 
 In .NET, there is no concept of ownership of memory beyond the GC roots
 (static fields, local variables on a thread's stack, CPU registers, handles,
-etc.). It is the GC that walks from the roots during a collection to detemine
+etc.). It is the GC that walks from the roots during a collection to determine
 all memory in use by following references and purging the rest. When designing
 types and writing code, a .NET developer can remain oblivious to ownership,
 memory management and even how the garbage collector works for the most part,
@@ -193,9 +193,8 @@ Like `Rc` and `Arc`, `Box` is a smart pointer, but unlike `Rc` and `Arc`, it
 exclusively owns the instance behind it. All of these smart pointers allocate
 an instance of their type argument `T` on the heap.
 
-The `new` keyword in C# creates an instance of a type, and while members such
-as `Box::new` and `Rc::new` that you see in the examples may seem to have a
-similar purpose, `new` has no special designation in Rust. It's merely a
-_coventional name_ that is meant to denote a factory. In fact they are called
-_associated functions_ of the type, which is Rust's way of saying static
-methods.
+The `new` keyword in C# creates an instance of a type, and while members such as
+`Box::new` and `Rc::new` that you see in the examples may seem to have a similar
+purpose, `new` has no special designation in Rust. It's merely a _conventional
+name_ that is meant to denote a factory. In fact they are called _associated
+functions_ of the type, which is Rust's way of saying static methods.
