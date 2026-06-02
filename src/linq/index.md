@@ -77,7 +77,7 @@ Rust's ownership and data race condition rules apply to all instances and
 data, and iteration is no exception. So while looping over an array might look
 straightforward and very similar to C#, one has to be mindful about ownership
 when needing to iterate the same collection/iterable more than once. The
-following example iteraters the list of integers twice, once to print their sum
+following example iterates the list of integers twice, once to print their sum
 and another time to determine and print the maximum integer:
 
 ```rust
@@ -181,7 +181,7 @@ fn main() {
 }
 ```
 
-`Int` implements `Drop` so that a message is printed when an instance get
+`Int` implements `Drop` so that a message is printed when an instance gets
 dropped. Running the above code will print:
 
     value = Int(1)
@@ -221,10 +221,10 @@ then the output of the program will change radically:
     Int(5) dropped
 
 This time, values are acquired but not dropped while looping because each item
-doesn't get owned by the interation loop's variable. The sum is printed once
-the loop is done. Finally, when the `values` array that still owns all the the
-`Int` instances goes out of scope at the end of `main`, its dropping in turn
-drops all the `Int` instances.
+doesn't get owned by the iteration loop's variable. The sum is printed once the
+loop is done. Finally, when the `values` array that still owns all the `Int`
+instances goes out of scope at the end of `main`, its dropping in turn drops all
+the `Int` instances.
 
 These examples demonstrate that while iterating collection types may seem to
 have a lot of parallels between Rust and C#, from the looping constructs to
@@ -253,7 +253,7 @@ queries in LINQ.
 
 Rust does not offer anything like C#'s query syntax. It has methods, called
 _[adapters]_ in Rust terms, over iterable types and therefore directly
-comparable to chaining of methods in C#. However, whlie rewriting an
+comparable to chaining of methods in C#. However, while rewriting an
 imperative loop as LINQ code in C# is often beneficial in expressivity,
 robustness and composability, there is a trade-off with performance.
 Compute-bound imperative loops _usually_ run faster because they can be
