@@ -2,7 +2,7 @@
 
 Both .NET and Rust support asynchronous programming models, which look similar
 to each other with respect to their usage. The following example shows, on a
-very high level, how async code looks like in C#:
+very high level, what async code looks like in C#:
 
 ```csharp
 async Task<string> PrintDelayed(string message, CancellationToken cancellationToken)
@@ -189,7 +189,7 @@ Similarly, `Task.WhenAll` can be replaced with [`tokio::join!`][tokio-join].
 
 In .NET a `Task` can be used across multiple consumers. All of them can await
 the task and get notified when the task is completed or failed. In Rust, the
-`Future` can not be cloned or copied, and `await`ing will move the ownership.
+`Future` cannot be cloned or copied, and `await`ing will move the ownership.
 The `futures::FutureExt::shared` extension creates a cloneable handle to a
 `Future`, which then can be distributed across multiple consumers.
 
