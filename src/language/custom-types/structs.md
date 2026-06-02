@@ -46,7 +46,7 @@ polymorphism via virtual dispatch using [trait objects].
 
   [trait objects]: https://doc.rust-lang.org/book/ch17-02-trait-objects.html#using-trait-objects-that-allow-for-values-of-different-types
 
-Consider following `struct` representing a rectangle in C#:
+Consider the following `struct` representing a rectangle in C#:
 
 ```c#
 struct Rectangle

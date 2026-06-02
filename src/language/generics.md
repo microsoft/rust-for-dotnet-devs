@@ -98,9 +98,9 @@ arbitrary types (e.g. `i32: PartialEq<T>`).
 
 Generic type constraints are called [bounds][bounds.rs] in Rust.
 
-In C# version, `Timestamped<T>` instances can _only_ be created for `T` which
-implement `IEquatable<T>` themselves, but note that the Rust version is more
-flexible because it `Timestamped<T>` _conditionally implements_ `PartialEq`.
+In the C# version, `Timestamped<T>` instances can _only_ be created for `T`
+which implement `IEquatable<T>` themselves, but note that the Rust version is
+more flexible because `Timestamped<T>` _conditionally implements_ `PartialEq`.
 This means that `Timestamped<T>` instances can still be created for some
 non-equatable `T`, but then `Timestamped<T>` will not implement equality via
 `PartialEq` for such a `T`.
