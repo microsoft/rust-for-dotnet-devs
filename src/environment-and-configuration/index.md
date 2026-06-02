@@ -49,7 +49,7 @@ fn main() {
     let key = "ExampleVariable";
     match env::var_os(key) {
         Some(val) => println!("{key}: {val:?}"),
-        None => println!("{key} not defined in the enviroment"),
+        None => println!("{key} not defined in the environment"),
     }
 }
 ```
