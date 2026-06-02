@@ -4,7 +4,7 @@
 
 .NET solutions use separate projects to host test code, irrespective of the
 test framework being used (xUnit, NUnit, MSTest, etc.) and the type of tests
-(unit or integration) being wirtten. The test code therefore lives in a
+(unit or integration) being written. The test code therefore lives in a
 separate assembly than the application or library code being tested. In Rust,
 it is a lot more conventional for _unit tests_ to be found in a separate test
 sub-module (conventionally) named `tests`, but which is placed in the same
@@ -137,8 +137,8 @@ mocked version during testing:
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
-/// Utility function to read an environmentvariable and return its value If
-/// defined. It fails/panics if the valus is not valid Unicode.
+/// Utility function to read an environment variable and return its value if
+/// defined. It fails/panics if the value is not valid Unicode.
 pub fn get_env(key: &str) -> Option<String> {
     #[cfg(not(test))]                 // for regular builds...
     use std::env::var_os;             // ...import from the standard library
