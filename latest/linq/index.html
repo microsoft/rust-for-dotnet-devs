@@ -213,7 +213,7 @@ fn main() {
 data, and iteration is no exception. So while looping over an array might look
 straightforward and very similar to C#, one has to be mindful about ownership
 when needing to iterate the same collection/iterable more than once. The
-following example iteraters the list of integers twice, once to print their sum
+following example iterates the list of integers twice, once to print their sum
 and another time to determine and print the maximum integer:</p>
 <pre><code class="language-rust">fn main() {
     let values = vec![1, 2, 3, 4, 5];
@@ -302,7 +302,7 @@ fn main() {
 
     println!(&quot;sum = {sum}&quot;);
 }</code></pre>
-<p><code>Int</code> implements <code>Drop</code> so that a message is printed when an instance get
+<p><code>Int</code> implements <code>Drop</code> so that a message is printed when an instance gets
 dropped. Running the above code will print:</p>
 <pre><code>value = Int(1)
 Int(1) dropped
@@ -336,10 +336,10 @@ Int(4) dropped
 Int(5) dropped
 </code></pre>
 <p>This time, values are acquired but not dropped while looping because each item
-doesn't get owned by the interation loop's variable. The sum is printed once
-the loop is done. Finally, when the <code>values</code> array that still owns all the the
-<code>Int</code> instances goes out of scope at the end of <code>main</code>, its dropping in turn
-drops all the <code>Int</code> instances.</p>
+doesn't get owned by the iteration loop's variable. The sum is printed once the
+loop is done. Finally, when the <code>values</code> array that still owns all the <code>Int</code>
+instances goes out of scope at the end of <code>main</code>, its dropping in turn drops all
+the <code>Int</code> instances.</p>
 <p>These examples demonstrate that while iterating collection types may seem to
 have a lot of parallels between Rust and C#, from the looping constructs to
 the iteration abstractions, there are still subtle differences with respect to
@@ -359,7 +359,7 @@ imperative loops can be re-written as much more expressive and composable
 queries in LINQ.</p>
 <p>Rust does not offer anything like C#'s query syntax. It has methods, called
 <em><a href="https://doc.rust-lang.org/std/iter/index.html#adapters">adapters</a></em> in Rust terms, over iterable types and therefore directly
-comparable to chaining of methods in C#. However, whlie rewriting an
+comparable to chaining of methods in C#. However, while rewriting an
 imperative loop as LINQ code in C# is often beneficial in expressivity,
 robustness and composability, there is a trade-off with performance.
 Compute-bound imperative loops <em>usually</em> run faster because they can be
@@ -439,7 +439,7 @@ Console.WriteLine(result); // 50
     .fold(0, |acc, x| acc + x);
 
 println!(&quot;{result}&quot;); // 50</code></pre>
-<h2 id="deferred-execution-laziness"><a class="header" href="#deferred-execution-laziness">Deferred execution (laziness)</a></h2>
+<h2 id="deferred-execution-laziness"><a class="header" href="#deferred-execution-laziness">Deferred Execution (Laziness)</a></h2>
 <p>Many operators in LINQ are designed to be lazy such that they only do work
 when absolutely required. This enables composition or chaining of several
 operations/methods without causing any side-effects. For example, a LINQ

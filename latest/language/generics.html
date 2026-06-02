@@ -174,7 +174,7 @@ impl&lt;T&gt; Timestamped&lt;T&gt; {
 <ul>
 <li><a href="https://doc.rust-lang.org/book/ch10-01-syntax.html">Generic data types</a></li>
 </ul>
-<h2 id="generic-type-constraints"><a class="header" href="#generic-type-constraints">Generic type constraints</a></h2>
+<h2 id="generic-type-constraints"><a class="header" href="#generic-type-constraints">Generic Type Constraints</a></h2>
 <p>In C#, <a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters">generic types can be constrained</a> using the <code>where</code>
 clause. The following example shows such constraints in C#:</p>
 <pre><code class="language-csharp">using System;
@@ -224,9 +224,9 @@ parameters directly at their declaration:</p>
 <p>Although <code>where</code> clauses are somewhat more powerful, since they can constrain
 arbitrary types (e.g. <code>i32: PartialEq&lt;T&gt;</code>).</p>
 <p>Generic type constraints are called <a href="https://doc.rust-lang.org/rust-by-example/generics/bounds.html">bounds</a> in Rust.</p>
-<p>In C# version, <code>Timestamped&lt;T&gt;</code> instances can <em>only</em> be created for <code>T</code> which
-implement <code>IEquatable&lt;T&gt;</code> themselves, but note that the Rust version is more
-flexible because it <code>Timestamped&lt;T&gt;</code> <em>conditionally implements</em> <code>PartialEq</code>.
+<p>In the C# version, <code>Timestamped&lt;T&gt;</code> instances can <em>only</em> be created for <code>T</code>
+which implement <code>IEquatable&lt;T&gt;</code> themselves, but note that the Rust version is
+more flexible because <code>Timestamped&lt;T&gt;</code> <em>conditionally implements</em> <code>PartialEq</code>.
 This means that <code>Timestamped&lt;T&gt;</code> instances can still be created for some
 non-equatable <code>T</code>, but then <code>Timestamped&lt;T&gt;</code> will not implement equality via
 <code>PartialEq</code> for such a <code>T</code>.</p>

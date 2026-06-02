@@ -188,22 +188,22 @@ let mut sb = String::from(&quot;Hello World!&quot;);</code></pre>
 <p>String literals in .NET are immutable <code>String</code> types and allocated on the heap.
 In Rust, they are <code>&amp;'static str</code>, which is immutable and has a global lifetime
 and does not get allocated on the heap; they're embedded in the compiled binary.</p>
-<p>C#</p>
+<p>C#:</p>
 <pre><code class="language-csharp">string str = &quot;Hello, World!&quot;;
 </code></pre>
-<p>Rust</p>
+<p>Rust:</p>
 <pre><code class="language-rust">let str: &amp;'static str = &quot;Hello, World!&quot;;</code></pre>
 <p>C# verbatim string literals are equivalent to Rust raw string literals.</p>
-<p>C#</p>
+<p>C#:</p>
 <pre><code class="language-csharp">string str = @&quot;Hello, \World/!&quot;;
 </code></pre>
-<p>Rust</p>
+<p>Rust:</p>
 <pre><code class="language-rust">let str = r#&quot;Hello, \World/!&quot;#;</code></pre>
 <p>C# UTF-8 string literals are equivalent to Rust byte string literals.</p>
-<p>C#</p>
+<p>C#:</p>
 <pre><code class="language-csharp">ReadOnlySpan&lt;byte&gt; str = &quot;hello&quot;u8;
 </code></pre>
-<p>Rust</p>
+<p>Rust:</p>
 <pre><code class="language-rust">let str = b&quot;hello&quot;;</code></pre>
 <h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
 <p>C# has a built-in string interpolation feature that allows you to embed

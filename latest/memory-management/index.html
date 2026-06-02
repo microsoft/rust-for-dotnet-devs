@@ -152,7 +152,7 @@
 <p>Like C# and .NET, Rust has <em>memory-safety</em> to avoid a whole class of bugs
 related to memory access, and which end up being the source of many security
 vulnerabilities in software. However, Rust can guarantee memory-safety at
-compile-time; there is no run-time (like the CLR) making checks. The one
+compile-time; there is no runtime (like the CLR) making checks. The one
 exception here is array bound checks that are done by the compiled code at
 run-time, be that the Rust compiler or the JIT compiler in .NET. Like C#, it
 is also <a href="https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html">possible to write unsafe code in Rust</a>, and in fact,
@@ -167,7 +167,7 @@ memory through <a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership
 with a compilation error.</p>
 <p>In .NET, there is no concept of ownership of memory beyond the GC roots
 (static fields, local variables on a thread's stack, CPU registers, handles,
-etc.). It is the GC that walks from the roots during a collection to detemine
+etc.). It is the GC that walks from the roots during a collection to determine
 all memory in use by following references and purging the rest. When designing
 types and writing code, a .NET developer can remain oblivious to ownership,
 memory management and even how the garbage collector works for the most part,
@@ -302,12 +302,11 @@ let heap_point = Box::new(Point { x: 12, y: 34 });</code></pre>
 <p>Like <code>Rc</code> and <code>Arc</code>, <code>Box</code> is a smart pointer, but unlike <code>Rc</code> and <code>Arc</code>, it
 exclusively owns the instance behind it. All of these smart pointers allocate
 an instance of their type argument <code>T</code> on the heap.</p>
-<p>The <code>new</code> keyword in C# creates an instance of a type, and while members such
-as <code>Box::new</code> and <code>Rc::new</code> that you see in the examples may seem to have a
-similar purpose, <code>new</code> has no special designation in Rust. It's merely a
-<em>coventional name</em> that is meant to denote a factory. In fact they are called
-<em>associated functions</em> of the type, which is Rust's way of saying static
-methods.</p>
+<p>The <code>new</code> keyword in C# creates an instance of a type, and while members such as
+<code>Box::new</code> and <code>Rc::new</code> that you see in the examples may seem to have a similar
+purpose, <code>new</code> has no special designation in Rust. It's merely a <em>conventional
+name</em> that is meant to denote a factory. In fact they are called <em>associated
+functions</em> of the type, which is Rust's way of saying static methods.</p>
 
                     </main>
 

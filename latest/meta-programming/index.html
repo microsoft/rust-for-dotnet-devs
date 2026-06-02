@@ -174,11 +174,11 @@ possible to call for printing some text <code>println!(&quot;Some text&quot;)</c
 }</code></pre>
 <p>To learn more about writing declarative macros, refer to the Rust reference
 chapter <a href="https://doc.rust-lang.org/reference/macros-by-example.html">macros by example</a> or <a href="https://veykril.github.io/tlborm/">The Little Book of Rust Macros</a>.</p>
-<p><a href="https://doc.rust-lang.org/reference/procedural-macros.html">Procedural macros</a> are different than declarative macros. Those accept some code
-as an input, operate on that code, and produce some code as an output.</p>
+<p><a href="https://doc.rust-lang.org/reference/procedural-macros.html">Procedural macros</a> are different from declarative macros. Those accept some
+code as an input, operate on that code, and produce some code as an output.</p>
 <p>Another technique used in C# for metaprogramming is reflection. Rust does not
 support reflection.</p>
-<h2 id="function-like-macros"><a class="header" href="#function-like-macros">Function-like macros</a></h2>
+<h2 id="function-like-macros"><a class="header" href="#function-like-macros">Function-Like Macros</a></h2>
 <p>Function-like macros are in the following form: <code>function!(...)</code></p>
 <p>The following code snippet defines a function-like macro named
 <code>print_something</code>, which is generating a <code>print_it</code> method for printing the
@@ -198,15 +198,15 @@ print_something!();
 fn main() {
     print_it();
 }</code></pre>
-<h2 id="derive-macros"><a class="header" href="#derive-macros">Derive macros</a></h2>
+<h2 id="derive-macros"><a class="header" href="#derive-macros">Derive Macros</a></h2>
 <p>Derive macros can create new items given the token stream of a struct, enum, or
 union. An example of a derive macro is the <code>#[derive(Clone)]</code> one, which is
 generating the needed code for making the input struct/enum/union implement the
 <code>Clone</code> trait.</p>
 <p>In order to understand how to define a custom derive macro, it is possible to
 read the rust reference for <a href="https://doc.rust-lang.org/reference/procedural-macros.html#derive-macros">derive macros</a></p>
-<h2 id="attribute-macros"><a class="header" href="#attribute-macros">Attribute macros</a></h2>
-<p>Attribute macros define new attributes which can be attached to rust items.
+<h2 id="attribute-macros"><a class="header" href="#attribute-macros">Attribute Macros</a></h2>
+<p>Attribute macros define new attributes which can be attached to Rust items.
 While working with asynchronous code, if making use of Tokio, the first step
 will be to decorate the new asynchronous main with an attribute macro like the
 following example:</p>

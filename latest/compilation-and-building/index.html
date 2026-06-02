@@ -157,14 +157,14 @@ via <code>dotnet msbuild</code>, developers tend to use <code>dotnet build</code
 solution. Similarly in Rust, while you could use the Rust compiler (<code>rustc</code>)
 directly, using <code>cargo build</code> is generally far simpler.</p>
 <h2 id="building"><a class="header" href="#building">Building</a></h2>
-<p>Building an executable in .NET using <a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build#description"><code>dotnet build</code></a>
-restores pacakges, compiles the project sources into an <a href="https://learn.microsoft.com/en-us/dotnet/standard/assembly/">assembly</a>. The
-assembly contain the code in Intermediate Language (IL) and can <em>typically</em> be
-run on any platform supported by .NET and provided the .NET runtime is
-installed on the host. The assemblies coming from dependent packages are
-generally co-located with the project's output assembly. <a href="https://doc.rust-lang.org/cargo/commands/cargo-build.html#cargo-build1"><code>cargo build</code></a> in Rust does the same, except the Rust compiler
-statically links (although there exist other <a href="https://doc.rust-lang.org/reference/linkage.html">linking options</a>) all
-code into a single, platform-dependent, binary.</p>
+<p>Building an executable in .NET using <a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build#description"><code>dotnet build</code></a> restores
+packages, compiles the project sources into an <a href="https://learn.microsoft.com/en-us/dotnet/standard/assembly/">assembly</a>. The assembly contains
+the code in Intermediate Language (IL) and can <em>typically</em> be run on any
+platform supported by .NET and provided the .NET runtime is installed on the
+host. The assemblies coming from dependent packages are generally co-located
+with the project's output assembly. <a href="https://doc.rust-lang.org/cargo/commands/cargo-build.html#cargo-build1"><code>cargo build</code></a> in Rust does
+the same, except the Rust compiler statically links (although there exist other
+<a href="https://doc.rust-lang.org/reference/linkage.html">linking options</a>) all code into a single, platform-dependent, binary.</p>
 <p>Developers use <code>dotnet publish</code> to prepare a .NET executable for distribution,
 either as a <em>framework-dependent deployment</em> (FDD) or <em>self-contained
 deployment</em> (SCD). In Rust, there is no equivalent to <code>dotnet publish</code> as the
@@ -215,7 +215,7 @@ dependency to the project file:</p>
 <p>cargo add tokio</p>
 <p>The most common package registry for .NET is <a href="https://www.nuget.org/">nuget.org</a> whereas Rust packages
 are usually shared via <a href="https://crates.io">crates.io</a>.</p>
-<h2 id="static-code-analysis"><a class="header" href="#static-code-analysis">Static code analysis</a></h2>
+<h2 id="static-code-analysis"><a class="header" href="#static-code-analysis">Static Code Analysis</a></h2>
 <p>Since .NET 5, the Roslyn analyzers come bundled with the .NET SDK and provide
 code quality as well as code-style analysis. The equivalent linting tool in Rust
 is <a href="https://github.com/rust-lang/rust-clippy">Clippy</a>.</p>

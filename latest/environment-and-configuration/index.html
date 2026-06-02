@@ -149,7 +149,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="environment-and-configuration"><a class="header" href="#environment-and-configuration">Environment and Configuration</a></h1>
-<h2 id="accessing-environment-variables"><a class="header" href="#accessing-environment-variables">Accessing environment variables</a></h2>
+<h2 id="accessing-environment-variables"><a class="header" href="#accessing-environment-variables">Accessing Environment Variables</a></h2>
 <p>.NET provides access to environment variables via the
 <code>System.Environment.GetEnvironmentVariable</code> method. This method retrieves the
 value of an environment variable at runtime.</p>
@@ -187,7 +187,7 @@ fn main() {
     let key = &quot;ExampleVariable&quot;;
     match env::var_os(key) {
         Some(val) =&gt; println!(&quot;{key}: {val:?}&quot;),
-        None =&gt; println!(&quot;{key} not defined in the enviroment&quot;),
+        None =&gt; println!(&quot;{key} not defined in the environment&quot;),
     }
 }</code></pre>
 <p>Rust also provides environment variable access functionality at

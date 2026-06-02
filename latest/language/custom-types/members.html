@@ -165,7 +165,7 @@ impl Rectangle {
         Self { x1, y1, x2, y2 }
     }
 }</code></pre>
-<p>Since Rust functions (associated or otherwise) do not support overloading; the
+<p>Since Rust functions (associated or otherwise) do not support overloading, the
 factory functions have to be named uniquely. For example, below are some
 examples of so-called constructors or factory functions available on <code>String</code>:</p>
 <ul>
@@ -231,7 +231,7 @@ impl Point {
 }
 </code></pre>
 <h2 id="events"><a class="header" href="#events">Events</a></h2>
-<p>Rust has no built-in support for type members to adverstise and fire events,
+<p>Rust has no built-in support for type members to advertise and fire events,
 like C# has with the <code>event</code> keyword.</p>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
 <p>In C#, fields of a type are generally private. They are then
@@ -341,7 +341,7 @@ fn main() {
 (2), the extension trait must be imported (1). Also note, the extension trait
 identifier <code>StrWrapExt</code> can itself be discarded via <code>_</code> at the time of import
 without affecting the availability of <code>wrap</code> for <code>String</code>.</p>
-<h2 id="visibilityaccess-modifiers"><a class="header" href="#visibilityaccess-modifiers">Visibility/Access modifiers</a></h2>
+<h2 id="visibilityaccess-modifiers"><a class="header" href="#visibilityaccess-modifiers">Visibility/Access Modifiers</a></h2>
 <p>C# has a number of accessibility or visibility modifiers:</p>
 <ul>
 <li><code>private</code></li>
@@ -386,7 +386,7 @@ equivalent of <code>protected</code>.</p>
 </ol>
 <h2 id="mutability"><a class="header" href="#mutability">Mutability</a></h2>
 <p>When designing a type in C#, it is the responsibility of the developer to
-decide whether the a type is mutable or immutable; whether it supports
+decide whether a type is mutable or immutable; whether it supports
 destructive or non-destructive mutations. C# does support an immutable design
 for types with a <em>positional record declaration</em> (<code>record class</code> or <code>readonly record struct</code>). In Rust, mutability is expressed on methods through the type
 of the <code>self</code> parameter as shown in the example below:</p>

@@ -150,10 +150,10 @@
                     <main>
                         <h1 id="conversion-and-casting"><a class="header" href="#conversion-and-casting">Conversion and Casting</a></h1>
 <p>Both C# and Rust are statically-typed at compile time. Hence, after a variable
-is declared, assigning a value of a value of a different type (unless it's
-implicitly convertible to the target type) to the variable is prohibited. There
-are several ways to convert types in C# that have an equivalent in Rust.</p>
-<h2 id="implicit-conversions"><a class="header" href="#implicit-conversions">Implicit conversions</a></h2>
+is declared, assigning a value of a different type (unless it's implicitly
+convertible to the target type) to the variable is prohibited. There are several
+ways to convert types in C# that have an equivalent in Rust.</p>
+<h2 id="implicit-conversions"><a class="header" href="#implicit-conversions">Implicit Conversions</a></h2>
 <p>Implicit conversions exist in C# as well as in Rust (called <a href="https://doc.rust-lang.org/reference/type-coercions.html">type coercions</a>).
 Consider the following example:</p>
 <pre><code class="language-csharp">int intNumber = 1;
@@ -172,7 +172,7 @@ let long_number: i64 = int_number; // error: expected `i64`, found `i32`</code><
 <li><a href="https://doc.rust-lang.org/std/ops/trait.Deref.html#more-on-deref-coercion">Deref coercion</a></li>
 <li><a href="https://doc.rust-lang.org/reference/subtyping.html#subtyping-and-variance">Subtyping and variance</a></li>
 </ul>
-<h2 id="explicit-conversions"><a class="header" href="#explicit-conversions">Explicit conversions</a></h2>
+<h2 id="explicit-conversions"><a class="header" href="#explicit-conversions">Explicit Conversions</a></h2>
 <p>If converting could cause a loss of information, C# requires explicit
 conversions using a casting expression:</p>
 <pre><code class="language-csharp">double a = 1.2;
@@ -185,7 +185,7 @@ int b = (int)a;
 Casting in Rust will not cause a panic.</p>
 <pre><code class="language-rust">let int_number: i32 = 1;
 let long_number: i64 = int_number as _;</code></pre>
-<h2 id="custom-conversion"><a class="header" href="#custom-conversion">Custom conversion</a></h2>
+<h2 id="custom-conversion"><a class="header" href="#custom-conversion">Custom Conversion</a></h2>
 <p>Commonly, .NET types provide user-defined conversion operators to convert one
 type to another type. Also, <code>System.IConvertible</code> serves the purpose of
 converting one type into another.</p>

@@ -160,7 +160,7 @@ equivalent of the C# code above in Rust would be:</p>
 <pre><code class="language-rust">let some: Option&lt;i32&gt; = Some(1);
 let none: Option&lt;i32&gt; = None;</code></pre>
 <p><code>Option&lt;T&gt;</code> in Rust is practically identical to <a href="https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-option-1.html"><code>'T option</code></a> from F#.</p>
-<h2 id="control-flow-with-optionality"><a class="header" href="#control-flow-with-optionality">Control flow with optionality</a></h2>
+<h2 id="control-flow-with-optionality"><a class="header" href="#control-flow-with-optionality">Control Flow with Optionality</a></h2>
 <p>In C#, you may have been using <code>if</code>/<code>else</code> statements for controlling the flow
 when using nullable values.</p>
 <pre><code class="language-csharp">uint? max = 10;
@@ -180,7 +180,7 @@ match max {
 if let Some(max) = max {
     println!(&quot;The maximum is {}.&quot;, max); // The maximum is 10.
 }</code></pre>
-<h2 id="null-conditional-operators"><a class="header" href="#null-conditional-operators">Null-conditional operators</a></h2>
+<h2 id="null-conditional-operators"><a class="header" href="#null-conditional-operators">Null-Conditional Operators</a></h2>
 <p>The null-conditional operators (<code>?.</code> and <code>?[]</code>) make dealing with <code>null</code> in C#
 more ergonomic. In Rust, they are best replaced by using either the
 <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.map"><code>map</code></a> method or the <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.and_then"><code>and_then</code></a> method, depending on
@@ -236,7 +236,7 @@ encountered, else continues with the <code>Some</code> value:</p>
     let value = optional?;
     Some(value.to_string())
 }</code></pre>
-<h2 id="null-coalescing-operator"><a class="header" href="#null-coalescing-operator">Null-coalescing operator</a></h2>
+<h2 id="null-coalescing-operator"><a class="header" href="#null-coalescing-operator">Null-Coalescing Operator</a></h2>
 <p>The null-coalescing operator (<code>??</code>) is typically used to default to another
 value when a nullable is <code>null</code>:</p>
 <pre><code class="language-csharp">int? some = 1;
@@ -252,7 +252,7 @@ println!(&quot;{:?}&quot;, none.unwrap_or(0)); // 0</code></pre>
 <p><strong>Note</strong>: If the default value is expensive to compute, you can use
 <code>unwrap_or_else</code> instead. It takes a closure as an argument, which allows you to
 lazily initialize the default value.</p>
-<h2 id="null-forgiving-operator"><a class="header" href="#null-forgiving-operator">Null-forgiving operator</a></h2>
+<h2 id="null-forgiving-operator"><a class="header" href="#null-forgiving-operator">Null-Forgiving Operator</a></h2>
 <p>The null-forgiving operator (<code>!</code>) does not correspond to an equivalent construct
 in Rust, as it only affects the compiler's static flow analysis in C#. In Rust,
 there is no need to use a substitute for it. <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap"><code>unwrap</code></a> is close,

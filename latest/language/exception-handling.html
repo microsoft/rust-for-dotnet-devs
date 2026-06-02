@@ -160,7 +160,7 @@ that can fail with recoverable errors are of type <a href="https://doc.rust-lang
 where <code>E</code> is the type of the error variant. The <a href="https://doc.rust-lang.org/std/macro.panic.html"><code>panic!</code></a> macro stops
 execution when the program encounters an unrecoverable error. An unrecoverable
 error is always a symptom of a bug.</p>
-<h2 id="custom-error-types"><a class="header" href="#custom-error-types">Custom error types</a></h2>
+<h2 id="custom-error-types"><a class="header" href="#custom-error-types">Custom Error Types</a></h2>
 <p>In .NET, custom exceptions derive from the <code>Exception</code> class. The documentation
 on <a href="https://learn.microsoft.com/en-us/dotnet/standard/exceptions/how-to-create-user-defined-exceptions">how to create user-defined exceptions</a> mentions
 the following example:</p>
@@ -197,7 +197,7 @@ returns a <code>None</code>.</p>
 implement <code>std::error::Error</code> (it can be used in <code>Result</code> even without that).
 But it is strongly encouraged, especially for public errors.</p>
 </blockquote>
-<h2 id="raising-exceptions"><a class="header" href="#raising-exceptions">Raising exceptions</a></h2>
+<h2 id="raising-exceptions"><a class="header" href="#raising-exceptions">Raising Exceptions</a></h2>
 <p>To raise an exception in C#, throw an instance of the exception:</p>
 <pre><code class="language-csharp">void ThrowIfNegative(int value)
 {
@@ -221,7 +221,7 @@ But it is strongly encouraged, especially for public errors.</p>
         panic!(&quot;Specified argument was out of the range of valid values. (Parameter 'value')&quot;)
     }
 }</code></pre>
-<h2 id="error-propagation"><a class="header" href="#error-propagation">Error propagation</a></h2>
+<h2 id="error-propagation"><a class="header" href="#error-propagation">Error Propagation</a></h2>
 <p>In .NET, exceptions are passed up the stack until they are handled or the
 program terminates. In Rust, unrecoverable errors behave similarly, but handling
 them is uncommon.</p>
@@ -261,7 +261,7 @@ ergonomically:</p>
 implementations need to be <em>compatible</em>, as described in <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator"><em>a shortcut for
 propagating errors</em></a>. The most general
 &quot;compatible&quot; error type is the error <a href="https://doc.rust-lang.org/reference/types/trait-object.html">trait object</a> <code>Box&lt;dyn Error&gt;</code>.</p>
-<h2 id="stack-traces"><a class="header" href="#stack-traces">Stack traces</a></h2>
+<h2 id="stack-traces"><a class="header" href="#stack-traces">Stack Traces</a></h2>
 <p>Throwing an unhandled exception in .NET will cause the runtime to print a stack
 trace that allows debugging the problem with additional context.</p>
 <p>For unrecoverable errors in Rust, <a href="https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html#using-a-panic-backtrace"><code>panic!</code> Backtraces</a> offer a

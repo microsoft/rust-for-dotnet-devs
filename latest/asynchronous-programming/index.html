@@ -151,7 +151,7 @@
                         <h1 id="asynchronous-programming"><a class="header" href="#asynchronous-programming">Asynchronous Programming</a></h1>
 <p>Both .NET and Rust support asynchronous programming models, which look similar
 to each other with respect to their usage. The following example shows, on a
-very high level, how async code looks like in C#:</p>
+very high level, what async code looks like in C#:</p>
 <pre><code class="language-csharp">async Task&lt;string&gt; PrintDelayed(string message, CancellationToken cancellationToken)
 {
     await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
@@ -194,7 +194,7 @@ chaining</em>, even though <code>await</code> is not a method.</p>
 <ul>
 <li><a href="https://rust-lang.github.io/async-book/">Asynchronous programming in Rust</a></li>
 </ul>
-<h2 id="executing-tasks"><a class="header" href="#executing-tasks">Executing tasks</a></h2>
+<h2 id="executing-tasks"><a class="header" href="#executing-tasks">Executing Tasks</a></h2>
 <p>From the following example the <code>PrintDelayed</code> method executes, even though it is
 not awaited:</p>
 <pre><code class="language-csharp">var cancellationToken = CancellationToken.None;
@@ -235,7 +235,7 @@ there are libraries for executing asynchronous code, called <a href="https://rus
 <a href="https://docs.rs/tokio/latest/tokio/attr.main.html"><code>tokio::main</code></a> from the above example marks the <code>async main</code>
 function as entry point to be executed by a runtime, which is set up
 automatically when using the macro.</p>
-<h2 id="task-cancellation"><a class="header" href="#task-cancellation">Task cancellation</a></h2>
+<h2 id="task-cancellation"><a class="header" href="#task-cancellation">Task Cancellation</a></h2>
 <p>The previous C# examples included passing a <code>CancellationToken</code> to asynchronous
 methods, as is considered best practice in .NET. <code>CancellationToken</code>s can be
 used to abort an asynchronous operation.</p>
@@ -249,7 +249,7 @@ referred to as <em>cancellation</em>.</p>
 <p><a href="https://docs.rs/tokio-util/latest/tokio_util/sync/struct.CancellationToken.html"><code>tokio_util::sync::CancellationToken</code></a> offers an
 equivalent to the .NET <code>CancellationToken</code> to signal and react to cancellation,
 for cases where implementing the <code>Drop</code> trait on a <code>Future</code> is unfeasible.</p>
-<h2 id="executing-multiple-tasks"><a class="header" href="#executing-multiple-tasks">Executing multiple Tasks</a></h2>
+<h2 id="executing-multiple-tasks"><a class="header" href="#executing-multiple-tasks">Executing Multiple Tasks</a></h2>
 <p>In .NET, <code>Task.WhenAny</code> and <code>Task.WhenAll</code> are frequently used to handle the
 execution of multiple tasks.</p>
 <p><code>Task.WhenAny</code> completes as soon as any task completes. Tokio, for example,
@@ -291,10 +291,10 @@ async fn delay(delay: Duration) -&gt; String {
 importantly, <code>tokio::select!</code> will cancel all remaining branches, while
 <code>Task.WhenAny</code> leaves it up to the user to cancel any in-flight tasks.</p>
 <p>Similarly, <code>Task.WhenAll</code> can be replaced with <a href="https://docs.rs/tokio/latest/tokio/macro.join.html"><code>tokio::join!</code></a>.</p>
-<h2 id="multiple-consumers"><a class="header" href="#multiple-consumers">Multiple consumers</a></h2>
+<h2 id="multiple-consumers"><a class="header" href="#multiple-consumers">Multiple Consumers</a></h2>
 <p>In .NET a <code>Task</code> can be used across multiple consumers. All of them can await
 the task and get notified when the task is completed or failed. In Rust, the
-<code>Future</code> can not be cloned or copied, and <code>await</code>ing will move the ownership.
+<code>Future</code> cannot be cloned or copied, and <code>await</code>ing will move the ownership.
 The <code>futures::FutureExt::shared</code> extension creates a cloneable handle to a
 <code>Future</code>, which then can be distributed across multiple consumers.</p>
 <pre><code class="language-rust">use futures::FutureExt;
@@ -328,7 +328,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
         _ = cancellation_token.cancelled() =&gt; println!(&quot;Background operation cancelled.&quot;),
     }
 }</code></pre>
-<h2 id="asynchronous-iteration"><a class="header" href="#asynchronous-iteration">Asynchronous iteration</a></h2>
+<h2 id="asynchronous-iteration"><a class="header" href="#asynchronous-iteration">Asynchronous Iteration</a></h2>
 <p>While in .NET there are <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1"><code>IAsyncEnumerable&lt;T&gt;</code></a> and
 <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerator-1"><code>IAsyncEnumerator&lt;T&gt;</code></a>, Rust does not yet have an API for
 asynchronous iteration in the standard library. To support asynchronous

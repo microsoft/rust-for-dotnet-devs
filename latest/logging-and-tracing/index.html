@@ -159,7 +159,7 @@ using var loggerFactory = LoggerFactory.Create(builder =&gt; builder.AddConsole(
 var logger = loggerFactory.CreateLogger&lt;Program&gt;();
 logger.LogInformation(&quot;Hello {Day}.&quot;, &quot;Thursday&quot;); // Hello Thursday.
 </code></pre>
-<p>In Rust, a lightweight logging facade is provided by <a href="https://crates.io/crates/log">log</a>. It has less
+<p>In Rust, a lightweight logging facade is provided by <a href="https://crates.io/crates/log">log</a>. It has fewer
 features than <code>ILogger</code>, e.g. as it does not yet offer (stable) structured
 logging or logging scopes.</p>
 <p>For something with more feature parity to .NET, Tokio offers

@@ -175,7 +175,7 @@
 <p>Unlike in .NET, an instance of an <code>enum</code> type in Rust does not have any
 pre-defined behaviour that's inherited. It cannot even participate in equality
 checks as simple as <code>dow == DayOfWeek::Friday</code>. To bring it somewhat on par in
-function with an <code>enum</code> in C#, use <a href="https://doc.rust-lang.org/stable/reference/attributes/derive.html">the <code>#derive</code> attribute</a> to
+function with an <code>enum</code> in C#, use <a href="https://doc.rust-lang.org/stable/reference/attributes/derive.html">the <code>#[derive]</code> attribute</a> to
 automatically have macros implement the commonly needed functionality:</p>
 <pre><code class="language-rust does_not_compile">#[derive(Debug,     // enables formatting in &quot;{:?}&quot;
          Clone,     // required by Copy
