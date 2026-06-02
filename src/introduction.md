@@ -14,7 +14,7 @@ several months. It is the guide the authors wish they had when they started on
 their Rust journey. That said, the authors would encourage you to read books
 and other material available on the Web to embrace Rust and its idioms rather
 than attempting to learn it exclusively through the lens of C# and .NET.
-Meanwhile, this guide can help answers some question quickly, like: _Does Rust
+Meanwhile, this guide can help answer some questions quickly, like: _Does Rust
 support inheritance, threading, asynchronous programming, etc.?_
 
 Assumptions:
