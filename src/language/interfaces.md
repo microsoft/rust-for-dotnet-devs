@@ -11,7 +11,7 @@ provide a more suitable and/or optimized implementation.
 
 C#/.NET interfaces can have all types of members, from properties, indexers,
 events to methods, both static- and instance-based. Likewise, traits in Rust
-can have (instance-based) method, associated functions (think static methods
+can have (instance-based) methods, associated functions (think static methods
 in C#/.NET) and constants.
 
 Apart from class hierarchies, interfaces are a core means of achieving
