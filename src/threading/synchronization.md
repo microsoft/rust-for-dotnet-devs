@@ -88,8 +88,8 @@ can rely on the compiler.
 The compiler is able to help because data structures in Rust are marked by
 special _traits_ (see [Interfaces]): `Sync` and `Send`. [`Sync`][sync.rs]
 indicates that references to a type's instances are safe to share between
-threads. [`Send`][send.rs] indicates it's safe to instances of a type across
-thread boundaries. For more information, see the “[Fearless Concurrency]”
+threads. [`Send`][send.rs] indicates it's safe to send/move instances of a type
+across thread boundaries. For more information, see the “[Fearless Concurrency]”
 chapter of the Rust book.
 
   [Fearless Concurrency]: https://doc.rust-lang.org/book/ch16-00-concurrency.html
