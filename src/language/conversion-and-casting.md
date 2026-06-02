@@ -1,9 +1,9 @@
 # Conversion and Casting
 
 Both C# and Rust are statically-typed at compile time. Hence, after a variable
-is declared, assigning a value of a value of a different type (unless it's
-implicitly convertible to the target type) to the variable is prohibited. There
-are several ways to convert types in C# that have an equivalent in Rust.
+is declared, assigning a value of a different type (unless it's implicitly
+convertible to the target type) to the variable is prohibited. There are several
+ways to convert types in C# that have an equivalent in Rust.
 
 ## Implicit Conversions
 
