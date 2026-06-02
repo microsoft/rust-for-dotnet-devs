@@ -13,7 +13,7 @@ var logger = loggerFactory.CreateLogger<Program>();
 logger.LogInformation("Hello {Day}.", "Thursday"); // Hello Thursday.
 ```
 
-In Rust, a lightweight logging facade is provided by [log][log.rs]. It has less
+In Rust, a lightweight logging facade is provided by [log][log.rs]. It has fewer
 features than `ILogger`, e.g. as it does not yet offer (stable) structured
 logging or logging scopes.
 
