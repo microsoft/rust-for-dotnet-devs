@@ -34,7 +34,7 @@ See also:
 
 [Generic data types]: https://doc.rust-lang.org/book/ch10-01-syntax.html
 
-## Generic type constraints
+## Generic Type Constraints
 
 In C#, [generic types can be constrained][type-constraints.cs] using the `where`
 clause. The following example shows such constraints in C#:

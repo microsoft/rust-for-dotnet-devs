@@ -21,7 +21,7 @@ let none: Option<i32> = None;
 
 [opt.fs]: https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-option-1.html
 
-## Control flow with optionality
+## Control Flow with Optionality
 
 In C#, you may have been using `if`/`else` statements for controlling the flow
 when using nullable values.
@@ -53,7 +53,7 @@ if let Some(max) = max {
 }
 ```
 
-## Null-conditional operators
+## Null-Conditional Operators
 
 The null-conditional operators (`?.` and `?[]`) make dealing with `null` in C#
 more ergonomic. In Rust, they are best replaced by using either the
@@ -122,7 +122,7 @@ fn foo(optional: Option<i32>) -> Option<String> {
 
 [err]: exception-handling.md#error-propagation
 
-## Null-coalescing operator
+## Null-Coalescing Operator
 
 The null-coalescing operator (`??`) is typically used to default to another
 value when a nullable is `null`:
@@ -147,7 +147,7 @@ println!("{:?}", none.unwrap_or(0)); // 0
 `unwrap_or_else` instead. It takes a closure as an argument, which allows you to
 lazily initialize the default value.
 
-## Null-forgiving operator
+## Null-Forgiving Operator
 
 The null-forgiving operator (`!`) does not correspond to an equivalent construct
 in Rust, as it only affects the compiler's static flow analysis in C#. In Rust,

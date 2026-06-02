@@ -13,7 +13,7 @@ where `E` is the type of the error variant. The [`panic!`][panic] macro stops
 execution when the program encounters an unrecoverable error. An unrecoverable
 error is always a symptom of a bug.
 
-## Custom error types
+## Custom Error Types
 
 In .NET, custom exceptions derive from the `Exception` class. The documentation
 on [how to create user-defined exceptions][net-user-defined-exceptions] mentions
@@ -58,7 +58,7 @@ returns a `None`.
 > implement `std::error::Error` (it can be used in `Result` even without that).
 > But it is strongly encouraged, especially for public errors.
 
-## Raising exceptions
+## Raising Exceptions
 
 To raise an exception in C#, throw an instance of the exception:
 
@@ -94,7 +94,7 @@ fn panic_if_negative(value: i32) {
 }
 ```
 
-## Error propagation
+## Error Propagation
 
 In .NET, exceptions are passed up the stack until they are handled or the
 program terminates. In Rust, unrecoverable errors behave similarly, but handling
@@ -148,7 +148,7 @@ implementations need to be _compatible_, as described in [_a shortcut for
 propagating errors_][propagating-errors-rust-book]. The most general
 "compatible" error type is the error [trait object] `Box<dyn Error>`.
 
-## Stack traces
+## Stack Traces
 
 Throwing an unhandled exception in .NET will cause the runtime to print a stack
 trace that allows debugging the problem with additional context.

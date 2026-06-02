@@ -98,7 +98,7 @@ are usually shared via [crates.io].
 [nuget.org]: https://www.nuget.org/
 [crates.io]: https://crates.io
 
-## Static code analysis
+## Static Code Analysis
 
 Since .NET 5, the Roslyn analyzers come bundled with the .NET SDK and provide
 code quality as well as code-style analysis. The equivalent linting tool in Rust

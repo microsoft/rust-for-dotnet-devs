@@ -1,6 +1,6 @@
 # Testing
 
-## Test organization
+## Test Organization
 
 .NET solutions use separate projects to host test code, irrespective of the
 test framework being used (xUnit, NUnit, MSTest, etc.) and the type of tests
@@ -37,7 +37,7 @@ See also:
 
   [test-org]: https://doc.rust-lang.org/book/ch11-03-test-organization.html
 
-## Running tests
+## Running Tests
 
 As simple as it can be, the equivalent of `dotnet test` in Rust is `cargo test`.
 
@@ -179,7 +179,7 @@ mod tests {
   [conditional compilation]: ../conditional-compilation/index.md
   [cfg-attribute]: https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute
 
-## Code coverage
+## Code Coverage
 
 There is sophisticated tooling for .NET when it comes to analyzing test code
 coverage. In Visual Studio, the tooling is built-in and integrated. In Visual

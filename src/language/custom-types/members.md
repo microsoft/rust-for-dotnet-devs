@@ -230,7 +230,7 @@ Just like in C#, for the method in the extension trait to become available
 identifier `StrWrapExt` can itself be discarded via `_` at the time of import
 without affecting the availability of `wrap` for `String`.
 
-## Visibility/Access modifiers
+## Visibility/Access Modifiers
 
 C# has a number of accessibility or visibility modifiers:
 

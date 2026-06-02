@@ -42,7 +42,7 @@ support reflection.
 
 [source-gen]: https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview
 
-## Function-like macros
+## Function-Like Macros
 
 Function-like macros are in the following form: `function!(...)`
 
@@ -73,7 +73,7 @@ fn main() {
 }
 ```
 
-## Derive macros
+## Derive Macros
 
 Derive macros can create new items given the token stream of a struct, enum, or
 union. An example of a derive macro is the `#[derive(Clone)]` one, which is
@@ -85,7 +85,7 @@ read the rust reference for [derive macros]
 
 [derive macros]: https://doc.rust-lang.org/reference/procedural-macros.html#derive-macros
 
-## Attribute macros
+## Attribute Macros
 
 Attribute macros define new attributes which can be attached to rust items.
 While working with asynchronous code, if making use of Tokio, the first step

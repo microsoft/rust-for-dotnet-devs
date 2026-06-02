@@ -52,7 +52,7 @@ See also:
 [future.rs]: https://doc.rust-lang.org/std/future/trait.Future.html
 [Asynchronous programming in Rust]: https://rust-lang.github.io/async-book/
 
-## Executing tasks
+## Executing Tasks
 
 From the following example the `PrintDelayed` method executes, even though it is
 not awaited:
@@ -109,7 +109,7 @@ automatically when using the macro.
 [error-E0752]: https://doc.rust-lang.org/error-index.html#E0752
 [async runtimes]: https://rust-lang.github.io/async-book/08_ecosystem/00_chapter.html#async-runtimes
 
-## Task cancellation
+## Task Cancellation
 
 The previous C# examples included passing a `CancellationToken` to asynchronous
 methods, as is considered best practice in .NET. `CancellationToken`s can be
@@ -129,7 +129,7 @@ for cases where implementing the `Drop` trait on a `Future` is unfeasible.
 
 [cancellation-token.rs]: https://docs.rs/tokio-util/latest/tokio_util/sync/struct.CancellationToken.html
 
-## Executing multiple Tasks
+## Executing Multiple Tasks
 
 In .NET, `Task.WhenAny` and `Task.WhenAll` are frequently used to handle the
 execution of multiple tasks.
@@ -185,7 +185,7 @@ Similarly, `Task.WhenAll` can be replaced with [`tokio::join!`][tokio-join].
 [tokio-select]: https://docs.rs/tokio/latest/tokio/macro.select.html
 [tokio-join]: https://docs.rs/tokio/latest/tokio/macro.join.html
 
-## Multiple consumers
+## Multiple Consumers
 
 In .NET a `Task` can be used across multiple consumers. All of them can await
 the task and get notified when the task is completed or failed. In Rust, the
@@ -227,7 +227,7 @@ async fn background_operation(cancellation_token: CancellationToken) {
 }
 ```
 
-## Asynchronous iteration
+## Asynchronous Iteration
 
 While in .NET there are [`IAsyncEnumerable<T>`][async-enumerable.net] and
 [`IAsyncEnumerator<T>`][async-enumerator.net], Rust does not yet have an API for

@@ -343,7 +343,7 @@ println!("{result}"); // 50
 [adapters]: https://doc.rust-lang.org/std/iter/index.html#adapters
 [collect.rs]: https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
 
-## Deferred execution (laziness)
+## Deferred Execution (Laziness)
 
 Many operators in LINQ are designed to be lazy such that they only do work
 when absolutely required. This enables composition or chaining of several

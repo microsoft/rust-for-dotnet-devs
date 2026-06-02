@@ -5,7 +5,7 @@ is declared, assigning a value of a value of a different type (unless it's
 implicitly convertible to the target type) to the variable is prohibited. There
 are several ways to convert types in C# that have an equivalent in Rust.
 
-## Implicit conversions
+## Implicit Conversions
 
 Implicit conversions exist in C# as well as in Rust (called [type coercions]).
 Consider the following example:
@@ -41,7 +41,7 @@ See also:
 [deref coercion]: https://doc.rust-lang.org/std/ops/trait.Deref.html#more-on-deref-coercion
 [Subtyping and variance]: https://doc.rust-lang.org/reference/subtyping.html#subtyping-and-variance
 
-## Explicit conversions
+## Explicit Conversions
 
 If converting could cause a loss of information, C# requires explicit
 conversions using a casting expression:
@@ -66,7 +66,7 @@ let long_number: i64 = int_number as _;
 [casting.rs]: https://doc.rust-lang.org/rust-by-example/types/cast.html
 [as.rs]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#type-cast-expressions
 
-## Custom conversion
+## Custom Conversion
 
 Commonly, .NET types provide user-defined conversion operators to convert one
 type to another type. Also, `System.IConvertible` serves the purpose of

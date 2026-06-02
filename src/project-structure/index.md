@@ -50,7 +50,7 @@ dive into a new Cargo [package][rust-package]:
 [section-testing]: ../testing/index.md
 [section-benchmarking]: ../benchmarking/index.md
 
-## Managing large projects
+## Managing Large Projects
 
 For very large projects in Rust, Cargo offers [workspaces][cargo-workspaces] to
 organize the project. A workspace can help manage multiple related packages that
@@ -61,7 +61,7 @@ package.
 [cargo-workspaces]: https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html
 [cargo-virtual-manifest]: https://doc.rust-lang.org/cargo/reference/workspaces.html#virtual-workspace
 
-## Managing dependency versions
+## Managing Dependency Versions
 
 When managing larger projects in .NET, it may be appropriate to manage the
 versions of dependencies centrally, using strategies such as [Central Package

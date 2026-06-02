@@ -1,6 +1,6 @@
 # Environment and Configuration
 
-## Accessing environment variables
+## Accessing Environment Variables
 
 .NET provides access to environment variables via the
 `System.Environment.GetEnvironmentVariable` method. This method retrieves the

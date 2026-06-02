@@ -1,4 +1,4 @@
-# Operator overloading
+# Operator Overloading
 
 A custom type can overload an _overloadable operator_ in C#. Consider the
 following example in C#:
