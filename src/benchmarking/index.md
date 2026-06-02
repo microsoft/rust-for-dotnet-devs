@@ -13,8 +13,8 @@ As per its [documentation][criterion-docs], `Criterion` collects and stores
 statistical information from run to run and can automatically detect performance
 regressions as well as measuring optimizations.
 
-Using `Criterion` is possible to use the `#[bench]` attribute without moving to
-the nightly channel.
+Using `Criterion`, it is possible to use the `#[bench]` attribute without moving
+to the nightly channel.
 
 As in `BenchmarkDotNet`, it is also possible to integrate benchmark results with
 the [GitHub Action for Continuous Benchmarking][gh-action-bench]. `Criterion`,
