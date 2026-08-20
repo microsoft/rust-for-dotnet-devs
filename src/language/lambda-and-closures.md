@@ -27,7 +27,7 @@ surrounding lexical scope, but not a function pointer. While C# also has
 [function pointers][*delegate] (`*delegate`), the managed and type-safe
 equivalent would be a static lambda expression.
 
-  [*delegate]: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/function-pointers
+  [*delegate]: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code#function-pointers
 
 Functions and methods that accept closures are written with generic types that
 are bound to one of the traits representing functions: `Fn`, `FnMut` and
