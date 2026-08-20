@@ -1204,7 +1204,7 @@ fn main() {
 <p>However, Rust makes a distinction between <em>function pointers</em> (where <code>fn</code>
 defines a type) and <em>closures</em>: a closure can reference variables from its
 surrounding lexical scope, but not a function pointer. While C# also has
-<a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/function-pointers">function pointers</a> (<code>*delegate</code>), the managed and type-safe
+<a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code#function-pointers">function pointers</a> (<code>*delegate</code>), the managed and type-safe
 equivalent would be a static lambda expression.</p>
 <p>Functions and methods that accept closures are written with generic types that
 are bound to one of the traits representing functions: <code>Fn</code>, <code>FnMut</code> and
